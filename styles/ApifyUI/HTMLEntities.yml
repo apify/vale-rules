@@ -1,0 +1,19 @@
+extends: substitution
+level: error
+message: "HTML entity in JS string: '%s' instead of '%s'."
+ignorecase: false
+exceptions:
+  - "<[^>]*&gt;[^<]*>"
+  - 'https?://[^\s]*&amp;'
+  - "&rarr;"
+  - "&bull;"
+  - "&hellip;"
+  - "&mdash;"
+  - "&ndash;"
+  - "&nbsp;"
+  - "&times;"
+  - "&copy;"
+
+swap:
+  '&apos;': "'"
+  '&quot;': '"'

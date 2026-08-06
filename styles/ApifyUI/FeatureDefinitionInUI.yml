@@ -1,0 +1,26 @@
+extends: existence
+level: suggestion
+message: "Feature definition pattern: '%s' - tell the user what to do, not what the feature is."
+
+exceptions:
+  - '(?:If|When) (?:enabled|checked|active|on|true)[\s\S]{0,30}(?:lets you|allows you to|enables you to)'
+  - "(?:This Actor|This scraper|This tool) (?:lets you|allows you to|enables you to)"
+
+tokens:
+  - 'lets you'
+  - 'let you'
+  - 'allows you to'
+  - 'allow you to'
+  - 'enables you to'
+  - 'enable you to'
+  - 'is a feature that'
+  - 'is a tool that'
+  - 'is designed to'
+  - 'are designed to'
+  - 'will appear here'
+  - 'will show up here'
+  - 'will be displayed here'
+  - 'will be shown here'
+  - 'will appear here after'
+  - 'will appear here once'
+  - 'will appear once'

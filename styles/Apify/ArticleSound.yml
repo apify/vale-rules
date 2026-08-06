@@ -1,0 +1,93 @@
+extends: substitution
+level: warning
+message: "Article by sound: '%s' instead of '%s'."
+ignorecase: false
+scope: sentence
+
+exceptions:
+  - '\{[^}]*(?:plural|select)[^}]*\}'
+  - '^[".].*[".]$'
+  - '\b(?:a|an) \{'
+
+swap:
+
+  'a API': 'an API'
+  'a API-': 'an API-'
+
+  'a Actor': 'an Actor'
+  'a Apify': 'an Apify'
+
+  'a ETL': 'an ETL'
+
+  'a FAQ': 'an FAQ'
+  'a FSA': 'an FSA'
+
+  'a HTTP': 'an HTTP'
+  'a HTML': 'an HTML'
+
+  'a ID': 'an ID'
+  'a ICU': 'an ICU'
+
+  'a MCP': 'an MCP'
+  'a MVP': 'an MVP'
+
+  'a npm': 'an npm'
+  'a NLP': 'an NLP'
+
+  'a OAuth': 'an OAuth'
+  'a OOM': 'an OOM'
+
+  'a RSS': 'an RSS'
+
+  'a SDK': 'an SDK'
+  'a SSH': 'an SSH'
+  'a SSL': 'an SSL'
+  'a SPA': 'an SPA'
+
+  'a XML': 'an XML'
+
+  'a hour': 'an hour'
+  'a honest': 'an honest'
+  'a heir': 'an heir'
+  'a honor': 'an honor'
+  'a herb': 'an herb'
+
+  'an URL': 'a URL'
+  'an user': 'a user'
+  'an username': 'a username'
+  'an unique': 'a unique'
+  'an universal': 'a universal'
+  'an union': 'a union'
+  'an unit': 'a unit'
+  'an unified': 'a unified'
+  'an uniform': 'a uniform'
+  'an university': 'a university'
+  'an UI': 'a UI'
+  'an UX': 'a UX'
+
+  'an European': 'a European'
+
+  'an one': 'a one'
+  'an one-time': 'a one-time'
+  'an once': 'a once'
+
+  'an CLI': 'a CLI'
+  'an CU': 'a CU'
+  'an CSV': 'a CSV'
+  'an CPU': 'a CPU'
+
+  'an DNS': 'a DNS'
+
+  'an GPU': 'a GPU'
+
+  'an JSON': 'a JSON'
+
+  'an PDF': 'a PDF'
+
+  'an REST': 'a REST'
+
+  'an TLS': 'a TLS'
+
+  'an WCAG': 'a WCAG'
+
+  'an YAML': 'a YAML'

@@ -1,0 +1,9 @@
+extends: existence
+message: "Imprecise label '%s'. Add a qualifier: 'export formats' not just 'exports', 'search options' not just 'options'."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b[Mm]ultiple exports\b'
+  - '\b[Aa]dvanced options\b'
+  - '\b[Cc]ustom settings\b'
+  - '\b[Vv]arious formats\b'

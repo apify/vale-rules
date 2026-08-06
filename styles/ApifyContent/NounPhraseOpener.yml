@@ -1,0 +1,25 @@
+extends: existence
+level: suggestion
+message: "Abstract noun-phrase opener: '%s'. Lead with the specific metric or field name instead."
+
+tokens:
+  - 'The cost of your'
+  - 'The cost of the'
+  - 'The amount of'
+  - 'The number of'
+  - 'The total number of'
+  - 'The total amount of'
+  - 'The total cost of'
+  - 'The maximum number of'
+  - 'The maximum amount of'
+  - 'The minimum number of'
+  - 'The minimum amount of'
+  - 'This value indicates'
+  - 'This value represents'
+  - 'This value specifies'
+  - 'This field indicates'
+  - 'This field represents'
+  - 'This field specifies'
+
+exceptions:
+  - "a number of (?:items|results|records|pages|requests|runs|files|entries)"

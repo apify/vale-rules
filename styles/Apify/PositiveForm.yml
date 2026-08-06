@@ -1,0 +1,36 @@
+extends: substitution
+level: suggestion
+message: "Positive form: '%s' instead of '%s' - express positively for clarity (Strunk #18)."
+ignorecase: true
+
+swap:
+  'not uncommon': 'common'
+  "isn't uncommon": 'is common'
+  'not unlike': 'similar to'
+  "isn't unlike": 'is similar to'
+  'not impossible': 'possible'
+  "isn't impossible": 'is possible'
+  'not insignificant': 'significant'
+  "isn't insignificant": 'is significant'
+  'not unrelated': 'related'
+  "isn't unrelated": 'is related'
+  'not unreasonable': 'reasonable'
+  "isn't unreasonable": 'is reasonable'
+  'not unnecessary': 'necessary'
+  "isn't unnecessary": 'is necessary'
+  'not unimportant': 'important'
+  "isn't unimportant": 'is important'
+  'not unfamiliar': 'familiar'
+  "isn't unfamiliar": 'is familiar'
+  'not infrequent': 'frequent'
+  "isn't infrequent": 'is frequent'
+  'not infrequently': 'frequently'
+
+  'is not the same as': 'differs from'
+  "isn't the same as": 'differs from'
+  'are not the same as': 'differ from'
+  "aren't the same as": 'differ from'
+  'does not need to': 'need not'
+  "doesn't need to": 'need not'
+  'do not need to': 'need not'
+  "don't need to": 'need not'

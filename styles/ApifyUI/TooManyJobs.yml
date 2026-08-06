@@ -1,0 +1,17 @@
+extends: existence
+level: suggestion
+message: "Doing too much: '%s' - this string has more than one job. Can you split it or cut the weaker half?"
+ignorecase: true
+
+exceptions:
+  - 'If (?:enabled|checked|set)[\s\S]*If (?:disabled|unchecked|not set)'
+  - '(?:Couldn.t|Can.t|couldn.t|can.t|Failed|failed)[\s\S]*(?:Try|Check|Contact|Reload)'
+  - '\.\s*(?:Learn more|See docs|Read more)'
+  - '^.{0,60}\.\s+.{0,40}$'
+
+tokens:
+  - '^(?:[^.]*\.)\s+(?:[A-Z][^.]*\.)\s+[A-Z]'
+
+  - '\.\s+(?:Note that|Keep in mind|Be aware|Remember that|Important:)\s'
+
+  - '\.\s+To \w+(?:\s+\w+){0,3},\s+(?:use|set|add|go to|click|select|enable|visit)\b'

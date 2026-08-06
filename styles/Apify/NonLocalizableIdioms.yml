@@ -1,0 +1,40 @@
+extends: substitution
+level: suggestion
+message: "Non-localizable idiom: '%s' instead of '%s'. Use plain language that translates cleanly."
+swap:
+  'Ship it': 'publish'
+  'ship it': 'publish'
+  'Automagically': 'automatically'
+  'automagically': 'automatically'
+  'Takes down': 'removes'
+  'takes down': 'removes'
+  'Price drop': 'lower price'
+  'price drop': 'lower price'
+  'Out of the box': 'by default'
+  'out of the box': 'by default'
+  'Out-of-the-box': 'default'
+  'out-of-the-box': 'default'
+  'A piece of cake': 'straightforward'
+  'a piece of cake': 'straightforward'
+  'Under the hood': 'internally'
+  'under the hood': 'internally'
+  'Hit the ground running': 'start quickly'
+  'hit the ground running': 'start quickly'
+  'Low-hanging fruit': 'quick wins'
+  'low-hanging fruit': 'quick wins'
+  'Game changer': 'improvement'
+  'game changer': 'improvement'
+  'No-brainer': 'clear choice'
+  'no-brainer': 'clear choice'
+  'Deep dive': 'detailed look'
+  'deep dive': 'detailed look'
+  'Level up': 'improve'
+  'level up': 'improve'
+  'Heads up': 'note'
+  'Pain point': 'problem'
+  'pain point': 'problem'
+
+exceptions:
+  - "^Heads up"
+  - 'architecture[\s\S]*under the hood'
+  - 'under the hood[\s\S]*architecture'

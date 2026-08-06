@@ -1,0 +1,9 @@
+extends: existence
+level: warning
+message: "Don't start a sentence with '%s' - use 'For example' or 'That is' instead."
+ignorecase: false
+scope: sentence
+
+tokens:
+  - '(?:^|\.\s+)E\.g\.'
+  - '(?:^|\.\s+)I\.e\.'

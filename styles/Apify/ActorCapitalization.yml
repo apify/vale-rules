@@ -1,0 +1,15 @@
+extends: substitution
+message: "Use '%s' instead of '%s' for the Apify product concept."
+ignorecase: false
+level: suggestion
+scope:
+  - summary
+  - heading
+vocab: false
+exceptions:
+  # Ordinary-language people, not the Apify product concept.
+  - '\b[Hh]uman actors?\b'
+  # Literal API route comparison whose Markdown emphasis hides token context.
+  - '\bpath from actors? to actor[-_/][A-Za-z0-9_-]*\b'
+swap:
+  '(?<![-_/.])\bactor(s?)\b(?![-_/]|\.[A-Za-z0-9])': 'Actor$1'

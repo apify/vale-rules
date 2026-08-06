@@ -1,0 +1,11 @@
+extends: existence
+message: "Specific field constraint '%s' - verify against INPUT_SCHEMA.json. Defaults, ranges, and allowed values change between Actor versions. If no schema is available, add <!-- VERIFY -->."
+level: suggestion
+scope: sentence
+tokens:
+  - 'Range:\s*\d+[–-]\d+'
+  - 'Default:\s*\d+'
+  - 'Default:\s*`[^`]+`'
+  - 'Min(?:imum)?:\s*\d+'
+  - 'Max(?:imum)?:\s*\d+'
+  - 'Allowed values?:\s*'

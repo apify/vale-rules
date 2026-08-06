@@ -1,0 +1,6 @@
+extends: existence
+message: "Apify style: no comma after 'e.g.' or 'i.e.' - write 'e.g. Node.js' not 'e.g., Node.js'."
+level: suggestion
+scope: raw
+raw:
+  - '(?:e\.g\.|i\.e\.),\s'

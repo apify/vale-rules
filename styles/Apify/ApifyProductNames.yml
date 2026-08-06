@@ -1,0 +1,18 @@
+extends: substitution
+message: "Use the Apify product name '%s' instead of '%s'."
+ignorecase: true
+level: warning
+scope:
+  - summary
+  - heading
+vocab: false
+swap:
+  'apify dashboard': Apify Console
+  'apify console': Apify Console
+  'apify store': Apify Store
+  'the apify console': Apify Console
+  'the apify store': Apify Store
+  'apify freelancers': Apify freelancers
+  'apify platform': Apify platform
+  'apify proxy': Apify Proxy
+  'the apify proxy': Apify Proxy

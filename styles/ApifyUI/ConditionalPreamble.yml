@@ -1,0 +1,30 @@
+extends: existence
+level: suggestion
+message: "Conditional preamble: '%s'. The toggle already communicates the condition - state the effect directly."
+
+exceptions:
+  - 'If (?:enabled|checked|set|turned on|activated|selected)[\s\S]*If (?:disabled|unchecked|not set|turned off|deactivated)'
+  - 'If (?:disabled|unchecked|not set|turned off|deactivated)[\s\S]*If (?:enabled|checked|set|turned on|activated|selected)'
+  - "schema"
+  - "inputSchema"
+  - '\.input\.'
+
+tokens:
+  - 'If enabled,'
+  - 'If checked,'
+  - 'If set,'
+  - 'If true,'
+  - 'If turned on,'
+  - 'If activated,'
+  - 'If selected,'
+  - 'When enabled,'
+  - 'When checked,'
+  - 'When set to true,'
+  - 'When turned on,'
+  - 'When activated,'
+  - 'When this is enabled,'
+  - 'When this is checked,'
+  - 'When this is on,'
+  - 'If this is enabled,'
+  - 'If this is checked,'
+  - 'If this is set,'

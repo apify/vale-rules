@@ -1,0 +1,10 @@
+extends: existence
+message: "Preamble verb ('%s'). Use direct imperative: 'Start from Console' or 'Trigger via API' instead of 'Run it from the...' Saves words, scores higher."
+level: suggestion
+scope: sentence
+tokens:
+  - '\bRun it from\b'
+  - '\bUse it (?:from|with|in)\b'
+  - '\bYou can run (?:it|this)\b'
+  - '\bYou can use (?:it|this)\b'
+  - '\bYou can start (?:it|this)\b'

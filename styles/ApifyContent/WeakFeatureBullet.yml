@@ -1,0 +1,7 @@
+extends: existence
+message: "Feature bullet starts with weak subject '%s'. Lead with the action: 'Extract...' not 'This extracts...'"
+link: "docs/guides/readme-writing-guide.md"
+level: suggestion
+scope: sentence
+tokens:
+  - '^\*\*[^*]+\*\*:?\s+(?:This|It|The tool|The Actor|You can use)'

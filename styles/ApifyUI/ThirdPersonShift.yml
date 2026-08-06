@@ -1,0 +1,22 @@
+extends: substitution
+level: suggestion
+message: "Use direct address: '%s' instead of '%s'."
+ignorecase: true
+
+exceptions:
+  - 'a user (?:can|will|should|must|may|could|would)[\s\S]*\byou(?:r)?\b'
+  - '\byou(?:r)?\b[\s\S]*a user (?:can|will|should|must|may|could|would)'
+  - '(?:If|When|Once) (?:a |the )?user(?:s)?\s+(?:is|are|has|have|creates?|joins?|leaves?|subscribes?|logs?\s+in)'
+  - "permission.*(?:let|allow|enable) users"
+  - "(?:let|allow|enable) users.*permission"
+  - '\w+\s+[Ll]ets? users'
+  - '\w+\s+[Aa]llows? users'
+  - '\w+\s+[Ee]nables? users'
+
+swap:
+  'Let users ': ''
+  'Lets users ': ''
+  'Allow users to ': ''
+  'Allows users to ': ''
+  'Enable users to ': ''
+  'Enables users to ': ''

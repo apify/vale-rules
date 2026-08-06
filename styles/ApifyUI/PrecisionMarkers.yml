@@ -1,0 +1,15 @@
+extends: existence
+level: suggestion
+message: "Missing consequence marker: '%s' - destructive actions should state what will be lost or that the action can't be undone."
+ignorecase: true
+
+exceptions:
+  - "(?:can.t be undone|cannot be undone|irreversible|permanently|will be lost|will no longer|won.t be able)"
+  - '\.\s+\S'
+  - "including (?:all|the|any|your)"
+  - '(?:Delete|Remove|Disconnect|Revoke|Cancel) this \w+\?'
+
+tokens:
+  - '^(?:Delete|Remove|Disconnect|Revoke|Cancel) [\w ]+\?$'
+  - 'Are you sure you want to (?:delete|remove|disconnect|revoke|cancel|discard|erase)'
+  - 'Do you want to (?:delete|remove|disconnect|revoke|cancel|discard|erase)'

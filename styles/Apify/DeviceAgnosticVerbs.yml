@@ -1,0 +1,13 @@
+extends: substitution
+level: warning
+message: "Device-specific verb: '%s' instead of '%s'. Use input-neutral language (not everyone uses a mouse)."
+ignorecase: true
+scope:
+  - sentence
+  - heading
+
+swap:
+  '(?<!double-|right-|left-|single-)click(?!-through)': select
+  '(?<!double-|right-|left-|single-)clicks(?!-through)': selects
+  '(?<!double-|right-|left-|single-)clicked(?!-through)': selected
+  '(?<!double-|right-|left-|single-)clicking(?!-through)': selecting

@@ -1,0 +1,19 @@
+extends: existence
+level: suggestion
+message: "Domain verb mismatch: '%s'. Check if this verb matches Apify's product model."
+
+tokens:
+  - '\bbuy\b.{0,20}\bActor\b'
+  - '\bbought\b.{0,20}\bActor\b'
+  - '\bpurchase\b.{0,20}\bActor\b'
+  - '\bpurchased\b.{0,20}\bActor\b'
+  - '\bActor\b.{0,20}\bbuy\b'
+  - '\bActor\b.{0,20}\bpurchase\b'
+  - '\bbuy\b.{0,20}\b[Pp]roxy\b'
+  - '\bpurchase\b.{0,20}\b[Pp]roxy\b'
+  - '\binstall\b.{0,20}\bActor\b'
+  - '\binstalled\b.{0,20}\bActor\b'
+
+exceptions:
+  - '\bbuy\b[^.!?]*\badd-?on\b'
+  - '\bpurchase\b[^.!?]*\bsubscription\b'

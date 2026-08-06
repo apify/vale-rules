@@ -1,0 +1,34 @@
+extends: existence
+level: suggestion
+message: "Self-referential: '%s' - the user is already in this product. Name the outcome, not the brand."
+
+exceptions:
+  - "publish.*(?:to|on|in) Apify Store"
+  - "visible.*(?:in|on) Apify Store"
+  - "listed.*(?:in|on) Apify Store"
+  - "available.*(?:in|on) Apify Store"
+  - "ranking.*(?:in|on) Apify Store"
+  - "placement.*(?:in|on) Apify Store"
+  - "stand out.*(?:in|on) Apify Store"
+  - "email"
+  - "notification"
+  - "subject"
+  - "docsLink"
+  - "Learn more about Apify"
+  - "Apify Proxy"
+  - "Apify API"
+  - "Apify MCP"
+  - "Apify Store.s"
+  - "Apify platform"
+
+tokens:
+  - 'Apify will'
+  - 'Apify does'
+  - 'Apify helps'
+  - 'Apify handles'
+  - 'Apify takes care'
+  - 'Let Apify'
+  - 'We at Apify'
+  - 'in the Console'
+  - 'in Console'
+  - 'on the Console'

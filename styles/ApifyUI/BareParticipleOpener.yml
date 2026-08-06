@@ -1,0 +1,43 @@
+extends: existence
+level: suggestion
+message: "Bare participle opener: '%s' has no subject. Consider 'This [noun] was %s...' or restructure."
+ignorecase: false
+
+exceptions:
+  - '^\w+ed\.?$'
+  - '^\w+ed by\b'
+  - "^(?:Are you sure|Do you want|Delete|Remove|Cancel)"
+  - '^\w+ed:'
+
+tokens:
+  - 'Aborted automatically'
+  - 'Aborted because'
+  - 'Aborted after'
+  - 'Aborted due'
+  - 'Deleted because'
+  - 'Deleted after'
+  - 'Deleted due'
+  - 'Created because'
+  - 'Created after'
+  - 'Created on'
+  - 'Created at'
+  - 'Removed because'
+  - 'Removed after'
+  - 'Removed due'
+  - 'Disabled because'
+  - 'Disabled after'
+  - 'Disabled due'
+  - 'Suspended because'
+  - 'Suspended after'
+  - 'Suspended due'
+  - 'Cancelled because'
+  - 'Cancelled after'
+  - 'Cancelled due'
+  - 'Canceled because'
+  - 'Canceled after'
+  - 'Canceled due'
+  - 'Migrated because'
+  - 'Migrated after'
+  - 'Migrated to'
+  - 'Updated because'
+  - 'Updated after'

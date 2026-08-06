@@ -1,0 +1,20 @@
+extends: existence
+message: "Over-signposting '%s'. Trust the reader to follow - cut the announcement."
+level: suggestion
+scope: sentence
+tokens:
+  - 'Key takeaway'
+  - 'Main point'
+  - 'The bottom line'
+  - 'In summary'
+  - 'To summarize'
+  - 'To put it simply'
+  - 'Let.s break this down'
+  - 'Let.s break it down'
+  - 'Let.s take a closer look'
+  - 'Let.s examine'
+  - 'Having said that'
+  - 'That being said'
+  - 'With that said'
+  - 'With that in mind'
+  - 'With that out of the way'

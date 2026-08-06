@@ -1,0 +1,6 @@
+extends: existence
+message: "Impersonal pricing ('%s'). 'You get ~1,000 results for $0.25' scores +0.14 higher than bare '~1,000 results for $0.25.' Add 'You get' as subject."
+level: suggestion
+scope: sentence
+tokens:
+  - '^\s*(?:\*\*)?~?\d[\d,.]*\s+(?:results?|pages?|items?|requests?)\s+for\s+\$'

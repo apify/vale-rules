@@ -1,0 +1,6 @@
+extends: existence
+message: "External entity as subject for a limit ('%s'). Make the constraint the subject: 'Each query returns ~400 results' scores better than 'Google exposes ~400 results.' The user cares about the limit, not who imposes it."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:Google|Facebook|Instagram|TikTok|LinkedIn|Twitter|Amazon)\s+(?:exposes?|limits?|restricts?|caps?|only (?:shows?|returns?|provides?))\b'

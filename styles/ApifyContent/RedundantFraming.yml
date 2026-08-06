@@ -1,0 +1,10 @@
+extends: existence
+message: "Redundant framing '%s'. The reader already knows they're configuring - state the value directly."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:Download (?:the |your )?results (?:in|as))\b'
+  - '\b(?:You can (?:also )?(?:export|download|save) (?:the |your )?(?:results|data|output) (?:in|as|to))\b'
+  - '\b(?:This (?:will|can) be (?:used|configured|set) to)\b'
+  - '\b(?:Use this (?:field|option|setting|parameter) to)\b'
+  - '\b(?:This (?:field|option|setting|parameter) (?:controls|determines|specifies|defines))\b'

@@ -1,0 +1,23 @@
+extends: existence
+level: suggestion
+message: "Placeholder-as-guidance: '%s' - this instruction disappears when the user starts typing."
+ignorecase: true
+
+exceptions:
+  - "^(?:URL|Email|Name|Title|Label|Description|Search|Filter|Username|Password)$"
+  - "^https?://"
+  - '^e\.g\.'
+  - '^ex\.'
+  - '(?:\S+\s+){10,}'
+  - '\.\s+[A-Z]'
+  - "<[a-zA-Z]"
+  - '\{[^}]+,\s*(?:plural|select)'
+  - '(?:Enter|Type)\s+(?:the|a|an)\s+\w+.*(?:to|for|of)\s+\w+'
+
+tokens:
+  - 'Enter your'
+  - 'Type your'
+  - 'Enter a'
+  - 'Type a'
+  - 'must be'
+  - 'should be'

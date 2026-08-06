@@ -1,0 +1,19 @@
+# Detection only: flags 6 patterns without suggesting replacements.
+extends: existence
+level: suggestion
+message: "Impersonal recommendation: '%s'. Use imperative - just tell the user what to do."
+
+tokens:
+  - 'It is recommended to'
+  - 'It.s recommended to'
+  - 'It is suggested to'
+  - 'It.s suggested to'
+  - 'It is advised to'
+  - 'It.s advised to'
+
+action:
+  name: edit
+  params:
+    - regex
+    - 'It is recommended to ([a-z])(.+)'
+    - '$1$2'

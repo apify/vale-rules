@@ -1,0 +1,58 @@
+extends: substitution
+level: suggestion
+message: "Weak qualifier: '%s' instead of '%s' - qualifier dilutes the assertion. (Strunk, Ch. V)"
+ignorecase: true
+
+swap:
+  'pretty much': 'much'
+  'pretty good': 'good'
+  'pretty bad': 'bad'
+  'pretty poor': 'poor'
+  'pretty fast': 'fast'
+  'pretty slow': 'slow'
+  'pretty big': 'big'
+  'pretty small': 'small'
+  'pretty easy': 'easy'
+  'pretty hard': 'hard'
+  'pretty simple': 'simple'
+  'pretty common': 'common'
+  'pretty clear': 'clear'
+  'pretty sure': 'sure'
+  'pretty close': 'close'
+  'pretty similar': 'similar'
+  'pretty standard': 'standard'
+  'pretty straightforward': 'straightforward'
+
+  'fairly simple': 'simple'
+  'fairly easy': 'easy'
+  'fairly common': 'common'
+  'fairly standard': 'standard'
+  'fairly straightforward': 'straightforward'
+  'fairly obvious': 'obvious'
+  'fairly typical': 'typical'
+  'fairly basic': 'basic'
+  'fairly quick': 'quick'
+  'fairly short': 'short'
+  'fairly long': 'long'
+
+  'quite a while': 'a while'
+  'quite a bit': 'a lot'
+  'quite a few': 'many'
+  'quite a lot': 'a lot'
+
+  'somewhat ': ''
+
+  'a bit more': 'more'
+  'a bit less': 'less'
+  'a bit slow': 'slow'
+  'a bit fast': 'fast'
+  'a bit different': 'different'
+  'a bit tricky': 'tricky'
+  'a bit complex': 'complex'
+  'a bit confusing': 'confusing'
+  'a bit misleading': 'misleading'
+
+  'significantly ': ''
+  'substantially ': ''
+  'drastically ': ''
+  'considerably ': ''

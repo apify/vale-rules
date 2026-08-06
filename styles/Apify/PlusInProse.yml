@@ -1,0 +1,6 @@
+extends: existence
+message: "Plus sign in prose ('%s'). Use 'and' or a comma instead of '+'."
+level: suggestion
+scope: sentence
+tokens:
+  - '\w\s+\+\s+\w'

@@ -1,0 +1,15 @@
+# Detection only: flags 2 patterns without suggesting replacements.
+extends: existence
+level: suggestion
+message: "Redundant 'new': '%s'. Creation already implies newness."
+
+tokens:
+  - 'Create a new'
+  - 'Add a new'
+
+action:
+  name: edit
+  params:
+    - regex
+    - 'Create a new (.+)'
+    - 'Create a $1'

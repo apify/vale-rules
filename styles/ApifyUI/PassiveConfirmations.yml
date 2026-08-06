@@ -1,0 +1,82 @@
+extends: substitution
+level: suggestion
+message: "Use active confirmation form: '%s' instead of '%s'."
+
+ignorecase: false
+
+exceptions:
+  - '\b(?:was|were|has been|have been)\s+not\s+\w+'
+  - '\bnot\s+\w+ed\.$'
+  - '\b(?:was|were|has been|have been)\s+\w+\s+successfully\b'
+  - '\b(?:was|were|has been|have been)\s+\w+\s+(?:because|from|due|since|when|while|after|before|until|unless|although|though|if|so|and|but|or|that|within|into|at\s+\w)'
+  - '\b(?:was|were|has been|have been)\s+\w+\s+to\s+(?:the|a|an)\s+\w'
+  - '\b(?:was|were|has been|have been)\s+\w+\s+to\s+[{<]'
+  - '\b(?:was|were|has been|have been)\s+\w+,'
+  - '\b(?:was|were|has been|have been)\s+\w+[,;]\s+(?:and|but|or|so)'
+  - 'from which\s+\w+(?:\s+\w+)?\s+(?:was|were|has been)'
+  - '\b(?:was|were|has been|have been)\s+\w+\s+(?:to|at|from|into)\s+[<{]'
+  - '\b(?:was|were|has been|have been)\s+\{[^}]+\}'
+  - '^The\s+\w+\s+of\s+'
+  - '\band\s+the\s+\w+\s+(?:was|were|has been|have been)'
+  - ',\s+the\s+\w+\s+(?:was|were|has been|have been)\s+\w+\s+to\b'
+  - '\bor\s+the\s+\w+(?:\s+\w+)?\s+(?:was|were|has been|have been)'
+  - '\b[Yy]our\s+\w+(?:\s+\w+)*\s+(?:was|were|has been|have been)\b'
+  - '\b[Mm]y\s+\w+(?:\s+\w+)*\s+(?:was|were|has been|have been)\b'
+  - "has been deprecated"
+  - "has been flagged"
+  - "has been inactive"
+  - "has been approved"
+  - "has been restored"
+  - "have been aborted"
+  - '\b(?:was|were)\s+\w+\.\s+You can\b'
+  - "has been canceled for non-payment"
+  - "your subscription has been canceled"
+  - "was improperly"
+  - '\b(?:has been|have been)\s+\w+\s+by\b'
+  - '\bThis\s+\w+(?:.s\s+\w+)?\s+(?:has been|have been)'
+  - "was declined"
+  - "was refused"
+  - '\b(?:was|were|has been|have been)\s+(?:charged|paid|waived|credited|refunded|deducted|billed)'
+
+  - 'Build tagged successfully\.\s+\S'
+  - 'Tag removed successfully\.\s+\S'
+  - 'Automatic builds enabled\.\s+\S'
+  - 'Automatic builds disabled\.\s+\S'
+  - 'General resource access updated\.\s+\S'
+  - 'Scheduled resubscription successfully canceled\.\s+\S'
+  - 'Widget added\.\s+\S'
+  - 'Payment method added\.\s+\S'
+  - 'Payment method removed\.\s+\S'
+  - 'Primary payment method changed\.\s+\S'
+  - 'API token removed\.\s+\S'
+  - 'API token created\.\s+\S'
+swap:
+
+  'Build tagged successfully.': 'Build tagged'
+  'Tag removed successfully.': 'Tag removed'
+  'Automatic builds enabled.': 'Automatic builds enabled'
+  'Automatic builds disabled.': 'Automatic builds disabled'
+  'General resource access updated.': 'General resource access updated'
+  'Scheduled resubscription successfully canceled.': 'Scheduled resubscription canceled'
+
+  'Integration updated successfully': 'Integration updated'
+  'File uploaded successfully': 'File uploaded'
+  'Copied successfully': 'Copied'
+  'Service connected successfully': 'Connected'
+  'Disconnected successfully': 'Disconnected'
+  'Request sent successfully': 'Request sent'
+  'Connector successfully saved': 'Connector saved'
+  'Authorized successfully': 'Authorized'
+  'FirstPromoter Referral ID updated successfully': 'Referral ID updated'
+  'Resubscription to the Custom plan scheduled successfully.': 'Resubscription to the Custom plan scheduled.'
+  'User resubscribed to the Custom plan successfully.': 'User resubscribed to the Custom plan.'
+
+  'Changes applied!': 'Changes applied'
+  'Email verified!': 'Email verified'
+
+  'Widget added.': 'Widget added'
+  'Payment method added.': 'Payment method added'
+  'Payment method removed.': 'Payment method removed'
+  'Primary payment method changed.': 'Primary payment method changed'
+  'API token removed.': 'API token removed'
+  'API token created.': 'API token created'

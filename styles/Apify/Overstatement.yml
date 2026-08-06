@@ -1,0 +1,13 @@
+extends: existence
+level: suggestion
+message: "Overstatement: '%s' - state it plainly. Hyperbole erodes trust. (Strunk, Ch. V)"
+ignorecase: true
+
+tokens:
+  - '\b(?:incredibly|amazingly|unbelievably|insanely|mind-blowingly)\s+\w+'
+
+  - '\babsolutely\s+(?:free|essential|critical|necessary|perfect|certain|sure|impossible|unique)\b'
+
+  - '\b(?:never\s+(?:fails?|breaks?|misses?|wrong)|always\s+(?:works?|succeeds?|delivers?))\b'
+
+  - '\b(?:world-class|best-in-class|industry-leading|unmatched|unparalleled|second to none)\b'

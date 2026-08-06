@@ -1,0 +1,8 @@
+extends: existence
+level: suggestion
+message: "Overloaded opener '%s'. Consider splitting: 'Product. Key benefit.' Chunked copy is easier to scan."
+scope: sentence
+
+tokens:
+  - '^(?:A|An|The|This) \w+ (?:Apify )?(?:actor|Actor|scraper|tool|crawler|extractor|monitor) (?:for|that|which) .{80,}'
+  - '^This (?:Actor|scraper|tool|crawler) (?:provides|is|can|will|offers|enables|allows) .{100,}'

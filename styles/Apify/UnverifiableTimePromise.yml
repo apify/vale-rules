@@ -1,0 +1,27 @@
+extends: existence
+level: suggestion
+message: "Unverifiable time promise: '%s'. Use an honest range ('a few seconds', 'a few minutes') or omit."
+
+tokens:
+  - 'only take a second'
+  - 'only takes a second'
+  - 'only take a moment'
+  - 'only takes a moment'
+  - 'takes just a second'
+  - 'takes just a moment'
+  - 'just a second'
+  - 'just a moment'
+  - 'usually takes one minute'
+  - 'usually takes a minute'
+  - 'should take less than a minute'
+  - 'takes about a minute'
+  - 'will be ready in seconds'
+  - 'in just a few seconds'
+  - 'takes no time at all'
+  - 'in an instant'
+  - 'instantly available'
+
+exceptions:
+  - "(?<!just )a few seconds"
+  - "a few minutes"
+  - "try again in"

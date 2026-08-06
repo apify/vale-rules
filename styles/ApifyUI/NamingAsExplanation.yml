@@ -1,0 +1,16 @@
+extends: existence
+level: suggestion
+message: "Label '%s' is a noun phrase. Consider describing what the user can do: 'Configure proxy routing' rather than 'Proxy Configuration'."
+
+tokens:
+  - 'Advanced Configuration'
+  - 'Advanced Settings'
+  - 'Configuration Options'
+  - 'Configuration Panel'
+  - 'Settings Panel'
+  - 'Options Panel'
+  - 'Management Console'
+  - 'Control Panel'
+  - 'Administration Panel'
+  - 'General Settings'
+  - 'General Options'

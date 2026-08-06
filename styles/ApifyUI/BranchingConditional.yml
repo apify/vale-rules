@@ -1,0 +1,21 @@
+# Detection only: flags 8 patterns without suggesting replacements.
+extends: existence
+level: suggestion
+message: "Branching conditional: '%s'. Lead with the default action."
+
+tokens:
+  - 'If you need to [^,]+, [^.]+\. If you don.t, it will'
+  - 'If you need to [^,]+, [^.]+\. If you don.t, it'
+  - 'If you want to [^,]+, [^.]+\. If you don.t, it will'
+  - 'If you want to [^,]+, [^.]+\. If you don.t, it'
+  - 'If you want to [^,]+, [^.]+\. If you don.t, your'
+  - 'If you need to [^,]+, [^.]+\. If you don.t, your'
+  - 'If you want to [^,]+, [^.]+\. If you don.t, the'
+  - 'If you need to [^,]+, [^.]+\. If you don.t, the'
+
+action:
+  name: edit
+  params:
+    - regex
+    - 'If you need to ([^,]+), ([^.]+)\. If you don.t, it will ([^.]+)'
+    - 'It will $3. $2 if you need to $1'

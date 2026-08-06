@@ -1,0 +1,16 @@
+extends: existence
+level: suggestion
+message: "Button narration: '%s' tells users what a visible button does. The button label is the instruction."
+ignorecase: true
+
+tokens:
+  - 'Click '
+  - 'Click '
+  - 'Press '
+  - 'Press '
+  - 'Select '
+  - 'Select '
+  - 'Use the '
+  - 'Use the '
+  - 'Hit the '
+  - 'Hit the '

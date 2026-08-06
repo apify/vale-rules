@@ -1,0 +1,34 @@
+extends: existence
+level: suggestion
+message: "Meta-narration '%s'. Describe what the user gets or does, not what the UI element is."
+
+scope: sentence
+
+tokens:
+  - '^Enter your\b'
+  - '^Enter the\b'
+  - '^Enter a\b'
+  - '^Select a\b'
+  - '^Select an\b'
+  - '^Select the\b'
+  - '^Select your\b'
+  - '^Choose a\b'
+  - '^Choose an\b'
+  - '^Choose the\b'
+  - '^Choose your\b'
+  - '^Click to\b'
+  - '^This field\b'
+  - '^This setting\b'
+  - '^This option\b'
+  - '^This button\b'
+  - '^This is the\b'
+  - '^This is where you\b'
+  - '^Use this to\b'
+  - '^Use this field to\b'
+
+exceptions:
+  - 'Enter your.{0,40}(?:format|like|e\.g\.|example)'
+  - "Select a date"
+  - "Select a time"
+  - "This setting is available"
+  - "This (?:field|setting) is (?:read-only|required|optional|disabled)"

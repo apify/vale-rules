@@ -1,0 +1,6 @@
+extends: existence
+message: "Limitation without recovery path ('%s'). Add 'Instead, use...' or 'For X, try...' to avoid a dead-end experience."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:not supported|not possible|cannot|does not support|doesn.t support|isn.t supported)\b'

@@ -1,0 +1,40 @@
+extends: substitution
+level: suggestion
+message: "Fix sentence-start capitalization: '%s' instead of '%s'."
+ignorecase: false
+exceptions:
+  - "Additional costs"
+  - "Additional (?:memory|concurrent|datacenter|team account)"
+  - '[Aa]s a result[\s\S]*(?:banned|suspended|terminated|blocked|restricted|revoked|disabled)'
+  - 'In the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
+swap:
+  'Therefore, ': 'So '
+  'Therefore ': 'So '
+  'In addition, ': 'Also '
+  'In addition ': 'Also '
+  'You will need to ': 'You need to '
+  'We will need to ': 'We need to '
+  'Check out our ': 'See our '
+  'Check out the ': 'See the '
+  'Some of the ': 'Some '
+  'As a result, ': 'So '
+  'Additional ': 'More '
+  'Simply ': ''
+  'Basically ': ''
+  'Basically, ': ''
+  'Feel free to ': ''
+  'As per ': 'Per '
+  'Prior to ': 'Before '
+  'As well as ': 'And '
+  'In the event of ': 'If '
+  'In the event that ': 'If '
+  'At the present time, ': 'Now, '
+  'At this time, ': 'Now, '
+  'At the moment, ': 'Now, '
+  'For the time being, ': 'For now, '
+  'Make use of ': 'Use '
+  'Utilize ': 'Use '
+  'Utilizes ': 'Uses '
+  'Utilized ': 'Used '
+  'Utilizing ': 'Using '
+  'Make sure that ': 'Make sure '

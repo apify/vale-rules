@@ -1,0 +1,8 @@
+extends: existence
+message: "Meta-label wrapping ('%s'). Name data types directly instead of wrapping in a category label. 'Extract organic rankings, paid ads...' scores higher than 'Extract SERP data: organic rankings...'"
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:Extract|Get|Scrape|Collect)\s+(?:SERP|search|web|API|platform)\s+(?:data|results|information)\s*[:]\s'
+  - '\b(?:Key|Main|Core|Important)\s+(?:features|capabilities|benefits)\s*[:]\s'
+  - '\b(?:Output|Extracted|Available)\s+(?:data|fields|information)\s*[:]\s'

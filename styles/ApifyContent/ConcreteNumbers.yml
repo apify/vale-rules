@@ -1,0 +1,9 @@
+extends: existence
+message: "Vague quantity '%s'. Use a specific number, percentage, or measurable claim."
+link: "docs/guides/readme-writing-guide.md"
+level: suggestion
+scope: paragraph
+tokens:
+  - '\b(?:many|several|various|numerous|a lot of|lots of|countless) (?:results|items|records|pages|places|businesses|locations|users)\b'
+  - '\bfast(?:er)?\b(?! \d)'
+  - '\blarge (?:amount|number|volume) of\b'

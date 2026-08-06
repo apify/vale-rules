@@ -1,0 +1,17 @@
+extends: existence
+level: suggestion
+message: "Pronoun inconsistency: '%s'. Mixing I/my and we/our/us in the same string."
+
+tokens:
+  - '\bI\b.{1,80}\b(?:us|our|we)\b'
+  - '\b(?:us|our|we)\b.{1,80}\bI\b'
+  - '\bmy\b.{1,80}\b(?:us|our|we)\b'
+  - '\b(?:us|our|we)\b.{1,80}\bmy\b'
+
+exceptions:
+  - '\bI (?:agree|accept|have tested|have read|understand|confirm|acknowledge)\b'
+  - '\b[Ll]et me know\b'
+  - '\{[^}]*(?:select|plural)[^}]*\}'
+  - '^[".].*[".]$'
+  - '\bmy @'
+  - "placeholder"

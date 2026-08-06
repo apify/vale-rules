@@ -1,0 +1,29 @@
+extends: substitution
+level: suggestion
+message: "Possessive status: '%s' => '%s'. Use 'Your' - it's the user's resource."
+ignorecase: false
+
+swap:
+  'The run was ': 'Your run was '
+  'The run has ': 'Your run has '
+  'The run failed': 'Your run failed'
+  'The run timed out': 'Your run timed out'
+  'The build was ': 'Your build was '
+  'The build has ': 'Your build has '
+  'The build failed': 'Your build failed'
+  'The build encountered': 'Your build encountered'
+  'The task was ': 'Your task was '
+  'The task has ': 'Your task has '
+  'The schedule was ': 'Your schedule was '
+  'The schedule has ': 'Your schedule has '
+  'The token was ': 'Your token was '
+  'The token has ': 'Your token has '
+  'The Actor process was ': 'This Actor was '
+  'The Actor build process was ': 'This Actor build was '
+  'The Actor build hit ': 'This Actor build hit '
+  'The Actor build encountered ': 'This Actor build encountered '
+  'The Actor encountered ': 'This Actor encountered '
+  'The Actor ran into ': 'This Actor ran into '
+  'The Actor timed out': 'This Actor timed out'
+  'The Actor hit ': 'This Actor hit '
+  'The Actor finished ': 'This Actor finished '

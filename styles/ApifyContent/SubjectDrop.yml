@@ -1,0 +1,6 @@
+extends: existence
+message: "'%s' - drop the subject. The reader knows what 'this' refers to. Start with the verb or the key noun."
+level: suggestion
+scope: sentence
+tokens:
+  - '^This (?:scraper|Actor|tool|crawler|extractor) (?:can|will|does|is|has|uses|collects|extracts|supports|provides|retrieves|returns)\b'

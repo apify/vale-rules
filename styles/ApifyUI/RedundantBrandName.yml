@@ -1,0 +1,20 @@
+extends: existence
+level: suggestion
+message: "Redundant brand name: '%s' - if the reader is already on an Apify page, the brand name may be unnecessary after 'your'."
+ignorecase: true
+
+exceptions:
+  - "your Apify account"
+  - 'your Apify[\s\S]{0,60}(?:vs|versus|compared to|unlike|or your)'
+  - "personal Apify"
+  - '(?:GitHub|GitLab|AWS|Azure|Google Cloud|Heroku|Vercel|Netlify)[\s\S]{0,200}your Apify'
+  - 'your Apify[\s\S]{0,200}(?:GitHub|GitLab|AWS|Azure|Google Cloud|Heroku|Vercel|Netlify)'
+
+tokens:
+  - 'your Apify subscription'
+  - 'your Apify plan'
+  - 'your Apify workspace'
+  - 'your Apify project'
+  - 'your Apify dashboard'
+  - 'your Apify storage'
+  - 'your Apify proxy'

@@ -1,0 +1,7 @@
+extends: existence
+message: "Inconsistent terminology '%s'. Pick one term and use it throughout: 'export' or 'download' (not both), 'Google Search' or 'Google SERP' (not both)."
+level: suggestion
+scope: paragraph
+tokens:
+  - '\b[Dd]ownload\b.{0,50}\b[Ee]xport\b'
+  - '\b[Ee]xport\b.{0,50}\b[Dd]ownload\b'

@@ -1,0 +1,26 @@
+extends: existence
+level: suggestion
+message: "Near-repetition: '%s'. Same word/root used twice in close proximity."
+
+tokens:
+  - '\btakes?\b[^.!?]{1,40}\btakes?\b'
+  - '\bmakes?\b[^.!?]{1,40}\bmakes?\b'
+  - '\bchanges?\b[^.!?]{1,40}\bchanges?\b'
+  - '\bstarts?\b[^.!?]{1,40}\bstarts?\b'
+  - '\bsets?\b[^.!?]{1,30}\bsets?\b'
+  - '\buses?\b[^.!?]{1,30}\buses?\b'
+  - '\bneeds?\b[^.!?]{1,30}\bneeds?\b'
+  - '\byour\b[^.!?]{1,20}\byou\b'
+  - '\byou\b[^.!?]{1,20}\byour\b'
+
+exceptions:
+  - '\byour\b[^.!?]*(?:,\s*which|,\s*that|,\s*who)\s+you\b'
+  - '\buse\b[^.!?]*\bto use\b'
+  - '\brun\b[^.!?]*\bthe run\b'
+  - '\bthe run\b[^.!?]*\brun\b'
+  - '\bthe change\b[^.!?]*\bchange\b'
+  - '\bchange\b[^.!?]*\bthe change\b'
+  - '\bset\b[^.!?]*\bthe set\b'
+  - '\bthe start\b[^.!?]*\bstart\b'
+  - '\{[^}]*plural[^}]*\}'
+  - '\byou\b[^.!?]*\b(?:if|when|once|after|before)\b[^.!?]*\byour\b'

@@ -1,0 +1,10 @@
+extends: existence
+message: "Generic positioning: '%s'. Lead with specific data types and source, not what the tool 'helps you' do."
+link: "docs/guides/readme-writing-guide.md"
+level: warning
+scope: paragraph
+tokens:
+  - 'helps? you (?:to )?(?:scrape|extract|collect|get|gather)'
+  - 'allows? you to (?:scrape|extract|collect|get)'
+  - 'enables? you to (?:scrape|extract|collect|get)'
+  - 'designed to (?:help|assist|enable)'

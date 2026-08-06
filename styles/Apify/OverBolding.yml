@@ -1,0 +1,6 @@
+extends: existence
+message: "Long bold passage '%s'. Bold single words or short phrases - bolding full sentences eliminates emphasis."
+level: suggestion
+scope: sentence
+tokens:
+  - '\*\*[^*]{80,}\*\*'

@@ -1,0 +1,85 @@
+extends: substitution
+level: suggestion
+message: "Replace robotic phrase: '%s' instead of '%s'."
+exceptions:
+  - "an additional"
+  - "any additional"
+  - "additional costs"
+  - "Warning:.*This action is not reversible"
+  - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
+  - '\w+\s+\w+\s+failed to'
+  - '(?:if|you.re|you are|they.re|they are|we.re|we are|it.s|it is|he.s|he is|she.s|she is|are|is|be|been|being|to be|remain|remains|remained|feel|feels|felt|seem|seems|seemed)\s+unable to'
+  - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
+  - "and [Dd]elete the"
+  - "and [Rr]emove the"
+  - '[Dd]o you really want to[\s\S]*(?:flag|issue|revoke|ban|block|suspend|terminate|permanently)'
+  - '[Aa]re you sure[\s\S]*(?:permanently|no refund|won.t be entitled|lose access|can.t be undone|irreversible)'
+  - '(?:permanently|no refund|won.t be entitled|lose access|can.t be undone|irreversible)[\s\S]*[Aa]re you sure'
+  - '[Aa]re you sure[\s\S]*(?:leave[\s\S]*organi[sz]ation|remove.*(?:member|role)|change.*role)'
+  - '[Aa]re you sure[\s\S]*(?:authenticator|two-factor|2FA|SSO|single sign|connector)'
+  - '(?:authenticator|two-factor|2FA|SSO|single sign|connector)[\s\S]*[Aa]re you sure'
+  - '[Aa]re you sure[\s\S]*<strong>[Dd][Ee][Ll][Ee][Tt][Ee]</strong>'
+  - '[Aa]re you sure[\s\S]*(?:cannot be undone|can.t be undone|can\u2019t be undone)'
+  - '(?:cannot be undone|can.t be undone|can\u2019t be undone)[\s\S]*[Aa]re you sure'
+  - '[Aa]re you sure[\s\S]*(?:price|pricing|monetiz|invoice|billing|payout)'
+  - '(?:price|pricing|monetiz|invoice|billing|payout)[\s\S]*[Aa]re you sure'
+  - '[Aa]re you sure[\s\S]*(?:delete|remove)[\s\S]*(?:your review|your reply|your post|your comment)'
+  - "[Ii]f you want to (?:force|override|bypass|skip)"
+  - "(?:[Uu]seful|[Hh]elpful|[Hh]andy|[Nn]ecessary|[Rr]equired|[Nn]eeded) if you want to"
+  - '(?:disabled|inactive|expired|canceled|removed)[\s\S]*[Ii]f you would like to'
+  - '[Ii]f you would like to[\s\S]*(?:disabled|inactive|expired|canceled|removed)'
+  - '(?:billing|subscription|invoice|payment|payout)[\s\S]{0,80}[Ii]f you would like to'
+  - '[Ii]f you would like to[\s\S]{0,80}(?:billing|subscription|invoice|payment|payout)'
+  - "and [Dd]isable the"
+  - "or [Dd]elete the"
+  - "or [Rr]emove the"
+  - '(?:[Ww]hich|[Ww]hat|[Ww]ho|[Ww]here|[Ww]hen|[Hh]ow)\s+\w+\s+do you want to'
+  - '(?:[Ww]hich|[Ww]hat|[Ww]ho|[Ww]here|[Ww]hen|[Hh]ow)\s+do you want to'
+  - "Do you want to continue"
+  - '[Dd]o you want to[\s\S]*(?:can.t be undone|cannot be undone|irreversible|permanently|won.t be able)'
+  - '(?:can.t be undone|cannot be undone|irreversible|permanently|won.t be able)[\s\S]*[Dd]o you want to'
+  - "[Dd]o you want to (?:flag|issue|revoke|ban|block|suspend|terminate)"
+  - '[Aa]re you sure[\s\S]*leave this page'
+  - '[Aa]re you sure[\s\S]*send this email'
+  - "[Dd]o you want to send this email"
+  - '[Dd]o you want to[\s\S]*(?:payment method|PayPal|credit card|billing|payout|invoice)'
+  - '(?:payment method|PayPal|credit card|billing|payout|invoice)[\s\S]*[Dd]o you want to'
+  - "Please send payment"
+  - "Please reply to this email"
+
+swap:
+  'do you really want to': 'Do you want to'
+  'are you sure you want to': 'Do you want to'
+  'are you sure that you want to': 'Do you want to'
+
+  'Cancel the invitation': 'cancel this invitation'
+  'Delete the integration': 'delete this integration'
+  'Remove the integration': 'remove this integration'
+  'Delete the webhook': 'delete this webhook'
+  'Remove the webhook': 'remove this webhook'
+  'Delete the schedule': 'delete this schedule'
+  'Disable the schedule': 'disable this schedule'
+  'Delete the token': 'delete this token'
+  'Revoke the token': 'revoke this token'
+  'Delete the key': 'delete this key'
+  'Revoke the key': 'revoke this key'
+  'Remove the key': 'remove this key'
+  'Delete the build': 'delete this build'
+  'Cancel the build': 'cancel this build'
+  'Delete the dataset': 'delete this dataset'
+  'Delete the storage': 'delete this storage'
+  'This action is not reversible': "This can't be undone"
+  'cannot be reversed': "can't be undone"
+  "can't be reversed": "can't be undone"
+
+  "This action cannot be undone.": "This can't be undone."
+  "This action cannot be undone!": "This can't be undone."
+  "This action can't be undone.": "This can't be undone."
+  "This operation cannot be undone.": "This can't be undone."
+  "This change cannot be undone.": "This can't be undone."
+  'This operation can <strong>not</strong> be undone': "This can't be undone"
+
+  'if you want to': 'to'
+  'if you would like to': 'to'
+
+  'from this list': 'from the list'

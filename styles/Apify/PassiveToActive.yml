@@ -1,0 +1,54 @@
+extends: substitution
+level: suggestion
+message: "Prefer active voice: '%s' instead of '%s'."
+exceptions:
+  - 'that will be \w+ by\b'
+  - '[Cc]an be \w+ by\b'
+  - '\b(?:charge|charged|pay|paid|waive|waived|credit|credited|refund|refunded|deduct|deducted|bill|billed)\b[\s\S]{0,40}?\b(?:billing|invoice|payout|payment|subscription|account|user|customer)\b'
+  - '\b(?:billing|invoice|payout|payment|subscription|account|user|customer)\b[\s\S]{0,40}?\b(?:charge|charged|pay|paid|waive|waived|credit|credited|refund|refunded|deduct|deducted|bill|billed)\b'
+  - 'The \w+ that will be'
+  - '(costs|results|fees|charges|items|records|files|events|runs|builds|requests|changes|updates|errors)\s+that will be'
+  - '\w+s can be \w+ed'
+  - '(the|a|an|each|every|The|A|An) \w+ can be'
+  - "(Data|Actor|Actors|Token|Build|Run|File|Storage|Schedule|Task) can be"
+  - '(costs|results|fees|charges|items|records|files|events|runs|builds|requests|changes|updates|errors)\s+that will be'
+  - '\b[Tt]hey can be \w+'
+  - '\b[Ii]t can be \w+'
+  - '\b[Hh]e can be \w+'
+  - '\b[Ss]he can be \w+'
+  - '\b[Ww]e can be \w+'
+  - "[Hh]ow it can be"
+  - "[Bb]efore it can be"
+  - '\b[Tt]his \w+ (endpoint|method|field|option|feature|setting|value|parameter|property|attribute) can be'
+  - '\b[Tt]his can be'
+  - '\bThat can be'
+  - '\b[Tt]hese can be'
+  - '\b[Tt]hose can be'
+swap:
+
+  'will be displayed on': 'appears on'
+  'will be displayed here': 'appears here'
+  'will be shown in': 'appears in'
+  'will be shown on': 'appears on'
+  'will be shown.': 'appears.'
+  "won't be shown": "won't appear"
+  "aren't shown": "don't appear"
+
+  'can be configured': 'you can configure'
+  'can be changed': 'you can change'
+  'can be found': 'you can find'
+  'can be set': 'you can set'
+  'can be enabled': 'you can enable'
+  'can be disabled': 'you can disable'
+  'can be downloaded': 'you can download'
+  'can be exported': 'you can export'
+  'can be accessed': 'you can access'
+  'can be called': 'you can call'
+  'can be improved': 'you can improve'
+  'can be started': 'you can start'
+  'can be published': 'you can publish'
+  'can be moved': 'you can move'
+  'can be added': 'you can add'
+  'can be removed': 'you can remove'
+  'can be updated': 'you can update'
+  'can be created': 'you can create'

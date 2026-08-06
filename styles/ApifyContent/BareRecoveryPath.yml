@@ -1,0 +1,6 @@
+extends: existence
+message: "Bare imperative recovery ('%s'). Use 'If you need X, [action]' conditional framing instead. Scores +0.15 higher on considerate dimension."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:not supported|not possible|doesn.t support|isn.t supported|not available)\b[^.]*\.\s+(?:For|Use|Try|Switch)'

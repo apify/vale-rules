@@ -1,0 +1,12 @@
+extends: existence
+level: suggestion
+message: "Visible severity prefix: '%s' - remove the label. The icon/color already signals severity."
+ignorecase: false
+
+tokens:
+  - '^Error:\s'
+  - '^Warning:\s'
+  - '^Info:\s'
+  - '^Notice:\s'
+  - '^Caution:\s'
+  - '^Note:\s'

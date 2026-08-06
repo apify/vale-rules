@@ -1,0 +1,6 @@
+extends: existence
+message: "Pronoun in hook zone ('%s'). LLM agents can't resolve pronouns without reading the full page. Use the Actor name or data type directly."
+level: suggestion
+scope: sentence
+tokens:
+  - '^(?:It|They|This|These|Those)\s+(?:extract|scrape|collect|get|can|will|provide)'

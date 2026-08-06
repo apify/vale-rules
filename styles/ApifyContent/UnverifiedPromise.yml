@@ -1,0 +1,39 @@
+extends: existence
+level: suggestion
+message: "Possible claim-mismatch: '%s' - verify this matches the actual user experience."
+ignorecase: true
+
+exceptions:
+  - '\b(?:up to|usually|typically|in most cases|generally|approximately|about)\b'
+  - '\*'
+  - "free (?:tier|plan|trial|credits?)"
+  - "instant (?:messaging|replay|preview)"
+  - "unlimited (?:Actor|Actors|schedules|tasks) (?:on|in|with) the"
+
+tokens:
+  - 'instant setup'
+  - 'instant deployment'
+  - 'instantly'
+  - 'real-time'
+  - 'zero downtime'
+  - 'always available'
+  - 'always on'
+  - '100% uptime'
+  - 'unlimited'
+  - 'no limits'
+  - 'no restrictions'
+  - 'completely free'
+  - 'totally free'
+  - 'at no cost'
+  - 'no credit card required'
+  - 'one click'
+  - 'one-click'
+  - 'zero configuration'
+  - 'zero-config'
+  - 'no setup required'
+  - 'works out of the box'
+  - 'just works'
+  - 'permanently delete'
+  - 'gone forever'
+  - 'cannot be recovered'
+  - 'irreversible'

@@ -1,0 +1,25 @@
+extends: substitution
+level: suggestion
+message: "Notification copy: '%s' instead of '%s'."
+
+exceptions:
+  - '(?:documentation|docs|README|tutorial)[\s\S]*[Aa]lternatively'
+  - '[Aa]lternatively[\s\S]*(?:documentation|docs|README|tutorial)'
+  - "To keep going, you can <"
+
+swap:
+  'Alternatively, you can': 'Or'
+  'Alternatively, ': 'Or '
+
+  'can easily': 'can'
+
+  "Nice to see you're getting through your free platform usage fast!": "You're using your free platform usage quickly"
+
+  "Good job putting Apify to work!": "It's paying off. You're putting Apify to work!"
+
+  'If you expect to need more usage, you can': 'You can'
+
+  ', so your service continues without interruption': ''
+
+  'For a full breakdown, please see': 'See'
+  'For a full breakdown, see': 'See'

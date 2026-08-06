@@ -1,0 +1,7 @@
+extends: existence
+message: "Heavy emoji use. Use emoji sparingly. When everything has one, nothing stands out."
+level: suggestion
+scope: sentence
+nonword: true
+tokens:
+  - '(?:[^\x00-\x7F]{1,4}\s*.*){5,}'

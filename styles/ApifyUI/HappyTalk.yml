@@ -1,0 +1,27 @@
+extends: existence
+level: suggestion
+message: "Happy talk: '%s' - this tells the user what they can already see. Consider removing or replacing with useful content."
+
+exceptions:
+  - "email"
+  - "onboarding"
+  - "firstRun"
+  - 'welcome\.modal'
+  - 'welcome\.page'
+
+tokens:
+  - 'Welcome to the'
+  - 'Welcome to our'
+  - 'This page allows you to'
+  - 'This page lets you'
+  - 'This section allows you to'
+  - 'This section lets you'
+  - 'This section contains'
+  - 'Here you can find'
+  - 'Here you will find'
+  - 'In this area you'
+  - 'In this section you can'
+  - 'Use this page to'
+  - 'Use this section to'
+  - 'This is where you can'
+  - 'On this page you can'

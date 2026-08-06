@@ -1,0 +1,17 @@
+extends: existence
+level: suggestion
+message: "Vague scope: '%s' - name what's actually affected instead of using abstract amplifiers."
+
+tokens:
+  - 'everything connected'
+  - 'everything attached'
+  - 'everything linked'
+  - 'everything accessible'
+  - 'anything connected'
+  - 'anything attached'
+  - 'anything linked'
+  - 'anything accessible'
+  - 'all of your connected'
+  - 'all of your linked'
+  - 'all connected services'
+  - 'every connected'

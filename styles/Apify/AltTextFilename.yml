@@ -1,0 +1,7 @@
+extends: existence
+message: "Alt text looks like a filename. Describe what the image shows, or use empty alt for decorative images."
+level: suggestion
+ignorecase: true
+scope: raw
+raw:
+  - '!\[[^\]]*\.(jpg|jpeg|png|gif|svg|webp|avif|bmp|tiff)[^\]]*\]'

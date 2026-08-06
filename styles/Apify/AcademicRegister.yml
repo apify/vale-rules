@@ -1,0 +1,17 @@
+extends: existence
+level: suggestion
+message: "Academic register: consider a plainer alternative for '%s'."
+ignorecase: true
+exceptions:
+  - '\{code,\s*select'
+  - "rate limit is hence"
+  - "<strong>"
+  - "<code>"
+  - "various (?:APIs|data stores|store analytics|stores|formats|services|tools|methods|options|types|URL query parameters|instances of the Actor|regions|protocols|modes|strategies|techniques|patterns|frameworks|libraries|SDKs|databases)"
+
+tokens:
+  - 'thus'
+  - 'hence'
+  - 'various'
+  - 'subsequently'
+  - 'additionally'

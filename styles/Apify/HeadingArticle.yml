@@ -1,0 +1,20 @@
+extends: existence
+level: suggestion
+message: "Redundant 'new' in heading: '%s' - creation verbs already imply newness."
+scope: heading
+ignorecase: true
+
+exceptions:
+  - "brand new"
+  - "new version"
+
+tokens:
+  - '^Create a new \w+'
+  - '^Create an new \w+'
+  - '^Add a new \w+'
+  - '^Add an new \w+'
+  - '^Start a new \w+'
+  - '^Set up a new \w+'
+  - '^Build a new \w+'
+  - '^Run a new \w+'
+  - '^Open a new \w+'

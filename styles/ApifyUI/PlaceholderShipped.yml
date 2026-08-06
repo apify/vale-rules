@@ -1,0 +1,27 @@
+extends: existence
+level: suggestion
+message: "Placeholder shipped: '%s' - draft copy that was never finalized."
+ignorecase: false
+
+exceptions:
+  - '\{[^}]*TK[^}]*\}'
+  - '^\/\/.*TODO'
+  - '\w{4,}\s+coming soon'
+  - '^\[[ xX]\]'
+  - '<[^>]+>|\{[^}]+\}'
+
+tokens:
+  - 'TODO'
+  - 'FIXME'
+  - 'HACK'
+  - '\[placeholder\]'
+  - '\[label\]'
+  - '[TBD]'
+  - '[tbd]'
+  - '\[copy needed\]'
+  - '\[copy TK\]'
+  - '\[insert'
+  - 'Lorem ipsum'
+  - 'lorem ipsum'
+  - 'Coming soon'
+  - 'coming soon'

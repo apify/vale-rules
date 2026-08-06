@@ -1,0 +1,12 @@
+extends: existence
+message: "Potential filler bullet '%s'. Every list item must earn its place. Cut or merge with another bullet."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b[Aa]nd more\b'
+  - '\b[Aa]dditional features\b'
+  - '\b[Mm]uch more\b'
+  - '\b[Mm]any more\b'
+  - '\b[Vv]arious other\b'
+  - '\b[Gg]et (?:results|data) (?:quickly|fast|easily)\b'
+  - '\b[Ee]xport (?:your|the) data\b'

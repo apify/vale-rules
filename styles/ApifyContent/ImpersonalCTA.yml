@@ -1,0 +1,6 @@
+extends: existence
+message: "Long impersonal opener ('%s'). Consider 'You get [items] from [source]' or split into two shorter sentences. Lifts naturalness for Integrator/Publisher personas."
+level: suggestion
+scope: sentence
+tokens:
+  - '^\s*(?:Extract|Scrape|Collect|Gather|Pull)\s+.{30,}\.'

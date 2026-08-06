@@ -1,0 +1,7 @@
+extends: existence
+message: "Dead-end limitation '%s' without workaround. Add an alternative or 'Instead, use...' for better UX."
+link: "docs/guides/readme-writing-guide.md"
+level: suggestion
+scope: sentence
+tokens:
+  - '(?:not supported|not possible|cannot|does not support|is not available|doesn.t support)\.?$'

@@ -1,0 +1,7 @@
+extends: substitution
+level: suggestion
+message: "Possessive filler: '%s' instead of '%s'."
+
+swap:
+  'all of its ': 'all '
+  'all of their ': 'all '

@@ -1,0 +1,65 @@
+extends: existence
+level: suggestion
+message: "Bureaucratic voice: '%s' - sounds like a form letter, not a person."
+ignorecase: true
+
+tokens:
+  - '\baccordingly\b'
+  - '\bsubsequently\b'
+  - '\bconsequently\b'
+  - '\bfurthermore\b'
+  - '\bmoreover\b'
+  - '\bhenceforth\b'
+  - '\bnevertheless\b'
+  - '\bnonetheless\b'
+
+  - '\bmentioned above\b'
+  - '\blisted above\b'
+  - '\bstated above\b'
+  - '\bas shown below\b'
+  - '\bas described above\b'
+  - '\bas noted above\b'
+
+  - '\bfor some reason\b'
+  - '\bfor whatever reason\b'
+  - '\bin the event that\b'
+  - '\bin the event of\b'
+
+  - '\bit is recommended\b'
+  - '\bit is suggested\b'
+  - '\bit is advised\b'
+  - '\byou are advised to\b'
+  - '\byou are encouraged to\b'
+
+  - '\bat your earliest convenience\b'
+  - '\bwe would like to inform\b'
+  - '\bwe would like to remind\b'
+  - '\bwe wish to inform\b'
+  - '\bplease be advised\b'
+
+  - '\band\/or\b'
+  - '\bpursuant to\b'
+  - '\bnotwithstanding\b'
+  - '\bin accordance with\b'
+
+  - '\bwork accordingly\b'
+  - '\bact accordingly\b'
+  - '\bproceed accordingly\b'
+
+  - '\bfor the purpose of\b'
+  - '\bdue to the fact that\b'
+  - '\bas a result of\b'
+  - '\bin the case of\b'
+
+  - '\bthis is to inform\b'
+  - '\bthis is to notify\b'
+  - '\bthis is an automatic notification\b'
+  - '\byou are hereby\b'
+  - '\bwe are writing to\b'
+
+  - '\bperform (?:a |an )?\w+tion\b'
+  - '\bconduct (?:a |an )?\w+tion\b'
+  - '\bgive (?:a |an )?(?:consideration|notification|indication)\b'
+
+  - '\bone must\b'
+  - '\bone should\b'

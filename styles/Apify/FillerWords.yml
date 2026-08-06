@@ -1,0 +1,251 @@
+extends: substitution
+level: suggestion
+message: "Remove filler word or phrase: '%s' instead of '%s'."
+nonword: true
+exceptions:
+  - "^Be aware that"
+  - '\.\s+Be aware that'
+  - '\b(?:[Ss]ince|[Bb]ecause|[Ii]f|[Ww]hen|[Ww]hile|[Aa]lthough|[Uu]nless|[Uu]ntil|[Aa]fter|[Bb]efore|[Aa]s) there (?:are|is) no\b'
+  - "the beginning of"
+  - "the ending of"
+  - "the opening of"
+  - "the closing of"
+  - '(?:subscribed|unsubscribe|subscription|opted in|signed up for)[\s\S]*[Rr]eceiving this email'
+  - '[Rr]eceiving this email[\s\S]*(?:subscribed|unsubscribe|subscription|opted in|signed up for)'
+  - "the pricing of"
+  - "the billing of"
+  - '<br[^>]*>\s*Be aware that'
+  - '<br[^>]*><br[^>]*>\s*Be aware that'
+  - "if you.ll need to"
+  - '(?:bank|Central Bank|payment failed)[\s\S]*you.ll need to'
+  - 'you.ll need to[\s\S]*(?:bank|Central Bank|payment failed)'
+  - '[Yy]ou.ll need to[\s\S]{0,60}(?:to continue|to proceed|to complete|before converting)'
+  - '(?:to continue|to proceed|to complete|before converting)[\s\S]{0,60}[Yy]ou.ll need to'
+  - "[Yy]ou.ll need to (?:approve|verify|confirm|authorize|authenticate|set up)"
+  - 'disconnect[\s\S]{0,80}[Yy]ou.ll need to log in'
+  - "naturally (?:contribut|grow|develop|emerg|evolv|occur|aris)"
+  - '(?:billing|support|contact|subscription|invoice|payment|payout)[\s\S]{0,80}would like to'
+  - 'would like to[\s\S]{0,80}(?:billing|support|contact|subscription|invoice|payment|payout)'
+  - '[Yy]ou can always[\s\S]{0,60}(?:set the|adjust|in the .{0,20}section|in your .{0,20}settings)'
+  - '(?:[Ss]ecurity|[Pp]ermission|[Cc]aution|[Uu]se with caution)[\s\S]*(?:[Tt]his means that|[Ww]hich means that)'
+  - '(?:[Tt]his means that|[Ww]hich means that)[\s\S]*(?:[Ss]ecurity|[Pp]ermission|[Cc]aution|[Uu]se with caution)'
+  - '(?:[Tt]his means that|[Ww]hich means that)[\s\S]*(?:\$\{|\$\d|charged|deducted|refund|waive|fee|price|payment)'
+  - "cooking up some data magic"
+  - "cooking up the best suggestion"
+  - "[a-z]very "
+  - '[a-z]very\b'
+  - "[A-Z]very "
+  - '[A-Z]very\b'
+  - 'Your changes (might|may) take[\s\S]*come into effect'
+  - 'Token was rotated successfully[\s\S]*come into effect'
+  - '(?:should|must|to|can|may|worth|important to|need to|want to|we|they|you|I)\s+note that'
+  - "sufficient contrast"
+  - "sufficient colour contrast"
+  - "sufficient color contrast"
+  - "sufficient techniques"
+  - '\ba sufficient\b'
+  - '\ban sufficient\b'
+  - "insufficient"
+  - "insufficiently"
+  - '(?:[Dd]elete|[Rr]emove|[Dd]isable|stop working|will be lost|will be removed)\b[\s\S]*\bwill no longer'
+  - '\bwill no longer[\s\S]*\b(?:[Dd]elete|[Rr]emove|[Dd]isable|stop working|will be lost|will be removed)'
+  - "will no longer work"
+  - "will no longer be accessible"
+  - "will no longer run"
+  - '(?:[Dd]elete|[Rr]emove|[Dd]isable|stop working|will be lost|will be removed)\b[\s\S]*\byou.ll no longer'
+  - '\byou.ll no longer[\s\S]*\b(?:[Dd]elete|[Rr]emove|[Dd]isable|stop working|will be lost|will be removed)'
+  - "you.ll no longer work"
+  - "you.ll no longer be accessible"
+  - "you.ll no longer run"
+swap:
+  'it is important to note that': ''
+  'it should be noted that': ''
+  'as a matter of fact,': ''
+  'as a matter of fact': ''
+  'keep in mind that': ''
+  'be aware that': ''
+  'it is worth mentioning that': ''
+  'it bears mentioning that': ''
+  'it bears mentioning': ''
+  "for what it's worth,": ''
+  "for what it's worth": ''
+  'at this point,': ''
+  'at this juncture,': ''
+  'at this juncture': ''
+  'as a general rule,': ''
+  'as a general rule': ''
+  'in point of fact,': ''
+  'in point of fact': ''
+  'An additional benefit is that': ''
+  'One of the main advantages is that': ''
+  'One of the benefits is that': ''
+  'An important thing to note is that': ''
+  'The main thing to keep in mind is that': ''
+  'What this means is that': ''
+  'You are receiving this email because ': ''
+  'you are receiving this email because ': ''
+  "You're receiving this email because ": ''
+  "you're receiving this email because ": ''
+  'in spite of the fact that': 'although'
+  'in order to be able to': 'to'
+  'you can always': 'you can'
+  'you will need to': 'you need to'
+  'you need to keep at least one valid payment method on your account.': 'keep at least one valid payment method on your account.'
+  'we will need to': 'we need to'
+  'you expect to need': 'you need'
+  'will no longer': "won't"
+  "you'll no longer": "you won't"
+  'can no longer': "can't"
+  'no longer exists': "doesn't exist"
+  'is not possible': "isn't possible"
+  'are not able to': "can't"
+  'is not able to': "can't"
+  'were not able to': "couldn't"
+  'was not able to': "couldn't"
+  'would like to': 'want to'
+  'would you like to': 'want to'
+  'sufficient': 'enough'
+  'each respective': 'each'
+  'their respective': 'their'
+  'the respective': 'that'
+  'in a desired': 'in the'
+  'in the desired': 'in the'
+  'with the desired': 'with your'
+  ', for some reason, ': ' '
+  'for some reason, ': ''
+  'and/or': 'or'
+  'to work accordingly': ''
+  'to act accordingly': ''
+  'at your earliest convenience': 'soon'
+  'a large number of': 'many'
+  'therefore,': 'so'
+  'therefore': 'so'
+  'in addition': 'also'
+  'and then close': 'and close'
+  'and then click': 'and click'
+  'and then select': 'and select'
+  'and then proceed': 'and proceed'
+  'and then continue': 'and continue'
+  'and then wait': 'and wait'
+  'and then save': 'and save'
+  'and then try': 'and try'
+  'and then refresh': 'and refresh'
+  'and then reload': 'and reload'
+  'There is no ': 'No '
+  'There are no ': 'No '
+  ', and there is no ': ', and no '
+  ', and there are no ': ', and no '
+  'README.md file': 'README.md'
+  'CHANGELOG.md file': 'CHANGELOG.md'
+  'package.json file': 'package.json'
+  'actor.json file': 'actor.json'
+  'Dockerfile file': 'Dockerfile'
+  'is missing a ': 'has no '
+  'is missing an ': 'has no '
+  'rebuild it, and ': 'rebuild, and '
+  'build it, and ': 'build, and '
+  'save it, and ': 'save, and '
+  'deploy it, and ': 'deploy, and '
+  'run it, and ': 'run, and '
+  'publish it, and ': 'publish, and '
+  'start it, and ': 'start, and '
+  'try publishing again': 'publish again'
+  'try building again': 'build again'
+  'try rebuilding again': 'rebuild again'
+  'try deploying again': 'deploy again'
+  'try saving again': 'save again'
+  'try running again': 'run again'
+  'try starting again': 'start again'
+  'try connecting again': 'connect again'
+  'try signing in again': 'sign in again'
+  'try logging in again': 'log in again'
+  'this means that': ''
+  'which means that': ''
+  'which means ': ''
+  'by using ': 'with '
+  'override them using': 'override them with'
+  'override them by using': 'override them with'
+  'give general feedback': 'provide feedback'
+  'give general ': 'give '
+  'before they can be ': 'before they are '
+  'before it can be ': 'before it is '
+  'in the process of ': ''
+  ' going forward,': ','
+  ' going forward': ''
+  'basically ': ''
+  'kindly ': ''
+  'very ': ''
+  'really ': ''
+  'quite ': ''
+  'naturally ': ''
+  'a moment': 'a few seconds'
+  'you can always ': 'you can'
+  'is going to be': 'will be'
+  'are going to be': 'will be'
+  'just one ': 'only one '
+  'just two ': 'only two '
+  'just a few': 'only a few'
+
+  'simply ': ''
+  'easily ': ''
+  'seamlessly ': ''
+  'effortlessly ': ''
+  'conveniently ': ''
+  'Unfortunately, ': ''
+  'Congratulations! ': ''
+  'Congratulations, ': ''
+  'Great! ': ''
+  'Oh, ': ''
+  'Oh! ': ''
+  'Well, ': ''
+  'Hey, ': ''
+  'Hey! ': ''
+  'Yay, ': ''
+  'Yay! ': ''
+  'Awesome! ': ''
+  'Amazing! ': ''
+  'Excellent! ': ''
+  'Hooray! ': ''
+  'Woohoo! ': ''
+  'Well done! ': ''
+  'Great job! ': ''
+  'Hang tight! ': ''
+  "Don't worry, ": ''
+  "Don't worry! ": ''
+  'That means ': ''
+  'that means ': ''
+  'an additional layer of security': 'a layer of security'
+
+  'absolutely free': 'free'
+
+  'cooking up': ''
+  'data magic': ''
+  'hang tight': ''
+  'sit back and': ''
+  'bear with us': ''
+  'bear with me': ''
+
+  "don't worry, ": ''
+  "We've got your back": ''
+  "we've got your back": ''
+
+  'You can try again.': 'Try again.'
+  'you can try again.': 'try again.'
+
+  'If you have any questions, please contact': 'Need help? Contact'
+  'If you have any questions, contact': 'Need help? Contact'
+
+  'Click here to ': 'To '
+  'click here to ': 'to '
+  'come into effect': 'apply'
+  "you'll need to ": ''
+
+  'If true, it means ': 'If true, '
+  'If false, it means ': 'If false, '
+
+  'Please try to set it up again': 'Set it up again'
+  'please try to set it up again': 'set it up again'
+  'Please try to set up again': 'Set it up again'
+  'please try to set up again': 'set it up again'
+  'Please try to enable it again': 'Enable it again'
+  'please try to enable it again': 'enable it again'

@@ -1,0 +1,13 @@
+extends: existence
+level: suggestion
+message: "Care opportunity: '%s' may need a clearer next step, reassurance, or user impact."
+ignorecase: true
+
+exceptions:
+  - "(?:try again|contact support|check|review|go to|switch to|change|add|remove|open|visit|log in)"
+  - '\b(?:API|endpoint|payload|JSON|HTTP|webhook|schema|token|ID)\b'
+
+tokens:
+  - '\bwill be\s+\w+ed\b'
+  - '\bThis\s+(?:helps|allows|enables|lets|permits|gives)\s+(?:you|users?|the)\b'
+  - '\b(?:is\s+)?(?:managed|handled|provided|maintained)\s+by\b'

@@ -1,0 +1,19 @@
+extends: existence
+message: "Hollow permission phrase '%s'. Give the instruction directly."
+level: suggestion
+scope: sentence
+tokens:
+  - 'you may want to'
+  - 'you might want to'
+  - 'you might consider'
+  - 'worth noting'
+  - 'worth mentioning'
+  - 'worth considering'
+  - 'worth exploring'
+  - 'worth checking'
+  - 'worth keeping in mind'
+  - 'Consider using'
+  - 'Consider trying'
+  - 'Consider exploring'
+  - 'Consider looking into'
+  - 'Consider checking out'

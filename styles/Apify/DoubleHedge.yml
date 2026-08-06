@@ -1,0 +1,20 @@
+extends: existence
+level: warning
+message: "Double hedge: '%s'. One uncertainty modal is enough - simplify."
+scope: sentence
+tokens:
+  - 'may mean that some users might'
+  - 'may mean that users might'
+  - 'may mean some users might'
+  - 'may mean users might'
+  - 'may possibly'
+  - 'might possibly'
+  - 'could possibly'
+  - 'may perhaps'
+  - 'might perhaps'
+  - 'could perhaps'
+  - 'might not be able to'
+  - 'may not be able to'
+
+exceptions:
+  - '\b[Oo]n the\b[^.!?]*\bmay not be able to\b'

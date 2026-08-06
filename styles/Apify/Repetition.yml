@@ -1,0 +1,7 @@
+extends: repetition
+level: suggestion
+message: "Repeated word: '%s'."
+alpha: true
+
+exceptions:
+  - '(?:add-on|log-in|sign-up|opt-in|check-in|drop-off|set-up|pick-up|run-up|follow-up)\s+(?:on|in|up|off)'

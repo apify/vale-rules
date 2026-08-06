@@ -1,0 +1,7 @@
+extends: substitution
+level: suggestion
+message: "Remove filler 'just': '%s' instead of '%s'."
+
+swap:
+  'or just ': 'or '
+  'just ': ''

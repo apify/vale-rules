@@ -1,0 +1,8 @@
+extends: existence
+level: suggestion
+message: "Narrator voice: '%s' describes system behavior. Rewrite as a user instruction (e.g. 'Leave empty to use the default')."
+ignorecase: true
+
+tokens:
+  - '\bThis (?:is|will be) used to\b'
+  - '\bwill be \w+ed automatically\b'

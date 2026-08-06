@@ -1,0 +1,22 @@
+extends: substitution
+level: suggestion
+message: "Blame language: '%s' instead of '%s'. Describe the state, not the user's mistake."
+
+swap:
+  'You entered the wrong': "That doesn't look right"
+  'You entered an incorrect': "That doesn't look right"
+  'You typed the wrong': "That doesn't look right"
+  'You forgot to': 'This field needs'
+  'You forgot the': 'Missing the'
+  "You haven't entered": 'This field needs'
+  "You haven't provided": 'Missing'
+  'You must fill in': 'Fill in'
+  'You need to fill in': 'Fill in'
+  'You failed to': "Couldn't"
+  'You did not provide': 'Missing'
+  "You didn't provide": 'Missing'
+
+exceptions:
+  - '(?:policy|terms|agreement|legal|compliance|contract)[\s\S]*[Yy]ou must'
+  - '[Yy]ou must[\s\S]*(?:policy|terms|agreement|legal|compliance|contract)'
+  - "[Yy]ou must not"

@@ -1,0 +1,10 @@
+extends: existence
+message: "Legalese '%s'. Use plain language: 'is legal in most jurisdictions' not 'is permitted under applicable regulatory frameworks.'"
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:in accordance with|pursuant to|subject to the provisions of|notwithstanding)\b'
+  - '\b(?:under applicable|regulatory framework|statutory requirements|aforementioned)\b'
+  - '\b(?:shall not be|shall be deemed|hereinafter referred to)\b'
+  - '\b(?:comply with all applicable laws and regulations)\b'
+  - '\b(?:without limitation|including but not limited to)\b'

@@ -1,0 +1,33 @@
+extends: substitution
+level: suggestion
+message: "Replace robotic phrase: '%s' instead of '%s'."
+exceptions:
+  - "an additional"
+  - "any additional"
+  - "additional costs"
+  - "no longer available"
+  - "You haven.t run any"
+  - '[Nn]o \w+ yet'
+  - '[Nn]o events \w'
+  - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
+  - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
+  - '\w+\s+\w+\s+failed to'
+  - '(?:if|you.re|you are|they.re|they are|we.re|we are|it.s|it is|he.s|he is|she.s|she is|are|is|be|been|being|to be|remain|remains|remained|feel|feels|felt|seem|seems|seemed)\s+unable to'
+  - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
+
+swap:
+  'There are no Actors.': "No Actors yet."
+  'There are no invoices.': 'No invoices.'
+  'There are no items in the dataset.': 'This dataset is empty.'
+  'There are no columns in the dataset.': 'No columns in this dataset.'
+  'There are no invoices to display.': 'No invoices.'
+  'There are no payments to display.': 'No payments.'
+  'There are no payouts to display.': 'No payouts.'
+  'There are no transactions to display.': 'No transactions.'
+  'No examples are available for this Actor yet.': 'No examples for this Actor yet.'
+  "Actor README isn't available": 'No Actor README yet'
+  'No data available for this date': 'No data for this date'
+  'No data available': 'No data yet'
+  'No events.': 'No events yet.'
+  'No events': 'No events yet.'
+  'The Actor finished with no results. Check the log for more information.': "The Actor finished with no results. Check the log for more info."

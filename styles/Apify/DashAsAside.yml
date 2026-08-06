@@ -1,0 +1,14 @@
+extends: existence
+level: suggestion
+message: "Dash as aside: '%s'. Restructure the sentence. Split into two sentences or use a comma/colon."
+nonword: true
+
+exceptions:
+  - '\d+–\d+'
+  - '--\w'
+  - '^-\s'
+  - '^\s*-\s'
+
+tokens:
+  - '(?<=\w) - (?=\w)'
+  - '(?<!\d)–(?!\d)'

@@ -1,0 +1,6 @@
+extends: occurrence
+level: suggestion
+message: "String has more than %d sentences - aim for 1-2 for UI copy."
+ignorecase: false
+token: '[.!?](?:\s|$)'
+max: 2

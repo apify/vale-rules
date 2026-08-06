@@ -1,0 +1,25 @@
+extends: existence
+level: suggestion
+message: "Dead-end pattern: '%s' gives no actionable next step. Add a specific CTA."
+ignorecase: true
+
+exceptions:
+  - "[Ii]f this continues.*contact"
+  - "contact.*[Ii]f this continues"
+  - "[Ii]f this continues.*support"
+  - "support.*[Ii]f this continues"
+  - "[Tt]ry again later.*if.*contact"
+  - "[Tt]ry again later.*or.*contact"
+  - "contact.*[Tt]ry again later"
+  - '[Tt]ry again in \d'
+  - '[Tt]ry again after \d'
+
+tokens:
+  - 'if this continues'
+  - 'if this keeps happening'
+  - 'if the error persists'
+  - 'if the issue persists'
+  - 'if the problem persists'
+  - 'if this persists'
+  - 'please try again later'
+  - 'try again later'

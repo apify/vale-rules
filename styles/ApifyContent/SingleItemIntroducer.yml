@@ -1,0 +1,10 @@
+extends: existence
+level: suggestion
+message: "Single-item introducer: '%s' - not a list, so remove 'like'/'such as' and use parentheses instead. Example: costs, like compute units => costs (compute units)."
+ignorecase: true
+
+tokens:
+
+  - '\bsuch as\s+(?:(?!,| and | or )[^\s.;.")>])+(?:\s+(?:(?!,| and | or )[^\s.;.")>])+){0,3}\s*[.;.")]'
+
+  - '\bsuch as\s+[A-Z][A-Za-z]+\s+(?:to|that|which|can|will|would|could|should|in|on|for|from|with|by|at|as)\b'

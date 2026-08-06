@@ -1,0 +1,22 @@
+# Detection only: flags 6 patterns without suggesting replacements.
+extends: existence
+level: suggestion
+message: "Feature-definition opener: '%s'. Lead with what the feature does, not what it is."
+
+exceptions:
+  - '^[^.!?]*[.!?]?\s*$'
+
+tokens:
+  - '\w[\w ]*? lets you [^.]+\. It'
+  - '\w[\w ]*? allows you to [^.]+\. It'
+  - '\w[\w ]*? enables you to [^.]+\. It'
+  - '\w[\w ]*? lets you [^.]+\. It also'
+  - '\w[\w ]*? allows you to [^.]+\. It also'
+  - '\w[\w ]*? enables you to [^.]+\. It also'
+
+action:
+  name: edit
+  params:
+    - regex
+    - '(\w[\w ]*?) lets you [^.]+\. It (.+)'
+    - '$1 $2'

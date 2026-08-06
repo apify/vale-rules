@@ -1,0 +1,58 @@
+extends: substitution
+level: warning
+message: "Grammar fix: '%s' instead of '%s'."
+ignorecase: false
+scope: sentence
+swap:
+  'concurrent Actor runs allows you to': 'concurrent Actor runs let you'
+  'concurrent Actor runs lets you': 'concurrent Actor runs let you'
+
+  'Canceling invoice': 'Canceling an invoice'
+  'Removing draft invoice': 'Removing a draft invoice'
+  'create new Actor': 'create a new Actor'
+  'link existing Git': 'link an existing Git'
+  'from local computer': 'from your local computer'
+  'at least following': 'at least the following'
+  'as ZIP file': 'as a ZIP file'
+  'as CSV file': 'as a CSV file'
+  'as PDF file': 'as a PDF file'
+  'as JSON file': 'as a JSON file'
+  'as JSONL file': 'as a JSONL file'
+  'as HTML file': 'as an HTML file'
+  'as XML file': 'as an XML file'
+  'as XLS file': 'as an XLS file'
+  'as XLSX file': 'as an XLSX file'
+
+  'variable are': 'variables are'
+
+  'Pro-rata': 'Pro rata'
+  'pro-rata': 'pro rata'
+
+  'more strict': 'stricter'
+
+  'running slow': 'running slowly'
+
+  "don't have permissions to": "don't have permission to"
+  'have permissions to': 'have permission to'
+  'need permissions to': 'need permission to'
+  'lacks permissions to': 'lacks permission to'
+  'without permissions to': 'without permission to'
+
+  'Single Sign-On': 'single sign-on'
+  'Single Sign On': 'single sign-on'
+
+  '1 additional': '1 more'
+  '1 extra': '1 more'
+
+  'the Apify Console': 'Apify Console'
+  'the Apify Store': 'Apify Store'
+  'the Apify Proxy': 'Apify Proxy'
+
+  'card expired or been': 'card has expired or been'
+  'card failed or been': 'card has failed or been'
+  'token expired or been': 'token has expired or been'
+  'session expired or been': 'session has expired or been'
+
+exceptions:
+  - 'the Apify (?:Console|Store|Proxy)[.\u2019]s'
+  - "the Apify (?:Console|Store|Proxy) (?:trial|limit|quota|plan|account|settings|page|section|tab|docs|documentation)"

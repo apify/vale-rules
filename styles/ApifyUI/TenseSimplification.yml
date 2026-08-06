@@ -1,0 +1,24 @@
+# Detection only: flags 4 patterns without suggesting replacements.
+extends: existence
+level: suggestion
+message: "Tense simplification: '%s'. Use simple past for completed actions."
+
+exceptions:
+  - '\b(?:has|have) been (?:exposed|compromised|leaked|breached|hacked|stolen)'
+  - '\b(?:has|have) been (?:inactive|suspended|blocked|locked|flagged|restricted)'
+  - '\band\s+(?:all\s+)?your\s+\w+.*\b(?:has|have) been'
+  - '\b(?:has|have) been \w+(?:\s+\w+)?,\s+(?:but|and|even|so|which)'
+  - '\b(?:has|have) been \w+ for\s+(?:\d|quite|a\s+(?:while|long|few))'
+
+tokens:
+  - 'Your \w+ has been \w+ed'
+  - 'Your \w+ have been \w+ed'
+  - 'has been successfully'
+  - 'was successfully'
+
+action:
+  name: edit
+  params:
+    - regex
+    - '(Your \w+(?:\s+\w+){0,2}) has been (updated|sent|saved|removed|changed|canceled|cancelled|created|approved|confirmed|submitted|received|accepted|rejected|renewed|restored|reset|modified|applied|processed|completed|enabled|disabled|verified|added|deleted|increased|decreased|extended|reduced|transferred|migrated|moved|paused|resumed|scheduled|published|unpublished)'
+    - '$1 was $2'

@@ -1,0 +1,37 @@
+extends: existence
+level: suggestion
+message: "Color-only meaning: '%s' - pair with a text label or icon so meaning isn't lost without color."
+
+exceptions:
+  - "(?:set|change|pick|choose|select) (?:the |a )?(?:background |text |border |fill )?colou?r"
+  - "colou?r (?:palette|scheme|system|token|variable|theme)"
+  - "brand colou?rs?"
+  - "(?:colou?r picker|pick a colou?r|choose a colou?r)"
+  - 'colou?r:\s*\w+'
+  - "background-colou?r"
+
+tokens:
+  - 'the red text'
+  - 'the green text'
+  - 'shown in red'
+  - 'shown in green'
+  - 'marked in red'
+  - 'marked in green'
+  - 'highlighted in yellow'
+  - 'highlighted in red'
+  - 'highlighted in green'
+  - 'the blue link'
+  - 'red items'
+  - 'green items'
+  - 'red means'
+  - 'green means'
+  - 'indicated by the color'
+  - 'indicated by the colour'
+  - 'indicated by color'
+  - 'indicated by colour'
+  - 'color-coded'
+  - 'colour-coded'
+  - 'turns red'
+  - 'turns green'
+  - 'appears in red'
+  - 'appears in green'

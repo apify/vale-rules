@@ -1,0 +1,26 @@
+extends: existence
+level: suggestion
+message: "Meta-description: '%s' - describe what it does or why it matters, not what it is."
+ignorecase: true
+
+exceptions:
+  - "This is the (?:Apify|Console|API|SDK|CLI|Actor|Platform)"
+  - 'Use this to \w+[\s\S]{0,30}(?:when|if|unless|for)'
+  - 'This is where[\s\S]{0,30}(?:unless|except|only|but)'
+
+tokens:
+  - 'This is the field'
+  - 'This is the setting'
+  - 'This is the option'
+  - 'This is the button'
+  - 'This is the place'
+  - 'This is where you'
+  - 'This is where the'
+  - 'Use this to'
+  - 'Use this field to'
+  - 'Use this setting to'
+  - 'Use this option to'
+  - 'This setting is used to'
+  - 'This option is used to'
+  - 'This field is used to'
+  - 'This button is used to'

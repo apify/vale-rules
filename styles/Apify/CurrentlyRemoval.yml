@@ -1,0 +1,22 @@
+extends: substitution
+level: suggestion
+message: "Remove redundant 'currently': '%s' instead of '%s'."
+exceptions:
+  - '(is|are|was|were|.s|.re) currently being \w+'
+  - "(is|are|was|were) currently (using|loading|building|processing|fetching|syncing|downloading|uploading|waiting|connecting|deploying|installing|initializing|compiling|bundling|migrating|rendering|generating|executing|applying|scanning|indexing)"
+  - '[Cc]urrently don..t have[\s\S]*(?:upgrade|subscribe|contact)'
+  - '[Cc]urrently doesn..t have[\s\S]*(?:upgrade|subscribe|contact)'
+  - "[Cc]urrently don..t have access"
+  - "[Cc]urrently doesn..t have access"
+  - "and you are currently"
+  - "and you.re currently"
+swap:
+  'do not currently have': "don't have"
+  'does not currently have': "doesn't have"
+  'currently do not have': "don't have"
+  'currently does not have': "doesn't have"
+  "don't currently have": "don't have"
+  "doesn't currently have": "doesn't have"
+  'is currently being': 'is being'
+  'are currently being': 'are being'
+  'Currently, ': ''

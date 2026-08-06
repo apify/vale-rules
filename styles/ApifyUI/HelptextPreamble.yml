@@ -1,0 +1,29 @@
+# Detection only: flags 16 patterns without suggesting replacements.
+extends: existence
+level: suggestion
+message: "Help-text preamble: '%s'. State what it does directly."
+
+tokens:
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to set'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to limit'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to control'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to specify'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to define'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to configure'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to enable'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to override'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to filter'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to restrict'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to choose'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to change'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to customize'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to adjust'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to select'
+  - 'This (?:setting|option|field|feature) (?:allows|enables) you to determine'
+
+action:
+  name: edit
+  params:
+    - regex
+    - 'This (?:setting|option|field|feature) ((?:allows|enables)) you to set (.+)'
+    - 'Sets $2'

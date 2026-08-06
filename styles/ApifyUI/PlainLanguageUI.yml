@@ -1,0 +1,34 @@
+extends: substitution
+level: suggestion
+message: "Use plain language (UI): '%s' instead of '%s'."
+ignorecase: true
+nonword: true
+exceptions:
+  - "personal information"
+  - "billing information"
+  - "cardholder information"
+  - "sensitive information"
+  - "tax information"
+  - "confidential information"
+  - "contact information"
+  - "payment information"
+  - "card information"
+  - "Display information"
+  - "Publication information"
+  - "information where"
+  - "information when"
+  - "information how"
+
+swap:
+  'at any time': 'anytime'
+  'for more information': 'for more info'
+  'returns information about': 'returns info about'
+  'view information': 'view info'
+  'account information': 'account info'
+  'see the documentation': 'see the docs'
+  'read the documentation': 'read the docs'
+  'check the documentation': 'check the docs'
+  'in the documentation': 'in the docs'
+  'Git repository': 'Git repo'
+  'source repository': 'source repo'
+  'code repository': 'code repo'

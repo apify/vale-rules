@@ -1,0 +1,26 @@
+extends: existence
+level: suggestion
+message: "Vague CTA: '%s' - link/button text should describe the destination or outcome, not just prompt action."
+
+exceptions:
+  - "^Cancel$"
+  - "^Close$"
+  - "^Back$"
+  - "^OK$"
+  - "^Done$"
+  - "^Dismiss$"
+  - ".{20,}Learn more"
+
+tokens:
+  - 'Click here'
+  - 'click here'
+  - 'Get started'
+  - 'Read more'
+  - 'Find out more'
+  - 'Start now'
+  - 'Submit'
+  - 'Try it'
+  - 'Try it out'
+  - 'Check it out'
+  - 'See more'
+  - 'Learn more'

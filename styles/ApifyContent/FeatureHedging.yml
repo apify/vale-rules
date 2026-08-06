@@ -1,0 +1,7 @@
+extends: existence
+message: "Hedged feature claim '%s'. If the Actor does it, state it confidently. Hedge only in legal or limitations sections."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:can sometimes|may be able to|could potentially|might help)\b'
+  - '\b(?:in some cases it|it is possible to|you might find that)\b'

@@ -1,0 +1,26 @@
+extends: existence
+message: "LLM calling card '%s'. This phrase signals AI authorship. Rewrite or cut."
+level: suggestion
+scope: sentence
+tokens:
+  - 'In today..s digital age'
+  - 'In today..s fast-paced world'
+  - 'In the ever-evolving'
+  - 'In an era where'
+  - 'In the realm of'
+  - 'Navigate the complexities'
+  - 'rich tapestry'
+  - 'Let..s unpack'
+  - 'This is where it gets interesting'
+  - 'Without further ado'
+  - 'Let..s dive in'
+  - 'Let..s get started'
+  - 'deep dive'
+  - 'the future looks bright'
+  - 'exciting times'
+  - 'as we continue on this journey'
+  - 'at the heart of'
+  - 'the complex interplay'
+  - 'change the equation'
+  - 'move the needle'
+  - 'level the playing field'

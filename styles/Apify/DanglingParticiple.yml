@@ -1,0 +1,9 @@
+extends: existence
+level: suggestion
+message: "Possible dangling participle: '%s' - does the subject after the comma match who is doing the action?"
+ignorecase: true
+
+tokens:
+  - '^\w+ing\s+[^,]{3,30},\s+(?:the|a|an|this|that|its|their)\s+\w+\s+(?:is|are|was|were)\s+\w+ed\b'
+
+  - '^\w+ing\s+[^,]{3,30},\s+it\s+(?:is|was|will be|can be|should be)\b'

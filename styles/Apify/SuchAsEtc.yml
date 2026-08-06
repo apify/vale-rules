@@ -1,0 +1,7 @@
+extends: existence
+level: suggestion
+message: "Redundant: '%s' - 'such as' already implies the list is non-exhaustive. Remove 'etc.'"
+ignorecase: true
+
+tokens:
+  - 'such as\b[^.]{0,80}\betc\.?'

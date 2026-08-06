@@ -1,0 +1,27 @@
+# Editorial forms that aren't already covered by ApifyProductNames or
+# TechnologyNames. Keep this list narrow: generic brand and acronym casing is
+# too context-dependent to enforce as an error in technical documentation.
+extends: substitution
+level: warning
+message: "Use the correct brand name or casing: '%s' instead of '%s'."
+ignorecase: false
+scope:
+  - summary
+  - heading
+vocab: false
+swap:
+  'addon': 'add-on'
+  'addons': 'add-ons'
+  'Addon': 'Add-on'
+  'Addons': 'Add-ons'
+  NPM: 'npm'
+  Npm: 'npm'
+  e-mail: 'email'
+  E-mail: 'Email'
+  e-book: 'ebook'
+  E-book: 'Ebook'
+  Ok: 'OK'
+  'Web page provided by the running Actor': 'Live output from this Actor'
+  'Web page': 'web page'
+  'Web browser': 'web browser'
+  'Web app': 'web app'

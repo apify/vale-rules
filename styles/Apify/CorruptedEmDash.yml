@@ -1,0 +1,6 @@
+extends: existence
+message: "Corrupted em dash encoding artifact. Replace with a spaced hyphen ( - )."
+level: warning
+scope: raw
+raw:
+  - '(?:Ã¢â‚¬|â€).'

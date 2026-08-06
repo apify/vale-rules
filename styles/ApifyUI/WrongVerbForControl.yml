@@ -1,0 +1,29 @@
+extends: existence
+level: suggestion
+message: "Verb-element mismatch: '%s' - the verb describes a mouse action, not the user's intent."
+ignorecase: true
+
+exceptions:
+  - '[Cc]lick [.\u2018\u201C"][^."\u2019\u201D]+[.\u2019\u201D\u201C"]'
+  - "[Rr]ight-click"
+  - "[Dd]ouble-click"
+  - "[Cc]lick and drag"
+  - "[Cc]lick (?:away|outside)"
+
+tokens:
+  - 'click the checkbox'
+  - 'click the radio'
+  - 'click the toggle'
+  - 'click the switch'
+  - 'click the link'
+  - 'click the dropdown'
+  - 'click the menu'
+  - 'click the tab'
+  - 'click the option'
+  - 'press the checkbox'
+  - 'press the button'
+  - 'press the link'
+  - 'press the toggle'
+  - 'select the button'
+  - 'select the submit'
+  - 'select the save'

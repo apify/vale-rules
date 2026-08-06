@@ -1,0 +1,25 @@
+extends: existence
+message: "LLM power word '%s'. Replace with a specific, concrete alternative."
+level: suggestion
+scope: sentence
+tokens:
+  - 'delve'
+  - 'tapestry'
+  - 'nuanced'
+  - 'multifaceted'
+  - 'pivotal'
+  - 'holistic'
+  - 'paradigm'
+  - 'synergy'
+  - 'transformative'
+  - 'catalyst'
+  - 'vibrant'
+  - 'intricate'
+  - 'embark'
+  - 'garner'
+  - 'undoubtedly'
+  - 'arguably'
+  - 'notably'
+  - 'testament'
+  - 'enduring'
+  - 'unleash'

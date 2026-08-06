@@ -1,0 +1,52 @@
+extends: substitution
+level: suggestion
+message: "Use Apify voice: '%s' instead of '%s'."
+
+exceptions:
+  - "<code>"
+  - "API.*(?:extract|generate)"
+  - "(?:extract|generate).*API"
+  - '(?:Web|Google|Amazon|Facebook|Instagram|Twitter|TikTok|LinkedIn|YouTube)\s+Scraper'
+  - "Crawlee"
+  - "`"
+  - "out-of-the-box (?:experience|support|solution)"
+
+swap:
+  'Generate with AI': "We'll write this"
+  'Generate description': "We'll write this"
+  'Generate a description': "We'll write this"
+
+  'unlock the power of': 'get more from'
+  'unlock the potential of': 'get more from'
+  'unleash the power of': 'get more from'
+  'empower your workflow': 'automate your work'
+  'empower your team': 'help your team'
+  'discover the power of': 'try'
+  'discover how': 'see how'
+
+  'diverse business needs': 'what you need'
+  'accommodate your needs': 'work for you'
+  'leverage our platform': 'use Apify'
+  'leverage the platform': 'use the platform'
+  'leverage Apify': 'use Apify'
+
+  'AI-ready data': 'structured data'
+  'AI-ready': 'structured'
+  'AI-native platform': 'platform built for AI'
+  'AI-first platform': 'platform built for AI'
+  'cutting-edge technology': 'technology'
+  'state-of-the-art': ''
+  'Out-of-the-box tools': 'Ready-to-run tools'
+  'out-of-the-box tools': 'ready-to-run tools'
+  'Out-of-the-box solution': 'Ready-to-run solution'
+  'out-of-the-box solution': 'ready-to-run solution'
+
+  'extract data from': 'get data from'
+  'Extract data from': 'Get data from'
+
+  'web scraping platform': 'marketplace of tools for AI'
+  'data extraction platform': 'marketplace of tools for AI'
+  'automation platform': 'marketplace of tools for AI'
+  'full-stack platform': 'marketplace of tools for AI'
+  'AI tools': 'tools for AI'
+  'AI-powered tools': 'tools for AI'

@@ -1,0 +1,12 @@
+extends: existence
+message: "Weak opener '%s'. Start with a specific action or concrete noun instead."
+level: suggestion
+scope: sentence
+tokens:
+  - '^This scraper (?:will|can|does|is able to|lets you)'
+  - '^The (?:scraper|Actor|tool) (?:will|can|does|is|uses|has)'
+  - '^You can (?:also )?(?:use|set|change|configure) '
+  - '^(?:Note|Please note|Keep in mind) that'
+  - '^(?:It is|It.s) (?:also )?(?:possible|important|worth noting|recommended)'
+  - '^(?:In order to|In addition|Additionally|Furthermore|Moreover)'
+  - '^For (?:more|additional|further) (?:information|details|help)'

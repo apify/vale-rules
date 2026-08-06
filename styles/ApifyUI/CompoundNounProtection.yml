@@ -1,0 +1,25 @@
+extends: existence
+level: suggestion
+message: "Compound noun check: '%s' - verify this term wasn't broken by another transform."
+nonword: true
+
+tokens:
+  - 'full system functionality'
+  - 'system-wide access'
+  - 'full access'
+  - 'read-only access'
+  - 'write access'
+  - 'memory allocation'
+  - 'compute capacity'
+  - 'rate limit'
+  - 'concurrency limit'
+  - 'run status'
+  - 'build status'
+  - 'health status'
+  - 'source code'
+  - 'version control'
+  - 'default branch'
+  - 'input schema'
+  - 'key-value store'
+  - 'request queue'
+  - 'proxy configuration'

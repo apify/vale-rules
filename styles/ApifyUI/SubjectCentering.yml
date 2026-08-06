@@ -1,0 +1,20 @@
+extends: existence
+level: suggestion
+message: "Subject-centering: '%s' - could the user be the subject instead of the system object?"
+ignorecase: false
+
+tokens:
+  - 'This URL points to'
+  - 'This link points to'
+  - 'This URL leads to'
+  - 'This link leads to'
+  - 'This link redirects to'
+  - 'This URL redirects to'
+  - 'This link takes you to'
+  - 'This URL takes you to'
+  - 'This page navigates to'
+  - 'This link opens'
+  - 'This service connects to'
+  - 'The integration connects to'
+  - 'This token grants access'
+  - 'The token provides access'

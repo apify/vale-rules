@@ -1,0 +1,7 @@
+extends: existence
+message: "Placeholder value '%s' in code example. Use realistic data from an actual Actor run."
+link: "docs/guides/readme-writing-guide.md"
+level: suggestion
+scope: raw
+tokens:
+  - '"(?:value\d*|example_?\w*|your_\w+|placeholder|TODO|TBD|xxx|REPLACE_ME|foo|bar)"'

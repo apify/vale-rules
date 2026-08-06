@@ -1,0 +1,14 @@
+extends: existence
+message: "ALL CAPS '%s' in prose. Use sentence case or bold. Only short acronyms and file names (README, CHANGELOG) are acceptable."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b[A-Z]{6,}\b'
+exceptions:
+  - "README"
+  - "CHANGELOG"
+  - "DATASET"
+  - "FIXME"
+  - "VERIFY"
+  - "IMPORTANT"
+  - "WARNING"

@@ -1,0 +1,45 @@
+extends: substitution
+level: warning
+message: "Use inclusive language: '%s' instead of '%s'."
+ignorecase: false
+nonword: true
+scope:
+  - summary
+  - heading
+swap:
+  'blind to the': 'unaware of the'
+  'blind to': 'unaware of'
+  'deaf to the': 'ignoring the'
+  'deaf to': 'ignoring'
+  'crippled by': 'burdened by'
+  'lame excuse': 'poor excuse'
+  'lame attempt': 'poor attempt'
+  'lame effort': 'poor effort'
+  'lame response': 'poor response'
+  'OCD about': 'careful about'
+  'obsessive about': 'careful about'
+  'insanely good': 'extremely good'
+  'insanely fast': 'extremely fast'
+  'insanely high': 'extremely high'
+  'insanely low': 'extremely low'
+
+  'chairman': 'chair'
+  'chairwoman': 'chair'
+  'chairperson': 'chair'
+  'fireman': 'firefighter'
+  'firemen': 'firefighters'
+  'policeman': 'police officer'
+  'policemen': 'police officers'
+  'policewoman': 'police officer'
+  'salesman': 'salesperson'
+  'salesmen': 'salespeople'
+  'saleswoman': 'salesperson'
+  'businessman': 'businessperson'
+  'businessmen': 'businesspeople'
+  'businesswoman': 'businessperson'
+  'his or her': 'their'
+  'her or his': 'their'
+  'him or her': 'them'
+  'her or him': 'them'
+  'he or she': 'they'
+  'she or he': 'they'

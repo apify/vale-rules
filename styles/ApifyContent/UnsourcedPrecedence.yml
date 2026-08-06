@@ -1,0 +1,6 @@
+extends: existence
+message: "Precedence/override claim ('%s'). Behavioral claims about which field takes priority need verification against the actual implementation. Tag with VERIFY if not confirmed."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:overrides?|takes? priority|falls? back|supersedes?|replaces?)\b'

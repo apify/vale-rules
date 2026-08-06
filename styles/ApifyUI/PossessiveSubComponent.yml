@@ -1,0 +1,24 @@
+extends: substitution
+level: suggestion
+message: "Sub-component possessive: '%s' instead of '%s'. The sub-component belongs to the entity, not the user."
+
+exceptions:
+  - "your (?:email|account|plan|subscription|password|profile|workspace|team|organization|billing|payment|card|invoice|credits)"
+  - '\{[^}]+,\s*(?:plural|select)'
+
+swap:
+  'your Actor or update your input schema': 'your Actor or update its input schema'
+  'your Actor and update your input schema': 'your Actor and update its input schema'
+  'your Actor or update your source code': 'your Actor or update its source code'
+  'your Actor and update your source code': 'your Actor and update its source code'
+  'your Actor or update your README': 'your Actor or update its README'
+  'your Actor and update your README': 'your Actor and update its README'
+  'your Actor or your input schema': 'your Actor or its input schema'
+  'your Actor and your input schema': 'your Actor and its input schema'
+  'your Actor or your source code': 'your Actor or its source code'
+  'your Actor and your source code': 'your Actor and its source code'
+  'your Actor or your build': 'your Actor or its build'
+  'your Actor and your build': 'your Actor and its build'
+  'your Actor or your version': 'your Actor or its version'
+  'your Actor or your settings': 'your Actor or its settings'
+  'your Actor and your settings': 'your Actor and its settings'

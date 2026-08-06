@@ -1,0 +1,20 @@
+extends: existence
+level: suggestion
+message: "Terminology check: '%s' - verify this means a Publisher's paying users, not people on the Apify platform (use 'users' for platform context)."
+ignorecase: true
+
+exceptions:
+  - 'customer\s+(?:support|service|success|care|experience|satisfaction)'
+  - 'customer\s+segment'
+  - '^\/\/'
+  - "^#"
+  - '[\".]customers[\".]'
+  - '[\".]customer[\".]'
+
+tokens:
+  - 'customers on'
+  - 'for customers'
+  - 'your customers'
+  - 'their customers'
+  - 'the customers'
+  - 'paying customers'

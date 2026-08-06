@@ -1,0 +1,103 @@
+extends: substitution
+level: suggestion
+message: "System voice: '%s' => '%s' - sounds like a system, not a person."
+ignorecase: true
+
+swap:
+
+  'it is necessary to': 'you need to'
+  'it is required to': 'you need to'
+
+  'this action will': 'this will'
+
+  'is displayed': 'appears'
+  'is shown': 'appears'
+  'is presented': 'appears'
+  'are displayed': 'appear'
+  'are shown': 'appear'
+
+  'will be displayed': 'appears'
+  'will be shown': 'appears'
+
+  'are automatically approved': 'are auto-approved'
+  'is automatically approved': 'is auto-approved'
+  'be automatically renewed': 'auto-renew'
+  'automatically renew': 'auto-renew'
+  'automatically renewed': 'auto-renewed'
+  'automatically generates': 'auto-generates'
+  'automatically generated': 'auto-generated'
+  'automatically detect': 'auto-detect'
+  'automatically detected': 'auto-detected'
+  'automatically approve': 'auto-approve'
+  'automatically approved': 'auto-approved'
+  'automatically retry': 'auto-retry'
+  'automatically update': 'auto-update'
+  'automatically updated': 'auto-updated'
+  'automatically scale': 'auto-scale'
+
+  'be automatically ': 'be '
+  'are automatically ': 'are '
+  'is automatically ': 'is '
+  'was automatically ': 'was '
+  'were automatically ': 'were '
+
+  'Displaying top': 'Top'
+  'Displaying ': ''
+  'Showing your ': 'Your '
+  'Showing the ': 'The '
+  'the functionality of ': ''
+  'a typical Actor': 'most Actors'
+  'limit the functionality': 'limit what'
+  'restrict the functionality': 'restrict what'
+  'this functionality is': 'this is'
+  'restore functionality': 'get it working'
+  'the Actor functionality': 'what the Actor does'
+  "a scraper's functionality": 'how a scraper works'
+  'functionality and discoverability standards': 'reliability and discoverability standards'
+  'full system functionality': 'system-wide access'
+
+  'the system will try': "we'll try"
+  'the system marks it': "it's marked"
+
+  'In case of any questions': 'If you have any questions'
+  'in case of account recovery': 'if you need account recovery'
+
+  'the criteria mentioned above': 'these criteria'
+  'mentioned above': ''
+  'mentioned below': ''
+
+  'Enhance Actor description': 'Improve Actor description'
+
+  'This represents the estimated costs that will be incurred when running this Actor.': 'Estimated cost for running this Actor.'
+  'This is your total platform usage to be billed in the current billing period': 'Your total platform usage for this billing period'
+
+  'This is useful if you want to start instances of the Actor in Standby mode with different configurations.': 'Use this to start Actor instances in Standby mode with different configurations.'
+  'This is useful if you want to enforce the same standby parameters for all users of your Actor.': 'Use this to enforce the same standby parameters for all users of your Actor.'
+
+  'Tag automatically set to the latest successful build of the current version.': 'Latest successful build tag for the current version.'
+  'Default branch is used when none is provided.': 'Uses the default branch when none is provided.'
+
+  'We automatically ': 'We '
+
+  'available once verified': 'available after verification'
+  'we automatically ': 'we '
+  'Apify automatically ': 'Apify '
+
+  "The code isn't": "This code isn't"
+  "The code has expired": 'This code expired'
+  "The code was": 'This code was'
+  "The link isn't": "This link isn't"
+  "The link has expired": 'This link expired'
+  "The link expired": 'This link expired'
+  "The token isn't": "This token isn't"
+  "The token has expired": 'This token expired'
+  "The token expired": 'This token expired'
+  "The token was revoked": 'This token was revoked'
+  "The request failed": 'This request failed'
+  "The request was rejected": 'This request was rejected'
+  "The session has expired": 'This session expired'
+  "The session expired": 'This session expired'
+  "The connection failed": 'This connection failed'
+  "The connection was lost": 'This connection was lost'
+  "The password isn't": "This password isn't"
+  "The email isn't": "This email isn't"

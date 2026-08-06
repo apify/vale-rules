@@ -1,0 +1,8 @@
+extends: existence
+level: suggestion
+message: "Mixed list form: '%s' - list items should use the same grammatical structure (all gerunds, all nouns, or all imperatives)."
+ignorecase: true
+
+tokens:
+
+  - '\bto\s+\w+,\s+to\s+\w+,\s+and\s+\w+ing\b'

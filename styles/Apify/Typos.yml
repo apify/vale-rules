@@ -1,0 +1,41 @@
+extends: substitution
+level: error
+message: "Fix typo: '%s' instead of '%s'."
+ignorecase: true
+scope:
+  - summary
+  - heading
+exceptions:
+  - 'https?://\S+'
+  - "previously selected view"
+swap:
+  'mostly likely': 'most likely'
+  'Selected view': 'the selected view'
+  tothe: 'to the'
+  ofthe: 'of the'
+  inthe: 'in the'
+  onthe: 'on the'
+  atthe: 'at the'
+  forthe: 'for the'
+  withthe: 'with the'
+  fromthe: 'from the'
+  toyou: 'to you'
+  foryou: 'for you'
+  withyou: 'with you'
+  tous: 'to us'
+  forus: 'for us'
+  auser: 'a user'
+  anemail: 'an email'
+  anerror: 'an error'
+  anaccount: 'an account'
+  anissue: 'an issue'
+  anoption: 'an option'
+  canbe: 'can be'
+  willbe: 'will be'
+  shouldbe: 'should be'
+  mustbe: 'must be'
+  couldbe: 'could be'
+  wouldbe: 'would be'
+  andthe: 'and the'
+  andyou: 'and you'
+  andwe: 'and we'

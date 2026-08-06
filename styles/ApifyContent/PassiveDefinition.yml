@@ -1,0 +1,19 @@
+extends: existence
+level: suggestion
+message: "Passive feature definition: '%s'. Rewrite to describe what the user can do, not what the feature is."
+
+tokens:
+  - 'is used to'
+  - 'is used for'
+  - 'is used instead of'
+  - 'is used when'
+  - 'are used to'
+  - 'are used for'
+  - 'are used instead of'
+  - 'can be used to'
+  - 'can be used for'
+  - 'will be used to'
+  - 'will be used for'
+
+exceptions:
+  - "is used to (?:the|this|that|it|them)"

@@ -1,0 +1,11 @@
+extends: existence
+message: "Throat-clearing opener '%s'. Start with the most specific claim, not context-setting."
+link: "docs/guides/readme-writing-guide.md"
+level: suggestion
+scope: sentence
+tokens:
+  - '^In (?:this|the following) section'
+  - '^(?:As mentioned|As noted|As described) (?:above|earlier|before)'
+  - '^(?:It is|It.s) (?:worth noting|important to note|worth mentioning)'
+  - '^(?:Before we|First, let.s|Let.s start by|To begin with)'
+  - '^The (?:purpose|goal|aim|objective) of this'

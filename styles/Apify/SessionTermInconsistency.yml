@@ -1,0 +1,26 @@
+extends: existence
+level: suggestion
+message: "Session term inconsistency: '%s' - Apify uses 'sign in/sign out'."
+ignorecase: true
+
+exceptions:
+  - "(?:OAuth|SAML|SSO|authentication|protocol).*log.?in"
+  - "log.?in.*(?:OAuth|SAML|SSO|authentication|protocol)"
+  - "(?:Google|GitHub|Facebook|Twitter|Apple|Microsoft).*log.?in"
+  - "log.?in.*(?:to|with) (?:Google|GitHub|Facebook|Twitter|Apple|Microsoft)"
+  - "/login"
+  - "loginUrl"
+  - "loginToken"
+  - "isLoggedIn"
+
+tokens:
+  - 'log in'
+  - 'logged in'
+  - 'logging in'
+  - 'log out'
+  - 'logged out'
+  - 'logging out'
+  - 'login page'
+  - 'logout page'
+  - 'login screen'
+  - 'login form'

@@ -1,0 +1,26 @@
+extends: existence
+level: suggestion
+message: "Meta-qualifier: '%s' - show, don't tell. Can you replace this with a concrete constraint or example?"
+ignorecase: true
+
+tokens:
+  - 'concrete'
+  - 'actionable'
+  - '(?<![-\w])specific(?![-\w])'
+  - 'meaningful'
+  - 'impactful'
+  - 'descriptive'
+  - 'informative'
+  - 'user-friendly'
+  - 'intuitive'
+  - 'self-explanatory'
+
+exceptions:
+  - "(?:for|to|with|of) specific"
+  - "(?:a|the|this|that|each|any|something) specific"
+  - "are specific (?:for|to)"
+  - '\w+-specific'
+  - '[A-Z]\w+-specific'
+  - "-specific"
+  - "(?:only|purely|merely) informative"
+  - "[Aa] descriptive (?:name|title|label|heading)"

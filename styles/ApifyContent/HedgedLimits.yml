@@ -1,0 +1,8 @@
+extends: existence
+message: "Hedged limit '%s'. State the number directly: 'Max 400 results per query' not 'may return up to approximately 400.'"
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:approximately|up to about|may (?:return|display|show)|regardless of (?:settings|configuration))\b'
+  - '\b(?:in practice you rarely|you might not always|results may vary)\b'
+  - '\b(?:it depends on|depending on your|varies based on)\b'

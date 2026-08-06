@@ -1,0 +1,22 @@
+extends: existence
+message: "Significance inflation '%s'. State the specific fact instead."
+level: suggestion
+scope: sentence
+tokens:
+  - 'stands as a'
+  - 'stands as an'
+  - 'stands as the'
+  - 'serves as a'
+  - 'serves as an'
+  - 'serves as the'
+  - 'marks a turning point'
+  - 'marks a new era'
+  - 'setting the stage for'
+  - 'indelible mark'
+  - 'deeply rooted'
+  - 'groundbreaking'
+  - 'revolutionary'
+  - 'highlights its importance'
+  - 'highlights the importance'
+  - 'reflects broader'
+  - 'a reminder of'

@@ -1,0 +1,18 @@
+extends: existence
+level: suggestion
+message: "Branded feature name: '%s'. Prefer the common noun unless this is an established product name."
+
+exceptions:
+  - "My Actors"
+
+tokens:
+  - 'My Account'
+  - 'My Dashboard'
+  - 'My Settings'
+  - 'My Profile'
+  - 'My Workspace'
+  - 'My Projects'
+  - 'My Integrations'
+  - 'My Subscriptions'
+  - 'My Notifications'
+  - 'My Tasks'

@@ -1,0 +1,25 @@
+extends: existence
+level: suggestion
+message: "Unexplained label: '%s' - may need clarification for first-time users."
+ignorecase: true
+
+exceptions:
+  - '\w+\s*[-–—:]\s+\w{4,}'
+  - '\w+\s*\([^)]{8,}\)'
+  - "(?:API|SDK|CLI|JSON|YAML|HTTP|REST|GraphQL) (?:reference|documentation|docs|guide)"
+  - "^(?:Settings|Profile|Dashboard|Home|Search|Help|About|Contact|Billing|Account|Notifications|Password|Email|Name|Language|Theme|Privacy|Security|Preferences)$"
+  - "^[A-Z_]{3,}$"
+
+tokens:
+  - 'Compute units'
+  - 'Platform credits'
+  - 'Standby mode'
+  - 'Metamorph'
+  - 'Webhook dispatch'
+  - 'Resurrection'
+  - 'Idempotency key'
+  - 'Webhook payload'
+  - 'Rate limiting'
+  - 'Backoff strategy'
+  - 'Cold start'
+  - 'Dead letter'

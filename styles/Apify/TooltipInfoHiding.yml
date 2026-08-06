@@ -1,0 +1,14 @@
+extends: existence
+level: suggestion
+message: "Info described as hover-only: '%s'. If essential, show inline - tooltips exclude touch, voice, and keyboard users."
+
+tokens:
+  - 'hover over .+ to see'
+  - 'hover to see'
+  - 'hover to view'
+  - 'hover for more'
+  - 'hover for details'
+  - 'shown on hover'
+  - 'visible on hover'
+  - 'appears on hover'
+  - 'displayed on hover'

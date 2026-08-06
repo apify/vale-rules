@@ -1,0 +1,41 @@
+extends: existence
+level: suggestion
+message: "Gerund subject: consider a noun phrase instead of '%s'."
+ignorecase: false
+exceptions:
+  - '(?:Canceling|Deleting|Removing|Changing|Resetting)\s+(?:your|this)\s+.{1,60}(?:means|will|could|may|might|can[..\u2019]t|cannot|isn[..\u2019]t)'
+  - '(?:Loading|Running|Getting|Fetching|Verifying|Generating|Processing|Preparing|Saving|Uploading|Downloading)\s+the\s+\w'
+
+tokens:
+  - 'Lowering your'
+  - 'Raising your'
+  - 'Changing your'
+  - 'Updating your'
+  - 'Enabling your'
+  - 'Disabling your'
+  - 'Removing your'
+  - 'Deleting your'
+  - 'Canceling your'
+  - 'Pausing your'
+  - 'Resuming your'
+  - 'Resetting your'
+  - 'Revoking your'
+  - 'Linking your'
+  - 'Unlinking your'
+  - 'Connecting your'
+  - 'Disconnecting your'
+  - 'Verifying your'
+  - 'Confirming your'
+  - 'Submitting your'
+  - 'Enabling this'
+  - 'Disabling this'
+  - 'Removing this'
+  - 'Deleting this'
+  - 'Canceling this'
+  - 'Resetting this'
+
+  - 'Changing the'
+  - 'Updating the'
+  - 'Removing the'
+  - 'Deleting the'
+  - 'Renaming the'

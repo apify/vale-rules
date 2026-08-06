@@ -1,0 +1,21 @@
+extends: existence
+level: suggestion
+message: "Assumed emotion: '%s'. State what happened - let the user decide how they feel about it."
+
+exceptions:
+  - "marketing"
+  - "landing"
+  - "promo"
+  - "onboarding"
+  - "welcome"
+  - "firstRun"
+
+tokens:
+  - '[Yy]ou.ll (?:love|enjoy|appreciate|be (?:happy|pleased|excited|thrilled|delighted))'
+  - '[Yy]ou.re going to love'
+  - '[Yy]ou.re going to enjoy'
+  - '[Ww]e.re (?:excited|thrilled|delighted|pleased|happy) to (?:announce|share|introduce|let you know)'
+  - '[Ee]xciting (?:news|update|announcement|feature)'
+  - '^Good news[!:]'
+  - '^Great news[!:]'
+  - '[Yy]ou(?:.ve| have) been (?:waiting|asking|requesting) for'

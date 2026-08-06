@@ -1,0 +1,6 @@
+extends: existence
+message: "Exact external limit '%s' may become outdated. Use approximate language: 'typically a few hundred' not '~400'."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:Google|Facebook|Instagram|TikTok|LinkedIn)\b.{0,30}~?\d{2,}'

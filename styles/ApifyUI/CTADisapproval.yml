@@ -1,0 +1,26 @@
+extends: substitution
+level: suggestion
+message: "CTA disapproval language: '%s' instead of '%s'. Don't signal system disapproval or add redundant preambles."
+
+swap:
+  'Proceed anyway': 'Proceed'
+  'proceed anyway': 'proceed'
+  'Continue anyway': 'Continue'
+  'continue anyway': 'continue'
+  'Submit anyway': 'Submit'
+  'submit anyway': 'submit'
+  'Save anyway': 'Save'
+  'save anyway': 'save'
+  'Delete anyway': 'Delete'
+  'delete anyway': 'delete'
+  'Send anyway': 'Send'
+  'send anyway': 'send'
+  'Publish anyway': 'Publish'
+  'publish anyway': 'publish'
+  'Yes, delete': 'Delete'
+  'Yes, remove': 'Remove'
+  'Yes, cancel': 'Cancel'
+  'Yes, disable': 'Disable'
+  'Yes, disconnect': 'Disconnect'
+  'Yes, proceed': 'Proceed'
+  'Yes, continue': 'Continue'

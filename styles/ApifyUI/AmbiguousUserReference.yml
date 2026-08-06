@@ -1,0 +1,16 @@
+extends: existence
+level: suggestion
+message: "Ambiguous reference: '%s' - if both an admin and a managed user are in context, clarify which one ('this user' vs 'you')."
+ignorecase: true
+
+exceptions:
+  - 'the user.s \w+'
+  - "^(?!.*(?:admin|manage|organization|org member|billing|settings))"
+
+tokens:
+  - 'the user (?:needs|has|must|should|can|will|is|was)'
+  - 'treats the user as'
+  - 'for the user'
+  - 'assign the user'
+  - 'notify the user'
+  - 'the user.s (?:plan|account|subscription|role|access|permission)'

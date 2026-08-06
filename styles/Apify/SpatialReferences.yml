@@ -1,0 +1,33 @@
+extends: existence
+level: suggestion
+message: "Spatial reference: '%s' - name the element instead of pointing to its position."
+
+exceptions:
+  - '(?:below|above) (?:the )?\d'
+  - "(?:below|above) (?:the )?(?:limit|threshold|minimum|maximum|average|target)"
+  - "the right (?:approach|way|thing|choice|decision|answer|format|value|option)"
+  - "that.s right"
+  - "(?:time|space|credits?|days?|hours?|minutes?|items?|attempts?) left"
+
+tokens:
+  - 'see below'
+  - 'shown below'
+  - 'as shown above'
+  - 'see above'
+  - 'the image above'
+  - 'the image below'
+  - 'the button on the right'
+  - 'the button on the left'
+  - 'on the right side'
+  - 'on the left side'
+  - 'the panel on the right'
+  - 'the panel on the left'
+  - 'click the icon below'
+  - 'the link above'
+  - 'the link below'
+  - 'in the section below'
+  - 'in the section above'
+  - 'the field below'
+  - 'the field above'
+  - 'the table below'
+  - 'the table above'

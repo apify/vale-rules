@@ -1,0 +1,14 @@
+# Detection only: flags 1 pattern without suggesting replacements.
+extends: existence
+level: suggestion
+message: "Backloaded user concern: '%s' => '%s'. Communicate state, not requirement."
+
+tokens:
+  - '(?:An?|The) \w+ (?:needs|has) to \w+ your'
+
+action:
+  name: edit
+  params:
+    - regex
+    - '(?:An?|The) (\w+) (?:needs|has) to (\w+) your (.+)'
+    - 'Waiting for $1 to $2 your $3'

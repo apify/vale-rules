@@ -1,0 +1,23 @@
+extends: substitution
+level: suggestion
+message: "Surface-specific phrasing: '%s' instead of '%s'."
+
+scope: sentence
+
+swap:
+  'your Apify subscription': 'your subscription'
+  'your Apify plan': 'your plan'
+  'an Apify subscription': 'a subscription'
+  'a paid Apify plan': 'a paid plan'
+
+  'customers on higher plans': 'users on higher plans'
+  'customers on subscription plans': 'users on subscription plans'
+  'for customers who': 'for users who'
+  'for customers with': 'for users with'
+  'for customers on': 'for users on'
+
+exceptions:
+  - "your Apify account"
+  - 'customer\s+(?:support|service|success|care)'
+  - "(?:subscribe|keep using|start using).{0,40}paid Apify plan"
+  - "get an Apify subscription"

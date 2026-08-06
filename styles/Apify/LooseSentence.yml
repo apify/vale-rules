@@ -1,0 +1,7 @@
+extends: existence
+level: suggestion
+message: "Loose sentence: '%s' - consider splitting at the conjunction for clarity (Strunk #14)."
+ignorecase: true
+
+tokens:
+  - '(?:[^.!?]{40,}),\s+(?:and|but|so)\s+(?:[^.!?]{20,}),\s+(?:and|but|so)\s+[^.!?]{15,}'

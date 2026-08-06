@@ -1,0 +1,12 @@
+extends: existence
+level: suggestion
+message: "Instructions bloat: '%s' - if the UI needs instructions, consider whether the design could be clearer."
+
+tokens:
+  - 'First, .{10,}Then,'
+  - 'Step 1'
+  - 'Step 2'
+  - 'Follow these steps'
+  - 'Here.s how to'
+  - 'To do this, first'
+  - 'You will need to .{10,}and then'

@@ -1,0 +1,6 @@
+extends: existence
+message: "Internal class name '%s' in README prose. Reframe as what the user gets, not how the code works."
+level: warning
+scope: paragraph
+tokens:
+  - '\b(?:RequestQueue|AutoscaledPool|BasicCrawler|PlaywrightCrawler|CheerioCrawler|launchContext)\b'

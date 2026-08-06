@@ -1,0 +1,13 @@
+extends: existence
+level: suggestion
+message: "Adjective-first heading '%s'. Lead with what it does, not how it feels. 'Set up in 3 steps' > 'Easy Setup'. (Ogilvy: all facts, no adjectives.)"
+scope: heading
+ignorecase: true
+
+tokens:
+  - '^(?:Easy|Simple|Fast|Quick|Smart|Powerful|Advanced|Robust|Flexible|Seamless|Effortless|Automated|Automatic|Instant|Complete|Full|Comprehensive|Custom|Intelligent)\s+\w+'
+
+exceptions:
+  - '^(?:Easy|Simple|Fast|Quick)\s+\d'
+  - '^(?:Complete|Full)\s+(?:guide|reference|list|overview|example|tutorial)'
+  - '^Custom\s+[A-Z][a-z]'

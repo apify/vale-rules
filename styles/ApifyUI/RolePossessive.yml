@@ -1,0 +1,24 @@
+extends: existence
+level: suggestion
+message: "Consider restructuring possessive: '%s' - role possessives can often become noun compounds."
+ignorecase: false
+
+exceptions:
+  - '\byour\b'
+  - '\bActor.s\b'
+  - '\bStore.s\b'
+  - "users"
+  - "customers"
+  - "Actors"
+
+tokens:
+  - 'owner.s account'
+  - 'owner.s email'
+  - 'owner.s runs'
+  - 'user.s account'
+  - 'user.s billing'
+  - 'user.s custom'
+  - 'developer.s account'
+  - 'developer.s identity'
+  - 'organization.s owner'
+  - 'schedule.s settings'

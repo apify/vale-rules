@@ -1,0 +1,35 @@
+extends: existence
+level: suggestion
+message: "Hidden outcome: '%s' - the user may not know what happens after acting."
+ignorecase: true
+
+exceptions:
+  - '[Cc]ontinue to \w+'
+  - '[Cc]ontinue with \w+'
+  - '[Ss]ubmit (?:your|the|this|a|an) \w+'
+  - '[Cc]reate (?:your|the|this|a|an|new) \w+'
+  - "[Cc]reate (?:Actor|schedule|task|integration|webhook|token|key|build|dataset|storage)"
+  - '[Nn]ext[:\s]+\w+'
+  - '[Ss]tep \d+ of \d+'
+  - "(?:wizard|step|progress|stage).*[Nn]ext"
+  - '[Cc]ontinue \w+ing\b'
+  - "[Bb]y clicking [Cc]ontinue"
+  - "[Ll]et.s continue"
+  - "[Dd]o you want to continue"
+  - "want to continue"
+  - "to continue"
+  - "(?:doesn.t|does not|won.t|will not|can.t|cannot) accept"
+  - "accept (?:input|connections|requests|data)"
+  - '[Aa]ccept (?:the|your|this|our|all) \w+'
+  - '\w{4,}\s+(?:Continue|Submit|Next|Proceed|Confirm|Accept|Done|Finish)\b'
+  - '(?:\S+\s+){6,}'
+
+tokens:
+  - 'Continue'
+  - 'Submit'
+  - 'Next'
+  - 'Proceed'
+  - 'Confirm'
+  - 'Accept'
+  - 'Done'
+  - 'Finish'

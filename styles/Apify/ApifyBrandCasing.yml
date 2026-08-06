@@ -1,0 +1,8 @@
+extends: existence
+level: suggestion
+message: "Use 'Apify' (capitalized) in prose. Lowercase 'apify' is only correct in package names, slugs, and URLs."
+scope: sentence
+vocab: false
+
+tokens:
+  - '\bapify\b(?![-_/.])'
