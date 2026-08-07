@@ -1,4 +1,4 @@
 {
   "feed": "https://github.com/apify/vale-rules/releases.atom",
-  "vale_version": ">=2.0.0"
+  "vale_version": ">=3.0.0"
 }
