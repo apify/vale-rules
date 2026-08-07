@@ -1,6 +1,5 @@
 extends: existence
 message: "Vague quantity '%s'. Use a specific number, percentage, or measurable claim."
-link: "docs/guides/readme-writing-guide.md"
 level: suggestion
 scope: paragraph
 tokens:

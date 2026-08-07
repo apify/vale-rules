@@ -1,6 +1,5 @@
 extends: existence
 message: "Generic positioning: '%s'. Lead with specific data types and source, not what the tool 'helps you' do."
-link: "docs/guides/readme-writing-guide.md"
 level: warning
 scope: paragraph
 tokens:
