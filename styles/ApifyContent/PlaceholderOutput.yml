@@ -1,7 +1,9 @@
 extends: existence
 message: "Placeholder value '%s' in code example. Use realistic data from an actual Actor run."
-link: "docs/guides/readme-writing-guide.md"
 level: suggestion
 scope: raw
+# Tokens are quote-delimited, so Vale's default \b(?:...)\b wrapping can never
+# match them.
+nonword: true
 tokens:
   - '"(?:value\d*|example_?\w*|your_\w+|placeholder|TODO|TBD|xxx|REPLACE_ME|foo|bar)"'
