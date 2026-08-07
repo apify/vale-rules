@@ -8,18 +8,18 @@ the styles it needs in its own `.vale.ini`.
 
 | Style | Rules | Intended scope |
 |---|---:|---|
-| `Apify` | 69 | Shared brand, terminology, US English, accessibility, grammar, punctuation, and voice |
+| `Apify` | 68 | Shared brand, terminology, US English, accessibility, grammar, punctuation, and voice |
 | `ApifyDocs` | 4 | Documentation conventions: generated H1s, titled admonitions, heading form, and factual language |
 | `ApifyUI` | 66 | Console and product microcopy: controls, errors, dialogs, empty states, notifications, and recovery paths |
-| `ApifyContent` | 45 | Blog, marketing, Store, and Actor editorial copy: positioning, claims, feature language, and content structure |
+| `ApifyContent` | 46 | Blog, marketing, Store, and Actor editorial copy: positioning, claims, feature language, and content structure |
 
 Each rule exists in exactly one style. Team configurations compose the shared
 `Apify` style with an audience style, so common rules remain single-sourced.
 
 ## Requirements
 
-Vale 2.0.0 or later, as declared in each style's `meta.json`. The styles are
-developed against Vale 3.x.
+Vale 3.0.0 or later, as declared in each style's `meta.json`. Earlier versions
+are not supported.
 
 ## Install
 
@@ -46,22 +46,19 @@ vale sync
 `StylesPath`. Run it once after adding the package, and again whenever you change
 the `Packages` URL or want to adopt a newer release.
 
-Linting never fetches a package on its own. Until `vale sync` has run, Vale exits
-with `E201` because the named styles are not present, so run `vale sync` as a
-step before Vale in CI.
+Linting never fetches packages. Until `vale sync` has run, Vale exits with `E201`
+because the named styles are missing, so run it as a CI step before Vale.
 
 Add your `StylesPath` directory to your repository's `.gitignore` rather than
-committing the styles Vale downloads into it. Committing them creates a private
-copy of the rules in every consumer, which is
-what this package exists to avoid: the copies drift, and the release tag stops
-describing what a repository actually enforces. Pin a tag for reproducibility
-instead, and cache `StylesPath` in CI if the download is worth avoiding.
-[`vale-action`](https://github.com/vale-cli/vale-action) runs `vale sync` by
-default and documents cache restoration as the way to skip it.
+committing the styles Vale downloads into it. Committed copies drift from the
+release, one per consumer, and the tag stops describing what a repository
+actually enforces. Pin a tag for reproducibility instead, and cache `StylesPath`
+in CI if the download is worth avoiding.
+[`vale-action`](https://github.com/vale-cli/vale-action) runs
+`vale sync` by default and documents cache restoration as the way to skip it.
 
 Installing the package makes all four styles available; `BasedOnStyles` decides
-which of them actually run. A repository that installs the package still lints
-only against the styles it names.
+which of them run.
 
 `StylesPath` resolves relative to the `.vale.ini` that declares it, not to the
 directory you invoke Vale from.
@@ -69,7 +66,7 @@ directory you invoke Vale from.
 ### Pin a version
 
 The `releases/latest` URL follows every new release, so rules can change under a
-repository without any local edit. To control when that happens, point at a tag:
+repository with no local edit. Point at a tag instead:
 
 ```ini
 Packages = https://github.com/apify/vale-rules/releases/download/v1.0.0/ApifyStyleGuide.zip
@@ -149,48 +146,21 @@ its style directory plus its filename without the `.yml`.
 ## Releases
 
 Merging a pull request does not publish anything. Changes accumulate on `main`
-across as many pull requests as a release needs, and consumers see nothing until
-a tag is pushed.
+until a maintainer pushes a `v*` tag, which is the only thing that builds and
+publishes `ApifyStyleGuide.zip`.
 
-Publication is triggered by the tag alone. Pushing a tag whose name begins with
-`v` runs `.github/workflows/release.yaml`, which copies the four style
-directories and `LICENSE` into `ApifyStyleGuide.zip`, creates the GitHub Release,
-and attaches the archive with generated release notes:
-
-```bash
-git switch main
-git pull --ff-only
-git tag -a v1.0.0 -m "v1.0.0"
-git push origin v1.0.0
-```
-
-Nothing else publishes, and no other branch or event does. The workflow treats
-the tag as approval: it does not re-run consumer validation, so a tag should only
-be pushed against a commit already accepted in a consumer repository.
+Consumers on `releases/latest` pick a release up on their next `vale sync`.
+Consumers pinned to a tag are unaffected until they bump it.
 
 Version numbers follow the [versioning
 policy](./CONTRIBUTING.md#versioning) — in short, new `error` rules, severity
 promotions, and renamed or moved rules are breaking, because they can fail a
 build or invalidate an existing override.
 
-Consumers on `releases/latest` pick a release up on their next `vale sync`.
-Consumers pinned to a tag are unaffected until they bump it.
-
-### Validation before a release
-
-This repository runs no automated checks. The only workflow is the release, and
-it publishes whatever the tag points at. Nothing verifies that a rule is valid
-before it ships, so validation is entirely a human step.
-
-Validate in a real consumer: build the archive, install it there, run that
-repository's normal local and CI Vale scopes, and review new findings for false
-positives. `apify-docs` is the initial acceptance consumer. See the [release
-process](./CONTRIBUTING.md#release-process) for the full checklist.
-
-Weigh that step accordingly. A rule can be valid YAML and still be invalid to
-Vale, and Vale responds by refusing to load the styles at all rather than skipping
-the rule, so a single bad regex breaks linting for every consumer of the release.
-The consumer run is where that surfaces.
+This repository runs no automated checks, so every release is validated by hand
+in a real consumer before the tag is pushed; `apify-docs` is the initial
+acceptance consumer. See the [release process](./CONTRIBUTING.md#release-process)
+for the checklist and the tagging commands.
 
 ## Contributing
 

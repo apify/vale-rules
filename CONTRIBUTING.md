@@ -67,8 +67,7 @@ Two failures are invisible until that point, so check them by eye:
 - A rule can be valid YAML and still be invalid to Vale — an unknown `extends`
   value, or a regex that does not compile. Vale answers by refusing to load the
   styles at all, so one bad rule breaks linting everywhere rather than disabling
-  itself. In the consumer, this appears as `E201` and a non-zero exit rather than
-  as a rule that quietly misbehaves.
+  itself. In the consumer, this appears as `E201` and a non-zero exit.
 - Rule filenames must be unique across all four styles. The release archive puts
   them in a single `StylesPath`, so a name used twice shadows a rule silently.
 
@@ -95,12 +94,12 @@ To publish a release:
    git push origin v1.0.0
    ```
 
-6. Confirm that the release workflow created the GitHub Release and attached
-   `ApifyStyleGuide.zip`.
+6. Confirm that the release workflow created the GitHub Release, generated its
+   notes, and attached `ApifyStyleGuide.zip`.
 
-Only a pushed tag whose name begins with `v` triggers publication. The release
-workflow trusts the tag as approval to publish; it does not repeat consumer
-acceptance.
+Only a pushed tag whose name begins with `v` triggers
+`.github/workflows/release.yaml`. The release workflow trusts the tag as approval
+to publish; it does not repeat consumer acceptance.
 
 ## Release layout
 
@@ -108,6 +107,7 @@ The release workflow creates one `ApifyStyleGuide.zip` archive:
 
 ```text
 ApifyStyleGuide/
+├── LICENSE
 └── styles/
     ├── Apify/
     ├── ApifyDocs/
