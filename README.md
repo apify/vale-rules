@@ -54,8 +54,6 @@ committing the styles Vale downloads into it. Committed copies drift from the
 release, one per consumer, and the tag stops describing what a repository
 actually enforces. Pin a tag for reproducibility instead, and cache `StylesPath`
 in CI if the download is worth avoiding.
-[`vale-action`](https://github.com/vale-cli/vale-action) runs
-`vale sync` by default and documents cache restoration as the way to skip it.
 
 Installing the package makes all four styles available; `BasedOnStyles` decides
 which of them run.
@@ -74,6 +72,59 @@ Packages = https://github.com/apify/vale-rules/releases/download/v1.0.0/ApifySty
 
 Pinning is the better default for CI, where an unannounced new rule can turn a
 green build red. Bump the tag deliberately and re-run `vale sync`.
+
+### Editors
+
+Install the Vale CLI and the [Vale VS Code
+extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server)
+(`errata-ai.vale-server`). The extension reads the `.vale.ini` in the workspace,
+so it needs no configuration once `vale sync` has run. Its repository is archived
+and it last shipped in 2022, but it remains the standard editor integration.
+
+Two settings are worth knowing:
+
+```json
+{
+  "vale.valeCLI.path": "/opt/homebrew/bin/vale",
+  "vale.valeCLI.minAlertLevel": "suggestion"
+}
+```
+
+Set `vale.valeCLI.path` only when Vale is not on the extension's `PATH`.
+`minAlertLevel` defaults to `inherited`, which follows `.vale.ini`; setting it to
+`suggestion` surfaces every rule while writing without loosening the level CI
+enforces.
+
+### Continuous integration
+
+[`vale-action`](https://github.com/vale-cli/vale-action) installs Vale, runs
+`vale sync`, and reports findings as pull request annotations:
+
+```yaml
+name: Vale
+on: [pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: vale-cli/vale-action@v3
+        with:
+          fail_on_error: true
+          min_alert_level: error
+```
+
+`sync` defaults to `true`, so the package downloads on every run. To skip it,
+restore `StylesPath` from a cache and set `sync: false`.
+
+`filter_mode` defaults to `added`, which reports only on lines the pull request
+changed. Use `file` to report every finding in a file the pull request touches,
+which retires existing violations faster but can fail a build on findings the
+author did not introduce. `nofilter` applies no filtering at all and reports the
+whole repository, so a first adoption surfaces the entire existing backlog.
+
+Pin the action to `@v3`. The `reviewdog` branch tracks whatever lands there next.
 
 ## Team configurations
 
@@ -146,7 +197,7 @@ its style directory plus its filename without the `.yml`.
 ## Releases
 
 Merging a pull request does not publish anything. Changes accumulate on `main`
-until a maintainer pushes a `v*` tag, which is the only thing that builds and
+until a maintainer cuts a release, which is the only thing that builds and
 publishes `ApifyStyleGuide.zip`.
 
 Consumers on `releases/latest` pick a release up on their next `vale sync`.
@@ -157,9 +208,9 @@ policy](./CONTRIBUTING.md#versioning) — in short, new `error` rules, severity
 promotions, and renamed or moved rules are breaking, because they can fail a
 build or invalidate an existing override.
 
-This repository runs no automated checks, so every release is validated by hand
-in a real consumer before the tag is pushed; `apify-docs` is the initial
-acceptance consumer. See the [release process](./CONTRIBUTING.md#release-process)
+Nothing here lints the rules, so every release is validated by hand in a real
+consumer before the tag is pushed; `apify-docs` is the initial acceptance
+consumer. See the [release process](./CONTRIBUTING.md#release-process)
 for the checklist and the tagging commands.
 
 ## Contributing
@@ -167,7 +218,8 @@ for the checklist and the tagging commands.
 Rules live in exactly one style, and a rule's filename is part of its public name,
 so renaming one is a breaking change for anyone overriding it. Read
 [CONTRIBUTING.md](./CONTRIBUTING.md) before adding or moving a rule; it covers
-rule ownership, severity, versioning, validation, and the release checklist.
+rule ownership, severity, versioning, commit format, validation, and the release
+checklist.
 
 ## License
 

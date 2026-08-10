@@ -51,11 +51,40 @@ audience profile by changing its severity.
 Moving a rule changes its fully qualified name (for example,
 `ApifyUI.VagueErrors`), so consumers may need to update overrides.
 
+## Commits
+
+Commit subjects follow [Conventional Commits](https://www.conventionalcommits.org):
+`type: lowercase summary`, optionally scoped to a style, as in
+`fix(ApifyUI): stop matching inside code spans`. The types in use are `feat`,
+`fix`, `docs`, `chore`, `ci`, and `refactor`.
+
+The type carries the release class from the versioning policy above, so the next
+version is read off the log rather than reconstructed from diffs:
+
+- `fix:` — a patch change, as long as it does not expand what a rule matches. A
+  correction that catches more than before is minor, or major if it now errors.
+- `feat:` — a minor change.
+- `feat!:`, `fix!:`, or a `BREAKING CHANGE:` footer — a major change.
+- `docs:`, `chore:`, `ci:`, `refactor:` — no release of their own; they ship with
+  the next `fix` or `feat`.
+
+Mark everything the Versioning section calls major as breaking, not only new
+rules. Promoting a severity or renaming a rule is a one-line edit that still
+breaks consumers, and easy to miss at release time.
+
+Nothing enforces this. No check lints commit subjects or pull request titles, so
+the log is only as readable as contributors make it.
+
+Pull request titles follow the same format. The release workflow generates its
+notes from merged pull requests, so those titles are what consumers read.
+
 ## Validation
 
-There is no CI, and this repository carries no Vale configuration of its own. The
-only workflow is the release, and it publishes whatever the tag points at without
-inspecting it. Rules are therefore validated in a real consumer, not here.
+Nothing here lints the rules. An organization ruleset requires Apify's pull
+request toolkit on every pull request, but it checks issue links and labels, not
+rule content, and this repository carries no Vale configuration of its own. The
+release workflow publishes whatever the tag points at without inspecting the
+rules. They are therefore validated in a real consumer, not here.
 
 Build the package, install it in the affected consumer repository, and run that
 repository's existing local and CI Vale scopes. Review new findings for false
@@ -85,21 +114,40 @@ To publish a release:
 3. Run the consumer's normal local and CI Vale scopes and review new findings
    for false positives.
 4. Choose the next version using the versioning policy above.
-5. Tag the accepted commit on `main` and push the tag:
-
-   ```bash
-   git switch main
-   git pull --ff-only
-   git tag -a v1.0.0 -m "v1.0.0"
-   git push origin v1.0.0
-   ```
-
+5. Tag the accepted commit on `main`, either from the Actions tab or locally.
 6. Confirm that the release workflow created the GitHub Release, generated its
    notes, and attached `ApifyStyleGuide.zip`.
 
-Only a pushed tag whose name begins with `v` triggers
-`.github/workflows/release.yaml`. The release workflow trusts the tag as approval
-to publish; it does not repeat consumer acceptance.
+Both routes run `.github/workflows/release.yaml`, and nothing else publishes.
+Neither re-runs consumer acceptance: the tag is treated as approval, so step 3 is
+the only thing standing between a bad rule and a release.
+
+### Release from the Actions tab (recommended)
+
+Open [Run
+workflow](https://github.com/apify/vale-rules/actions/workflows/release.yaml),
+enter a version such as `v1.0.0`, and run it. The workflow refuses to continue
+unless the run is on `main`, the version reads `vX.Y.Z`, and the tag does not
+already exist. It builds the archive first and tags last, so a failed build
+leaves no tag behind.
+
+This route releases the current tip of `main`, not the commit you accepted in
+step 3. Confirm nothing has landed since, or release from a clone and name the
+commit.
+
+### Release from a local clone
+
+```bash
+git switch main
+git pull --ff-only
+git tag -a v1.0.0 -m "v1.0.0"
+git push origin v1.0.0
+```
+
+Pass a commit to `git tag` to release something other than the tip. A tag must
+begin with `v` or the workflow ignores it entirely, with no run and no error, and
+nothing validates the rest of the name — `v1.0.O` publishes a release under a
+nonsense version.
 
 ## Release layout
 
