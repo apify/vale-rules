@@ -3,6 +3,12 @@ name: Release
 on:
   push:
     tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to release, for example v1.0.0'
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -11,7 +17,46 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
+        with:
+          # The duplicate-tag check below needs the full tag list.
+          fetch-depth: 0
+
+      # A pushed tag carries its own approval; a dispatch does not, so the input
+      # is checked before anything is published. The tag itself is created after
+      # the build, so a failed build cannot leave a tag with no release behind.
+      - name: Validate input
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          if [ "$GITHUB_REF_NAME" != "main" ]; then
+            echo "::error::Release from main; this run is on '$GITHUB_REF_NAME'."
+            exit 1
+          fi
+          if [[ ! "$VERSION" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "::error::Version must look like v1.0.0, got '$VERSION'."
+            exit 1
+          fi
+          if git rev-parse "refs/tags/$VERSION" >/dev/null 2>&1 ||
+             git ls-remote --exit-code --tags origin "refs/tags/$VERSION" >/dev/null 2>&1; then
+            echo "::error::Tag $VERSION already exists."
+            exit 1
+          fi
+
+      - name: Resolve the version
+        id: version
+        env:
+          EVENT: ${{ github.event_name }}
+          INPUT_VERSION: ${{ inputs.version }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT" = 'workflow_dispatch' ]; then
+            echo "tag=$INPUT_VERSION" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=${GITHUB_REF#refs/tags/}" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Build combined package
         run: |
@@ -21,7 +66,21 @@ jobs:
           cd dist
           zip -r ../ApifyStyleGuide.zip ApifyStyleGuide -x '*.DS_Store'
 
+      # Last mutation before publishing. Pushing this tag does not re-trigger the
+      # workflow: GITHUB_TOKEN pushes do not fire events.
+      - name: Create and push the tag
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          VERSION: ${{ steps.version.outputs.tag }}
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git tag -a "$VERSION" -m "$VERSION"
+          git push origin "refs/tags/$VERSION"
+
       - uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.version.outputs.tag }}
           files: ApifyStyleGuide.zip
           generate_release_notes: true
