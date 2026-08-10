@@ -75,14 +75,29 @@ breaks consumers, and easy to miss at release time.
 Nothing enforces this. No check lints commit subjects or pull request titles, so
 the log is only as readable as contributors make it.
 
-Pull request titles follow the same format. The release workflow generates its
-notes from merged pull requests, so those titles are what consumers read.
+Pull request titles follow the same format, and carry further than the commits
+beneath them. Merges are squashed, so the title becomes the subject on `main`
+whenever a branch holds more than one commit. The release workflow also generates
+its notes from merged pull requests, so the same title is what consumers read.
+
+## Pull requests
+
+`main` is protected, and administrators are not exempt.
+
+- Branch from `main` and open a pull request. Direct pushes and force pushes to
+  `main` are refused, as is deleting it.
+- One approval is required, and pushing to the branch dismisses an approval it
+  already has.
+- An organization ruleset additionally requires Apify's pull request toolkit: a
+  pull request must link an issue or epic or carry the `adhoc` label, and either it
+  or the linked issue must be estimated.
+- `main` keeps a linear history, and squash is the only merge method. Rebase a
+  branch that has fallen behind; GitHub offers no merge-commit update.
 
 ## Validation
 
-Nothing here lints the rules. An organization ruleset requires Apify's pull
-request toolkit on every pull request, but it checks issue links and labels, not
-rule content, and this repository carries no Vale configuration of its own. The
+Nothing here lints the rules. The pull request requirements above cover process,
+not rule content, and this repository carries no Vale configuration of its own. The
 release workflow publishes whatever the tag points at without inspecting the
 rules. They are therefore validated in a real consumer, not here.
 
@@ -91,7 +106,7 @@ repository's existing local and CI Vale scopes. Review new findings for false
 positives before release; a rule matching its own invented example is not an
 acceptance criterion, and there is no synthetic fixture suite.
 
-Two failures are invisible until that point, so check them by eye:
+Two failures are invisible here, and no tool catches either, so check them by eye:
 
 - A rule can be valid YAML and still be invalid to Vale — an unknown `extends`
   value, or a regex that does not compile. Vale answers by refusing to load the
@@ -148,6 +163,14 @@ Pass a commit to `git tag` to release something other than the tip. A tag must
 begin with `v` or the workflow ignores it entirely, with no run and no error, and
 nothing validates the rest of the name — `v1.0.O` publishes a release under a
 nonsense version.
+
+### Tag immutability
+
+Treat a pushed release tag as immutable, and fix a bad release forward under a new
+version. Moving or deleting one changes what a version means after consumers have
+already resolved it: a repository pinned to `v1.0.0` would get different rules from
+the same URL, breaking the guarantee pinning exists to provide. Nothing blocks this
+yet — the tag ruleset that will is still in evaluate mode.
 
 ## Release layout
 

@@ -23,8 +23,8 @@ are not supported.
 
 ## Install
 
-Add the package to your own `.vale.ini`, name the styles you want, then download
-the archive:
+Add the package to your `.vale.ini`, name the styles you want, then download the
+archive:
 
 ```ini
 StylesPath = .github/styles
@@ -46,6 +46,12 @@ vale sync
 `StylesPath`. Run it once after adding the package, and again whenever you change
 the `Packages` URL or want to adopt a newer release.
 
+Installing the package makes all four styles available; `BasedOnStyles` decides
+which of them run.
+
+`StylesPath` resolves relative to the `.vale.ini` that declares it, not to the
+directory you invoke Vale from.
+
 Linting never fetches packages. Until `vale sync` has run, Vale exits with `E201`
 because the named styles are missing, so run it as a CI step before Vale.
 
@@ -54,12 +60,6 @@ committing the styles Vale downloads into it. Committed copies drift from the
 release, one per consumer, and the tag stops describing what a repository
 actually enforces. Pin a tag for reproducibility instead, and cache `StylesPath`
 in CI if the download is worth avoiding.
-
-Installing the package makes all four styles available; `BasedOnStyles` decides
-which of them run.
-
-`StylesPath` resolves relative to the `.vale.ini` that declares it, not to the
-directory you invoke Vale from.
 
 ### Pin a version
 
@@ -184,15 +184,13 @@ ApifyDocs.GerundHeading = NO
 Apify.ClickHere = error
 ```
 
-Use `suggestion` in editors to expose all guidance. Teams can use `warning` or
-`error` for a quieter command-line run and override individual rules as their
-adoption matures.
+Teams can use `warning` or `error` for a command-line run quieter than the
+editor's, and override individual rules as their adoption matures.
 
 An override must name the style that owns the rule. Vale ignores an override that
 names a rule it cannot find, without reporting anything, so `Apify.GerundHeading`
-silently does nothing while `ApifyDocs.GerundHeading` disables the rule. The
-styles table above lists which style owns what; a rule's fully qualified name is
-its style directory plus its filename without the `.yml`.
+silently does nothing while `ApifyDocs.GerundHeading` disables the rule. A rule's
+fully qualified name is its style directory plus its filename without the `.yml`.
 
 ## Releases
 
@@ -218,8 +216,8 @@ for the checklist and the tagging commands.
 Rules live in exactly one style, and a rule's filename is part of its public name,
 so renaming one is a breaking change for anyone overriding it. Read
 [CONTRIBUTING.md](./CONTRIBUTING.md) before adding or moving a rule; it covers
-rule ownership, severity, versioning, commit format, validation, and the release
-checklist.
+rule ownership, severity, versioning, commit format, pull requests, validation,
+and the release checklist.
 
 ## License
 
