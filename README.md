@@ -176,6 +176,8 @@ BasedOnStyles = Apify, ApifyContent
 `MinAlertLevel` controls the lowest severity Vale reports; it does not select an
 audience.
 
+Use `suggestion` in editors to expose all enabled guidance.
+
 | Context | Recommended level |
 |---|---|
 | Editor | `suggestion` |
