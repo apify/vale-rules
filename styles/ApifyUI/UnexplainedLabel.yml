@@ -5,10 +5,14 @@ message: "Unexplained label: '%s' - may need clarification for first-time users.
 ignorecase: true
 
 exceptions:
+  # Term followed by inline explanation (dash, colon, parenthetical ≥8 chars)
   - '\w+\s*[-–—:]\s+\w{4,}'
   - '\w+\s*\([^)]{8,}\)'
+  # Developer-facing documentation context
   - "(?:API|SDK|CLI|JSON|YAML|HTTP|REST|GraphQL) (?:reference|documentation|docs|guide)"
+  # Universal UI labels (never jargon)
   - "^(?:Settings|Profile|Dashboard|Home|Search|Help|About|Contact|Billing|Account|Notifications|Password|Email|Name|Language|Theme|Privacy|Security|Preferences)$"
+  # Code/config identifiers
   - "^[A-Z_]{3,}$"
 
 tokens:

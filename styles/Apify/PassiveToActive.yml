@@ -2,24 +2,54 @@ extends: substitution
 level: suggestion
 message: "Prefer active voice: '%s' instead of '%s'."
 exceptions:
+  # Passive with explicit agent ("by X") - active rewrite would need to restructure
+  # the sentence around the agent. "can be started by agentic users" → "agentic users
+  # can start [it]" requires knowing the object, which the rule can't infer.
+  # Keep passive when "by [agent]" is present.
   - 'that will be \w+ by\b'
   - '[Cc]an be \w+ by\b'
+  # ── Semantic role guards for billing verbs (item #4)
+  # charge/pay/waive/credit/refund have specific agent roles in billing contexts.
+  # "you will no longer charge users" (developer is agent) ≠ "users won't be charged"
+  # (system is agent). Flipping active↔passive changes who does what.
+  # Guard: any billing verb in a "that will be" or "can be" construction near billing context.
   - '\b(?:charge|charged|pay|paid|waive|waived|credit|credited|refund|refunded|deduct|deducted|bill|billed)\b[\s\S]{0,40}?\b(?:billing|invoice|payout|payment|subscription|account|user|customer)\b'
   - '\b(?:billing|invoice|payout|payment|subscription|account|user|customer)\b[\s\S]{0,40}?\b(?:charge|charged|pay|paid|waive|waived|credit|credited|refund|refunded|deduct|deducted|bill|billed)\b'
+  # Subject-position: "The X that will be Y-ed will..." → "The X to Y will..." is ambiguous.
+  # Guard: when "that will be" is preceded by a noun phrase subject (The \w+ that will be).
   - 'The \w+ that will be'
+  # Plural nouns where "that will be [verb]ed" → "to [verb]" is grammatically wrong.
+  # "costs that will be incurred" → "costs to incur" reads as a purpose clause, not a relative clause.
   - '(costs|results|fees|charges|items|records|files|events|runs|builds|requests|changes|updates|errors)\s+that will be'
+  # "can be [verb]ed" with a noun subject before it needs full restructuring.
+  # These guards prevent the generic "can be X" swaps from firing mid-sentence
+  # after a noun subject, which would produce "Data you can download" (wrong).
+  # Pronoun subjects (This, It) are handled by explicit swaps above.
   - '\w+s can be \w+ed'
   - '(the|a|an|each|every|The|A|An) \w+ can be'
   - "(Data|Actor|Actors|Token|Build|Run|File|Storage|Schedule|Task) can be"
   - '(costs|results|fees|charges|items|records|files|events|runs|builds|requests|changes|updates|errors)\s+that will be'
+  # Pronoun subjects - "they/it can be X" → "they/it you can X" is ungrammatical.
+  # The pronoun is already the subject; inserting "you can" creates a double subject.
+  # Use character classes for first-letter case-insensitivity (guards compile with 'g' flag
+  # when they contain regex metacharacters, so 'gi' is not available).
   - '\b[Tt]hey can be \w+'
   - '\b[Ii]t can be \w+'
   - '\b[Hh]e can be \w+'
   - '\b[Ss]he can be \w+'
   - '\b[Ww]e can be \w+'
+  # Relative clause: "how it can be X" - "it" is the subject of the relative clause.
   - "[Hh]ow it can be"
+  # Prepositional/temporal clause: "before it can be X" - "it" is the subject.
   - "[Bb]efore it can be"
+  # Noun-phrase subjects not covered by the article guard above.
+  # "this API endpoint can be called" → "this API endpoint you can call" is ungrammatical.
   - '\b[Tt]his \w+ (endpoint|method|field|option|feature|setting|value|parameter|property|attribute) can be'
+  # Bare "This/That/These/Those can be" - demonstrative pronoun as subject.
+  # "This can be configured" → "This you can configure" is ungrammatical.
+  # Only guard when the demonstrative is immediately followed by "can be" (no noun between).
+  # NOTE: "That" only guarded in uppercase - lowercase "that can be" is a relative clause
+  # ("the option that can be changed" → "the option that you can change" is correct).
   - '\b[Tt]his can be'
   - '\bThat can be'
   - '\b[Tt]hese can be'

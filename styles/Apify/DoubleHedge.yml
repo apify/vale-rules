@@ -16,4 +16,6 @@ tokens:
   - 'may not be able to'
 
 exceptions:
+  # "you may not be able to" - sometimes states a real conditional restriction,
+  # not a hedge. "On the Free plan, you may not be able to use this feature."
   - '\b[Oo]n the\b[^.!?]*\bmay not be able to\b'

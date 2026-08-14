@@ -3,9 +3,13 @@ level: warning
 message: "Use correct number formatting: '%s' instead of '%s'."
 ignorecase: false
 exceptions:
+  # ISO dates YYYY-MM-DD
   - '\b\d{4}-\d{2}-\d{2}\b'
+  # ISO dates YYYY.MM.DD
   - '\b\d{4}\.\d{2}\.\d{2}\b'
+  # Timestamps T12:34:56
   - 'T\d{2}:\d{2}:\d{2}'
+  # Version numbers
   - 'v\d+\.\d+\.\d+'
 swap:
 

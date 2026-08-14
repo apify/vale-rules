@@ -5,7 +5,9 @@ scope: heading
 ignorecase: true
 
 exceptions:
+  # "brand new" - intensifier, not redundant
   - "brand new"
+  # "new version of" - "new" distinguishes from current version
   - "new version"
 
 tokens:

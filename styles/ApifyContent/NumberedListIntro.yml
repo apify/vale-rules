@@ -14,5 +14,6 @@ tokens:
   - '^The following \d+ '
 
 exceptions:
+  # Genuine technical constraints where the count matters
   - '^\d+ (?:required|mandatory|minimum|maximum)'
   - "^Three (?:attempts|retries|seconds|minutes)"

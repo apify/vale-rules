@@ -4,8 +4,10 @@ level: suggestion
 message: "Conditional preamble: '%s' - toggle already communicates the condition. State the on-behavior directly: what happens when this is enabled? (NN/G toggle research)"
 
 exceptions:
+  # Two-state descriptions - both conditions need naming (keep as-is)
   - 'If (?:enabled|checked|set|turned on|activated|selected)[\s\S]*If (?:disabled|unchecked|not set|turned off|deactivated)'
   - 'If (?:disabled|unchecked|not set|turned off|deactivated)[\s\S]*If (?:enabled|checked|set|turned on|activated|selected)'
+  # Schema key paths (API/developer context, not UI)
   - "schema"
   - "inputSchema"
   - '\.input\.'

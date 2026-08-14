@@ -56,4 +56,7 @@ swap:
   'session expired or been': 'session has expired or been'
 
 exceptions:
+  # "the Apify [Product] [noun]" - when followed by a noun (trial, limit, quota, plan),
+  # "the" modifies the whole noun phrase, not just the product name.
+  # "the Apify Proxy trial" = correct; "Apify Proxy trial" sounds like a product name.
   - "the Apify (?:Console|Store|Proxy) (?:trial|limit|quota|plan|account|settings|page|section|tab|docs|documentation)"

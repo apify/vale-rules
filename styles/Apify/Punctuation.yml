@@ -4,17 +4,27 @@ message: "Fix punctuation: '%s' instead of '%s'."
 ignorecase: false
 exceptions:
   - 'https?://\S+'
+  # HTML comments - don't turn <!-- into <! - 
   - '<!--[\s\S]*?-->'
+  # Markdown horizontal rules - don't turn --- into - - -
   - "^---$"
   - '\n---\n'
+  # Already has comma before conjunction - don't double-comma
   - ',\s+and (?:it|you|they|we|he|she)[.\u2019]'
   - ',\s+or (?:it|you|they|we|he|she)[.\u2019]'
   - ',\s+or the \w+'
+  # Character enumeration lists - hyphen is a literal character being listed
+  # "a-z, A-Z, 0-9, _, - and" - the hyphen is content, not a separator
   - ', - and\s'
+  # CLI flags - don't turn --flag or --safe-only into - flag
   - '--\w[\w-]*'
   - "^---$"
   - '\n---\n'
+  # CLI flags - don't turn --flag or --safe-only into - flag
   - '--\w[\w-]*'
+  # Paired dashes as parentheticals - don't strip one without the other.
+  # "lower than $100 - or lower than $20 ... details -" brackets a nested conditional.
+  # The editorial rewrite (voice-tone.yml) restructures the whole clause instead.
   - '\S\s+-\s+\S[\s\S]*\S\s+-\s+\S'
 swap:
   '!!': '!'

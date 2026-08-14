@@ -5,8 +5,11 @@ message: "Consider restructuring possessive: '%s' - role possessives can often b
 ignorecase: false
 
 exceptions:
+  # "your [noun]" - user-centering, always keep
   - '\byour\b'
+  # "Actor's" - product vocabulary, possessive is standard ("the Actor's runs")
   - '\bActor.s\b'
+  # Plural possessives - can't restructure without meaning change
   - "users"
   - "customers"
   - "Actors"

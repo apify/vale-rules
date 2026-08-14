@@ -22,6 +22,9 @@ tokens:
   - 'instantly available'
 
 exceptions:
+  # "a few seconds" without "just" is an acceptable vague range
   - "(?<!just )a few seconds"
+  # "a few minutes" is an acceptable range
   - "a few minutes"
+  # "Try again in a few seconds" - the timing is about retry, not a promise
   - "try again in"

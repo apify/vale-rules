@@ -22,4 +22,5 @@ tokens:
   - 'This field specifies'
 
 exceptions:
+  # "a number of items" - quantity phrase, not a noun-phrase opener
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"

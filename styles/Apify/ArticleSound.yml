@@ -5,8 +5,11 @@ message: "Article by sound: '%s' instead of '%s'."
 ignorecase: false
 
 exceptions:
+  # ICU plural/select blocks - articles inside templates are context-dependent
   - '\{[^}]*(?:plural|select)[^}]*\}'
+  # Quoted text - may be intentional for stylistic reasons
   - '^[".].*[".]$'
+  # "{variable}" immediately after article - runtime determines the noun
   - '\b(?:a|an) \{'
 
 swap:

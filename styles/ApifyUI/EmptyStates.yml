@@ -2,13 +2,25 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "no longer available" - "no" here is negation, not an empty state quantifier.
+  # "This Actor is no longer available." must not become "This Actor is no longer yet."
   - "no longer available"
+  # Personal form guard - "You haven't run any X" is warmer than "No X yet" (scores 4.114 vs 3.932).
+  # The personal form uses second-person + contraction; protect it from any swap.
+  # Determined 2026-06-07 via persona scoring of all variants.
   - "You haven.t run any"
+  # Idempotency guard - prevent "No X yet" from re-matching "No X" patterns.
+  # Uses [Nn] for case-insensitive matching (regex exceptions compile case-sensitive).
   - '[Nn]o \w+ yet'
+  # "No events [verb]" - mid-sentence, not a standalone empty state.
   - '[Nn]o events \w'
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
   - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
   - '\w+\s+\w+\s+failed to'

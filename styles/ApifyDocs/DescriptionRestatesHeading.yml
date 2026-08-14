@@ -9,4 +9,5 @@ tokens:
   - '^[A-Z]\w+s are \w+ '
 
 exceptions:
+  # Error messages and validation (definitions are useful there)
   - '\b(?:error|invalid|must be|required|can.t be)\b'

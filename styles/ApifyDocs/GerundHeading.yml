@@ -5,9 +5,13 @@ scope: heading
 ignorecase: false
 
 exceptions:
+  # "Getting started" - established heading convention
   - "^Getting [Ss]tarted"
+  # Troubleshooting - established section name
   - "^Troubleshooting"
+  # Multi-word gerund phrases that are section NAMES (not actions)
   - "^(?:Error [Hh]andling|Data [Pp]rocessing|Load [Bb]alancing|Rate [Ll]imiting)"
+  # Gerund + "your" - collaborative voice ("Configuring your proxy" is a shared journey)
   - "^[A-Z][a-z]+ing your"
 
 tokens:

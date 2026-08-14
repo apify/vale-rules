@@ -16,4 +16,5 @@ tokens:
   - 'will be used for'
 
 exceptions:
+  # "is used to [noun]" where "used to" means "accustomed to"
   - "is used to (?:the|this|that|it|them)"

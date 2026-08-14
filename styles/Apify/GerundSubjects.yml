@@ -3,7 +3,14 @@ level: suggestion
 message: "Gerund subject: consider a noun phrase instead of '%s'."
 ignorecase: false
 exceptions:
+  # Confirmation dialog warnings - gerund names the destructive action being confirmed.
+  # "Canceling your plan means..." / "Deleting this schedule will stop..."
+  # The gerund-as-subject is the correct pattern here: it mirrors the button label.
+  # Note: apostrophe matches both straight and curly (pipeline typography converts them).
   - '(?:Canceling|Deleting|Removing|Changing|Resetting)\s+(?:your|this)\s+.{1,60}(?:means|will|could|may|might|can[..\u2019]t|cannot|isn[..\u2019]t)'
+  # Spinner/loading labels - gerund + "the" is correct for in-progress state labels.
+  # "Loading the data...", "Running the Actor...", "Getting the suggestions..."
+  # These are not gerund subjects - they're gerund labels describing ongoing state.
   - '(?:Loading|Running|Getting|Fetching|Verifying|Generating|Processing|Preparing|Saving|Uploading|Downloading)\s+the\s+\w'
 
 tokens:

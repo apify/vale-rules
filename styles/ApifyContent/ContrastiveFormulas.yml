@@ -11,5 +11,6 @@ tokens:
   - "It's not (?:just |merely |simply )?"
 
 exceptions:
+  # Legitimate technical distinctions
   - "not just (?:the|a) (?:first|last|default|primary)"
   - "isn.t just (?:for|limited to|restricted to)"

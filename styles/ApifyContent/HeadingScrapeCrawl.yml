@@ -5,10 +5,13 @@ scope: heading
 ignorecase: true
 
 exceptions:
+  # Technical process headings - the verb IS the function being described
   - "how (?:the|this|to) (?:scrap|crawl)"
   - "(?:scrap|crawl)(?:ing|er) (?:method|logic|mode|step|process|flow|configuration|setup|settings|options|strategy)"
+  # Actor/tool name in heading - it IS the product
   - "(?:Actor|scraper|spider|crawler|tool) (?:scrap|crawl)"
   - '(?:scrap|crawl)[\s\S]{0,20}(?:Actor|scraper|spider|crawler|tool)'
+  # Numbered/enumerated headings about scraping steps
   - '^#+\s*(?:Step \d|Phase \d|\d\.)[\s\S]*(?:scrap|crawl)'
 
 tokens:

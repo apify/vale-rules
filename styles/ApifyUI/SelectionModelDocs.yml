@@ -4,8 +4,10 @@ message: "Selection model: '%s' - clarify whether this is single-select or multi
 ignorecase: true
 
 exceptions:
+  # Already disambiguated
   - "select (?:all that apply|one or more|exactly one|at most one)"
   - "choose (?:one or more|exactly one|all that apply)"
+  # Code/API context
   - "`"
   - "multiSelect"
   - "multi_select"

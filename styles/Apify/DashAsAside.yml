@@ -4,9 +4,13 @@ message: "Dash as aside: '%s'. Restructure the sentence. Split into two sentence
 nonword: true
 
 exceptions:
+  # Numeric ranges with en dash: "10–20", "2024–2025"
   - '\d+–\d+'
+  # CLI flags: "--output", "--verbose"
   - '--\w'
+  # Markdown list items (line starts with "- ")
   - '^-\s'
+  # YAML/code context
   - '^\s*-\s'
 
 tokens:

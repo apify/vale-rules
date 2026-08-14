@@ -4,7 +4,6 @@ message: "Redundant Latin abbreviation in parentheses: '%s'."
 ignorecase: false
 
 exceptions:
-  - '\(e\.g\.[^)]*$'
 
 tokens:
   - '\(i\.e\.,? '

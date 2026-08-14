@@ -3,8 +3,11 @@ level: error
 message: "HTML entity in JS string: '%s' instead of '%s'."
 ignorecase: false
 exceptions:
+  # &gt; inside HTML tag context (legitimate encoding for > in attributes)
   - "<[^>]*&gt;[^<]*>"
+  # &amp; in URLs (query param separator)
   - 'https?://[^\s]*&amp;'
+  # &rarr; &bull; &hellip; &mdash; &ndash; are intentional formatting entities
   - "&rarr;"
   - "&bull;"
   - "&hellip;"

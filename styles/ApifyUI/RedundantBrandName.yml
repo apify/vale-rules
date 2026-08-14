@@ -4,9 +4,13 @@ message: "Redundant brand name: '%s' - if the reader is already on an Apify page
 ignorecase: true
 
 exceptions:
+  # "your Apify account" - disambiguates from org/third-party accounts
   - "your Apify account"
+  # Comparison context - "your Apify X vs your GitHub Y"
   - 'your Apify[\s\S]{0,60}(?:vs|versus|compared to|unlike|or your)'
+  # "your personal Apify" - specific disambiguation
   - "personal Apify"
+  # In a paragraph mentioning other platforms
   - '(?:GitHub|GitLab|AWS|Azure|Google Cloud|Heroku|Vercel|Netlify)[\s\S]{0,200}your Apify'
   - 'your Apify[\s\S]{0,200}(?:GitHub|GitLab|AWS|Azure|Google Cloud|Heroku|Vercel|Netlify)'
 

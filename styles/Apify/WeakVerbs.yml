@@ -2,12 +2,29 @@ extends: substitution
 level: suggestion
 message: "Use a stronger verb: '%s' instead of '%s'."
 exceptions:
+  # "may...might not" - avoid double "may" when "may" already appears earlier.
   - '\bmay\b[\s\S]{0,60}\bmight not\b'
+  # "complete the creation of" - "complete" takes a noun, not a gerund.
+  # "To complete creating X" is ungrammatical. Keep the nominalization here.
   - "complete the creation of"
+  # "be able to log-in" / "be able to login" - source uses wrong verb form;
+  # removing "be able to" would leave "might not log-in" / "might not login" (wrong).
+  # Guard these so the source bug isn't exposed.
   - 'be able to log.?in\b'
+  # Plural subject + "allows" - subject-verb disagreement in source.
+  # "runs allows you to" is a grammar bug; our rule shouldn't make it worse
+  # by producing "runs lets you". The safe-transforms literal handles the fix.
   - '\bruns allows you to'
+  # "won't be able to ... anymore" - future consequence in destructive dialogs.
+  # "You won't be able to run it anymore" is future-tense (action hasn't happened yet).
+  # "Can't" implies current inability, which is wrong in this context.
   - 'won.t be able to[\s\S]{0,80}?anymore'
+  # Third-party "won't be able to" - future consequence for another entity.
+  # "The application won't be able to access..." describes what happens to a
+  # third party AFTER the user acts. "can't" would imply it currently can't.
+  # Guard: only fires when subject is NOT "you/they" (those are direct constraints).
   - '\b(?:application|service|integration|app|script|token)\b[\s\S]{0,30}?won.t be able to'
+  # NOTE: IMPORTANT/WARNING + "will be able to" is handled by skip-if above.
 swap:
   'is able to': 'can'
   'are able to': 'can'

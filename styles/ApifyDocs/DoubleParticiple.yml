@@ -9,5 +9,7 @@ tokens:
   - '\b\w+ed\s+\w+\s+\w+ing\b'
 
 exceptions:
+  # Common compound phrases that are natural
   - '\b(?:getting started|coming soon|looking forward|moving forward|working together)\b'
+  # Gerund as subject followed by a verb (different grammatical role)
   - '^(?:Running|Building|Creating|Adding|Setting|Using)\s'

@@ -5,9 +5,14 @@ message: "Doing too much: '%s' - this string has more than one job. Can you spli
 ignorecase: true
 
 exceptions:
+  # Two-state toggle descriptions are legitimately multi-sentence
+  # ("If enabled, X. If disabled, Y.")
   - 'If (?:enabled|checked|set)[\s\S]*If (?:disabled|unchecked|not set)'
+  # Error + recovery is one job (the two sentences work together)
   - '(?:Couldn.t|Can.t|couldn.t|can.t|Failed|failed)[\s\S]*(?:Try|Check|Contact|Reload)'
+  # "X. Learn more" is acceptable (second sentence is just a link prompt)
   - '\.\s*(?:Learn more|See docs|Read more)'
+  # Short 2-sentence strings where both parts are tightly coupled
   - '^.{0,60}\.\s+.{0,40}$'
 
 tokens:

@@ -27,5 +27,6 @@ tokens:
   - ', paving the way'
 
 exceptions:
+  # Technical process descriptions where the participle IS the action
   - ", ensuring (?:that |backward |forward )?compatib"
   - ", enabling (?:you to|users to|the)"

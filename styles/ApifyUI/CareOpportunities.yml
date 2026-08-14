@@ -5,7 +5,9 @@ message: "Care opportunity: '%s' may need a clearer next step, reassurance, or u
 ignorecase: true
 
 exceptions:
+  # Already gives a concrete path forward.
   - "(?:try again|contact support|check|review|go to|switch to|change|add|remove|open|visit|log in)"
+  # Developer/API reference text often needs terse declarative wording.
   - '\b(?:API|endpoint|payload|JSON|HTTP|webhook|schema|token|ID)\b'
 
 tokens:

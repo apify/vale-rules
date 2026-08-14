@@ -3,10 +3,14 @@ level: suggestion
 message: "Academic register: consider a plainer alternative for '%s'."
 ignorecase: true
 exceptions:
+  # Legal/payment error codes - formal register is correct
   - '\{code,\s*select'
+  # Formula contexts - "hence" in mathematical expressions
   - "rate limit is hence"
+  # HTML-wrapped content - pipeline can't reach it
   - "<strong>"
   - "<code>"
+  # "various" before technical plural nouns - means "multiple different kinds", load-bearing
   - "various (?:APIs|data stores|store analytics|stores|formats|services|tools|methods|options|types|URL query parameters|instances of the Actor|regions|protocols|modes|strategies|techniques|patterns|frameworks|libraries|SDKs|databases)"
 
 tokens:

@@ -8,6 +8,12 @@ tokens:
   - '^(?:Easy|Simple|Fast|Quick|Smart|Powerful|Advanced|Robust|Flexible|Seamless|Effortless|Automated|Automatic|Instant|Complete|Full|Comprehensive|Custom|Intelligent)\s+\w+'
 
 exceptions:
+  # "Advanced" as a section label when the content IS advanced config
+  # (heading-depth and naming-as-explanation already flag these as noun phrases)
+  # "Simple" when it's the Actor's actual name ("Simple Scraper")
+  # Numbers following the adjective - "Fast 3x" is a fact
   - '^(?:Easy|Simple|Fast|Quick)\s+\d'
+  # "Complete guide" / "Full reference" - structural document labels
   - '^(?:Complete|Full)\s+(?:guide|reference|list|overview|example|tutorial)'
+  # "Custom [proper noun]" - actor names
   - '^Custom\s+[A-Z][a-z]'

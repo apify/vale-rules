@@ -4,8 +4,10 @@ level: suggestion
 message: "Notification copy: '%s' instead of '%s'."
 
 exceptions:
+  # "Alternatively" in technical docs where multiple approaches are genuinely different
   - '(?:documentation|docs|README|tutorial)[\s\S]*[Aa]lternatively'
   - '[Aa]lternatively[\s\S]*(?:documentation|docs|README|tutorial)'
+  # "To keep going, you can <a" - link follows, can't strip subject safely
   - "To keep going, you can <"
 
 swap:

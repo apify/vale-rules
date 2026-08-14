@@ -3,6 +3,8 @@ level: warning
 message: "Replace em dash with appropriate punctuation: '%s' instead of '%s'."
 nonword: true
 exceptions:
+  # Paired em dashes (parenthetical asides) — two or more em dashes in the same string.
+  # "word — aside — word" is acceptable inline punctuation. Only single em dashes are replaced.
   - '\u2014[^—]*\u2014'
 swap:
   'badge — awarded to the top 20 Actors\.': 'badge. It goes to the top 20 Actors on Apify.'

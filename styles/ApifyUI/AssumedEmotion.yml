@@ -3,9 +3,11 @@ level: suggestion
 message: "Assumed emotion: '%s'. State what happened - let the user decide how they feel about it."
 
 exceptions:
+  # Marketing/landing page content where enthusiasm is appropriate
   - "marketing"
   - "landing"
   - "promo"
+  # Onboarding where mild warmth is acceptable (first interaction)
   - "onboarding"
   - "welcome"
   - "firstRun"

@@ -2,12 +2,24 @@ extends: substitution
 level: suggestion
 message: "Remove redundant 'currently': '%s' instead of '%s'."
 exceptions:
+  # Progressive constructions - "currently" signals live/in-progress state, not filler.
+  # Guard only when "currently" follows a form of "to be" (is/are/was/were/'s/'re),
+  # making it a true progressive: "is currently being built", "is currently loading".
+  # Bare "currently running Actors" (adjective) and "you're currently using" (filler)
+  # are NOT guarded - present tense already implies current state there.
   - '(is|are|was|were|.s|.re) currently being \w+'
   - "(is|are|was|were) currently (using|loading|building|processing|fetching|syncing|downloading|uploading|waiting|connecting|deploying|installing|initializing|compiling|bundling|migrating|rendering|generating|executing|applying|scanning|indexing)"
+  # "currently don't/doesn't have" + upgrade/subscribe - signals temporary state
+  # with a clear path to change. "Currently" tells the user this can be resolved.
   - '[Cc]urrently don..t have[\s\S]*(?:upgrade|subscribe|contact)'
   - '[Cc]urrently doesn..t have[\s\S]*(?:upgrade|subscribe|contact)'
   - "[Cc]urrently don..t have access"
   - "[Cc]urrently doesn..t have access"
+  # Conjunction + pronoun shift - "and you are currently X" / "and you're currently X"
+  # signals the subject has changed mid-sentence (e.g. Publisher writing to their users:
+  # "...and you are currently working on a fix" where the correct fix is "we're", not "you're").
+  # The generic "you are currently" → "you're" swap would produce the wrong pronoun.
+  # Block the whole string; an explicit swap in robotic-phrases.yml handles it correctly.
   - "and you are currently"
   - "and you.re currently"
 swap:

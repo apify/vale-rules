@@ -15,10 +15,13 @@ tokens:
   - 'by clicking'
 
 exceptions:
+  # Analytics terminology
   - "click-through"
   - "click rate"
+  # Drag interactions
   - "click and drag"
   - "drag and drop"
+  # Email/hyperlink context
   - "click the link"
   - "click the verification link"
   - "click the confirmation link"

@@ -8,4 +8,5 @@ tokens:
   - '^Do you (?:want|wish|really want) to\b'
 
 exceptions:
+  # Multi-step confirmations where intent is genuinely unclear
   - '\b(?:instead|alternatively|or would you)\b'

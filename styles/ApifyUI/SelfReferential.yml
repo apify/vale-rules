@@ -3,6 +3,7 @@ level: suggestion
 message: "Self-referential: '%s' - the user is already in this product. Name the outcome, not the brand."
 
 exceptions:
+  # Legitimate uses: external-facing copy, publishing to Store, linking out
   - "publish.*(?:to|on|in) Apify Store"
   - "visible.*(?:in|on) Apify Store"
   - "listed.*(?:in|on) Apify Store"
@@ -10,11 +11,14 @@ exceptions:
   - "ranking.*(?:in|on) Apify Store"
   - "placement.*(?:in|on) Apify Store"
   - "stand out.*(?:in|on) Apify Store"
+  # Email/notification context (user is NOT in the product)
   - "email"
   - "notification"
   - "subject"
+  # Describing the platform to external audiences (docs links, etc.)
   - "docsLink"
   - "Learn more about Apify"
+  # "Apify Proxy", "Apify API", "Apify MCP" - these are product names, not self-reference
   - "Apify Proxy"
   - "Apify API"
   - "Apify MCP"

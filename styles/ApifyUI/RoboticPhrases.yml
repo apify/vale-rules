@@ -2,12 +2,21 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "Fill in/Enter/Provide your email address" - form labels where "address" aids
+  # accessibility and screen reader clarity. Keep the full noun in label contexts.
   - '(?:Fill in|Enter|Provide|Type|Add|Confirm|Verify)\s+(?:your|an?|the)\s+email address'
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "no additional revenue" - "no more revenue" reads as "zero revenue" not "no extra revenue"
   - "no additional revenue"
+  # "All X will stop/break" in destructive confirmation prompts - the consequence IS definite
   - '(?:Reset|Delete|Remove|Unpublish|Disconnect|Revoke)[\s\S]*All \w+.*will (?:stop|break|fail|lose)'
+  # "Additional [noun]" in list items - functions as a label, not filler.
+  # "- Additional custom attributes" → "- more custom attributes" loses polish.
   - "Additional custom"
   - "additional custom"
   - "Additional information"
@@ -16,38 +25,105 @@ exceptions:
   - "additional configuration"
   - "Additional attributes"
   - "additional attributes"
+  # "additional GB/MB/KB/TB" - unit measurement phrase; numbers.yml handles reorder.
+  # "more GB of Actor memory" is unnatural; keep "additional" so the reorder fires.
+  # Covers optional plural "s" for units that numbers.yml depluralizes (GB/MB/KB/TB).
+  # GiB/MiB included for completeness though they don't have plural forms in the corpus.
+  # Also covers post-reorder form "GB of additional" (numbers fires before robotic-phrases).
   - "additional (?:GB|MB|KB|TB|GiB|MiB)s?"
   - "(?:GB|MB|KB|TB|GiB|MiB) of additional"
+  # ── Semantic role guards for billing verbs (item #4)
+  # "you will no longer charge" - developer IS the agent charging users.
+  # "be charged" would flip the meaning (implies the developer gets charged).
+  # Guard any string where charge/pay/waive/credit/refund is in active voice
+  # with a billing-context object.
   - '\byou will no longer (?:charge|waive|credit|refund|bill|deduct)\b'
   - '\bwill no longer (?:charge|waive|credit|refund|bill|deduct)\b'
+  # "Additional memory/concurrent" in add-ons context - "Additional" means supplementary
+  # to the base plan allowance. "More" loses the add-on framing.
   - "Additional (?:memory|concurrent|datacenter|team account)"
+  # "due to" when "because" already appears in the string - prevents double "because".
   - 'because[\s\S]*due to'
   - 'due to[\s\S]*because'
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
+  # ── "will take effect immediately" in pre-confirmation context
+  # When followed by a reasoning clause (Since/Because/As there are...), the future
+  # tense is genuine - the user hasn't confirmed yet, the string explains what WILL
+  # happen. Block the stale-future swap in this context.
   - 'will take effect immediately[\s\S]+(?:[Ss]ince|[Bb]ecause|[Aa]s) (?:there (?:are|is)|no |you (?:have|don.t))'
+  # Guard the gerund form: "In/in the event of you/they/we/... [verb]ing"
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
   - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
+  # Mid-sentence "X failed to Y" - subject precedes "failed to"; only sentence-start form should fire.
+  # Uses a lookbehind-style guard: fires only when a non-sentence-start word precedes "failed to".
+  # "Some runs failed to abort" → blocked. "Email failed to send" → explicit swap handles it.
   - '\w+\s+\w+\s+failed to'
+  # Mid-sentence "unable to" - block when preceded by a conjunction/preposition/pronoun
+  # that signals a subordinate clause: "if unable to", "you're unable to", "are unable to".
+  # Does NOT block "We were unable to" (sentence-start subject + verb).
+  # Does NOT block "Unable to" (sentence-start, no preceding word).
   - '(?:if|you.re|you are|they.re|they are|we.re|we are|it.s|it is|he.s|he is|she.s|she is|are|is|be|been|being|to be|remain|remains|remained|feel|feels|felt|seem|seems|seemed)\s+unable to'
+  # "such as" in security/authentication/2FA context - formal register is intentional.
+  # "like 1Password" reads as approximate; "such as 1Password" is precise enumeration.
   - '(?:authenticat|2FA|two-factor|recovery|security|password|token|credential)[\s\S]*such as'
   - 'such as[\s\S]*(?:authenticat|2FA|two-factor|recovery|security|password|token|credential)'
+  # NOTE: patterns with metacharacters get case-sensitive 'g' flag - use [Aa] for both cases.
   - '(?:banned|suspended|terminated|blocked|restricted|revoked|disabled)[\s\S]*[Aa]s a result'
   - '[Aa]s a result[\s\S]*(?:banned|suspended|terminated|blocked|restricted|revoked|disabled)'
+  # "and thus [past participle]" - "and thus used", "and thus blocked" - the participle form
+  # needs restructuring ("and so can be used"), not a simple word swap. Guard it.
+  # The safe form "and thus [modal]" - "and thus can", "and thus might" - is handled by the swap.
+  # "a number of items/results/records/..." - configurable quantity phrases where "several" is wrong.
+  # Mirrors the guard in dirty-dozen.yml (which runs later and would otherwise be redundant).
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
+  # "various" meaning "diverse kinds" - followed by category/type nouns.
+  # "various integrations" = different types (correct). "various instances" = vague quantity (weasel).
+  # Extended guard list (2026-08-03 audit): added regions, protocols, modes, strategies,
+  # techniques, patterns, frameworks, libraries, SDKs, databases.
+  # Also guards when followed by an enumeration (colon or "including/such as" within 60 chars)
+  # which signals the writer is about to name specific items - "various" means "these different kinds."
   - 'various \w+[\s\S]{0,60}(?:including|such as|like|:|,\s*\w+,\s*\w+)'
+  # "Beware that" in billing/data accuracy warnings - the warning signal is intentional.
+  # "Beware that this data is only informative" - primes readers to treat disclaimer seriously.
   - '[Bb]eware that[\s\S]*(?:only informative|inaccurate|approximate|estimated|not guaranteed)'
   - '[Bb]eware that[\s\S]*(?:secret|sensitive|credential|billing|invoice|charge)'
+  # "feel free to" in personal/relationship-building context - signals approachability.
+  # "feel free to reach out to me" in account manager emails is intentional warmth.
   - 'feel free to[\s\S]{0,80}(?:me at|me if|me any|mailto:)'
+  # "reach out to" in personal/relationship context - the warmth is intentional.
+  # Account manager, named contact, or personal pronoun = not corporate filler.
   - "reach out to your (?:account manager|contact|representative)"
   - 'reach out to[\s\S]{0,30}(?:me at|me if)'
+  # "make sure" in billing/invoice context - means "verify and fix", not "acknowledge".
+  # "confirm" implies the data should already be correct; "make sure" prompts action.
+  # Requires a billing/payment term within 120 characters (before OR after).
   - '[Mm]ake sure(?=[\s\S]{0,120}?(?:[Ii]nvoice|[Bb]illing|[Pp]ayment|[Cc]harge|[Aa]mount))'
   - '(?:[Ii]nvoice|[Bb]illing|[Pp]ayment|[Cc]harge|[Aa]mount)[\s\S]{0,120}?[Mm]ake sure'
+  # "you can either" mid-sentence (after comma/clause) - descriptive, not imperative.
+  # "In X mode, you can either select..." is explaining options, not giving instructions.
+  # Only guard the mid-sentence form; sentence-start "You can either" is still swapped.
   - ',\s+you can either'
+  # "act on behalf of" / "subscribe on behalf of" - authorization language.
+  # "On behalf of" means acting as an authorized representative. "For" is vague.
+  # Only guard when preceded by authorization verbs; other uses still simplify.
   - '\b(?:[Aa]ct|[Aa]cting|[Ss]ubscribe|[Ss]ubscribing|[Aa]llowed to act|to subscribe)\s+on behalf of'
+  # "This input is too large to be saved" - passive is clearer here (prepositional
+  # attachment: "saved to a new task"). The literal in safe-transforms adds "This"
+  # for deictic reference; guard the passive from being stripped.
   - '\b[Tt]his \w+ is too large to be'
+  # "refer to it/them/this/that" - anaphoric reference (meaning "come back to"),
+  # not pointing to a documentation resource. "See it later" is unnatural.
   - "[Rr]efer to (?:it|them|this|that)"
+  # "email address field/format/label/type" - UI element or format type names where
+  # "address" is load-bearing and "email address" should not be simplified to "email".
   - "email address (?:field|format|label|type|input|validation)"
+  # "verify your email address" - action CTA where "address" specifies what's being
+  # verified (the specific address, not the account). Precision is load-bearing.
   - "verify your email address"
   - "verify (?:the|an|this|that) email address"
+  # "your email address" in form instruction context - blame-language may strip
+  # the verb prefix later, producing "Enter your email address" which is correct.
+  # Guard: any string containing "forgot to" + "email address" (blame → imperative path)
   - "forgot to.*email address"
 swap:
 

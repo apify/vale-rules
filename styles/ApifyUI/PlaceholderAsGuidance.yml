@@ -14,9 +14,22 @@ exceptions:
   - "<[a-zA-Z]"
   - '\{[^}]+,\s*(?:plural|select)'
   - '(?:Enter|Type)\s+(?:the|a|an)\s+\w+.*(?:to|for|of)\s+\w+'
+  # "Enter your X" with no instructional clause - validation error, not placeholder.
+  # Placeholder text instructs the user what to type ("Enter your email to subscribe").
+  # A bare "Enter your email address" in an error context is a validation message.
   - '^Enter your \w+(?:\s+\w+)? \w+(?:\s+\w+)?$'
+  # "must be / should be" in constraint validation messages - not placeholder text.
+  # These appear in error strings, API descriptions, and field constraints.
+  # Placeholder-as-guidance fires only when "must be/should be" is the ONLY
+  # instruction, not when it's constraining a value the user already knows to enter.
+  # Guard: present when string contains a variable ({label}, {min}) or starts
+  # with a subject noun (The, This, It, {, Memory, Password, etc.)
   - '(?:^\{|^The |^This |^It |^Memory|^Password|^Date|^Source|^A name|^URL|^Webhook|^Unit|^Line|^Total|^Desired|^Max |^Price|^Event|^Role|^Aside)[\s\S]*(?:must be|should be)'
+  # POST/PUT payload constraint docs - API reference strings, never UI placeholders
   - "(?:POST|PUT) payload must be"
+  # "Enter your X" followed by instructional clause - valid placeholder flag
+  # This is handled by the existing exception above; these guards add coverage for
+  # multi-sentence strings and strings with HTML
   - 'Enter your[\s\S]+\.\s+[A-Z]'
   - 'Enter your[\s\S]+<'
 

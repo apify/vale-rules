@@ -3,15 +3,21 @@ level: warning
 message: "Use the correct brand name or casing: '%s' instead of '%s'."
 ignorecase: false
 exceptions:
+  # URLs - don't capitalize inside href="https://..." or any URL
   - 'https?://\S+'
+  # Bare protocol schemes - http:// and https:// inside <code> tags
   - "https?://"
+  # HTML/XML tags - don't capitalize inside tag attributes or tag names like <githubLink>
   - "<[^>]+>"
+  # Domain names - don't capitalize inside apify.com, github.com etc.
   - '[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}'
+  # Bare domain references in backticks or with TLD suffix
   - '\w+\.com'
   - '\w+\.org'
   - '\w+\.io'
   - '\w+\.dev'
   - '\w+\.net'
+  # MIME types - lowercase is correct in these contexts
   - "text/html"
   - 'text/\w+'
   - "application/json"
@@ -19,22 +25,36 @@ exceptions:
   - 'application/xhtml\+xml'
   - 'application/\w+'
   - 'image/\w+'
+  # Email addresses
   - "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+"
+  # SSH git URLs - don't capitalize inside git@github.com
   - 'git@\S+'
+  # Template variables - don't capitalize inside {varName} or JSON keys
   - '\{[^}]*\}'
   - '\w+\.json\b'
   - "application/json"
   - "content-type"
+  # "the rest" / "rest of" - common English, not the REST acronym
   - '\bthe rest\b'
   - '\brest of\b'
   - '\brest will\b'
   - '\brest are\b'
   - '\brest is\b'
+  # Code-like paths - "apify/crawl-website", "user/actor-name"
+  # The tokenizer strips <code> tags before rules run, so the guard
+  # in BUILTIN_GUARDS can't protect <code> content. This catches
+  # slash-separated identifiers that are clearly code, not prose.
   - '\w+/\w+'
+  # Slash-prefixed or suffixed "apify" - slug context
   - "apify/"
   - "/apify"
+  # npm package names - hyphenated identifiers like "apify-client", "apify-shared"
+  # and quoted package names like 'apify'. Case-sensitive on npm.
+  # NOTE: patterns with regex metacharacters get case-sensitive 'g' flag.
+  # Use [a-z] to ensure only lowercase forms are guarded (not incorrectly-capitalized ones).
   - '[a-z]pify-\w+'
   - '[.\"]apify[.\"]'
+  # Parenthesized actor references - "(apify/web-scraper)"
   - '\(apify/'
 swap:
   'addon': 'add-on'

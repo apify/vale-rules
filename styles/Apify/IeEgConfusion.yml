@@ -4,7 +4,9 @@ message: "Possible i.e./e.g. confusion: '%s' - if listing examples, use 'e.g.' (
 ignorecase: false
 
 exceptions:
+  # "i.e., the [noun]" - genuine restatement/clarification
   - 'i\.e\.,? the \w+'
+  # "i.e., [proper noun]" - naming the specific thing (restatement)
   - 'i\.e\.,? [A-Z][a-z]+'
 
 tokens:

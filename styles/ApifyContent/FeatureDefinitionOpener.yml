@@ -3,7 +3,6 @@ level: suggestion
 message: "Feature-definition opener: '%s'. Lead with what the feature does, not what it is."
 
 exceptions:
-  - '^[^.!?]*[.!?]?\s*$'
 
 tokens:
   - '\w[\w ]*? lets you [^.]+\. It'

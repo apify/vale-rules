@@ -4,9 +4,15 @@ message: "Missing consequence marker: '%s' - destructive actions should state wh
 ignorecase: true
 
 exceptions:
+  # Already has consequence language
   - "(?:can.t be undone|cannot be undone|irreversible|permanently|will be lost|will no longer|won.t be able)"
+  # Multi-sentence (likely has consequence in next sentence)
   - '\.\s+\S'
+  # Has "including" scope marker
   - "including (?:all|the|any|your)"
+  # Tier 3 confirmations: "Delete this [noun]?" - demonstrative signals the user
+  # sees the specific thing and the action is recreatable/low-stakes (skill § Buttons).
+  # The demonstrative "this/that" = engagement with something present, not abstract.
   - '(?:Delete|Remove|Disconnect|Revoke|Cancel) this \w+\?'
 
 tokens:

@@ -2,15 +2,26 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "may...might not" - avoid double "may" when "may" already appears earlier.
+  # "which may mean that some users might not" → keep "might" to avoid repetition.
   - '\bmay\b[\s\S]{0,60}\bmight not\b'
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
   - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
   - '\w+\s+\w+\s+failed to'
   - '(?:if|you.re|you are|they.re|they are|we.re|we are|it.s|it is|he.s|he is|she.s|she is|are|is|was|be|been|being|to be|remain|remains|remained|feel|feels|felt|seem|seems|seemed)\s+unable to'
+  # "An error occurred. [more content]" - the follow-up already provides recovery.
+  # Don't fire the generic swap when there's already retry/support guidance after.
   - 'An error occurred\.\s+\S'
+  # "Operation failed! [more content]" - same guard: source already has recovery path.
+  # Without this, "Operation failed!" → "That didn't work. Try again." fires as a
+  # substring, producing three sentences when the source already had a next step.
   - 'Operation failed!\s+\S'
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
 

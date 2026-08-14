@@ -35,6 +35,9 @@ swap:
   'pain point': 'problem'
 
 exceptions:
+  # "Heads up" is explicitly listed as an acceptable character phrase
+  # in natural-language/SKILL.md - keep when used as a standalone alert marker
   - "^Heads up"
+  # "Under the hood" in explicit technical architecture contexts
   - 'architecture[\s\S]*under the hood'
   - 'under the hood[\s\S]*architecture'

@@ -4,14 +4,26 @@ message: "Use direct address: '%s' instead of '%s'."
 ignorecase: true
 
 exceptions:
+  # Don't fire if "you/your" already appears - prevents "you... pay you" incoherence
+  # where the two "you"s refer to different people (user vs developer).
   - 'a user (?:can|will|should|must|may|could|would)[\s\S]*\byou(?:r)?\b'
   - '\byou(?:r)?\b[\s\S]*a user (?:can|will|should|must|may|could|would)'
+  # Plural "Users will/can..." with "you/your" already present - same incoherence risk
   - 'Users (?:can|will|should|must|may|could|would)[\s\S]*\byou(?:r)?\b'
   - '\byou(?:r)?\b[\s\S]*Users (?:can|will|should|must|may|could|would)'
+  # Admin context: describing what users of the Actor/platform can do (third-party reference)
   - '(?:If|When|Once) (?:a |the )?user(?:s)?\s+(?:is|are|has|have|creates?|joins?|leaves?|subscribes?|logs?\s+in)'
+  # Permissions/access descriptions: "Let users read/write/access" in IAM context
   - "permission.*(?:let|allow|enable) users"
   - "(?:let|allow|enable) users.*permission"
+  # Mid-sentence "lets/allows users" -- preceded by a subject ("This lets users read").
+  # Stripping these mid-sentence leaves a broken fragment ("This read").
+  # Only strip when at sentence start (description openers).
   - '\w+\s+[Ll]ets? users'
+  # "users" preceded by any word - third-party reference, not addressing the reader.
+  # Sentence-start "Users will" = addressing the reader (transforms to "You will").
+  # Mid-sentence "...users will" = third-party ("Its users will", "paying users will").
+  # Pattern: any lowercase word or possessive immediately before "users" signals context.
   - '\w+\s+users\s+(?:will|can|must|should|may|could|would|need|won.t|can.t)'
   - '\w+\s+[Aa]llows? users'
   - '\w+\s+[Ee]nables? users'

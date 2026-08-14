@@ -4,6 +4,8 @@ message: "Use plain language (UI): '%s' instead of '%s'."
 ignorecase: true
 nonword: true
 exceptions:
+  # ── Formal concept labels (the long form IS the term's identity)
+  # These name a category/schema, not casual description.
   - "personal information"
   - "billing information"
   - "cardholder information"
@@ -13,8 +15,10 @@ exceptions:
   - "contact information"
   - "payment information"
   - "card information"
+  # ── UI labels/headings (proper section titles)
   - "Display information"
   - "Publication information"
+  # ── Fragment risk: "information where/when/how" → "info where" is ungrammatical
   - "information where"
   - "information when"
   - "information how"

@@ -4,12 +4,6 @@ message: "Drop anaphoric 'It': '%s'."
 ignorecase: false
 
 exceptions:
-  - '\. It.s (?:important|worth|necessary|possible|impossible|unlikely|likely|clear|obvious|recommended|required|best|better|easier|harder)'
-  - '\. It is (?:important|worth|necessary|possible|impossible|unlikely|likely|clear|obvious|recommended|required|best|better|easier|harder)'
-  - '\. It (?:can|will|may|might|should|could|would|must|shall)'
-  - '\. It.s'
-  - '\. It is \w+(?:ed|able|ible|ful|less|ive|ous|al)\b'
-  - '\{[^}]+\}[^.]*\. It'
 
 tokens:
   - '\. It also '

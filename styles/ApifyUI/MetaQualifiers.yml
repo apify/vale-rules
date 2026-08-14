@@ -17,11 +17,21 @@ tokens:
   - 'self-explanatory'
 
 exceptions:
+  # "specific" as a determiner meaning "particular/designated" - not a meta-qualifier.
+  # Followed by a concrete noun: "specific events", "specific use cases", "specific build"
+  # "for specific" / "to specific" - prepositional determiner use
   - "(?:for|to|with|of) specific"
+  # "a specific" / "the specific" / "something specific" - article/pronoun + determiner use
   - "(?:a|the|this|that|each|any|something) specific"
+  # "are specific for/to" - predicate adjective meaning "apply only to"
   - "are specific (?:for|to)"
+  # "resource-specific" / "account-specific" - compound adjective
   - '\w+-specific'
+  # Capitalized compound: "Platform-specific", "Actor-specific"
   - '[A-Z]\w+-specific'
+  # Hyphen before "specific" - compound adjective (Platform-specific, user-specific)
   - "-specific"
+  # "informative" in data accuracy/disclaimer context
   - "(?:only|purely|merely) informative"
+  # "descriptive" as a structural requirement ("A descriptive name") - the field needs this quality
   - "[Aa] descriptive (?:name|title|label|heading)"

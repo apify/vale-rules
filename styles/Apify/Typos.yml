@@ -4,6 +4,8 @@ message: "Fix typo: '%s' instead of '%s'."
 ignorecase: true
 exceptions:
   - 'https?://\S+'
+  # "previously selected view" - the article belongs to "previously", not "selected".
+  # Without this guard, 'Selected view' → 'the selected view' fires mid-phrase.
   - "previously selected view"
 swap:
   '\?\?': '?'

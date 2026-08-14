@@ -17,6 +17,9 @@ tokens:
   - '\bsearch for\b.{0,20}\b[Ss]tore\b'
 
 exceptions:
+  # "buy add-ons" is valid
   - '\bbuy\b[^.!?]*\badd-?on\b'
+  # "purchase.*subscription" is valid
   - '\bpurchase\b[^.!?]*\bsubscription\b'
+  # "Search for Actors" in UI placeholders/labels - names the feature
   - "^Search for"

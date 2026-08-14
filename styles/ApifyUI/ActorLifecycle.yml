@@ -2,9 +2,13 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
   - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
   - '\w+\s+\w+\s+failed to'
