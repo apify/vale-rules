@@ -1,3 +1,6 @@
+# Auto-generated from rules/wrong-verb-for-control.yml
+# 0 substitutions, 5 exceptions
+
 extends: existence
 level: suggestion
 message: "Verb-element mismatch: '%s' - the verb describes a mouse action, not the user's intent."

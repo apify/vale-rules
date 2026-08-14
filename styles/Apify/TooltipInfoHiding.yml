@@ -1,3 +1,5 @@
+# Auto-generated from rules/tooltip-info-hiding.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 level: suggestion
 message: "Info described as hover-only: '%s'. If essential, show inline - tooltips exclude touch, voice, and keyboard users."

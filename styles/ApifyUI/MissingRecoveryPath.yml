@@ -1,3 +1,6 @@
+# Auto-generated from rules/missing-recovery-path.yml
+# 0 substitutions, 12 exceptions
+
 extends: existence
 level: suggestion
 message: "Missing recovery path: '%s' - the user doesn't know what to do next. See docs/recovery-decision-tree.md."

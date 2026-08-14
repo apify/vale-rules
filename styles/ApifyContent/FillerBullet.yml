@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/filler-bullet.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Potential filler bullet '%s'. Every list item must earn its place. Cut or merge with another bullet."
 level: suggestion

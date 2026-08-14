@@ -1,9 +1,13 @@
+# Auto-generated from rules/please-removal.yml
+# 64 substitutions, 14 exceptions
+
 extends: substitution
 level: suggestion
 message: "Remove 'please': '%s' instead of '%s'."
 ignorecase: true
 
 swap:
+  ',\s*please <': ', <'
   'and please <': 'and <'
   'or please <': 'or <'
   'to please <': 'to <'

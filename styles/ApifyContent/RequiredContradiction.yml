@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/required-contradiction.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "'Instead of' or 'optional' near a field name ('%s'). If this field is marked Required in the Input table, this creates a contradiction. Verify which is correct."
 level: suggestion

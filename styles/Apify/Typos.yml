@@ -1,15 +1,17 @@
+# Auto-generated from rules/typos.yml
+# 5 substitutions, 2 exceptions
 extends: substitution
 level: error
 message: "Fix typo: '%s' instead of '%s'."
 ignorecase: true
-scope:
-  - summary
-  - heading
 exceptions:
   - 'https?://\S+'
   - "previously selected view"
 swap:
+  '\?\?': '?'
   'mostly likely': 'most likely'
+  "there is (higher|greater|lower|bigger|smaller|better|worse) chance": "there is a $1 chance"
+  "there's (higher|greater|lower|bigger|smaller|better|worse) chance": "there's a $1 chance"
   'Selected view': 'the selected view'
   tothe: 'to the'
   ofthe: 'of the'
@@ -24,6 +26,7 @@ swap:
   withyou: 'with you'
   tous: 'to us'
   forus: 'for us'
+  goto: 'go to'
   auser: 'a user'
   anemail: 'an email'
   anerror: 'an error'

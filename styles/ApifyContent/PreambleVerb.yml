@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/preamble-verb.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Preamble verb ('%s'). Use direct imperative: 'Start from Console' or 'Trigger via API' instead of 'Run it from the...' Saves words, scores higher."
 level: suggestion

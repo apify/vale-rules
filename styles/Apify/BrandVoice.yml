@@ -1,3 +1,5 @@
+# Auto-generated from rules/brand-voice.yml
+# 33 substitutions, 7 exceptions
 extends: substitution
 level: suggestion
 message: "Use Apify voice: '%s' instead of '%s'."
@@ -35,7 +37,7 @@ swap:
   'AI-native platform': 'platform built for AI'
   'AI-first platform': 'platform built for AI'
   'cutting-edge technology': 'technology'
-  'state-of-the-art': ''
+  'state-of-the-art': 'modern'
   'Out-of-the-box tools': 'Ready-to-run tools'
   'out-of-the-box tools': 'ready-to-run tools'
   'Out-of-the-box solution': 'Ready-to-run solution'

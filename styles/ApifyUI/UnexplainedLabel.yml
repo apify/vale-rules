@@ -1,3 +1,6 @@
+# Auto-generated from rules/unexplained-label.yml
+# 0 substitutions, 5 exceptions
+
 extends: existence
 level: suggestion
 message: "Unexplained label: '%s' - may need clarification for first-time users."

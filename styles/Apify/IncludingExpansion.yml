@@ -1,3 +1,5 @@
+# Auto-generated from rules/including-expansion.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "'%s' - use a colon instead: 'Connect via integrations: Zapier, Make, Slack' not 'including Zapier, Make, and Slack.'"
 level: suggestion

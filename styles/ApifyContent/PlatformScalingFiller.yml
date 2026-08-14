@@ -1,0 +1,20 @@
+# Auto-generated from rules/readme/platform-scaling-filler.yml
+# 0 substitutions, 0 exceptions
+extends: existence
+message: "Platform-scaling filler: '%s'. Name the Actor capability directly, for example 'Crawl from small sites to sites with millions of pages.'"
+level: suggestion
+scope: paragraph
+vocab: false
+
+tokens:
+  - '\b(?:using|leverag(?:e|ing)) (?:the )?Apify platform(?:.?s)?(?: capabilities)?\b'
+  - '\b(?:Apify )?platform(?:.?s)? (?:scaling|capabilities)\b'
+  - 'platform scaling'
+  - 'platform capabilities'
+  - 'platform''s capabilities'
+  - 'scale gracefully'
+  - 'using platform capabilities'
+  - 'Scale using platform capabilities'
+  - 'scale using platform capabilities'
+  - 'Use platform scaling'
+  - 'use platform scaling'

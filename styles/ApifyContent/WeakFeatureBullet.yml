@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/weak-feature-bullet.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Feature bullet starts with weak subject '%s'. Lead with the action: 'Extract...' not 'This extracts...'"
 level: suggestion

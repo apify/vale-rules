@@ -1,3 +1,5 @@
+# Auto-generated from rules/absolute-legal-claim.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Legal assertion too strong ('%s'). Use 'generally permitted' with user responsibility framing. Don't assert legal conclusions the company doesn't want to own."
 level: suggestion

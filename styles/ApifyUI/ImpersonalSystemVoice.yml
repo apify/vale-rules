@@ -1,3 +1,6 @@
+# Auto-generated from rules/impersonal-system-voice.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Impersonal system voice: '%s' - could this speak more directly? Nobody says 'the system will...' in conversation."

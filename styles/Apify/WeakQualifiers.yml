@@ -1,3 +1,6 @@
+# Auto-generated from rules/weak-qualifiers.yml
+# 47 substitutions, 0 exceptions
+
 extends: substitution
 level: suggestion
 message: "Weak qualifier: '%s' instead of '%s' - qualifier dilutes the assertion. (Strunk, Ch. V)"

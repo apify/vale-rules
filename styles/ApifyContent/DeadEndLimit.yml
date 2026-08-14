@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/dead-end-limit.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Limitation without recovery path ('%s'). Add 'Instead, use...' or 'For X, try...' to avoid a dead-end experience."
 level: suggestion

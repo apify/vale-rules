@@ -1,4 +1,5 @@
-# Detection only: flags 4 patterns without suggesting replacements.
+# Auto-generated from rules/tense-simplification.yml (downgraded: substitution → existence)
+# Regex swaps not Vale-compatible; extracted 4 detectable patterns
 extends: existence
 level: suggestion
 message: "Tense simplification: '%s'. Use simple past for completed actions."

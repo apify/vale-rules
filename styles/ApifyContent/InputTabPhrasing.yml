@@ -1,0 +1,12 @@
+# Auto-generated from rules/readme/input-tab-phrasing.yml
+# 0 substitutions, 0 exceptions
+extends: existence
+message: "Input tab boilerplate: '%s'. Use a shorter direct pointer only when needed, for example 'See the Input tab in Apify Console.'"
+level: suggestion
+scope: sentence
+ignorecase: true
+
+tokens:
+  - '\bfor details of all (?:the )?input fields\b'
+  - '\bfor all input fields and (?:their )?exact configuration\b'
+  - '\brefer to (?:the )?Input tab\b'

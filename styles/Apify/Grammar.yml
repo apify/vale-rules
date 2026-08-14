@@ -1,8 +1,9 @@
+# Auto-generated from rules/grammar.yml
+# 41 substitutions, 1 exceptions
 extends: substitution
 level: warning
 message: "Grammar fix: '%s' instead of '%s'."
 ignorecase: false
-scope: sentence
 swap:
   'concurrent Actor runs allows you to': 'concurrent Actor runs let you'
   'concurrent Actor runs lets you': 'concurrent Actor runs let you'
@@ -47,6 +48,9 @@ swap:
   'the Apify Console': 'Apify Console'
   'the Apify Store': 'Apify Store'
   'the Apify Proxy': 'Apify Proxy'
+  "Apify Store's": 'Apify Store'
+  "Apify Console's": 'Apify Console'
+  "Apify Proxy's": 'Apify Proxy'
 
   'card expired or been': 'card has expired or been'
   'card failed or been': 'card has failed or been'
@@ -54,5 +58,4 @@ swap:
   'session expired or been': 'session has expired or been'
 
 exceptions:
-  - 'the Apify (?:Console|Store|Proxy)[.\u2019]s'
   - "the Apify (?:Console|Store|Proxy) (?:trial|limit|quota|plan|account|settings|page|section|tab|docs|documentation)"

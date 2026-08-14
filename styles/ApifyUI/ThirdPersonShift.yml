@@ -1,3 +1,5 @@
+# Auto-generated from rules/third-person-shift.yml
+# 13 substitutions, 11 exceptions
 extends: substitution
 level: suggestion
 message: "Use direct address: '%s' instead of '%s'."
@@ -6,14 +8,24 @@ ignorecase: true
 exceptions:
   - 'a user (?:can|will|should|must|may|could|would)[\s\S]*\byou(?:r)?\b'
   - '\byou(?:r)?\b[\s\S]*a user (?:can|will|should|must|may|could|would)'
+  - 'Users (?:can|will|should|must|may|could|would)[\s\S]*\byou(?:r)?\b'
+  - '\byou(?:r)?\b[\s\S]*Users (?:can|will|should|must|may|could|would)'
   - '(?:If|When|Once) (?:a |the )?user(?:s)?\s+(?:is|are|has|have|creates?|joins?|leaves?|subscribes?|logs?\s+in)'
   - "permission.*(?:let|allow|enable) users"
   - "(?:let|allow|enable) users.*permission"
   - '\w+\s+[Ll]ets? users'
+  - '\w+\s+users\s+(?:will|can|must|should|may|could|would|need|won.t|can.t)'
   - '\w+\s+[Aa]llows? users'
   - '\w+\s+[Ee]nables? users'
 
 swap:
+  'a user (can|will|should|must|may|could|would) ': 'you $1 '
+  'Users can ': 'You can '
+  'Users must ': 'You must '
+  'Users should ': 'You should '
+  'Users may ': 'You may '
+  'Users will ': 'You will '
+  'Users need to ': 'You need to '
   'Let users ': ''
   'Lets users ': ''
   'Allow users to ': ''

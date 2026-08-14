@@ -1,0 +1,11 @@
+# Auto-generated from rules/retention-without-action.yml
+# 0 substitutions, 0 exceptions
+
+extends: existence
+level: suggestion
+message: "Retention: '%s' - pair the action with the timeframe, or the warning with the action."
+ignorecase: true
+
+tokens:
+  - '\b(?:deleted?|removed?|purged?|cleaned? up)\s+after\s+\d+\s*(?:days?|hours?|minutes?)\b'
+  - '\b(?:[Nn]ame|[Rr]ename)\s+\w+\s+to\s+(?:keep|preserve|retain)\s+(?:it|them)\.$'

@@ -1,12 +1,11 @@
+# Auto-generated from rules/blame-language.yml
+# 9 substitutions, 3 exceptions
 extends: substitution
 level: suggestion
 message: "Blame language: '%s' instead of '%s'. Describe the state, not the user's mistake."
 
 swap:
-  'You entered the wrong': "That doesn't look right"
-  'You entered an incorrect': "That doesn't look right"
-  'You typed the wrong': "That doesn't look right"
-  'You forgot to': 'This field needs'
+  'You forgot to ': ''
   'You forgot the': 'Missing the'
   "You haven't entered": 'This field needs'
   "You haven't provided": 'Missing'

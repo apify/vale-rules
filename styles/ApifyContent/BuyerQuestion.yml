@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/buyer-question.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Dead-end limitation '%s' without workaround. Add an alternative or 'Instead, use...' for better UX."
 level: suggestion

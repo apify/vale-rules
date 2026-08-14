@@ -1,0 +1,19 @@
+# Auto-generated from rules/compliance-language.yml
+# 0 substitutions, 0 exceptions
+
+extends: existence
+level: suggestion
+message: "Compliance language: '%s' - this string contains legal/privacy restrictions. Verify all restrictions are preserved in any rewrite."
+
+tokens:
+  - 'must not be used'
+  - 'must not be shared'
+  - 'must not be exported'
+  - 'must not be retained'
+  - 'must not be processed'
+  - 'may not be used for'
+  - 'may not be shared'
+  - 'data protection'
+  - 'privacy policy'
+  - 'GDPR'
+  - 'personal data'

@@ -1,7 +1,10 @@
-# Detection only: flags 2 patterns without suggesting replacements.
+# Auto-generated from rules/emoji-capitalization.yml (downgraded: substitution → existence)
+# Regex swaps not Vale-compatible; extracted 2 detectable patterns
 extends: existence
 level: suggestion
 message: "Emoji capitalization: '%s'. Capitalize after leading emoji."
+ignorecase: false
+nonword: true
 
 tokens:
   - '(?:⏩|🚀|🆕|⚡|⚡️|⚠️|🔍|💡|🎯|🧠|🤖|📋|📝|📌|🔔|💰|📊|🛠️|✅|❌|🎉|✨|🔒|🔑|📦|🌐|💬|⭐|🏷️) [a-z]'

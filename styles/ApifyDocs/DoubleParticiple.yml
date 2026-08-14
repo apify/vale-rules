@@ -1,0 +1,15 @@
+# Auto-generated from rules/double-participle.yml
+# 0 substitutions, 2 exceptions
+
+extends: existence
+level: suggestion
+message: "Double participle: '%s' - two -ing/-ed forms close together. Read aloud to check if it sounds natural."
+ignorecase: true
+
+tokens:
+  - '\b\w+ing\s+\w+(?:s|es)?\s+\w+ing\b'
+  - '\b\w+ed\s+\w+\s+\w+ing\b'
+
+exceptions:
+  - '\b(?:getting started|coming soon|looking forward|moving forward|working together)\b'
+  - '^(?:Running|Building|Creating|Adding|Setting|Using)\s'

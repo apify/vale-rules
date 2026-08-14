@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/impersonal-cta.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Long impersonal opener ('%s'). Consider 'You get [items] from [source]' or split into two shorter sentences. Lifts naturalness for Integrator/Publisher personas."
 level: suggestion

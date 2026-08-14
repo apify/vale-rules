@@ -1,3 +1,6 @@
+# Auto-generated from rules/subject-centering.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Subject-centering: '%s' - could the user be the subject instead of the system object?"

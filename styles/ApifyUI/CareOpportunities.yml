@@ -1,3 +1,6 @@
+# Auto-generated from rules/care-opportunities.yml
+# 0 substitutions, 2 exceptions
+
 extends: existence
 level: suggestion
 message: "Care opportunity: '%s' may need a clearer next step, reassurance, or user impact."

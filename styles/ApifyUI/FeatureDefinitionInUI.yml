@@ -1,3 +1,5 @@
+# Auto-generated from rules/feature-definition-in-ui.yml
+# 0 substitutions, 2 exceptions
 extends: existence
 level: suggestion
 message: "Feature definition pattern: '%s' - tell the user what to do, not what the feature is."
@@ -16,6 +18,7 @@ tokens:
   - 'is a feature that'
   - 'is a tool that'
   - 'is designed to'
+  - 'is designed for'
   - 'are designed to'
   - 'will appear here'
   - 'will show up here'

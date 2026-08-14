@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/external-system-number.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Exact external limit '%s' may become outdated. Use approximate language: 'typically a few hundred' not '~400'."
 level: suggestion

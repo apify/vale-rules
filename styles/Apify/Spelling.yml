@@ -1,9 +1,8 @@
+# Auto-generated from rules/spelling.yml
+# 0 substitutions, 0 exceptions
 extends: substitution
 level: warning
 message: "Use American spelling: '%s' instead of '%s'."
-scope:
-  - summary
-  - heading
 swap:
   analyse: 'analyze'
   analysed: 'analyzed'
@@ -60,6 +59,7 @@ swap:
   modelled: 'modeled'
   whilst: 'while'
   opted-out: 'opted out'
+  opt-in: 'opt in'
   grey: 'gray'
   catalogue: 'catalog'
   finalise: 'finalize'

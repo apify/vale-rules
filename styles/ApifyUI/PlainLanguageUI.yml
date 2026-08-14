@@ -1,3 +1,5 @@
+# Auto-generated from rules/plain-language-ui.yml
+# 16 substitutions, 14 exceptions
 extends: substitution
 level: suggestion
 message: "Use plain language (UI): '%s' instead of '%s'."
@@ -20,6 +22,10 @@ exceptions:
   - "information how"
 
 swap:
+  'deprecation notice': 'deprecation message'
+  'a notice': 'a message'
+  'the notice': 'the message'
+  'ready-made': 'ready-to-run'
   'at any time': 'anytime'
   'for more information': 'for more info'
   'returns information about': 'returns info about'

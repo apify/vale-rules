@@ -1,21 +1,126 @@
-# Editorial forms that aren't already covered by ApifyProductNames or
-# TechnologyNames. Keep this list narrow: generic brand and acronym casing is
-# too context-dependent to enforce as an error in technical documentation.
+# Auto-generated from rules/brands.yml
+# 14 substitutions, 33 exceptions
 extends: substitution
 level: warning
 message: "Use the correct brand name or casing: '%s' instead of '%s'."
 ignorecase: false
-scope:
-  - summary
-  - heading
-vocab: false
+exceptions:
+  - 'https?://\S+'
+  - "https?://"
+  - "<[^>]+>"
+  - '[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}'
+  - '\w+\.com'
+  - '\w+\.org'
+  - '\w+\.io'
+  - '\w+\.dev'
+  - '\w+\.net'
+  - "text/html"
+  - 'text/\w+'
+  - "application/json"
+  - "application/xml"
+  - 'application/xhtml\+xml'
+  - 'application/\w+'
+  - 'image/\w+'
+  - "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+"
+  - 'git@\S+'
+  - '\{[^}]*\}'
+  - '\w+\.json\b'
+  - "application/json"
+  - "content-type"
+  - '\bthe rest\b'
+  - '\brest of\b'
+  - '\brest will\b'
+  - '\brest are\b'
+  - '\brest is\b'
+  - '\w+/\w+'
+  - "apify/"
+  - "/apify"
+  - '[a-z]pify-\w+'
+  - '[.\"]apify[.\"]'
+  - '\(apify/'
 swap:
   'addon': 'add-on'
   'addons': 'add-ons'
   'Addon': 'Add-on'
   'Addons': 'Add-ons'
+  Apify-client: 'apify-client'
+  Apify-actor-start: 'apify-actor-start'
+  Apify-default-dataset-item: 'apify-default-dataset-item'
+  Apify-actor-run-succeeded: 'apify-actor-run-succeeded'
+  Apify-actor-run-failed: 'apify-actor-run-failed'
+  Apify-actor-run-aborted: 'apify-actor-run-aborted'
+  Apify-actor-run-timed-out: 'apify-actor-run-timed-out'
+  Apify-actor-run-resurrected: 'apify-actor-run-resurrected'
+  Apify-actor-build-succeeded: 'apify-actor-build-succeeded'
+  Apify-actor-build-failed: 'apify-actor-build-failed'
+  Apify-actor-build-aborted: 'apify-actor-build-aborted'
+  nodejs: 'Node.js'
   NPM: 'npm'
   Npm: 'npm'
+  mongodb: 'MongoDB'
+  postgresql: 'PostgreSQL'
+  mysql: 'MySQL'
+  google: 'Google'
+  facebook: 'Facebook'
+  twitter: 'Twitter'
+  instagram: 'Instagram'
+  amazon: 'Amazon'
+  aws: 'AWS'
+  azure: 'Azure'
+  docker: 'Docker'
+  kubernetes: 'Kubernetes'
+  iphone: 'iPhone'
+  ipad: 'iPad'
+  ipod: 'iPod'
+  imac: 'iMac'
+  macbook: 'MacBook'
+  macos: 'macOS'
+  ios: 'iOS'
+  ipados: 'iPadOS'
+  watchos: 'watchOS'
+  tvos: 'tvOS'
+  ebay: 'eBay'
+  paypal: 'PayPal'
+  devops: 'DevOps'
+  github: 'GitHub'
+  javascript: 'JavaScript'
+  typescript: 'TypeScript'
+  linkedin: 'LinkedIn'
+  youtube: 'YouTube'
+  Github: 'GitHub'
+  chatgpt: 'ChatGPT'
+  Chatgpt: 'ChatGPT'
+  vscode: 'VS Code'
+  VSCode: 'VS Code'
+  Wordpress: 'WordPress'
+  wordpress: 'WordPress'
+  Langchain: 'LangChain'
+  langchain: 'LangChain'
+  https: 'HTTPS'
+  http: 'HTTP'
+  rest: 'REST'
+  soap: 'SOAP'
+  sql: 'SQL'
+  nosql: 'NoSQL'
+  oauth: 'OAuth'
+  jwt: 'JWT'
+  ssl: 'SSL'
+  tls: 'TLS'
+  ssh: 'SSH'
+  dns: 'DNS'
+  vpn: 'VPN'
+  cdn: 'CDN'
+  urls: 'URLs'
+  url: 'URL'
+  apis: 'APIs'
+  api: 'API'
+  sdks: 'SDKs'
+  sdk: 'SDK'
+  json: 'JSON'
+  html: 'HTML'
+  css: 'CSS'
+  xml: 'XML'
+  cli: 'CLI'
   e-mail: 'email'
   E-mail: 'Email'
   e-book: 'ebook'
@@ -25,3 +130,4 @@ swap:
   'Web page': 'web page'
   'Web browser': 'web browser'
   'Web app': 'web app'
+  'AI Agents': 'AI agents'

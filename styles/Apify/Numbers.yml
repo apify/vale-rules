@@ -1,10 +1,9 @@
+# Auto-generated from rules/numbers.yml
+# 4 substitutions, 4 exceptions
 extends: substitution
 level: warning
 message: "Use correct number formatting: '%s' instead of '%s'."
 ignorecase: false
-scope:
-  - summary
-  - heading
 exceptions:
   - '\b\d{4}-\d{2}-\d{2}\b'
   - '\b\d{4}\.\d{2}\.\d{2}\b'

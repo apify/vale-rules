@@ -1,3 +1,6 @@
+# Auto-generated from rules/session-term-inconsistency.yml
+# 0 substitutions, 8 exceptions
+
 extends: existence
 level: suggestion
 message: "Session term inconsistency: '%s' - Apify uses 'sign in/sign out'."

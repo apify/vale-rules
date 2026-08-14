@@ -1,3 +1,5 @@
+# Auto-generated from rules/passive-definition.yml
+# 0 substitutions, 1 exceptions
 extends: existence
 level: suggestion
 message: "Passive feature definition: '%s'. Rewrite to describe what the user can do, not what the feature is."

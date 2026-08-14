@@ -1,0 +1,13 @@
+# Auto-generated from rules/verbose-confirmation.yml
+# 0 substitutions, 1 exceptions
+
+extends: existence
+level: suggestion
+message: "Verbose confirmation: '%s' - lead with the action directly. Drop 'Do you want to.'"
+ignorecase: true
+
+tokens:
+  - '^Do you (?:want|wish|really want) to\b'
+
+exceptions:
+  - '\b(?:instead|alternatively|or would you)\b'

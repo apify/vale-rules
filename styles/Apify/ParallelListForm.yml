@@ -1,3 +1,6 @@
+# Auto-generated from rules/parallel-list-form.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Mixed list form: '%s' - list items should use the same grammatical structure (all gerunds, all nouns, or all imperatives)."

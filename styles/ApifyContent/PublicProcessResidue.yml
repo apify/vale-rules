@@ -1,0 +1,16 @@
+# Auto-generated from rules/readme/public-process-residue.yml
+# 0 substitutions, 0 exceptions
+extends: existence
+message: "Public README process residue: '%s'. Move review notes, source provenance, and issues-file references to the private review file."
+level: suggestion
+scope: raw
+ignorecase: true
+vocab: false
+
+tokens:
+  - '\bsource README\b'
+  - 'source[- ]documented'
+  - 'README[.]issues'
+  - 'README[.]issues[.]md'
+  - 'issues[.]md'
+  - 'issues file'

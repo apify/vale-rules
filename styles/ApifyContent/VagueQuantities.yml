@@ -1,0 +1,10 @@
+# Auto-generated from rules/readme/vague-quantities.yml
+# 0 substitutions, 0 exceptions
+extends: existence
+message: "Vague quantity '%s'. Use a specific number, percentage, or measurable claim."
+level: suggestion
+scope: paragraph
+tokens:
+  - '\b(?:many|several|various|numerous|a lot of|lots of|countless) (?:results|items|records|pages|places|businesses|locations|users)\b'
+  - '\bfast(?:er)?\b(?! \d)'
+  - '\blarge (?:amount|number|volume) of\b'

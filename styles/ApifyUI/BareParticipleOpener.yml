@@ -1,3 +1,6 @@
+# Auto-generated from rules/past-participle-opener.yml
+# 0 substitutions, 4 exceptions
+
 extends: existence
 level: suggestion
 message: "Bare participle opener: '%s' has no subject. Consider 'This [noun] was %s...' or restructure."

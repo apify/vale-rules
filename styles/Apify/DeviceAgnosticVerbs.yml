@@ -1,13 +1,26 @@
-extends: substitution
+# Auto-generated from rules/device-agnostic-verbs.yml
+# 0 substitutions, 7 exceptions
+extends: existence
 level: warning
-message: "Device-specific verb: '%s' instead of '%s'. Use input-neutral language (not everyone uses a mouse)."
+message: "Device-specific verb: '%s' - use 'select' for tabs, menus, and options (not everyone uses a mouse). 'Click' is fine for buttons."
 ignorecase: true
-scope:
-  - sentence
-  - heading
 
-swap:
-  '(?<!double-|right-|left-|single-)click(?!-through)': select
-  '(?<!double-|right-|left-|single-)clicks(?!-through)': selects
-  '(?<!double-|right-|left-|single-)clicked(?!-through)': selected
-  '(?<!double-|right-|left-|single-)clicking(?!-through)': selecting
+tokens:
+  - 'click on the'
+  - 'click on'
+  - 'click the tab'
+  - 'click the menu'
+  - 'click the dropdown'
+  - 'click the option'
+  - 'click the section'
+  - 'click the item'
+  - 'by clicking'
+
+exceptions:
+  - "click-through"
+  - "click rate"
+  - "click and drag"
+  - "drag and drop"
+  - "click the link"
+  - "click the verification link"
+  - "click the confirmation link"

@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/corrupted-em-dash.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Corrupted em dash encoding artifact. Replace with a spaced hyphen ( - )."
 level: warning

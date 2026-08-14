@@ -1,0 +1,13 @@
+# Auto-generated from rules/vague-default.yml
+# 0 substitutions, 0 exceptions
+
+extends: existence
+level: suggestion
+message: "Vague default: '%s' - describe what happens when empty (e.g. 'Leave empty to use the Actor description')."
+ignorecase: true
+
+tokens:
+  - '\b[Ll]eave (?:empty|blank)\s*[.,]?\s*$'
+  - '\b[Ll]eave (?:empty|blank) for (?:the )?default\b'
+  - '\b[Ll]eave (?:empty|blank)\.\s*$'
+  - '\bsystem default\b'

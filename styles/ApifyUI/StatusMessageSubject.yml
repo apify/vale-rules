@@ -1,7 +1,10 @@
+# Auto-generated from rules/status-message-subject.yml
+# 2 substitutions, 0 exceptions
+
 extends: substitution
 level: suggestion
 message: "Status message needs subject: '%s' instead of '%s'."
 
 swap:
-  'Aborted because of many unpaid invoices.': 'This run was aborted because of many unpaid invoices.'
-  'Aborted because of an unpaid invoice.': 'This run was aborted because of an unpaid invoice.'
+  'Aborted because of many unpaid invoices\.': 'This run was aborted because of many unpaid invoices.'
+  'Aborted because of an unpaid invoice\.': 'This run was aborted because of an unpaid invoice.'

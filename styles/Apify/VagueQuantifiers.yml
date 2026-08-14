@@ -1,3 +1,6 @@
+# Auto-generated from rules/vague-quantifiers.yml
+# 1 substitutions, 0 exceptions
+
 extends: substitution
 level: suggestion
 message: "Vague quantifier: '%s' instead of '%s' - dropped; adds no information. (Strunk #19)"

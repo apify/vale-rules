@@ -1,3 +1,5 @@
+# Auto-generated from rules/meta-narration.yml
+# 0 substitutions, 6 exceptions
 extends: existence
 level: suggestion
 message: "Meta-narration '%s'. Describe what the user gets or does, not what the UI element is."
@@ -29,6 +31,7 @@ tokens:
 exceptions:
   - 'Enter your.{0,40}(?:format|like|e\.g\.|example)'
   - "Select a date"
+  - "Use this (?:field )?to (?:test|debug|verify|preview)"
   - "Select a time"
   - "This setting is available"
   - "This (?:field|setting) is (?:read-only|required|optional|disabled)"

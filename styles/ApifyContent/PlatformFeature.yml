@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/platform-feature.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Platform feature in Actor bullets ('%s'). Scheduled runs, API access, and export formats are true of every Apify Actor. Replace with Actor-specific capabilities or move to a 'Platform features' note."
 level: suggestion

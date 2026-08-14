@@ -1,6 +1,9 @@
+# Auto-generated from rules/visible-severity-prefix.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
-message: "Visible severity prefix: '%s' - remove the label. The icon/color already signals severity."
+message: "Visible severity prefix: '%s' - the UI context already signals severity. Remove the label, or use sentence case if keeping as a scanning affordance."
 ignorecase: false
 
 tokens:
@@ -10,3 +13,5 @@ tokens:
   - '^Notice:\s'
   - '^Caution:\s'
   - '^Note:\s'
+  - '^IMPORTANT:\s'
+  - '<strong>IMPORTANT:?<\/strong>\s*'

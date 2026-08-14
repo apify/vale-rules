@@ -1,0 +1,25 @@
+# Auto-generated from rules/so-filler.yml
+# 4 substitutions, 11 exceptions
+
+extends: substitution
+level: suggestion
+message: "Causal filler: '%s' - try '%s' or split into a new sentence."
+
+exceptions:
+  - '\b[Ss]o you can\b'
+  - '\b[Ss]o we can\b'
+  - '\b[Ii]f so\b'
+  - '\b[Ee]ven so\b'
+  - '\bdo so\b'
+  - '\band so on\b'
+  - '\bso far\b'
+  - '\bso (?:much|many|few|little|long|often)\b'
+  - '\bor so\b'
+  - '\bso-called\b'
+  - '(?:exceed|limit|threshold|over|charged)[\s\S]{0,40}\bso\b'
+
+swap:
+  'So, ': ''
+  'So let': 'Let'
+
+  ', so your changes are applied': ''

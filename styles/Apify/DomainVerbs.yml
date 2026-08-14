@@ -1,3 +1,5 @@
+# Auto-generated from rules/domain-verbs.yml
+# 0 substitutions, 3 exceptions
 extends: existence
 level: suggestion
 message: "Domain verb mismatch: '%s'. Check if this verb matches Apify's product model."
@@ -13,7 +15,10 @@ tokens:
   - '\bpurchase\b.{0,20}\b[Pp]roxy\b'
   - '\binstall\b.{0,20}\bActor\b'
   - '\binstalled\b.{0,20}\bActor\b'
+  - '\bsearch for\b.{0,20}\bActor\b'
+  - '\bsearch for\b.{0,20}\b[Ss]tore\b'
 
 exceptions:
   - '\bbuy\b[^.!?]*\badd-?on\b'
   - '\bpurchase\b[^.!?]*\bsubscription\b'
+  - "^Search for"

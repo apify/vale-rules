@@ -1,3 +1,6 @@
+# Auto-generated from rules/unverified-promise.yml
+# 0 substitutions, 5 exceptions
+
 extends: existence
 level: suggestion
 message: "Possible claim-mismatch: '%s' - verify this matches the actual user experience."

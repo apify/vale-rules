@@ -1,0 +1,8 @@
+# Auto-generated from rules/AltTextTooShort.yml
+# 0 substitutions, 0 exceptions
+extends: existence
+message: "Alt text is a single word - describe what the image shows in context."
+level: suggestion
+scope: raw
+raw:
+  - '!\[[A-Za-z][A-Za-z0-9]*\]\('

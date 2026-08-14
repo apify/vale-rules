@@ -1,3 +1,6 @@
+# Auto-generated from rules/redundant-etc.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Redundant: '%s' - 'such as' already implies the list is non-exhaustive. Remove 'etc.'"

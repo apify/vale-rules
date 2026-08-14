@@ -1,3 +1,5 @@
+# Auto-generated from rules/near-repetition.yml
+# 0 substitutions, 14 exceptions
 extends: existence
 level: suggestion
 message: "Near-repetition: '%s'. Same word/root used twice in close proximity."
@@ -15,11 +17,15 @@ tokens:
 
 exceptions:
   - '\byour\b[^.!?]*(?:,\s*which|,\s*that|,\s*who)\s+you\b'
+  - '\byou\b[^.!?]{1,15}\byour\b'
+  - '\byour\b[^.!?]{1,15}\byou\b'
   - '\buse\b[^.!?]*\bto use\b'
   - '\brun\b[^.!?]*\bthe run\b'
   - '\bthe run\b[^.!?]*\brun\b'
   - '\bthe change\b[^.!?]*\bchange\b'
   - '\bchange\b[^.!?]*\bthe change\b'
+  - '\bchange\b[^.!?]*\bchanges too\b'
+  - '\bselect\b[^.!?]*\bneed\b'
   - '\bset\b[^.!?]*\bthe set\b'
   - '\bthe start\b[^.!?]*\bstart\b'
   - '\{[^}]*plural[^}]*\}'

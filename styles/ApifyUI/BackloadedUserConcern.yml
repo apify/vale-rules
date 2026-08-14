@@ -1,4 +1,5 @@
-# Detection only: flags 1 pattern without suggesting replacements.
+# Auto-generated from rules/buried-user-impact.yml (downgraded: substitution → existence)
+# Regex swaps not Vale-compatible; extracted 1 detectable patterns
 extends: existence
 level: suggestion
 message: "Backloaded user concern: '%s' => '%s'. Communicate state, not requirement."

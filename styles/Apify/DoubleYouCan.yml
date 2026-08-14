@@ -1,4 +1,5 @@
-# Detection only: flags 1 pattern without suggesting replacements.
+# Auto-generated from rules/double-you-can.yml (downgraded: substitution → existence)
+# Regex swaps not Vale-compatible; extracted 1 detectable patterns
 extends: existence
 level: suggestion
 message: "Double 'You can': '%s'. Drop the first 'You can' when the second already uses it."

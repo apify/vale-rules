@@ -1,30 +1,18 @@
+# Auto-generated from rules/gerund-heading.yml
+# 0 substitutions, 4 exceptions
 extends: existence
 level: warning
-message: "Avoid gerunds (-ing) in headings. Use noun phrases or imperatives."
+message: "Gerund heading: '%s' - consider imperative ('Run the Actor') or declarative ('How to run') form."
 scope: heading
 ignorecase: false
 
 exceptions:
-  - Billing
-  - Pricing
-  - Debugging
-  - String
-  - Caching
-  - Logging
-  - Troubleshooting
-  - Missing
-  - Polling
-  - Timing
-  - Marketing
-  - Existing
-  - Pending
-  - Underlying
-  - Remaining
-  - Corresponding
-  - Incoming
-  - Outgoing
-  - Resulting
-  - Leading
-  - Following
+  - "^Getting [Ss]tarted"
+  - "^Troubleshooting"
+  - "^(?:Error [Hh]andling|Data [Pp]rocessing|Load [Bb]alancing|Rate [Ll]imiting)"
+  - "^[A-Z][a-z]+ing your"
+
 tokens:
-  - '^\w+ing\b'
+  - '^[A-Z][a-z]+ing the'
+  - '^[A-Z][a-z]+ing a '
+  - '^[A-Z][a-z]+ing an '

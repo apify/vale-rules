@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/faq-filler-preposition.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Filler preposition in FAQ answer ('%s'). Tighten: remove 'in the', 'of your', 'or in the' where the meaning survives without them."
 level: suggestion

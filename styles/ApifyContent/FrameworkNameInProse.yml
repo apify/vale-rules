@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/framework-name-in-prose.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Framework name '%s' in prose. For data-extraction Actors: reframe as user benefit (what the user can do, not what library does it). Expected in dev-tool Actor READMEs (Cheerio Scraper, Puppeteer Scraper, Playwright Scraper) - suppress with Vale comments if needed."
 level: suggestion

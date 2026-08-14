@@ -1,3 +1,6 @@
+# Auto-generated from rules/loose-sentence.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Loose sentence: '%s' - consider splitting at the conjunction for clarity (Strunk #14)."

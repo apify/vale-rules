@@ -1,3 +1,5 @@
+# Auto-generated from rules/hedged-limits.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Hedged limit '%s'. State the number directly: 'Max 400 results per query' not 'may return up to approximately 400.'"
 level: suggestion

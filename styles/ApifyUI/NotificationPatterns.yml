@@ -1,3 +1,6 @@
+# Auto-generated from rules/notification-patterns.yml
+# 10 substitutions, 3 exceptions
+
 extends: substitution
 level: suggestion
 message: "Notification copy: '%s' instead of '%s'."
@@ -10,6 +13,8 @@ exceptions:
 swap:
   'Alternatively, you can': 'Or'
   'Alternatively, ': 'Or '
+
+  'To keep going, you can (\w)': '$1'
 
   'can easily': 'can'
 

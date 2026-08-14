@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/unhedged-performance.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Unhedged performance claim ('%s'). Use 'up to Nx faster' for best-case numbers. Flat claims without 'up to' assert unconditional performance."
 level: suggestion

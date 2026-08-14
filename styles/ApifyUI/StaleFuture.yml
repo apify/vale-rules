@@ -1,3 +1,6 @@
+# Auto-generated from rules/stale-future.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Consider present tense: '%s' - if this describes a definite state change, 'becomes/remains/stays' may be more direct."

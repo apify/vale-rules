@@ -1,3 +1,5 @@
+# Auto-generated from rules/front-load-value.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Throat-clearing opener '%s'. Start with the most specific claim, not context-setting."
 level: suggestion

@@ -1,3 +1,5 @@
+# Auto-generated from rules/spatial-references.yml
+# 0 substitutions, 5 exceptions
 extends: existence
 level: suggestion
 message: "Spatial reference: '%s' - name the element instead of pointing to its position."
@@ -30,4 +32,8 @@ tokens:
   - 'the field below'
   - 'the field above'
   - 'the table below'
+  - 'from below'
+  - 'from above'
+  - '\b(?:choose|select|pick|see|find|view|check)\b.{0,20}\bbelow\b'
+  - '\b(?:choose|select|pick|see|find|view|check)\b.{0,20}\babove\b'
   - 'the table above'

@@ -1,3 +1,6 @@
+# Auto-generated from rules/single-item-introducer.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Single-item introducer: '%s' - not a list, so remove 'like'/'such as' and use parentheses instead. Example: costs, like compute units => costs (compute units)."

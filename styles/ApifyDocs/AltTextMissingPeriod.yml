@@ -1,0 +1,8 @@
+# Auto-generated from rules/AltTextMissingPeriod.yml
+# 0 substitutions, 0 exceptions
+extends: existence
+message: "Alt text should end with a period so screen readers pause naturally after the description."
+level: suggestion
+scope: raw
+raw:
+  - '!\[[^\]]*\w\]'

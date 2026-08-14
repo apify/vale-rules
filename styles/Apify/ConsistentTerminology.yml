@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/consistent-terminology.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Inconsistent terminology '%s'. Pick one term and use it throughout: 'export' or 'download' (not both), 'Google Search' or 'Google SERP' (not both)."
 level: suggestion

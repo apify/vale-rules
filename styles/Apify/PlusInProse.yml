@@ -1,3 +1,5 @@
+# Auto-generated from rules/plus-in-prose.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Plus sign in prose ('%s'). Use 'and' or a comma instead of '+'."
 level: suggestion

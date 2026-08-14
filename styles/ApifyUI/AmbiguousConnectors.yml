@@ -1,0 +1,29 @@
+# Auto-generated from rules/ambiguous-connectors.yml
+# 0 substitutions, 17 exceptions
+extends: existence
+level: suggestion
+message: "Ambiguous connector: '%s' - if this means 'because' or 'although', use that word for clarity."
+
+exceptions:
+  - 'while \w+ing\b'
+  - "while (?:you.?re?|it.?s?|they.?re?|he.?s?|she.?s?)"
+  - "while the (?:run|Actor|process|task|build|request|upload|download)"
+  - "(?:for|takes?|take) a while"
+  - "a while (?:and|to|for|back|ago|later|longer)"
+  - 'while (?:under|in|on|at)\b'
+  - 'since (?:last|yesterday|then|the|that|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|\d)'
+  - 'since (?:you|they|he|she|it|we)\s+(?:\w+ed|signed|logged|subscribed|left|started|joined)'
+  - "as a result"
+  - "as well as"
+  - "as follows"
+  - "as shown"
+  - "as expected"
+  - "as needed"
+  - "as usual"
+  - "such as"
+  - '[Aa]s (?:the|an?)\s+\w+(?:\s+\w+)?(?:,|$)'
+
+tokens:
+  - ',\s+while\s+(?!(?:you.?re?|it.?s?|they.?re?|the\s+(?:run|Actor)|\w+ing\b))'
+  - '^While\s+(?!you.?re?|waiting|loading|running|saving|it.?s?)[^,]+,'
+  - '^As\s+(?:this|it)\s+(?:is|was|has|will|can|may|might|does)'

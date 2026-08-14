@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/weak-opener.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Weak opener '%s'. Start with a specific action or concrete noun instead."
 level: suggestion

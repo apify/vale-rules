@@ -1,3 +1,5 @@
+# Auto-generated from rules/readme/no-comma-after-eg.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 message: "Apify style: no comma after 'e.g.' or 'i.e.' - write 'e.g. Node.js' not 'e.g., Node.js'."
 level: suggestion

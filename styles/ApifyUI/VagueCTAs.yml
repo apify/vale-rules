@@ -1,9 +1,14 @@
+# Auto-generated from rules/vague-ctas.yml
+# 0 substitutions, 10 exceptions
 extends: existence
 level: suggestion
 message: "Vague CTA: '%s' - link/button text should describe the destination or outcome, not just prompt action."
 
 exceptions:
-  - "^Cancel$"
+  - 'Go to \w'
+  - '\w go \w'
+  - '\w go,'
+  - 'to go\b'
   - "^Close$"
   - "^Back$"
   - "^OK$"
@@ -24,3 +29,5 @@ tokens:
   - 'Check it out'
   - 'See more'
   - 'Learn more'
+  - '>here</a>'
+  - '>here</'

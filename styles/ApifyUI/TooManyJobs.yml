@@ -1,3 +1,6 @@
+# Auto-generated from rules/too-many-jobs.yml
+# 0 substitutions, 4 exceptions
+
 extends: existence
 level: suggestion
 message: "Doing too much: '%s' - this string has more than one job. Can you split it or cut the weaker half?"

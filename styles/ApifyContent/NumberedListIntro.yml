@@ -1,0 +1,20 @@
+# Auto-generated from rules/readme/numbered-list-intro.yml
+# 0 substitutions, 2 exceptions
+extends: existence
+message: "Cataphoric forecasting: '%s'. Just start the list. Readers can count."
+level: suggestion
+scope: sentence
+
+tokens:
+  - '^Three (?:key|main|core|primary|critical|essential|important) '
+  - '^Four (?:key|main|core|primary|critical|essential|important) '
+  - '^Five (?:key|main|core|primary|critical|essential|important) '
+  - '^Six (?:key|main|core|primary|critical|essential|important) '
+  - '^Seven (?:key|main|core|primary|critical|essential|important) '
+  - '^Here are the \d+ '
+  - '^There are \d+ (?:key|main|core|primary|critical|essential|important) '
+  - '^The following \d+ '
+
+exceptions:
+  - '^\d+ (?:required|mandatory|minimum|maximum)'
+  - "^Three (?:attempts|retries|seconds|minutes)"

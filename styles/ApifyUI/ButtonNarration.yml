@@ -1,3 +1,6 @@
+# Auto-generated from rules/button-narration.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Button narration: '%s' tells users what a visible button does. The button label is the instruction."

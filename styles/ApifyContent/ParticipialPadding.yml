@@ -1,0 +1,33 @@
+# Auto-generated from rules/readme/participial-padding.yml
+# 0 substitutions, 2 exceptions
+extends: existence
+message: "Participial padding: '%s'. This trailing -ing phrase reads as AI filler. Cut it or make it a separate sentence."
+level: suggestion
+scope: sentence
+
+tokens:
+  - ', highlighting'
+  - ', underscoring'
+  - ', showcasing'
+  - ', demonstrating'
+  - ', emphasizing'
+  - ', illustrating'
+  - ', reflecting'
+  - ', reinforcing'
+  - ', solidifying'
+  - ', streamlining'
+  - ', ensuring'
+  - ', enabling'
+  - ', empowering'
+  - ', fostering'
+  - ', facilitating'
+  - ', leveraging'
+  - ', harnessing'
+  - ', eliminating'
+  - ', transforming'
+  - ', revolutionizing'
+  - ', paving the way'
+
+exceptions:
+  - ", ensuring (?:that |backward |forward )?compatib"
+  - ", enabling (?:you to|users to|the)"

@@ -1,7 +1,10 @@
-# Detection only: flags 8 patterns without suggesting replacements.
+# Auto-generated from rules/branching-conditional.yml (downgraded: substitution → existence)
+# Regex swaps not Vale-compatible; extracted 8 detectable patterns
 extends: existence
 level: suggestion
 message: "Branching conditional: '%s'. Lead with the default action."
+ignorecase: false
+nonword: true
 
 tokens:
   - 'If you need to [^,]+, [^.]+\. If you don.t, it will'

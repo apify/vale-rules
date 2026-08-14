@@ -1,3 +1,6 @@
+# Auto-generated from rules/double-negative.yml
+# 29 substitutions, 0 exceptions
+
 extends: substitution
 level: suggestion
 message: "Positive form: '%s' instead of '%s' - express positively for clarity (Strunk #18)."

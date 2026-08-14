@@ -1,0 +1,10 @@
+# Auto-generated from rules/readme/backticked-product-name.yml
+# 0 substitutions, 0 exceptions
+extends: existence
+message: "Product name '%s' is styled as code. Use backticks for field names, code values, and commands, not product or integration names."
+level: suggestion
+scope: raw
+vocab: false
+
+raw:
+  - '`(?:Pinecone|Qdrant|Crawlee|ChatGPT|OpenAI|GPTs|LLMs|LangChain|LlamaIndex|Haystack|Apify|Apify Console|Actor|Actors|Store|Dataset|Datasets|Proxy|Proxies|MCP)`'

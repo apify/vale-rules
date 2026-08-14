@@ -1,3 +1,5 @@
+# Auto-generated from rules/plain-language.yml
+# 94 substitutions, 28 exceptions
 extends: substitution
 level: suggestion
 message: "Use plain language: '%s' instead of '%s'."
@@ -82,6 +84,14 @@ swap:
   remain: 'stay'
   remains: 'stays'
   customized: 'custom'
+  'fill in your': 'enter your'
+  'Fill in your': 'Enter your'
+  'fill out your': 'enter your'
+  'Fill out your': 'Enter your'
+  'fill in the': 'complete the'
+  'Fill in the': 'Complete the'
+  'fill out the': 'complete the'
+  'Fill out the': 'Complete the'
   modify: 'change'
   regarding: 'about'
   'with regard to': 'about'
@@ -106,8 +116,6 @@ swap:
   whereas: 'because'
   facilitate: 'help'
   leverage: 'use'
-  evaluate: 'test'
-  evaluating: 'testing'
   utilize: 'use'
   utilizes: 'uses'
   utilized: 'used'
@@ -142,6 +150,9 @@ swap:
   'Moreover,': 'also,'
   'Consequently,': 'So'
   'Previously,': 'Before'
+
+  ', assuming ': ', if '
+  '\. Assuming ': '. If '
 
   'If you wish to': 'If you want to'
   'if you wish to': 'if you want to'

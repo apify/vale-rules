@@ -1,3 +1,6 @@
+# Auto-generated from rules/placeholder-as-guidance.yml
+# 0 substitutions, 14 exceptions
+
 extends: existence
 level: suggestion
 message: "Placeholder-as-guidance: '%s' - this instruction disappears when the user starts typing."
@@ -13,6 +16,11 @@ exceptions:
   - "<[a-zA-Z]"
   - '\{[^}]+,\s*(?:plural|select)'
   - '(?:Enter|Type)\s+(?:the|a|an)\s+\w+.*(?:to|for|of)\s+\w+'
+  - '^Enter your \w+(?:\s+\w+)? \w+(?:\s+\w+)?$'
+  - '(?:^\{|^The |^This |^It |^Memory|^Password|^Date|^Source|^A name|^URL|^Webhook|^Unit|^Line|^Total|^Desired|^Max |^Price|^Event|^Role|^Aside)[\s\S]*(?:must be|should be)'
+  - "(?:POST|PUT) payload must be"
+  - 'Enter your[\s\S]+\.\s+[A-Z]'
+  - 'Enter your[\s\S]+<'
 
 tokens:
   - 'Enter your'

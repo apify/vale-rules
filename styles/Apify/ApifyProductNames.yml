@@ -1,11 +1,11 @@
+# Auto-generated from rules/apify-product-names.yml
+# 9 substitutions, 0 exceptions
 extends: substitution
 message: "Use the Apify product name '%s' instead of '%s'."
 ignorecase: true
 level: warning
-scope:
-  - summary
-  - heading
-vocab: false
+scope: heading
+
 swap:
   'apify dashboard': Apify Console
   'apify console': Apify Console

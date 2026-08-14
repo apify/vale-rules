@@ -1,3 +1,5 @@
+# Auto-generated from rules/ambiguous-user-reference.yml
+# 0 substitutions, 2 exceptions
 extends: existence
 level: suggestion
 message: "Ambiguous reference: '%s' - if both an admin and a managed user are in context, clarify which one ('this user' vs 'you')."

@@ -1,3 +1,5 @@
+# Auto-generated from rules/instructions-bloat.yml
+# 0 substitutions, 0 exceptions
 extends: existence
 level: suggestion
 message: "Instructions bloat: '%s' - if the UI needs instructions, consider whether the design could be clearer."

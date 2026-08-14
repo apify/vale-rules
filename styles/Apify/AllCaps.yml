@@ -1,3 +1,5 @@
+# Auto-generated from rules/all-caps.yml
+# 0 substitutions, 17 exceptions
 extends: existence
 message: "ALL CAPS '%s' in prose. Use sentence case or bold. Only short acronyms and file names (README, CHANGELOG) are acceptable."
 level: suggestion
@@ -12,3 +14,13 @@ exceptions:
   - "VERIFY"
   - "IMPORTANT"
   - "WARNING"
+  - "DANGER"
+  - "UNPUBLISH"
+  - "SIGTERM"
+  - "SIGKILL"
+  - "STORAGE"
+  - "SCHEDULER"
+  - "WEBHOOKS"
+  - "CANCELED"
+  - "APPROVED"
+  - "PROFORMA"

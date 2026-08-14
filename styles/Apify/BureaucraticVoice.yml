@@ -1,3 +1,6 @@
+# Auto-generated from rules/bureaucratic-voice.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Bureaucratic voice: '%s' - sounds like a form letter, not a person."

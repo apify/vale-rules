@@ -1,8 +1,10 @@
+# Auto-generated from rules/article-sound.yml
+# 56 substitutions, 3 exceptions
+
 extends: substitution
 level: warning
 message: "Article by sound: '%s' instead of '%s'."
 ignorecase: false
-scope: sentence
 
 exceptions:
   - '\{[^}]*(?:plural|select)[^}]*\}'

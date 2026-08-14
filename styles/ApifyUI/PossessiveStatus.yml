@@ -1,3 +1,5 @@
+# Auto-generated from rules/possessive-status.yml
+# 23 substitutions, 0 exceptions
 extends: substitution
 level: suggestion
 message: "Possessive status: '%s' => '%s'. Use 'Your' - it's the user's resource."

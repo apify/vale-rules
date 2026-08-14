@@ -1,3 +1,5 @@
+# Auto-generated from rules/currently-removal.yml
+# 22 substitutions, 8 exceptions
 extends: substitution
 level: suggestion
 message: "Remove redundant 'currently': '%s' instead of '%s'."
@@ -11,12 +13,25 @@ exceptions:
   - "and you are currently"
   - "and you.re currently"
 swap:
+  'is currently not (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': "isn't $1"
+  'are currently not (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': "aren't $1"
+  'is not currently (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': "isn't $1"
+  'are not currently (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': "aren't $1"
+  'is currently (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': 'is $1'
+  'are currently (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': 'are $1'
+  'currently (selected|running|active|enabled|disabled|logged|signed|displayed|shown|used|set|configured|available|supported|open|closed|pending|processing)': '$1'
   'do not currently have': "don't have"
   'does not currently have': "doesn't have"
   'currently do not have': "don't have"
   'currently does not have': "doesn't have"
   "don't currently have": "don't have"
   "doesn't currently have": "doesn't have"
+  'there (is|are) currently no': 'there $1 no'
+  '(is|are) currently in beta': '$1 in beta'
   'is currently being': 'is being'
   'are currently being': 'are being'
+  'is currently (using|building|processing|loading|running|waiting|checking|updating|fetching|syncing|connecting|downloading|uploading|deploying|installing|initializing|compiling|bundling|migrating|rendering|generating|executing|applying|scanning|indexing)': 'is $1'
+  'are currently (using|building|processing|loading|running|waiting|checking|updating|fetching|syncing|connecting|downloading|uploading|deploying|installing|initializing|compiling|bundling|migrating|rendering|generating|executing|applying|scanning|indexing)': 'are $1'
+  "you're currently (using|running|on|in|at|viewing|editing|working)": "you're $1"
   'Currently, ': ''
+  'Currently (\w)': '$1'

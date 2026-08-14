@@ -1,3 +1,5 @@
+# Auto-generated from rules/filler-words.yml
+# 198 substitutions, 55 exceptions
 extends: substitution
 level: suggestion
 message: "Remove filler word or phrase: '%s' instead of '%s'."
@@ -5,6 +7,7 @@ nonword: true
 exceptions:
   - "^Be aware that"
   - '\.\s+Be aware that'
+  - 'You can [^.]+\.\s*You can also'
   - '\b(?:[Ss]ince|[Bb]ecause|[Ii]f|[Ww]hen|[Ww]hile|[Aa]lthough|[Uu]nless|[Uu]ntil|[Aa]fter|[Bb]efore|[Aa]s) there (?:are|is) no\b'
   - "the beginning of"
   - "the ending of"
@@ -62,6 +65,7 @@ swap:
   'it should be noted that': ''
   'as a matter of fact,': ''
   'as a matter of fact': ''
+  'note that (\w+)': '$1'
   'keep in mind that': ''
   'be aware that': ''
   'it is worth mentioning that': ''
@@ -89,8 +93,13 @@ swap:
   'in spite of the fact that': 'although'
   'in order to be able to': 'to'
   'you can always': 'you can'
+  'You can also ': ''
+  'you can also ': ''
+  'can also ': 'can '
+  'could also ': 'could '
+  'may also ': 'may '
   'you will need to': 'you need to'
-  'you need to keep at least one valid payment method on your account.': 'keep at least one valid payment method on your account.'
+  'you need to keep at least one valid payment method on your account\.': 'you need at least one valid payment method on your account.'
   'we will need to': 'we need to'
   'you expect to need': 'you need'
   'will no longer': "won't"
@@ -118,6 +127,9 @@ swap:
   'to act accordingly': ''
   'at your earliest convenience': 'soon'
   'a large number of': 'many'
+  ',\s*probably due to (?!missing permissions)([^.]+)': ''
+  ',\s*probably because of (?!missing permissions)([^.]+)': ''
+  '(\d+) out of': '$1 of'
   'therefore,': 'so'
   'therefore': 'so'
   'in addition': 'also'
@@ -131,14 +143,17 @@ swap:
   'and then try': 'and try'
   'and then refresh': 'and refresh'
   'and then reload': 'and reload'
+  'and then run': 'and run'
+  'and then start': 'and start'
+  'and then open': 'and open'
   'There is no ': 'No '
   'There are no ': 'No '
   ', and there is no ': ', and no '
   ', and there are no ': ', and no '
-  'README.md file': 'README.md'
-  'CHANGELOG.md file': 'CHANGELOG.md'
-  'package.json file': 'package.json'
-  'actor.json file': 'actor.json'
+  'README\.md file': 'README.md'
+  'CHANGELOG\.md file': 'CHANGELOG.md'
+  'package\.json file': 'package.json'
+  'actor\.json file': 'actor.json'
   'Dockerfile file': 'Dockerfile'
   'is missing a ': 'has no '
   'is missing an ': 'has no '
@@ -167,9 +182,10 @@ swap:
   'override them by using': 'override them with'
   'give general feedback': 'provide feedback'
   'give general ': 'give '
-  'before they can be ': 'before they are '
-  'before it can be ': 'before it is '
+  'Choose a user-friendly name for the (.+)': 'Name the $1'
+  'Choose a user-friendly name for your (.+)': 'Name your $1'
   'in the process of ': ''
+  'The (\w+ing) of': '$1'
   ' going forward,': ','
   ' going forward': ''
   'basically ': ''
@@ -229,12 +245,14 @@ swap:
   "We've got your back": ''
   "we've got your back": ''
 
-  'You can try again.': 'Try again.'
-  'you can try again.': 'try again.'
+  'You can try again\.': 'Try again.'
+  'you can try again\.': 'try again.'
 
   'If you have any questions, please contact': 'Need help? Contact'
   'If you have any questions, contact': 'Need help? Contact'
 
+  'As this is your (\w+), ': ''
+  'As this is a (\w+), ': ''
   'Click here to ': 'To '
   'click here to ': 'to '
   'come into effect': 'apply'

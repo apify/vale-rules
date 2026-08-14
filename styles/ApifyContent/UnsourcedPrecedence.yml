@@ -1,5 +1,7 @@
+# Auto-generated from rules/readme/unsourced-precedence.yml
+# 0 substitutions, 0 exceptions
 extends: existence
-message: "Precedence/override claim ('%s'). Behavioral claims about which field takes priority need verification against the actual implementation. Tag with VERIFY if not confirmed."
+message: "Precedence/override claim ('%s'). Behavioral claims about which field takes priority need verification against the actual implementation. Add a quote-anchored README.issues.md row if not confirmed."
 level: suggestion
 scope: sentence
 tokens:

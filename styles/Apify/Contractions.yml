@@ -1,3 +1,5 @@
+# Auto-generated from rules/contractions.yml
+# 74 substitutions, 25 exceptions
 extends: substitution
 level: suggestion
 message: "Use the contraction: '%s' instead of '%s'."
@@ -11,8 +13,14 @@ exceptions:
   - 'will be lost forever[\s\S]*'
   - '\w+ing it will'
   - "with you will"
-  - "It will (?:appear|show|be shown|be displayed|be visible)"
+  - '^It will\b'
+  - '\. It will\b'
   - 'It is .\d'
+  - '\w+er it is\b'
+  - 'more \w+ it is\b'
+  - 'how \w+ it is\b'
+  - 'whether it is\b'
+  - 'what it is\b'
   - "here is going to"
   - 'here is (?:prefill|fill|display|show|render|configur|provid|generat|stor|creat|load|sav|enabl|disabl)\w*ed'
   - "must not be"
@@ -20,6 +28,7 @@ exceptions:
   - '[Dd]o not share (?:the |your |this )?(?:passwords?|tokens?|credentials?|keys?|secrets?)\b'
   - "as they are"
   - "ensuring they are"
+  - '\b(?:where|wherever|however) (?:you|they|we) are\b'
   - 'you would \w+ing'
 swap:
   'Cannot': "Can't"

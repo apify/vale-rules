@@ -1,14 +1,13 @@
+# Auto-generated from rules/em-dash-avoidance.yml
+# 12 substitutions, 1 exceptions
 extends: substitution
 level: warning
 message: "Replace em dash with appropriate punctuation: '%s' instead of '%s'."
 nonword: true
-scope:
-  - sentence
-  - heading
 exceptions:
   - '\u2014[^—]*\u2014'
 swap:
-  'badge — awarded to the top 20 Actors.': 'badge. It goes to the top 20 Actors on Apify.'
+  'badge — awarded to the top 20 Actors\.': 'badge. It goes to the top 20 Actors on Apify.'
 
   ' — awarded': ', awarded'
   ' — designed': ', designed'
@@ -19,5 +18,7 @@ swap:
   ' — intended': ', intended'
   ' — available': ', available'
   ' — required': ', required'
+
+  ' — (\w+ing)': ', $1'
 
   ' — ': '. '

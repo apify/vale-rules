@@ -1,3 +1,6 @@
+# Auto-generated from rules/meta-qualifiers.yml
+# 0 substitutions, 8 exceptions
+
 extends: existence
 level: suggestion
 message: "Meta-qualifier: '%s' - show, don't tell. Can you replace this with a concrete constraint or example?"

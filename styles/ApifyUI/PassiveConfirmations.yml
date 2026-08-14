@@ -1,3 +1,5 @@
+# Auto-generated from rules/passive-confirmations.yml
+# 25 substitutions, 44 exceptions
 extends: substitution
 level: suggestion
 message: "Use active confirmation form: '%s' instead of '%s'."
@@ -52,12 +54,12 @@ exceptions:
   - 'API token created\.\s+\S'
 swap:
 
-  'Build tagged successfully.': 'Build tagged'
-  'Tag removed successfully.': 'Tag removed'
-  'Automatic builds enabled.': 'Automatic builds enabled'
-  'Automatic builds disabled.': 'Automatic builds disabled'
-  'General resource access updated.': 'General resource access updated'
-  'Scheduled resubscription successfully canceled.': 'Scheduled resubscription canceled'
+  'Build tagged successfully\.': 'Build tagged'
+  'Tag removed successfully\.': 'Tag removed'
+  'Automatic builds enabled\.': 'Automatic builds enabled'
+  'Automatic builds disabled\.': 'Automatic builds disabled'
+  'General resource access updated\.': 'General resource access updated'
+  'Scheduled resubscription successfully canceled\.': 'Scheduled resubscription canceled'
 
   'Integration updated successfully': 'Integration updated'
   'File uploaded successfully': 'File uploaded'
@@ -68,15 +70,15 @@ swap:
   'Connector successfully saved': 'Connector saved'
   'Authorized successfully': 'Authorized'
   'FirstPromoter Referral ID updated successfully': 'Referral ID updated'
-  'Resubscription to the Custom plan scheduled successfully.': 'Resubscription to the Custom plan scheduled.'
-  'User resubscribed to the Custom plan successfully.': 'User resubscribed to the Custom plan.'
+  'Resubscription to the Custom plan scheduled successfully\.': 'Resubscription to the Custom plan scheduled.'
+  'User resubscribed to the Custom plan successfully\.': 'User resubscribed to the Custom plan.'
 
   'Changes applied!': 'Changes applied'
   'Email verified!': 'Email verified'
 
-  'Widget added.': 'Widget added'
-  'Payment method added.': 'Payment method added'
-  'Payment method removed.': 'Payment method removed'
-  'Primary payment method changed.': 'Primary payment method changed'
-  'API token removed.': 'API token removed'
-  'API token created.': 'API token created'
+  'Widget added\.': 'Widget added'
+  'Payment method added\.': 'Payment method added'
+  'Payment method removed\.': 'Payment method removed'
+  'Primary payment method changed\.': 'Primary payment method changed'
+  'API token removed\.': 'API token removed'
+  'API token created\.': 'API token created'

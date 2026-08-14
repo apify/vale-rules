@@ -1,3 +1,6 @@
+# Auto-generated from rules/unclear-outcome.yml
+# 0 substitutions, 19 exceptions
+
 extends: existence
 level: suggestion
 message: "Hidden outcome: '%s' - the user may not know what happens after acting."

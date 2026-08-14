@@ -1,0 +1,14 @@
+# Auto-generated from rules/description-restates-heading.yml
+# 0 substitutions, 1 exceptions
+
+extends: existence
+level: suggestion
+message: "Definition opener: '%s' - descriptions should add value beyond what the heading says. State why it matters or what the user can do."
+ignorecase: false
+
+tokens:
+  - '^(?:A|An|The) \w+ (?:is|are) (?:a |an |the )?\w'
+  - '^[A-Z]\w+s are \w+ '
+
+exceptions:
+  - '\b(?:error|invalid|must be|required|can.t be)\b'

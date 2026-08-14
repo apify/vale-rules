@@ -1,3 +1,5 @@
+# Auto-generated from rules/unverifiable-time-promise.yml
+# 0 substitutions, 3 exceptions
 extends: existence
 level: suggestion
 message: "Unverifiable time promise: '%s'. Use an honest range ('a few seconds', 'a few minutes') or omit."

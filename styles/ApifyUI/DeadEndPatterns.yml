@@ -1,3 +1,6 @@
+# Auto-generated from rules/dead-end-patterns.yml
+# 0 substitutions, 9 exceptions
+
 extends: existence
 level: suggestion
 message: "Dead-end pattern: '%s' gives no actionable next step. Add a specific CTA."

@@ -1,3 +1,6 @@
+# Auto-generated from rules/overstatement.yml
+# 0 substitutions, 0 exceptions
+
 extends: existence
 level: suggestion
 message: "Overstatement: '%s' - state it plainly. Hyperbole erodes trust. (Strunk, Ch. V)"

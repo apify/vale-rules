@@ -1,4 +1,5 @@
-# Detection only: flags 6 patterns without suggesting replacements.
+# Auto-generated from rules/impersonal-recommendation.yml (downgraded: substitution → existence)
+# Regex swaps not Vale-compatible; extracted 6 detectable patterns
 extends: existence
 level: suggestion
 message: "Impersonal recommendation: '%s'. Use imperative - just tell the user what to do."

@@ -1,0 +1,16 @@
+# Auto-generated from rules/precise-support-phrasing.yml
+# 8 substitutions, 0 exceptions
+extends: substitution
+level: suggestion
+message: "Prefer precise term: '%s' instead of '%s' when directing to support."
+ignorecase: true
+
+swap:
+  'if you think this is wrong': 'if you think this is an error'
+  'if this is wrong': 'if this is an error'
+  'if you believe this is wrong': 'if you believe this is an error'
+  'if you think this is incorrect': 'if you think this is an error'
+  'if this is incorrect': 'if this is an error'
+  'if you believe this is incorrect': 'if you believe this is an error'
+  'if you think this is a mistake': 'if you think this is an error'
+  'if this is a mistake': 'if this is an error'
