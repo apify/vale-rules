@@ -1,0 +1,15 @@
+extends: existence
+message: "Source provenance in public copy: '%s'. State the fact directly - readers don't need to know where you found it. Keep source evidence in README.issues.md."
+level: warning
+scope: sentence
+ignorecase: true
+vocab: false
+
+tokens:
+  - '\b(?:the\s+)?(?:Pricing|Store|Input|Output|API|README|Description|Settings|OpenAPI)\s+(?:tab|page|section|panel|schema|docs?|documentation|listing)\s+(?:says?|shows?|lists?|states?|describes?|marks?|mentions?|indicates?|specifies?|notes?)\b'
+  - '\b(?:the\s+)?(?:input schema|output schema|schema|API docs?|OpenAPI schema|Store listing|README|source README)\s+(?:says?|shows?|lists?|states?|describes?|marks?|mentions?|indicates?|specifies?|notes?)\b'
+  - '\b[Aa]ccording to the\s+(?:Pricing|Store|Input|Output|API|README|Description|Settings|OpenAPI)\s+(?:tab|page|section|panel|schema|docs?|documentation|listing)\b'
+  - '\b[Aa]ccording to the\s+(?:input schema|output schema|schema|API docs?|OpenAPI schema|Store listing|README|source README)\b'
+  - '\b[Aa]s\s+(?:listed|shown|described|stated|noted|mentioned)\s+(?:on|in)\s+the\s+(?:Pricing|Store|Input|Output|API|README|Description|Settings|OpenAPI|input schema|output schema|schema|API docs?|OpenAPI schema|Store listing|source README)\b'
+  - '\b[Bb]ased on the\s+(?:Pricing|Store|Input|Output|API|README|Description|Settings|OpenAPI)\s+(?:tab|page|section|panel|schema|docs?|documentation|listing)\b'
+  - '\b[Bb]ased on the\s+(?:input schema|output schema|schema|API docs?|OpenAPI schema|Store listing|README|source README)\b'
