@@ -1,5 +1,3 @@
-# Auto-generated from rules/weak-verbs.yml
-# 54 substitutions, 6 exceptions
 extends: substitution
 level: suggestion
 message: "Use a stronger verb: '%s' instead of '%s'."

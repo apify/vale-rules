@@ -1,5 +1,3 @@
-# Auto-generated from rules/blame-language.yml
-# 9 substitutions, 3 exceptions
 extends: substitution
 level: suggestion
 message: "Blame language: '%s' instead of '%s'. Describe the state, not the user's mistake."

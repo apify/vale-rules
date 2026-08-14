@@ -1,5 +1,3 @@
-# Auto-generated from rules/possessive-sub-component.yml
-# 15 substitutions, 2 exceptions
 extends: substitution
 level: suggestion
 message: "Sub-component possessive: '%s' instead of '%s'. The sub-component belongs to the entity, not the user."

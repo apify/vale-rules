@@ -1,5 +1,3 @@
-# Auto-generated from rules/redundant-brand-name.yml
-# 0 substitutions, 5 exceptions
 extends: existence
 level: suggestion
 message: "Redundant brand name: '%s' - if the reader is already on an Apify page, the brand name may be unnecessary after 'your'."

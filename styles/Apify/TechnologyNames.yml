@@ -1,5 +1,3 @@
-# Auto-generated from rules/technology-names.yml
-# 12 substitutions, 0 exceptions
 extends: substitution
 message: "Use '%s' instead of '%s'."
 ignorecase: false

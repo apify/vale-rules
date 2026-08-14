@@ -1,5 +1,3 @@
-# Auto-generated from rules/article-sound.yml
-# 56 substitutions, 3 exceptions
 
 extends: substitution
 level: warning

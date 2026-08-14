@@ -1,5 +1,3 @@
-# Auto-generated from rules/dead-end-patterns.yml
-# 0 substitutions, 9 exceptions
 
 extends: existence
 level: suggestion

@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/subject-drop.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "'%s' - drop the subject. The reader knows what 'this' refers to. Start with the verb or the key noun."
 level: suggestion

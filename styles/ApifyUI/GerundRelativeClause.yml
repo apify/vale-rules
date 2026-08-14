@@ -1,5 +1,3 @@
-# Auto-generated from rules/gerund-relative-clause.yml
-# 0 substitutions, 0 exceptions
 
 extends: existence
 level: suggestion

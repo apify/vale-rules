@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/generic-positioning.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Generic positioning: '%s'. Lead with specific data types and source, not what the tool 'helps you' do."
 level: warning

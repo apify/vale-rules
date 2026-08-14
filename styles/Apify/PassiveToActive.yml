@@ -1,5 +1,3 @@
-# Auto-generated from rules/passive-to-active.yml
-# 116 substitutions, 22 exceptions
 extends: substitution
 level: suggestion
 message: "Prefer active voice: '%s' instead of '%s'."

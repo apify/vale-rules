@@ -1,5 +1,3 @@
-# Auto-generated from rules/llm-power-words.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "LLM power word '%s'. Replace with a specific, concrete alternative."
 level: suggestion

@@ -1,5 +1,3 @@
-# Auto-generated from rules/plain-language-ui.yml
-# 16 substitutions, 14 exceptions
 extends: substitution
 level: suggestion
 message: "Use plain language (UI): '%s' instead of '%s'."

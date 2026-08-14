@@ -1,5 +1,3 @@
-# Auto-generated from rules/placeholder-as-guidance.yml
-# 0 substitutions, 14 exceptions
 
 extends: existence
 level: suggestion

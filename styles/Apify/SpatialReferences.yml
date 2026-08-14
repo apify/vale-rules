@@ -1,5 +1,3 @@
-# Auto-generated from rules/spatial-references.yml
-# 0 substitutions, 5 exceptions
 extends: existence
 level: suggestion
 message: "Spatial reference: '%s' - name the element instead of pointing to its position."

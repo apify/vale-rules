@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/hook-pronoun.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Pronoun in hook zone ('%s'). LLM agents can't resolve pronouns without reading the full page. Use the Actor name or data type directly."
 level: suggestion

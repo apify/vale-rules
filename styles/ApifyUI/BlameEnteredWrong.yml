@@ -1,5 +1,3 @@
-# Auto-generated from rules/blame-entered-wrong.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 level: suggestion
 message: "Blame language: '%s'. Rewrite: 'That [noun] doesn't look right' or 'Wrong [noun]'."

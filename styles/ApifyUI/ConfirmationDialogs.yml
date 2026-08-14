@@ -1,5 +1,3 @@
-# Auto-generated from rules/confirmation-dialogs.yml
-# 34 substitutions, 44 exceptions
 extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."

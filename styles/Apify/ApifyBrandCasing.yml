@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/apify-brand-casing.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 level: suggestion
 message: "Use 'Apify' (capitalized) in prose. Lowercase 'apify' is only correct in package names, slugs, and URLs."

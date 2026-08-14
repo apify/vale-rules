@@ -1,5 +1,3 @@
-# Auto-generated from rules/happy-talk.yml
-# 0 substitutions, 5 exceptions
 extends: existence
 level: suggestion
 message: "Happy talk: '%s' - this tells the user what they can already see. Consider removing or replacing with useful content."

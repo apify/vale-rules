@@ -1,5 +1,3 @@
-# Auto-generated from rules/heading-article.yml
-# 0 substitutions, 2 exceptions
 extends: existence
 level: suggestion
 message: "Redundant 'new' in heading: '%s' - creation verbs already imply newness."

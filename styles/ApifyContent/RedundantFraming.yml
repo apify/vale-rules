@@ -1,5 +1,3 @@
-# Auto-generated from rules/redundant-framing.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Redundant framing '%s'. The reader already knows they're configuring - state the value directly."
 level: suggestion

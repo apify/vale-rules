@@ -1,5 +1,3 @@
-# Auto-generated from rules/third-person-shift.yml
-# 13 substitutions, 11 exceptions
 extends: substitution
 level: suggestion
 message: "Use direct address: '%s' instead of '%s'."

@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/vague-quantities.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Vague quantity '%s'. Use a specific number, percentage, or measurable claim."
 level: suggestion

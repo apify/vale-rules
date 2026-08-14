@@ -1,5 +1,3 @@
-# Auto-generated from rules/device-agnostic-verbs.yml
-# 0 substitutions, 7 exceptions
 extends: existence
 level: warning
 message: "Device-specific verb: '%s' - use 'select' for tabs, menus, and options (not everyone uses a mouse). 'Click' is fine for buttons."

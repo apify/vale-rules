@@ -1,5 +1,3 @@
-# Auto-generated from rules/purpose-gerund.yml
-# 18 substitutions, 0 exceptions
 
 extends: substitution
 level: suggestion

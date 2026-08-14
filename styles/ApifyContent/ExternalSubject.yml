@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/external-subject.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "External entity as subject for a limit ('%s'). Make the constraint the subject: 'Each query returns ~400 results' scores better than 'Google exposes ~400 results.' The user cares about the limit, not who imposes it."
 level: suggestion

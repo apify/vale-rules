@@ -1,5 +1,3 @@
-# Auto-generated from rules/selection-clarity.yml
-# 0 substitutions, 5 exceptions
 extends: existence
 level: suggestion
 message: "Selection model: '%s' - clarify whether this is single-select or multi-select (e.g., 'select all that apply' or 'choose one')."

@@ -1,5 +1,3 @@
-# Auto-generated from rules/significance-inflation.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Significance inflation '%s'. State the specific fact instead."
 level: suggestion

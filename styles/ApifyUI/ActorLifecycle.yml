@@ -1,5 +1,3 @@
-# Auto-generated from rules/actor-lifecycle.yml
-# 29 substitutions, 8 exceptions
 extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."

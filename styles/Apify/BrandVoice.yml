@@ -1,5 +1,3 @@
-# Auto-generated from rules/brand-voice.yml
-# 33 substitutions, 7 exceptions
 extends: substitution
 level: suggestion
 message: "Use Apify voice: '%s' instead of '%s'."

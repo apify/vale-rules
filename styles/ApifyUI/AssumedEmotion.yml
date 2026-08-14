@@ -1,5 +1,3 @@
-# Auto-generated from rules/assumed-emotion.yml
-# 0 substitutions, 6 exceptions
 extends: existence
 level: suggestion
 message: "Assumed emotion: '%s'. State what happened - let the user decide how they feel about it."

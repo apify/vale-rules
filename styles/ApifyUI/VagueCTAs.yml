@@ -1,5 +1,3 @@
-# Auto-generated from rules/vague-ctas.yml
-# 0 substitutions, 10 exceptions
 extends: existence
 level: suggestion
 message: "Vague CTA: '%s' - link/button text should describe the destination or outcome, not just prompt action."

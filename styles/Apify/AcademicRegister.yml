@@ -1,5 +1,3 @@
-# Auto-generated from rules/academic-register.yml
-# 0 substitutions, 5 exceptions
 extends: existence
 level: suggestion
 message: "Academic register: consider a plainer alternative for '%s'."

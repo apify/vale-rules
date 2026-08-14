@@ -1,5 +1,3 @@
-# Auto-generated from rules/html-entities.yml
-# 2 substitutions, 10 exceptions
 extends: substitution
 level: error
 message: "HTML entity in JS string: '%s' instead of '%s'."

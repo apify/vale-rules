@@ -1,5 +1,3 @@
-# Auto-generated from rules/sentence-count.yml
-# 0 substitutions, 0 exceptions
 extends: occurrence
 level: suggestion
 message: "String has more than %d sentences - aim for 1-2 for UI copy."

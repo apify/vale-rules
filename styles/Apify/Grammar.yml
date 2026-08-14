@@ -1,5 +1,3 @@
-# Auto-generated from rules/grammar.yml
-# 41 substitutions, 1 exceptions
 extends: substitution
 level: warning
 message: "Grammar fix: '%s' instead of '%s'."

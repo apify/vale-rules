@@ -1,5 +1,3 @@
-# Auto-generated from rules/non-localizable-idioms.yml
-# 31 substitutions, 3 exceptions
 extends: substitution
 level: suggestion
 message: "Non-localizable idiom: '%s' instead of '%s'. Use plain language that translates cleanly."

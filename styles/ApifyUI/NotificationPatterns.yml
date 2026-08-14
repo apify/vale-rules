@@ -1,5 +1,3 @@
-# Auto-generated from rules/notification-patterns.yml
-# 10 substitutions, 3 exceptions
 
 extends: substitution
 level: suggestion

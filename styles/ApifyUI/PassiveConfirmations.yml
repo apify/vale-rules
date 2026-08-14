@@ -1,5 +1,3 @@
-# Auto-generated from rules/passive-confirmations.yml
-# 25 substitutions, 44 exceptions
 extends: substitution
 level: suggestion
 message: "Use active confirmation form: '%s' instead of '%s'."

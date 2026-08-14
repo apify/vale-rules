@@ -1,5 +1,3 @@
-# Auto-generated from rules/feature-definition-opener.yml (downgraded: substitution → existence)
-# Regex swaps not Vale-compatible; extracted 6 detectable patterns
 extends: existence
 level: suggestion
 message: "Feature-definition opener: '%s'. Lead with what the feature does, not what it is."

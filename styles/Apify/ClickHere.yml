@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/click-here.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Use descriptive link text instead of '%s'. Screen readers read links out of context."
 level: warning

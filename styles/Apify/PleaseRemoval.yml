@@ -1,5 +1,3 @@
-# Auto-generated from rules/please-removal.yml
-# 64 substitutions, 14 exceptions
 
 extends: substitution
 level: suggestion

@@ -1,5 +1,3 @@
-# Auto-generated from rules/pronoun-consistency.yml
-# 0 substitutions, 6 exceptions
 extends: existence
 level: suggestion
 message: "Pronoun inconsistency: '%s'. Mixing I/my and we/our/us in the same string."

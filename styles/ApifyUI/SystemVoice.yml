@@ -1,5 +1,3 @@
-# Auto-generated from rules/system-voice.yml
-# 91 substitutions, 0 exceptions
 
 extends: substitution
 level: suggestion

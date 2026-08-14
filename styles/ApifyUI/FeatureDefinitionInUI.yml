@@ -1,5 +1,3 @@
-# Auto-generated from rules/feature-definition-in-ui.yml
-# 0 substitutions, 2 exceptions
 extends: existence
 level: suggestion
 message: "Feature definition pattern: '%s' - tell the user what to do, not what the feature is."

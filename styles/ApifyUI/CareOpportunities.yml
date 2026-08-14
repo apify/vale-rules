@@ -1,5 +1,3 @@
-# Auto-generated from rules/care-opportunities.yml
-# 0 substitutions, 2 exceptions
 
 extends: existence
 level: suggestion

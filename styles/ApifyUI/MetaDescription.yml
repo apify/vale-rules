@@ -1,5 +1,3 @@
-# Auto-generated from rules/meta-description.yml
-# 0 substitutions, 3 exceptions
 extends: existence
 level: suggestion
 message: "Meta-description: '%s' - describe what it does or why it matters, not what it is."

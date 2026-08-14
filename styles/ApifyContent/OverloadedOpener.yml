@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/overloaded-opener.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 level: suggestion
 message: "Overloaded opener '%s'. Consider splitting: 'Product. Key benefit.' Chunked copy is easier to scan."

@@ -1,5 +1,3 @@
-# Auto-generated from rules/legal-plain-language.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Legalese '%s'. Use plain language: 'is legal in most jurisdictions' not 'is permitted under applicable regulatory frameworks.'"
 level: suggestion

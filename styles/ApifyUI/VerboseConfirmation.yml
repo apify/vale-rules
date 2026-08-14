@@ -1,5 +1,3 @@
-# Auto-generated from rules/verbose-confirmation.yml
-# 0 substitutions, 1 exceptions
 
 extends: existence
 level: suggestion

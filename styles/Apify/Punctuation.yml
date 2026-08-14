@@ -1,5 +1,3 @@
-# Auto-generated from rules/punctuation.yml
-# 58 substitutions, 13 exceptions
 extends: substitution
 level: suggestion
 message: "Fix punctuation: '%s' instead of '%s'."

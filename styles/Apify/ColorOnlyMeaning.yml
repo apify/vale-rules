@@ -1,5 +1,3 @@
-# Auto-generated from rules/color-only-meaning.yml
-# 0 substitutions, 6 exceptions
 extends: existence
 level: suggestion
 message: "Color-only meaning: '%s' - pair with a text label or icon so meaning isn't lost without color."

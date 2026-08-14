@@ -1,5 +1,3 @@
-# Auto-generated from rules/sentence-starts.yml
-# 35 substitutions, 4 exceptions
 extends: substitution
 level: suggestion
 message: "Fix sentence-start capitalization: '%s' instead of '%s'."

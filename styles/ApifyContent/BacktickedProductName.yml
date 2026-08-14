@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/backticked-product-name.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Product name '%s' is styled as code. Use backticks for field names, code values, and commands, not product or integration names."
 level: suggestion

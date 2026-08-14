@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/contrastive-formulas.yml
-# 0 substitutions, 2 exceptions
 extends: existence
 message: "Contrastive formula: '%s'. State what it does directly instead of the 'not just X, it's Y' pattern."
 level: suggestion

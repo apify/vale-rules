@@ -1,5 +1,3 @@
-# Auto-generated from rules/brands.yml
-# 14 substitutions, 33 exceptions
 extends: substitution
 level: warning
 message: "Use the correct brand name or casing: '%s' instead of '%s'."

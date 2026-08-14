@@ -1,5 +1,3 @@
-# Auto-generated from rules/domain-verbs.yml
-# 0 substitutions, 3 exceptions
 extends: existence
 level: suggestion
 message: "Domain verb mismatch: '%s'. Check if this verb matches Apify's product model."

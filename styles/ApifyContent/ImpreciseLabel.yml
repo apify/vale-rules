@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/imprecise-label.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Imprecise label '%s'. Add a qualifier: 'export formats' not just 'exports', 'search options' not just 'options'."
 level: suggestion

@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/impersonal-pricing.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Impersonal pricing ('%s'). 'You get ~1,000 results for $0.25' scores +0.14 higher than bare '~1,000 results for $0.25.' Add 'You get' as subject."
 level: suggestion

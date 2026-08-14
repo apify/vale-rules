@@ -1,5 +1,3 @@
-# Auto-generated from rules/filler-words.yml
-# 198 substitutions, 55 exceptions
 extends: substitution
 level: suggestion
 message: "Remove filler word or phrase: '%s' instead of '%s'."

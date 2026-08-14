@@ -1,5 +1,3 @@
-# Auto-generated from rules/double-negative.yml
-# 29 substitutions, 0 exceptions
 
 extends: substitution
 level: suggestion

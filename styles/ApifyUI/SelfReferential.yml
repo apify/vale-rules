@@ -1,5 +1,3 @@
-# Auto-generated from rules/self-referential.yml
-# 0 substitutions, 16 exceptions
 extends: existence
 level: suggestion
 message: "Self-referential: '%s' - the user is already in this product. Name the outcome, not the brand."

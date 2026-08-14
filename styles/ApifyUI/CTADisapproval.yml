@@ -1,5 +1,3 @@
-# Auto-generated from rules/dismissive-cta.yml
-# 21 substitutions, 0 exceptions
 extends: substitution
 level: suggestion
 message: "CTA disapproval language: '%s' instead of '%s'. Don't signal system disapproval or add redundant preambles."

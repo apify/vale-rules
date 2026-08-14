@@ -1,5 +1,3 @@
-# Auto-generated from rules/naming-as-explanation.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 level: suggestion
 message: "Label '%s' is a noun phrase. Consider describing what the user can do: 'Configure proxy routing' rather than 'Proxy Configuration'."

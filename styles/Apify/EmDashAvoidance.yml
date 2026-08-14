@@ -1,5 +1,3 @@
-# Auto-generated from rules/em-dash-avoidance.yml
-# 12 substitutions, 1 exceptions
 extends: substitution
 level: warning
 message: "Replace em dash with appropriate punctuation: '%s' instead of '%s'."

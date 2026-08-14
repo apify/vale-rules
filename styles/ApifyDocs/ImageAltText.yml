@@ -1,5 +1,3 @@
-# Auto-generated from rules/ImageAltText.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Images must include alt text. Use empty alt=\"\" only for decorative images."
 level: suggestion

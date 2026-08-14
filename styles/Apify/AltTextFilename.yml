@@ -1,5 +1,3 @@
-# Auto-generated from rules/alt-text-filename.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Alt text looks like a filename. Describe what the image shows, or use empty alt for decorative images."
 level: suggestion

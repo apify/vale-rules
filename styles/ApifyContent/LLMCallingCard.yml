@@ -1,5 +1,3 @@
-# Auto-generated from rules/llm-calling-card.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "LLM calling card '%s'. This phrase signals AI authorship. Rewrite or cut."
 level: suggestion

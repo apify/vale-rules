@@ -1,5 +1,3 @@
-# Auto-generated from rules/AltTextPhotographerCredit.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Alt text contains a photographer credit. Move credits to a caption; alt text should describe the image."
 level: suggestion

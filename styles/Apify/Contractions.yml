@@ -1,5 +1,3 @@
-# Auto-generated from rules/contractions.yml
-# 74 substitutions, 25 exceptions
 extends: substitution
 level: suggestion
 message: "Use the contraction: '%s' instead of '%s'."

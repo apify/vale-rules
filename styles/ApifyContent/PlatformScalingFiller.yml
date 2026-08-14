@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/platform-scaling-filler.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Platform-scaling filler: '%s'. Name the Actor capability directly, for example 'Crawl from small sites to sites with millions of pages.'"
 level: suggestion

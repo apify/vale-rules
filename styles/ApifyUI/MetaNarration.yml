@@ -1,5 +1,3 @@
-# Auto-generated from rules/meta-narration.yml
-# 0 substitutions, 6 exceptions
 extends: existence
 level: suggestion
 message: "Meta-narration '%s'. Describe what the user gets or does, not what the UI element is."

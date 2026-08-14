@@ -1,5 +1,3 @@
-# Auto-generated from rules/status-message-subject.yml
-# 2 substitutions, 0 exceptions
 
 extends: substitution
 level: suggestion

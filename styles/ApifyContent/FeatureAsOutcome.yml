@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/feature-as-outcome.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Feature bullet '%s' reads like a use case (user outcome). Features should describe capabilities ('Supports...', 'Includes...'); use cases describe goals ('Track rankings', 'Monitor competitors')."
 level: suggestion

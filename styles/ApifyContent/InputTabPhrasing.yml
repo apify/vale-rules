@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/input-tab-phrasing.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Input tab boilerplate: '%s'. Use a shorter direct pointer only when needed, for example 'See the Input tab in Apify Console.'"
 level: suggestion

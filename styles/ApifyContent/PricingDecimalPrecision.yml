@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/pricing-decimal-precision.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Price '%s' uses one decimal place. Use two decimals for currency, for example '$0.50'."
 level: suggestion

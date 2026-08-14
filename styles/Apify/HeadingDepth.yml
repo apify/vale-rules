@@ -1,5 +1,3 @@
-# Auto-generated from rules/heading-depth.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Heading level 4+ ('%s'). Limit to H1–H3. Deeper nesting confuses readers."
 level: suggestion

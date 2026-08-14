@@ -1,5 +1,3 @@
-# Auto-generated from rules/sales-language.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Avoid sales language. Use factual, specific claims instead."
 level: warning

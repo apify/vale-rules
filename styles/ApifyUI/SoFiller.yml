@@ -1,5 +1,3 @@
-# Auto-generated from rules/so-filler.yml
-# 4 substitutions, 11 exceptions
 
 extends: substitution
 level: suggestion

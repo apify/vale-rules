@@ -1,5 +1,3 @@
-# Auto-generated from rules/AltTextAllCaps.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Alt text contains ALL CAPS. Use sentence case - screen readers may read it letter by letter."
 level: suggestion

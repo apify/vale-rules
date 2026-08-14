@@ -1,5 +1,3 @@
-# Auto-generated from rules/compound-noun-protection.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 level: suggestion
 message: "Compound noun: '%s' - this multi-word term has specific meaning. Don't break it across edits."

@@ -1,5 +1,3 @@
-# Auto-generated from rules/hollow-permission.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Hollow permission phrase '%s'. Give the instruction directly."
 level: suggestion

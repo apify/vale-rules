@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/placeholder-output.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Placeholder value '%s' in code example. Use realistic data from an actual Actor run."
 level: suggestion

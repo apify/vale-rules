@@ -1,5 +1,3 @@
-# Auto-generated from rules/double-hedge.yml
-# 0 substitutions, 1 exceptions
 extends: existence
 level: warning
 message: "Double hedge: '%s'. One uncertainty modal is enough - simplify."

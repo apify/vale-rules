@@ -1,5 +1,3 @@
-# Auto-generated from rules/feature-hedging.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Hedged feature claim '%s'. If the Actor does it, state it confidently. Hedge only in legal or limitations sections."
 level: suggestion

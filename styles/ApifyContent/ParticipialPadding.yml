@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/participial-padding.yml
-# 0 substitutions, 2 exceptions
 extends: existence
 message: "Participial padding: '%s'. This trailing -ing phrase reads as AI filler. Cut it or make it a separate sentence."
 level: suggestion

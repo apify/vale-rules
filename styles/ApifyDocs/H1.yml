@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/h1.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Do not use H1 headings (#). The main title is generated automatically. Use H2 (##) or lower."
 level: error

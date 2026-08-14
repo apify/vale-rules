@@ -1,5 +1,3 @@
-# Auto-generated from rules/sentence-case-labels.yml
-# 47 substitutions, 0 exceptions
 extends: substitution
 level: suggestion
 message: "Sentence case: '%s' instead of '%s'. Only capitalize proper nouns."

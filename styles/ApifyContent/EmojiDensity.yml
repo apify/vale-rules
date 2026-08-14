@@ -1,5 +1,3 @@
-# Auto-generated from rules/emoji-density.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Heavy emoji use. Use emoji sparingly. When everything has one, nothing stands out."
 level: suggestion

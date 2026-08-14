@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/outdated-api-limit.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Specific field constraint '%s' - verify against INPUT_SCHEMA.json. Defaults, ranges, and allowed values change between Actor versions. If no schema is available, add a README.issues.md row."
 level: suggestion

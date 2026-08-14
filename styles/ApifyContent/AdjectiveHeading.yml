@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/adjective-heading.yml
-# 0 substitutions, 3 exceptions
 extends: existence
 level: suggestion
 message: "Adjective-first heading '%s'. Lead with what it does, not how it feels. 'Set up in 3 steps' > 'Easy Setup'. (Ogilvy: all facts, no adjectives.)"

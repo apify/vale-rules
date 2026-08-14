@@ -1,5 +1,3 @@
-# Auto-generated from rules/readme/numbered-list-intro.yml
-# 0 substitutions, 2 exceptions
 extends: existence
 message: "Cataphoric forecasting: '%s'. Just start the list. Readers can count."
 level: suggestion

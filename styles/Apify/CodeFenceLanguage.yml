@@ -1,5 +1,3 @@
-# Auto-generated from rules/code-fence-language.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 level: suggestion
 message: "Code fence without language: '%s' - add a language tag (json, javascript, bash, python, etc.)."

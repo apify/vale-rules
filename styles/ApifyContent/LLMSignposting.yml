@@ -1,5 +1,3 @@
-# Auto-generated from rules/llm-signposting.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Over-signposting '%s'. Trust the reader to follow - cut the announcement."
 level: suggestion

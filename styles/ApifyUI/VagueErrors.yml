@@ -1,5 +1,3 @@
-# Auto-generated from rules/vague-errors.yml
-# 0 substitutions, 2 exceptions
 extends: existence
 level: suggestion
 message: "Vague error: consider adding specificity to '%s'."

@@ -1,5 +1,3 @@
-# Auto-generated from rules/empty-states.yml
-# 17 substitutions, 12 exceptions
 extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."

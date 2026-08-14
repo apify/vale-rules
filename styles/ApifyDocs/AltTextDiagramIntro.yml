@@ -1,5 +1,3 @@
-# Auto-generated from rules/AltTextDiagramIntro.yml
-# 0 substitutions, 0 exceptions
 extends: existence
 message: "Alt text introduces the image instead of describing it. Move the introduction to the body text."
 level: suggestion

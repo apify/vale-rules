@@ -1,5 +1,3 @@
-# Auto-generated from rules/error-messages.yml
-# 75 substitutions, 11 exceptions
 extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."

@@ -1,5 +1,3 @@
-# Auto-generated from rules/numbers.yml
-# 4 substitutions, 4 exceptions
 extends: substitution
 level: warning
 message: "Use correct number formatting: '%s' instead of '%s'."

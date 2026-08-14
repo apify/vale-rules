@@ -1,5 +1,3 @@
-# Auto-generated from rules/parallel-list-form.yml
-# 0 substitutions, 0 exceptions
 
 extends: existence
 level: suggestion
