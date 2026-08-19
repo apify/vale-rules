@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Latin abbreviation: '%s'. (i.e. = 'that is'; e.g. = 'for example')"
+message: "Latin abbreviation: '%s'. (i.e. = 'that's'; e.g. = 'for example')"
 ignorecase: false
 nonword: true
 

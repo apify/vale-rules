@@ -1,7 +1,7 @@
 
 extends: substitution
 level: suggestion
-message: "Dead-end apology: '%s' instead of '%s'. Tell users what's affected, not just sorry."
+message: "Dead-end apology: '%s' instead of '%s'. Tell users what's affected, not sorry."
 
 swap:
   'We apologize for the inconvenience\.': 'Some features may be temporarily unavailable.'

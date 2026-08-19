@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Impersonal recommendation: '%s'. Use imperative - just tell the user what to do."
+message: "Impersonal recommendation: '%s'. Use imperative. tell the user what to do."
 
 tokens:
   - 'It is recommended to'

@@ -1,6 +1,6 @@
 extends: existence
 level: warning
-message: "Gerund heading: '%s' - consider imperative ('Run the Actor') or declarative ('How to run') form."
+message: "Gerund heading: '%s': consider imperative ('Run the Actor') or declarative ('How to run') form."
 scope: heading
 ignorecase: false
 

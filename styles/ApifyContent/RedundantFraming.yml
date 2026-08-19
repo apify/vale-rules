@@ -1,5 +1,5 @@
 extends: existence
-message: "Redundant framing '%s'. The reader already knows they're configuring - state the value directly."
+message: "Redundant framing '%s'. The reader already knows they're configuring. state the value directly."
 level: suggestion
 scope: sentence
 tokens:

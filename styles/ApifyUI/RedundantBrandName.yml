@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Redundant brand name: '%s' - if the reader is already on an Apify page, the brand name may be unnecessary after 'your'."
+message: "Redundant brand name: '%s': if the reader is already on an Apify page, the brand name may be unnecessary after 'your'."
 ignorecase: true
 
 exceptions:

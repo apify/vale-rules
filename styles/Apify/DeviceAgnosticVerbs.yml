@@ -1,6 +1,6 @@
 extends: existence
 level: warning
-message: "Device-specific verb: '%s' - use 'select' for tabs, menus, and options (not everyone uses a mouse). 'Click' is fine for buttons."
+message: "Device-specific verb: '%s': use 'select' for tabs, menus, and options (not everyone uses a mouse). 'Click' is fine for buttons."
 ignorecase: true
 
 tokens:

@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Meta-description: '%s' - describe what it does or why it matters, not what it is."
+message: "Meta-description: '%s': describe what it does or why it matters, not what it's."
 ignorecase: true
 
 exceptions:

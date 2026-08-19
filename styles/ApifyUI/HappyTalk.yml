@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Happy talk: '%s' - this tells the user what they can already see. Consider removing or replacing with useful content."
+message: "Happy talk: '%s': this tells the user what they can already see. Consider removing or replacing with useful content."
 
 exceptions:
   # Email subjects/bodies legitimately use welcome language

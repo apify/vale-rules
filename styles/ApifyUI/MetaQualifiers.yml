@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Meta-qualifier: '%s' - show, don't tell. Can you replace this with a concrete constraint or example?"
+message: "Meta-qualifier: '%s': show, don't tell. Can you replace this with a concrete constraint or example?"
 ignorecase: true
 
 tokens:

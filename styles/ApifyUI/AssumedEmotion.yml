@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Assumed emotion: '%s'. State what happened - let the user decide how they feel about it."
+message: "Assumed emotion: '%s'. State what happened: let the user decide how they feel about it."
 
 exceptions:
   # Marketing/landing page content where enthusiasm is appropriate
@@ -18,6 +18,11 @@ tokens:
   - '[Yy]ou.re going to enjoy'
   - '[Ww]e.re (?:excited|thrilled|delighted|pleased|happy) to (?:announce|share|introduce|let you know)'
   - '[Ee]xciting (?:news|update|announcement|feature)'
+  - '[Ww]e.re proud to'
+  - '[Ww]e(?:.re| are) proud (?:to|that)'
+  - '[Ww]e believe (?:that|in)'
+  - '[Ww]e(?:.ve| have) (?:worked hard|built|crafted|designed|created) (?:this|a|an|the)'
   - '^Good news[!:]'
   - '^Great news[!:]'
   - '[Yy]ou(?:.ve| have) been (?:waiting|asking|requesting) for'
+  - '[Hh]appy (?:scraping|coding|building|automating|crawling|deploying|hacking|testing)!?'

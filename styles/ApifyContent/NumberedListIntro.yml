@@ -1,5 +1,5 @@
 extends: existence
-message: "Cataphoric forecasting: '%s'. Just start the list. Readers can count."
+message: "Cataphoric forecasting: '%s'. start the list. Readers can count."
 level: suggestion
 scope: sentence
 

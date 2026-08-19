@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Ambiguous connector: '%s' - if this means 'because' or 'although', use that word for clarity."
+message: "Ambiguous connector: '%s': if this means 'because' or 'although', use that word for clarity."
 
 exceptions:
   # ── "while" temporal patterns ──

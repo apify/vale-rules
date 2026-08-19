@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Verbose confirmation: '%s' - lead with the action directly. Drop 'Do you want to.'"
+message: "Verbose confirmation: '%s': lead with the action directly. Drop 'Do you want to.'"
 ignorecase: true
 
 tokens:

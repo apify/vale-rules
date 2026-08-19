@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Hidden outcome: '%s' - the user may not know what happens after acting."
+message: "Hidden outcome: '%s': the user may not know what happens after acting."
 ignorecase: true
 
 exceptions:

@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Vague default: '%s' - describe what happens when empty (e.g. 'Leave empty to use the Actor description')."
+message: "Vague default: '%s': describe what happens when empty (e.g. 'Leave empty to use the Actor description')."
 ignorecase: true
 
 tokens:

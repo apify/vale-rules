@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Feature definition pattern: '%s' - tell the user what to do, not what the feature is."
+message: "Feature definition pattern: '%s': tell the user what to do, not what the feature is."
 
 exceptions:
   # Tooltip/setting descriptions that intentionally explain what a toggle does

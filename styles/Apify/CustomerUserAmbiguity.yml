@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Terminology check: '%s' - verify this means a Publisher's paying users, not people on the Apify platform (use 'users' for platform context)."
+message: "Terminology check: '%s': verify this means a Publisher's paying users, not people on the Apify platform (use 'users' for platform context)."
 ignorecase: true
 
 exceptions:

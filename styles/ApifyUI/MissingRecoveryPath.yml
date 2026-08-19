@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Missing recovery path: '%s' - the user doesn't know what to do next. See docs/recovery-decision-tree.md."
+message: "Missing recovery path: '%s': the user doesn't know what to do next. See docs/recovery-decision-tree.md."
 ignorecase: true
 
 exceptions:

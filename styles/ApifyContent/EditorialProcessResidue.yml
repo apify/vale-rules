@@ -1,0 +1,7 @@
+extends: existence
+message: "Editorial-process residue '%s'. Don't describe editing work in public README copy; state the user-facing result or remove it."
+level: suggestion
+scope: sentence
+tokens:
+  - '\b(?:polish(?:ed|ing)|[Tt]ighten(?:ed|ing)?)\b.{0,48}\b(?:copy|content|README|readme|wording|language|prose|draft|section|paragraph|sentence|text)\b'
+  - '\b(?:copy|content|README|readme|wording|language|prose|draft|section|paragraph|sentence|text)\b.{0,48}\b(?:polish(?:ed|ing)|[Tt]ighten(?:ed|ing)?)\b'

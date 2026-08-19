@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Instructions bloat: '%s' - if the UI needs instructions, consider whether the design could be clearer."
+message: "Instructions bloat: '%s': if the UI needs instructions, consider whether the design could be clearer."
 
 tokens:
   - 'First, .{10,}Then,'

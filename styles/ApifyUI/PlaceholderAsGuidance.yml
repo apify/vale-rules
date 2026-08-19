@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Placeholder-as-guidance: '%s' - this instruction disappears when the user starts typing."
+message: "Placeholder-as-guidance: '%s': this instruction disappears when the user starts typing."
 ignorecase: true
 
 exceptions:

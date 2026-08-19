@@ -1,5 +1,5 @@
 extends: existence
-message: "Source provenance in public copy: '%s'. State the fact directly - readers don't need to know where you found it. Keep source evidence in README.issues.md."
+message: "Source provenance in public copy: '%s'. State the fact directly. readers don't need to know where you found it. Keep source evidence in README.issues.md."
 level: warning
 scope: sentence
 ignorecase: true

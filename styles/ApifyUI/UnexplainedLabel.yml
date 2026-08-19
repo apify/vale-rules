@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Unexplained label: '%s' - may need clarification for first-time users."
+message: "Unexplained label: '%s': may need clarification for first-time users."
 ignorecase: true
 
 exceptions:

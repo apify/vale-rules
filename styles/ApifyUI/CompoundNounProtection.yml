@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Compound noun: '%s' - this multi-word term has specific meaning. Don't break it across edits."
+message: "Compound noun: '%s': this multi-word term has specific meaning. Don't break it across edits."
 nonword: true
 
 tokens:

@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Vague CTA: '%s' - link/button text should describe the destination or outcome, not just prompt action."
+message: "Vague CTA: '%s': link/button text should describe the destination or outcome, not prompt action."
 
 exceptions:
   # "Go to X" is a navigation directive - destination is named, not vague

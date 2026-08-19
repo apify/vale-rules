@@ -1,5 +1,5 @@
 extends: existence
-message: "'%s' - drop the subject. The reader knows what 'this' refers to. Start with the verb or the key noun."
+message: "'%s': drop the subject. The reader knows what 'this' refers to. Start with the verb or the key noun."
 level: suggestion
 scope: sentence
 tokens:

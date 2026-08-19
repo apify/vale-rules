@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Placeholder shipped: '%s' - draft copy that was never finalized."
+message: "Placeholder shipped: '%s': draft copy that was never finalized."
 ignorecase: false
 
 exceptions:

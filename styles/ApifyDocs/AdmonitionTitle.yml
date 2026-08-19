@@ -1,5 +1,5 @@
 extends: existence
-message: "Admonitions must have titles (e.g., ':::note My title')."
+message: "Admonitions must have titles (e.g. ':::note My title')."
 level: error
 scope: raw
 raw:

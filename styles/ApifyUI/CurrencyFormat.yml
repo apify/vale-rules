@@ -1,0 +1,8 @@
+
+extends: existence
+level: suggestion
+message: "Currency format: '%s': put the currency symbol before the amount ($49, not 49$)."
+
+tokens:
+  - '\b\d[\d,.]+\$'
+  - '\b\d[\d,.]+€'

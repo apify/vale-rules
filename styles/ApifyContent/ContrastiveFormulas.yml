@@ -1,5 +1,5 @@
 extends: existence
-message: "Contrastive formula: '%s'. State what it does directly instead of the 'not just X, it's Y' pattern."
+message: "Contrastive formula: '%s'. State what it does directly instead of the 'not X, it's Y' pattern."
 level: suggestion
 scope: sentence
 

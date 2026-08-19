@@ -1,7 +1,7 @@
 
 extends: substitution
 level: suggestion
-message: "System voice: '%s' => '%s' - sounds like a system, not a person."
+message: "System voice: '%s' => '%s': sounds like a system, not a person."
 ignorecase: true
 
 swap:

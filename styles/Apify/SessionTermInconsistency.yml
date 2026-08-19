@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Session term inconsistency: '%s' - Apify uses 'sign in/sign out'."
+message: "Session term inconsistency: '%s': Apify uses 'sign in/sign out'."
 ignorecase: true
 
 exceptions:

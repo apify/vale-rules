@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Double participle: '%s' - two -ing/-ed forms close together. Read aloud to check if it sounds natural."
+message: "Double participle: '%s': two -ing/-ed forms close together. Read aloud to check if it sounds natural."
 ignorecase: true
 
 tokens:

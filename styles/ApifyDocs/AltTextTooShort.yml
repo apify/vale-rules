@@ -1,5 +1,5 @@
 extends: existence
-message: "Alt text is a single word - describe what the image shows in context."
+message: "Alt text is a single word: describe what the image shows in context."
 level: suggestion
 scope: raw
 raw:

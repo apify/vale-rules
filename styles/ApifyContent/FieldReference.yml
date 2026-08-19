@@ -1,5 +1,5 @@
 extends: existence
-message: "Field reference '%s' - verify this matches the current input or output schema. Stale field names are a common source of congruency drift."
+message: "Field reference '%s': verify this matches the current input or output schema. Stale field names are a common source of congruency drift."
 level: suggestion
 scope: sentence
 tokens:

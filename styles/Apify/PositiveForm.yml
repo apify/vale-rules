@@ -1,7 +1,7 @@
 
 extends: substitution
 level: suggestion
-message: "Positive form: '%s' instead of '%s' - express positively for clarity (Strunk #18)."
+message: "Positive form: '%s' instead of '%s': express positively for clarity (Strunk #18)."
 ignorecase: true
 
 swap:

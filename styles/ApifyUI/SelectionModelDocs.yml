@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Selection model: '%s' - clarify whether this is single-select or multi-select (e.g., 'select all that apply' or 'choose one')."
+message: "Selection model: '%s': clarify whether this is single-select or multi-select (e.g. 'select all that apply' or 'choose one')."
 ignorecase: true
 
 exceptions:

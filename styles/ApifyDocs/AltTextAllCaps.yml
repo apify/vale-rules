@@ -1,5 +1,5 @@
 extends: existence
-message: "Alt text contains ALL CAPS. Use sentence case - screen readers may read it letter by letter."
+message: "Alt text contains ALL CAPS. Use sentence case. screen readers may read it letter by letter."
 level: suggestion
 scope: raw
 raw:

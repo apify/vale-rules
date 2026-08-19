@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Possible i.e./e.g. confusion: '%s' - if listing examples, use 'e.g.' (for example). 'i.e.' means 'that is' (restating the same thing)."
+message: "Possible i.e./e.g. confusion: '%s': if listing examples, use 'e.g.' (for example). 'i.e.' means 'that's' (restating the same thing)."
 ignorecase: false
 
 exceptions:

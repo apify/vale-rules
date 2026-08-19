@@ -1,0 +1,16 @@
+extends: existence
+message: "Symbol in prose ('%s'). Use 'and' or rewrite instead of '+' or '&'."
+level: suggestion
+tokens:
+  - '\w+ \+ \w+'
+  - '\w+ & \w+'
+scope: sentence
+exceptions:
+  # Brand names and UI labels where & is intentional
+  - "AT&T"
+  - "R&D"
+  - "Q&A"
+  - "Terms & Conditions"
+  - "Billing & Payments"
+  - "API & Integrations"
+  - "Actors & tasks"

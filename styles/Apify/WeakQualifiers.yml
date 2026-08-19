@@ -1,7 +1,7 @@
 
 extends: substitution
 level: suggestion
-message: "Weak qualifier: '%s' instead of '%s' - qualifier dilutes the assertion. (Strunk, Ch. V)"
+message: "Weak qualifier: '%s' instead of '%s': qualifier dilutes the assertion. (Strunk, Ch. V)"
 ignorecase: true
 
 swap:

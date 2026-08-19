@@ -1,0 +1,15 @@
+extends: existence
+level: suggestion
+message: "Acronym should be uppercase: '%s'. Use the all-caps form in prose."
+nonword: true
+
+tokens:
+  - '(?<![/.:@\w])json(?![/.:@\w{ ])'
+  - '(?<![/.:@\w])html(?![/.:@\w{ ])'
+  - '(?<![/.:@\w])http(?![s:/{ ])'
+  - '(?<![/.:@\w])https(?![:/{ ])'
+  - '(?<![/.:@\w])api(?![/.:@\w{ ])'
+  - '(?<![/.:@\w])cli(?![/.:@\w{ ])'
+  - '(?<![{<>/.:@\w])url(?![}>/:@\w{ ])'
+  - '(?<![{<>/.:@\w])oauth(?![}>/:@\w{ ])'
+  - '(?<![/.:@\w])github(?![/.:@\w{ ])'

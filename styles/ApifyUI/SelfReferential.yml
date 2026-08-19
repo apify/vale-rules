@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Self-referential: '%s' - the user is already in this product. Name the outcome, not the brand."
+message: "Self-referential: '%s': the user is already in this product. Name the outcome, not the brand."
 
 exceptions:
   # Legitimate uses: external-facing copy, publishing to Store, linking out

@@ -1,0 +1,22 @@
+# Readability — flags content that's too complex for its audience.
+#
+# Uses the Automated Readability Index (ARI), which correlates with
+# US grade level. A score of 8 means an 8th-grader should understand it.
+#
+# Thresholds:
+#   UI microcopy: aim for ≤ 8 (clear to most adults)
+#   Docs/README: aim for ≤ 10 (technical but accessible)
+#   Internal/admin: no limit (audience is engineers)
+#
+# ARI formula: 4.71 * (chars/words) + 0.5 * (words/sentences) - 21.43
+#
+# This fires at document/page level for .md files, or per-string when
+# Vale processes .ts files through a tree-sitter View.
+extends: metric
+message: "Readability: ARI score is %s (aim for 8 or below for user-facing copy)."
+level: suggestion
+
+formula: |
+  (4.71 * (characters / words)) + (0.5 * (words / sentences)) - 21.43
+
+condition: "> 10.0"

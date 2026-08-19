@@ -1,7 +1,7 @@
 
 extends: substitution
 level: suggestion
-message: "Causal filler: '%s' - try '%s' or split into a new sentence."
+message: "Causal filler: '%s': try '%s' or split into a new sentence."
 
 exceptions:
   # "so you can" - warm user framing, intentionally preserved in robotic-phrases.yml

@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Color-only meaning: '%s' - pair with a text label or icon so meaning isn't lost without color."
+message: "Color-only meaning: '%s': pair with a text label or icon so meaning isn't lost without color."
 
 exceptions:
   # Color as a literal setting value: "Set background color to red"

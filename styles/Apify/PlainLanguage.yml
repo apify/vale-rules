@@ -28,6 +28,8 @@ exceptions:
   - "valid immediately"
   - "takes? effect immediately"
   - "applies immediately"
+  # "glass ceiling" - idiom, not a literal limit
+  - "glass ceiling"
   # Security/urgency contexts - "immediately" is standard security communication
   # language that signals genuine urgency. "Now" is too casual for breach notifications.
   - '(?:[Cc]hange|[Rr]eset|[Rr]otate|[Rr]evoke|[Uu]pdate|[Rr]eplace)\s+(?:it|the|your|this)\s+\w*\s*[Ii]mmediately'
@@ -142,6 +144,7 @@ swap:
   'circumvent': 'bypass'
   'circumvents': 'bypasses'
   'circumventing': 'bypassing'
+  'ceiling': 'limit'
   'employ': 'use'
   'employs': 'uses'
   'employing': 'using'
@@ -171,6 +174,13 @@ swap:
 
   ', assuming ': ', if '
   '\. Assuming ': '. If '
+
+  'must be at most (\d[\d,]*) characters long': 'can have up to $1 characters'
+  'must be at most (\d[\d,]*) characters': 'can have up to $1 characters'
+  'must be at most (\d[\d,]*) items': 'can have up to $1 items'
+  'must be at most (\d[\d,]*) files': 'can have up to $1 files'
+  'must be at most (\d[\d,]*) entries': 'can have up to $1 entries'
+  'must be at most (\d[\d,]*) requests': 'can have up to $1 requests'
 
   'If you wish to': 'If you want to'
   'if you wish to': 'if you want to'

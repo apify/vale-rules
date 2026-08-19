@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Vague scope: '%s' - name what's actually affected instead of using abstract amplifiers."
+message: "Vague scope: '%s': name what's actually affected instead of using abstract amplifiers."
 
 tokens:
   - 'everything connected'

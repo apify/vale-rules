@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Retention: '%s' - pair the action with the timeframe, or the warning with the action."
+message: "Retention: '%s': pair the action with the timeframe, or the warning with the action."
 ignorecase: true
 
 tokens:

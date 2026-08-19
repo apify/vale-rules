@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Gerund relative clause: '%s' - consider 'who [verb]' for clarity."
+message: "Gerund relative clause: '%s': consider 'who [verb]' for clarity."
 ignorecase: true
 
 tokens:

@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Visible severity prefix: '%s' - the UI context already signals severity. Remove the label, or use sentence case if keeping as a scanning affordance."
+message: "Visible severity prefix: '%s': the UI context already signals severity. Remove the label, or use sentence case if keeping as a scanning affordance."
 ignorecase: false
 
 tokens:

@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Redundant 'new' in heading: '%s' - creation verbs already imply newness."
+message: "Redundant 'new' in heading: '%s': creation verbs already imply newness."
 scope: heading
 ignorecase: true
 

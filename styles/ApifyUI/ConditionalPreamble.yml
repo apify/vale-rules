@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Conditional preamble: '%s' - toggle already communicates the condition. State the on-behavior directly: what happens when this is enabled? (NN/G toggle research)"
+message: "Conditional preamble: '%s': toggle already communicates the condition. State the on-behavior directly: what happens when this is enabled? (NN/G toggle research)"
 
 exceptions:
   # Two-state descriptions - both conditions need naming (keep as-is)

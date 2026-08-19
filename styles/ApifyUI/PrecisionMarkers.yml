@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Missing consequence marker: '%s' - destructive actions should state what will be lost or that the action can't be undone."
+message: "Missing consequence marker: '%s': destructive actions should state what will be lost or that the action can't be undone."
 ignorecase: true
 
 exceptions:

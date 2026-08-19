@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Performative emotion: '%s' - state the consequence factually instead of editorializing."
+message: "Performative emotion: '%s': state the consequence factually instead of editorializing."
 ignorecase: true
 
 tokens:

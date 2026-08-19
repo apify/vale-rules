@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Doing too much: '%s' - this string has more than one job. Can you split it or cut the weaker half?"
+message: "Doing too much: '%s': this string has more than one job. Can you split it or cut the weaker half?"
 ignorecase: true
 
 exceptions:

@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Impersonal system voice: '%s' - could this speak more directly? Nobody says 'the system will...' in conversation."
+message: "Impersonal system voice: '%s': could this speak more directly? Nobody says 'the system will...' in conversation."
 ignorecase: true
 
 tokens:

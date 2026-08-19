@@ -1,6 +1,6 @@
 extends: existence
 level: warning
-message: "Double hedge: '%s'. One uncertainty modal is enough - simplify."
+message: "Double hedge: '%s'. One uncertainty modal is enough. simplify."
 tokens:
   - 'may mean that some users might'
   - 'may mean that users might'

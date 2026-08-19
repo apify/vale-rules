@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Definition opener: '%s' - descriptions should add value beyond what the heading says. State why it matters or what the user can do."
+message: "Definition opener: '%s': descriptions should add value beyond what the heading says. State why it matters or what the user can do."
 ignorecase: false
 
 tokens:

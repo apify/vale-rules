@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Feature-definition opener: '%s'. Lead with what the feature does, not what it is."
+message: "Feature-definition opener: '%s'. Lead with what the feature does, not what it's."
 
 exceptions:
 

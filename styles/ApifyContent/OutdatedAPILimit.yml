@@ -1,5 +1,5 @@
 extends: existence
-message: "Specific field constraint '%s' - verify against INPUT_SCHEMA.json. Defaults, ranges, and allowed values change between Actor versions. If no schema is available, add a README.issues.md row."
+message: "Specific field constraint '%s': verify against INPUT_SCHEMA.json. Defaults, ranges, and allowed values change between Actor versions. If no schema is available, add a README.issues.md row."
 level: suggestion
 scope: sentence
 tokens:

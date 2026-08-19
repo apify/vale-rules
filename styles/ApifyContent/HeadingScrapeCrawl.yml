@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Brand positioning: '%s' in a heading - consider broader framing (web data, automation) unless the heading names a specific technical process."
+message: "Brand positioning: '%s' in a heading: consider broader framing (web data, automation) unless the heading names a specific technical process."
 scope: heading
 ignorecase: true
 

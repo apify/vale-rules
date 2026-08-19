@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Spatial reference: '%s' - name the element instead of pointing to its position."
+message: "Spatial reference: '%s': name the element instead of pointing to its position."
 
 exceptions:
   # "Below" in data contexts (threshold language): "below 100", "below the limit"

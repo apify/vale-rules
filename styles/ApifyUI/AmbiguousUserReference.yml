@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Ambiguous reference: '%s' - if both an admin and a managed user are in context, clarify which one ('this user' vs 'you')."
+message: "Ambiguous reference: '%s': if both an admin and a managed user are in context, clarify which one ('this user' vs 'you')."
 ignorecase: true
 
 exceptions:

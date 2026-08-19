@@ -1,5 +1,5 @@
 extends: existence
-message: "Over-signposting '%s'. Trust the reader to follow - cut the announcement."
+message: "Over-signposting '%s'. Trust the reader to follow. cut the announcement."
 level: suggestion
 scope: sentence
 tokens:

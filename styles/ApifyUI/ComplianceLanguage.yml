@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Compliance language: '%s' - this string contains legal/privacy restrictions. Verify all restrictions are preserved in any rewrite."
+message: "Compliance language: '%s': this string contains legal/privacy restrictions. Verify all restrictions are preserved in any rewrite."
 
 tokens:
   - 'must not be used'

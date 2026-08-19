@@ -1,7 +1,7 @@
 
 extends: existence
 level: suggestion
-message: "Consider restructuring possessive: '%s' - role possessives can often become noun compounds."
+message: "Consider restructuring possessive: '%s': role possessives can often become noun compounds."
 ignorecase: false
 
 exceptions:

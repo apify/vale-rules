@@ -1,5 +1,5 @@
 extends: existence
-message: "Imprecise label '%s'. Add a qualifier: 'export formats' not just 'exports', 'search options' not just 'options'."
+message: "Imprecise label '%s'. Add a qualifier: 'export formats' not 'exports', 'search options' not 'options'."
 level: suggestion
 scope: sentence
 tokens:
