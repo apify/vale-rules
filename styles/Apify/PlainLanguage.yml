@@ -118,7 +118,6 @@ swap:
   approximately: 'about'
   'the aforementioned': 'these'
   aforementioned: 'these'
-  subsequently: 'then'
   hereafter: 'after this'
   heretofore: 'until now'
   herewith: 'with this'
@@ -166,10 +165,6 @@ swap:
   'here you can': 'you can'
   'navigate to': 'go to'
 
-  'Additionally,': 'also,'
-  'Furthermore,': 'also,'
-  'Moreover,': 'also,'
-  'Consequently,': 'So'
   'Previously,': 'Before'
 
   ', assuming ': ', if '
