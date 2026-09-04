@@ -1,6 +1,0 @@
-extends: existence
-message: "Images must include alt text. Use empty alt=\"\" only for decorative images."
-level: suggestion
-scope: raw
-raw:
-  - '!\[\]\('
