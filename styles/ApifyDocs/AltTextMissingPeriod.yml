@@ -1,6 +1,6 @@
 extends: existence
-message: "Alt text should end with a period so screen readers pause naturally after the description."
-level: suggestion
+message: "Sentence-like alt text should end with a period so it reads as a complete description."
+level: warning
 scope: raw
 raw:
-  - '!\[[^\]]*\w\]'
+  - '!\[[^]]*\w+\s+\w+\s+\w+\s+[^]]*\w\]\('

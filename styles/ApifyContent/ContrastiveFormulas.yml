@@ -8,7 +8,7 @@ tokens:
   - "isn't just (?:a |an )?\\w+"
   - "more than just (?:a |an )?\\w+"
   - "goes beyond (?:a |an |just )?\\w+"
-  - "It's not (?:just |merely |simply )?"
+  - "It's not (?:just|merely|simply) "
 
 exceptions:
   # Legitimate technical distinctions

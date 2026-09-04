@@ -15,9 +15,6 @@ exceptions:
   # Time ranges: "8:00 AM - 5:00 PM"
   - '\d+:\d+\s*[AP]M\s+-\s+\d+'
   - '\d+\s*[AP]M\s+-\s+\d+'
-  # Definition/legend lists: "M - monthly, Q - quarterly"
-  - '\w - \w+,'
-
 tokens:
   - '(?<=\w) - (?=\w)'
   - '(?<!\d)–(?!\d)'

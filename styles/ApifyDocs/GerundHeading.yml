@@ -11,10 +11,8 @@ exceptions:
   - "^Troubleshooting"
   # Multi-word gerund phrases that are section NAMES (not actions)
   - "^(?:Error [Hh]andling|Data [Pp]rocessing|Load [Bb]alancing|Rate [Ll]imiting)"
-  # Gerund + "your" - collaborative voice ("Configuring your proxy" is a shared journey)
-  - "^[A-Z][a-z]+ing your"
-
 tokens:
+  - '^[A-Z][a-z]+ing your'
   - '^[A-Z][a-z]+ing the'
   - '^[A-Z][a-z]+ing a '
   - '^[A-Z][a-z]+ing an '
