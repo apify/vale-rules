@@ -2,6 +2,10 @@ extends: substitution
 level: warning
 message: "Use the correct brand name or casing: '%s' instead of '%s'."
 ignorecase: false
+scope:
+  - summary
+  - heading
+vocab: false
 exceptions:
   # URLs - don't capitalize inside href="https://..." or any URL
   - 'https?://\S+'

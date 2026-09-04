@@ -3,6 +3,7 @@ extends: substitution
 level: warning
 message: "Article by sound: '%s' instead of '%s'."
 ignorecase: false
+scope: sentence
 
 exceptions:
   # ICU plural/select blocks - articles inside templates are context-dependent

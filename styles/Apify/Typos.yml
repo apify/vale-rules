@@ -2,6 +2,9 @@ extends: substitution
 level: error
 message: "Fix typo: '%s' instead of '%s'."
 ignorecase: true
+scope:
+  - summary
+  - heading
 exceptions:
   - 'https?://\S+'
   # "previously selected view" - the article belongs to "previously", not "selected".
@@ -26,7 +29,6 @@ swap:
   withyou: 'with you'
   tous: 'to us'
   forus: 'for us'
-  goto: 'go to'
   auser: 'a user'
   anemail: 'an email'
   anerror: 'an error'

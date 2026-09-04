@@ -3,6 +3,7 @@ level: warning
 message: "Don't start a sentence with '%s': use 'For example' or 'That is' instead."
 ignorecase: false
 nonword: true
+scope: sentence
 tokens:
   - 'E\.g\. '
   - '\. E\.g\.'

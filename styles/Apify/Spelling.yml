@@ -1,6 +1,9 @@
 extends: substitution
 level: warning
 message: "Use American spelling: '%s' instead of '%s'."
+scope:
+  - summary
+  - heading
 swap:
   analyse: 'analyze'
   analysed: 'analyzed'

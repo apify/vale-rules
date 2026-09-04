@@ -1,18 +1,21 @@
-extends: existence
+extends: substitution
 level: warning
-message: "Device-specific verb: '%s': use 'select' for tabs, menus, and options (not everyone uses a mouse). 'Click' is fine for buttons."
+message: "Device-specific verb: '%s' instead of '%s'. Use input-neutral language for tabs, menus, and options."
 ignorecase: true
+scope:
+  - sentence
+  - heading
 
-tokens:
-  - 'click on the'
-  - 'click on'
-  - 'click the tab'
-  - 'click the menu'
-  - 'click the dropdown'
-  - 'click the option'
-  - 'click the section'
-  - 'click the item'
-  - 'by clicking'
+swap:
+  'click on the': 'select the'
+  'click on': 'select'
+  'click the tab': 'select the tab'
+  'click the menu': 'select the menu'
+  'click the dropdown': 'select the dropdown'
+  'click the option': 'select the option'
+  'click the section': 'select the section'
+  'click the item': 'select the item'
+  'by clicking': 'by selecting'
 
 exceptions:
   # Analytics terminology

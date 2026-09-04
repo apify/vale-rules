@@ -2,7 +2,10 @@ extends: substitution
 message: "Use the Apify product name '%s' instead of '%s'."
 ignorecase: true
 level: warning
-scope: heading
+scope:
+  - summary
+  - heading
+vocab: false
 
 swap:
   'apify dashboard': Apify Console

@@ -2,6 +2,8 @@ extends: substitution
 level: warning
 message: "Replace em dash with appropriate punctuation: '%s' instead of '%s'."
 nonword: true
+scope:
+  - heading
 exceptions:
   # Paired em dashes (parenthetical asides) — two or more em dashes in the same string.
   # "word — aside — word" is acceptable inline punctuation. Only single em dashes are replaced.

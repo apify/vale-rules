@@ -2,7 +2,10 @@ extends: substitution
 message: "Use '%s' instead of '%s'."
 ignorecase: false
 level: warning
-scope: heading
+scope:
+  - summary
+  - heading
+vocab: false
 
 swap:
   'javascript|Javascript|javaScript': JavaScript

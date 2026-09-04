@@ -2,6 +2,7 @@ extends: substitution
 level: suggestion
 message: "Fix punctuation: '%s' instead of '%s'."
 ignorecase: false
+scope: sentence
 exceptions:
   - 'https?://\S+'
   # HTML comments - don't turn <!-- into <! - 

@@ -3,6 +3,9 @@ level: warning
 message: "Use inclusive language: '%s' instead of '%s'."
 ignorecase: false
 nonword: true
+scope:
+  - summary
+  - heading
 swap:
   'blind to the': 'unaware of the'
   'blind to': 'unaware of'
