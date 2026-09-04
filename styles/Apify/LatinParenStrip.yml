@@ -2,13 +2,11 @@ extends: existence
 level: suggestion
 message: "Redundant Latin abbreviation in parentheses: '%s'."
 ignorecase: false
-
+nonword: true
 exceptions:
-
 tokens:
   - '\(i\.e\.,? '
   - '\(e\.g\.,? '
-
 action:
   name: edit
   params:

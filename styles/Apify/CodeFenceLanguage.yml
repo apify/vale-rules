@@ -3,6 +3,6 @@ level: suggestion
 message: "Code fence without language: '%s': add a language tag (json, javascript, bash, python, etc.)."
 scope: raw
 ignorecase: false
-
+nonword: true
 tokens:
-  - '^```\s*$'
+  - '(?:\A|\n\n)```[ \t]*\n'
