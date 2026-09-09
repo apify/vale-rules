@@ -2,20 +2,22 @@ extends: substitution
 level: warning
 message: "Device-specific verb: '%s' instead of '%s'. Use input-neutral language for tabs, menus, and options."
 ignorecase: true
+matchcase: true
+action:
+  name: replace
 scope:
   - sentence
   - heading
 
 swap:
-  'click on the': 'select the'
-  'click on': 'select'
+  'click on(?!\s+(?:(?:the|a)\s+)?(?:(?:verification|confirmation)\s+)?links?\b)': 'select'
   'click the tab': 'select the tab'
   'click the menu': 'select the menu'
   'click the dropdown': 'select the dropdown'
   'click the option': 'select the option'
   'click the section': 'select the section'
   'click the item': 'select the item'
-  'by clicking': 'by selecting'
+  'by clicking(?!\s+(?:on\s+)?(?:(?:the|a)\s+)?(?:(?:verification|confirmation)\s+)?links?\b)': 'by selecting'
 
 exceptions:
   # Analytics terminology
@@ -25,6 +27,4 @@ exceptions:
   - "click and drag"
   - "drag and drop"
   # Email/hyperlink context
-  - "click the link"
-  - "click the verification link"
-  - "click the confirmation link"
+  - 'click(?:ing)? (?:on )?(?:(?:the|a) )?(?:(?:verification|confirmation) )?links?'

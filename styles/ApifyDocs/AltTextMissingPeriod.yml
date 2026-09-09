@@ -1,6 +1,17 @@
 extends: existence
-message: "Sentence-like alt text should end with a period so it reads as a complete description."
+message: "Complete sentences in alt text should end with a period."
 level: warning
-scope: raw
-raw:
-  - '!\[[^]]*\w+\s+\w+\s+\w+\s+[^]]*\w\]\('
+scope: alt
+nonword: true
+ignorecase: true
+# Recognize common declarative clauses, not sentence length. This deliberately
+# leaves ambiguous fragments and less common verb forms for editorial review.
+tokens:
+  - >-
+    (?x)^
+    (?:(?:the|an?|this|that|these|those|my|our|your)\s+)?
+    (?!(?:a|an|the|of|with|without|in|on|at|for|from|to|by|that|which|who|where|when|while|if|because|showing|displaying)\b)
+    [\p{L}\p{N}][\p{L}\p{N}'-]*
+    (?:\s+(?!(?:of|with|without|in|on|at|for|from|to|by|that|which|who|where|when|while|if|because|showing|displaying)\b)[\p{L}\p{N}][\p{L}\p{N}'-]*){0,5}
+    \s+(?:is|are|was|were|has|have|had|can|could|will|would|should|must|shows?|displays?|contains?|indicates?|includes?|highlights?|represents?|appears?|fails?|failed|succeeds?|succeeded)\b
+    (?:[^\r\n]*\w)?["']?\s*$
