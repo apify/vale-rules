@@ -1,0 +1,7 @@
+extends: existence
+message: "Price '%s' uses one decimal place. Use two decimals for currency, for example '$0.50'."
+level: suggestion
+scope: raw
+
+raw:
+  - '\$\d+\.\d(?!\d)'

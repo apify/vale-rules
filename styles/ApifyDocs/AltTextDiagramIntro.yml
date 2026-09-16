@@ -1,0 +1,7 @@
+extends: existence
+message: "Alt text introduces the image instead of describing it. Move the introduction to the body text."
+level: suggestion
+ignorecase: true
+scope: raw
+raw:
+  - '!\[(?:The following|This|The above) (?:diagram|flowchart|chart|graph|figure|illustration|image|table) (?:shows|illustrates|depicts|describes|presents|displays|outlines|summarizes)'

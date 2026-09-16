@@ -1,0 +1,7 @@
+
+extends: existence
+level: suggestion
+message: "Action-object mismatch: '%s': you enter data (a name, ID, address), not a person. Consider 'Enter the name of the [person]' instead."
+
+tokens:
+  - '\b[Ee]nter the (?:person|individual|user|owner|developer|representative|member|admin|manager)\b'

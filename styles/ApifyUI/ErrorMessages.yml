@@ -2,15 +2,26 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "may...might not" - avoid double "may" when "may" already appears earlier.
+  # "which may mean that some users might not" → keep "might" to avoid repetition.
   - '\bmay\b[\s\S]{0,60}\bmight not\b'
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
   - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
   - '\w+\s+\w+\s+failed to'
   - '(?:if|you.re|you are|they.re|they are|we.re|we are|it.s|it is|he.s|he is|she.s|she is|are|is|was|be|been|being|to be|remain|remains|remained|feel|feels|felt|seem|seems|seemed)\s+unable to'
+  # "An error occurred. [more content]" - the follow-up already provides recovery.
+  # Don't fire the generic swap when there's already retry/support guidance after.
   - 'An error occurred\.\s+\S'
+  # "Operation failed! [more content]" - same guard: source already has recovery path.
+  # Without this, "Operation failed!" → "That didn't work. Try again." fires as a
+  # substring, producing three sentences when the source already had a next step.
   - 'Operation failed!\s+\S'
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
 
@@ -23,30 +34,31 @@ swap:
 
   'Email failed to send': "Couldn't send email."
   'Email Unable to send': "Couldn't send email. Try again or contact support."
-  'Reporting of review failed.': "Couldn't report review. Try again or contact support."
-  'Reporting of Actor failed.': "Couldn't report Actor. Try again or contact support."
-  'Resubscription to the Custom plan failed.': "Couldn't resubscribe to the Custom plan. Try again or contact support."
+  'Reporting of review failed\.': "Couldn't report review. Try again or contact support."
+  'Reporting of Actor failed\.': "Couldn't report Actor. Try again or contact support."
+  'Resubscription to the Custom plan failed\.': "Couldn't resubscribe to the Custom plan. Try again or contact support."
   'Canceling subscription failed': "We couldn't cancel your subscription. Try again or contact support."
-  'Cancel scheduled resubscription failed.': "Couldn't cancel the scheduled resubscription. Try again or contact support."
+  'Cancel scheduled resubscription failed\.': "Couldn't cancel the scheduled resubscription. Try again or contact support."
   'Service connection failed': "Couldn't connect."
   'Disconnection failed': "Couldn't disconnect."
   'Operation failed!': "That didn't work. Try again."
-  'An error occurred.': "That didn't work. Try again."
-  'Something went wrong. Try again.': "That didn't work. Try again."
-  'Something went wrong. Please try again.': "That didn't work. Try again."
-  'Something went wrong.': "That didn't work. Try again."
+  'An error occurred\.': "That didn't work. Try again."
+  'Something went wrong\. Try again\.': "That didn't work. Try again."
+  'Something went wrong\. Please try again\.': "That didn't work. Try again."
+  'Something went wrong\.': "That didn't work. Try again."
   'Request failed!': 'request failed.'
-  'Request error.': 'request failed.'
+  'Request error\.': 'request failed.'
   'Please try again later': 'try again later'
   'Build failed to load': "Couldn't load the build"
+  'Failed to (initialize|provision|compile|bootstrap|allocate|resolve|mount|sync|deploy)': "We couldn't $1"
 
-  'Invalid email address.': 'Email format incorrect.'
+  'Invalid email address\.': 'Email format incorrect.'
   'Invalid email address': 'Email format incorrect.'
-  'Invalid URL.': "URL isn't valid."
+  'Invalid URL\.': "URL isn't valid."
   'Invalid URL': "URL isn't valid."
-  'The invitation link is invalid.': "The invitation link isn't valid."
+  'The invitation link is invalid\.': "The invitation link isn't valid."
   'Your payout VAT ID is invalid': "Your payout VAT ID isn't valid"
-  'Seems like your GitHub App authentication is invalid or expired.': "Seems like your GitHub App authentication isn't valid or has expired."
+  'Seems like your GitHub App authentication is invalid or expired\.': "Seems like your GitHub App authentication isn't valid or has expired."
   'Max requests must be greater than or equal to desired requests!': 'Max requests must be greater than or equal to desired requests.'
   'Desired requests must be lower than or equal to max requests!': 'Desired requests must be lower than or equal to max requests.'
 
@@ -56,17 +68,18 @@ swap:
   'will be removed!': 'will be removed.'
   'will lose access!': 'will lose access.'
   'will break!': 'will break.'
-  'Event key must not be duplicated.': "Event key can't be duplicated."
+  'Event key must not be duplicated\.': "Event key can't be duplicated."
   'Do not share externally!': "Don't share externally."
   'might not be able to log-in': 'may not be able to log in'
   'might not be able to log in': 'may not be able to log in'
   'might not': 'may not'
   'We were unable to': "We couldn't"
   'We were not able to': "We couldn't"
+  'Unable to (\w+)\?': "Can't $1?"
   'Unable to': "Couldn't"
   'We need to verify your identity': 'Verify your identity'
   'We need to verify your business': 'Verify your business'
-  'We need to verify your email before we can publish the Actor.': 'Verify your email to publish the Actor.'
+  'We need to verify your email before we can publish the Actor\.': 'Verify your email to publish the Actor.'
   "User can't have more than": "You can't have more than"
   "User cannot have more than": "You can't have more than"
   "User can't own more than": "You can't own more than"
@@ -92,13 +105,14 @@ swap:
 
   "User with conference token not found": "We couldn't find that user."
 
-  "Stripe is not enabled for user.": "Stripe isn't enabled for this account."
+  'Stripe is not enabled for user\.': "Stripe isn't enabled for this account."
   "Stripe is not enabled for user": "Stripe isn't enabled for this account"
 
-  "The user is missing a username.": "This account doesn't have a username."
+  'The user is missing a username\.': "This account doesn't have a username."
   "The user is missing a username": "This account doesn't have a username"
-  "Oops, the Actor you're looking for is no longer available.": 'This Actor is no longer available.'
-  'Oops, the Actor you are looking for is no longer available.': 'This Actor is no longer available.'
+  'Oops, the Actor you''re looking for is no longer available\.': 'This Actor is no longer available.'
+  'Oops, the Actor you are looking for is no longer available\.': 'This Actor is no longer available.'
 
-  'It looks like you are already using all the Actors we have suggested for you. Go to <storeLink>Apify Store</storeLink> to see more available Actors.': "You're using all the Actors we suggested. Go to <storeLink>Apify Store</storeLink> to see more."
-  'It looks like you pasted a Google Docs URL. It must be a direct link to a text file containing the list of URLs.': "That's a Google Docs URL. Use a direct link to a text file containing the URLs."
+  'It looks like you are already using all the Actors we have suggested for you\. Go to <storeLink>Apify Store</storeLink> to see more available Actors\.': "You're using all the Actors we suggested. Go to <storeLink>Apify Store</storeLink> to see more."
+  'It looks like you pasted a Google Docs URL\. It must be a direct link to a text file containing the list of URLs\.': "That's a Google Docs URL. Use a direct link to a text file containing the URLs."
+  'It seems that the URL might be misspelled - did you copy it fully\?': 'The URL might be misspelled. Did you copy it fully?'

@@ -3,9 +3,14 @@ level: suggestion
 message: "Fix sentence-start capitalization: '%s' instead of '%s'."
 ignorecase: false
 exceptions:
+  # "Additional costs" - financial category label; "More costs" sounds wrong
   - "Additional costs"
+  # "Additional memory/concurrent/datacenter" in add-ons context - "Additional" means
+  # supplementary to the base plan. "More" loses the add-on framing.
   - "Additional (?:memory|concurrent|datacenter|team account)"
+  # "As a result" in enforcement/ban context - formal register is intentional.
   - '[Aa]s a result[\s\S]*(?:banned|suspended|terminated|blocked|restricted|revoked|disabled)'
+  # "In the event of [pronoun+gerund]" - "If you losing" is grammatically wrong
   - 'In the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
 swap:
   'Therefore, ': 'So '
@@ -38,3 +43,9 @@ swap:
   'Utilized ': 'Used '
   'Utilizing ': 'Using '
   'Make sure that ': 'Make sure '
+  'Here you can (\w)': 'You can $1'
+  'here you can (\w)': 'you can $1'
+  'This is where you can (\w)': 'You can $1'
+  'this is where you can (\w)': 'you can $1'
+
+  'Optionally, you can (\w)': 'Optionally, $1'

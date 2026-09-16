@@ -1,10 +1,8 @@
-# Detection only: flags 6 patterns without suggesting replacements.
 extends: existence
 level: suggestion
-message: "Feature-definition opener: '%s'. Lead with what the feature does, not what it is."
+message: "Feature-definition opener: '%s'. Lead with what the feature does, not what it's."
 
 exceptions:
-  - '^[^.!?]*[.!?]?\s*$'
 
 tokens:
   - '\w[\w ]*? lets you [^.]+\. It'

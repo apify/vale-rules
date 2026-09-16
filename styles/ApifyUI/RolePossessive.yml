@@ -1,12 +1,15 @@
+
 extends: existence
 level: suggestion
-message: "Consider restructuring possessive: '%s' - role possessives can often become noun compounds."
+message: "Consider restructuring possessive: '%s': role possessives can often become noun compounds."
 ignorecase: false
 
 exceptions:
+  # "your [noun]" - user-centering, always keep
   - '\byour\b'
+  # "Actor's" - product vocabulary, possessive is standard ("the Actor's runs")
   - '\bActor.s\b'
-  - '\bStore.s\b'
+  # Plural possessives - can't restructure without meaning change
   - "users"
   - "customers"
   - "Actors"
@@ -21,4 +24,7 @@ tokens:
   - 'developer.s account'
   - 'developer.s identity'
   - 'organization.s owner'
+  - 'organization.s Actors'
+  - 'organization.s resources'
+  - 'organization.s members'
   - 'schedule.s settings'

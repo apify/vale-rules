@@ -1,5 +1,5 @@
 extends: existence
-message: "'%s' - use a colon instead: 'Connect via integrations: Zapier, Make, Slack' not 'including Zapier, Make, and Slack.'"
+message: "'%s': use a colon instead: 'Connect via integrations: Zapier, Make, Slack' not 'including Zapier, Make, and Slack.'"
 level: suggestion
 scope: sentence
 tokens:

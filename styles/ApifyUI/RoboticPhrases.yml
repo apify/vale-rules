@@ -2,11 +2,21 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "Fill in/Enter/Provide your email address" - form labels where "address" aids
+  # accessibility and screen reader clarity. Keep the full noun in label contexts.
   - '(?:Fill in|Enter|Provide|Type|Add|Confirm|Verify)\s+(?:your|an?|the)\s+email address'
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "no additional revenue" - "no more revenue" reads as "zero revenue" not "no extra revenue"
   - "no additional revenue"
+  # "All X will stop/break" in destructive confirmation prompts - the consequence IS definite
+  - '(?:Reset|Delete|Remove|Unpublish|Disconnect|Revoke)[\s\S]*All \w+.*will (?:stop|break|fail|lose)'
+  # "Additional [noun]" in list items - functions as a label, not filler.
+  # "- Additional custom attributes" → "- more custom attributes" loses polish.
   - "Additional custom"
   - "additional custom"
   - "Additional information"
@@ -15,53 +25,124 @@ exceptions:
   - "additional configuration"
   - "Additional attributes"
   - "additional attributes"
+  # "additional GB/MB/KB/TB" - unit measurement phrase; numbers.yml handles reorder.
+  # "more GB of Actor memory" is unnatural; keep "additional" so the reorder fires.
+  # Covers optional plural "s" for units that numbers.yml depluralizes (GB/MB/KB/TB).
+  # GiB/MiB included for completeness though they don't have plural forms in the corpus.
+  # Also covers post-reorder form "GB of additional" (numbers fires before robotic-phrases).
   - "additional (?:GB|MB|KB|TB|GiB|MiB)s?"
   - "(?:GB|MB|KB|TB|GiB|MiB) of additional"
+  # ── Semantic role guards for billing verbs (item #4)
+  # "you will no longer charge" - developer IS the agent charging users.
+  # "be charged" would flip the meaning (implies the developer gets charged).
+  # Guard any string where charge/pay/waive/credit/refund is in active voice
+  # with a billing-context object.
   - '\byou will no longer (?:charge|waive|credit|refund|bill|deduct)\b'
   - '\bwill no longer (?:charge|waive|credit|refund|bill|deduct)\b'
+  # "Additional memory/concurrent" in add-ons context - "Additional" means supplementary
+  # to the base plan allowance. "More" loses the add-on framing.
   - "Additional (?:memory|concurrent|datacenter|team account)"
+  # "due to" when "because" already appears in the string - prevents double "because".
   - 'because[\s\S]*due to'
   - 'due to[\s\S]*because'
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
+  # ── "will take effect immediately" in pre-confirmation context
+  # When followed by a reasoning clause (Since/Because/As there are...), the future
+  # tense is genuine - the user hasn't confirmed yet, the string explains what WILL
+  # happen. Block the stale-future swap in this context.
   - 'will take effect immediately[\s\S]+(?:[Ss]ince|[Bb]ecause|[Aa]s) (?:there (?:are|is)|no |you (?:have|don.t))'
+  # Guard the gerund form: "In/in the event of you/they/we/... [verb]ing"
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
   - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
+  # Mid-sentence "X failed to Y" - subject precedes "failed to"; only sentence-start form should fire.
+  # Uses a lookbehind-style guard: fires only when a non-sentence-start word precedes "failed to".
+  # "Some runs failed to abort" → blocked. "Email failed to send" → explicit swap handles it.
   - '\w+\s+\w+\s+failed to'
+  # Mid-sentence "unable to" - block when preceded by a conjunction/preposition/pronoun
+  # that signals a subordinate clause: "if unable to", "you're unable to", "are unable to".
+  # Does NOT block "We were unable to" (sentence-start subject + verb).
+  # Does NOT block "Unable to" (sentence-start, no preceding word).
   - '(?:if|you.re|you are|they.re|they are|we.re|we are|it.s|it is|he.s|he is|she.s|she is|are|is|be|been|being|to be|remain|remains|remained|feel|feels|felt|seem|seems|seemed)\s+unable to'
+  # "such as" in security/authentication/2FA context - formal register is intentional.
+  # "like 1Password" reads as approximate; "such as 1Password" is precise enumeration.
   - '(?:authenticat|2FA|two-factor|recovery|security|password|token|credential)[\s\S]*such as'
   - 'such as[\s\S]*(?:authenticat|2FA|two-factor|recovery|security|password|token|credential)'
+  # NOTE: patterns with metacharacters get case-sensitive 'g' flag - use [Aa] for both cases.
   - '(?:banned|suspended|terminated|blocked|restricted|revoked|disabled)[\s\S]*[Aa]s a result'
   - '[Aa]s a result[\s\S]*(?:banned|suspended|terminated|blocked|restricted|revoked|disabled)'
+  # "and thus [past participle]" - "and thus used", "and thus blocked" - the participle form
+  # needs restructuring ("and so can be used"), not a simple word swap. Guard it.
+  # The safe form "and thus [modal]" - "and thus can", "and thus might" - is handled by the swap.
+  # "a number of items/results/records/..." - configurable quantity phrases where "several" is wrong.
+  # Mirrors the guard in dirty-dozen.yml (which runs later and would otherwise be redundant).
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
+  # "various" meaning "diverse kinds" - followed by category/type nouns.
+  # "various integrations" = different types (correct). "various instances" = vague quantity (weasel).
+  # Extended guard list (2026-08-03 audit): added regions, protocols, modes, strategies,
+  # techniques, patterns, frameworks, libraries, SDKs, databases.
+  # Also guards when followed by an enumeration (colon or "including/such as" within 60 chars)
+  # which signals the writer is about to name specific items - "various" means "these different kinds."
   - 'various \w+[\s\S]{0,60}(?:including|such as|like|:|,\s*\w+,\s*\w+)'
+  # "Beware that" in billing/data accuracy warnings - the warning signal is intentional.
+  # "Beware that this data is only informative" - primes readers to treat disclaimer seriously.
   - '[Bb]eware that[\s\S]*(?:only informative|inaccurate|approximate|estimated|not guaranteed)'
   - '[Bb]eware that[\s\S]*(?:secret|sensitive|credential|billing|invoice|charge)'
+  # "feel free to" in personal/relationship-building context - signals approachability.
+  # "feel free to reach out to me" in account manager emails is intentional warmth.
   - 'feel free to[\s\S]{0,80}(?:me at|me if|me any|mailto:)'
+  # "reach out to" in personal/relationship context - the warmth is intentional.
+  # Account manager, named contact, or personal pronoun = not corporate filler.
   - "reach out to your (?:account manager|contact|representative)"
   - 'reach out to[\s\S]{0,30}(?:me at|me if)'
+  # "make sure" in billing/invoice context - means "verify and fix", not "acknowledge".
+  # "confirm" implies the data should already be correct; "make sure" prompts action.
+  # Requires a billing/payment term within 120 characters (before OR after).
   - '[Mm]ake sure(?=[\s\S]{0,120}?(?:[Ii]nvoice|[Bb]illing|[Pp]ayment|[Cc]harge|[Aa]mount))'
   - '(?:[Ii]nvoice|[Bb]illing|[Pp]ayment|[Cc]harge|[Aa]mount)[\s\S]{0,120}?[Mm]ake sure'
+  # "you can either" mid-sentence (after comma/clause) - descriptive, not imperative.
+  # "In X mode, you can either select..." is explaining options, not giving instructions.
+  # Only guard the mid-sentence form; sentence-start "You can either" is still swapped.
   - ',\s+you can either'
+  # "act on behalf of" / "subscribe on behalf of" - authorization language.
+  # "On behalf of" means acting as an authorized representative. "For" is vague.
+  # Only guard when preceded by authorization verbs; other uses still simplify.
   - '\b(?:[Aa]ct|[Aa]cting|[Ss]ubscribe|[Ss]ubscribing|[Aa]llowed to act|to subscribe)\s+on behalf of'
+  # "This input is too large to be saved" - passive is clearer here (prepositional
+  # attachment: "saved to a new task"). The literal in safe-transforms adds "This"
+  # for deictic reference; guard the passive from being stripped.
   - '\b[Tt]his \w+ is too large to be'
+  # "refer to it/them/this/that" - anaphoric reference (meaning "come back to"),
+  # not pointing to a documentation resource. "See it later" is unnatural.
   - "[Rr]efer to (?:it|them|this|that)"
+  # "email address field/format/label/type" - UI element or format type names where
+  # "address" is load-bearing and "email address" should not be simplified to "email".
   - "email address (?:field|format|label|type|input|validation)"
+  # "verify your email address" - action CTA where "address" specifies what's being
+  # verified (the specific address, not the account). Precision is load-bearing.
   - "verify your email address"
   - "verify (?:the|an|this|that) email address"
+  # "your email address" in form instruction context - blame-language may strip
+  # the verb prefix later, producing "Enter your email address" which is correct.
+  # Guard: any string containing "forgot to" + "email address" (blame → imperative path)
+  - "forgot to.*email address"
 swap:
 
-  'Your free trial has expired.': 'Your free trial ended.'
+  'Your free trial has expired\.': 'Your free trial ended.'
 
-  'that run data will be deleted too.': "that run's data will also be deleted."
-  'that run data will be deleted as well.': "that run's data will also be deleted."
-  'the respective run data will be deleted too.': "that run's data will also be deleted."
-  'the respective run data will be deleted as well.': "that run's data will also be deleted."
+  'that run data will be deleted too\.': "that run's data will also be deleted."
+  'that run data will be deleted as well\.': "that run's data will also be deleted."
+  'the respective run data will be deleted too\.': "that run's data will also be deleted."
+  'the respective run data will be deleted as well\.': "that run's data will also be deleted."
+  'As the given {storageType} is connected to the Actor run, that run data will be deleted as well\.': "This {storageType} is linked to the Actor run. Deleting it removes that run's data too."
+  'As the given {storageType} is connected to the Actor run, that run''s data will also be deleted\.': "This {storageType} is linked to the Actor run. Deleting it removes that run's data too."
 
-  'any extra usage will be charged as overage.': "we'll charge any extra usage as overage."
+  'any extra usage will be charged as overage\.': "we'll charge any extra usage as overage."
   'Start of billing cycle will be updated': 'Billing cycle start date updated'
-  'will be charged towards your account.': 'will be charged to your account.'
-  "This proxy type is charged by the number of IP addresses.": "This proxy charges per IP address."
-  "This proxy type is charged by the amount of traffic transferred.": "This proxy charges for traffic transferred."
-  "This proxy type is charged by the number of SERPs returned.": "You're charged per SERP returned."
+  'will be charged towards your account\.': 'will be charged to your account.'
+  'This proxy type is charged by the number of IP addresses\.': "This proxy charges per IP address."
+  'This proxy type is charged by the amount of traffic transferred\.': "This proxy charges for traffic transferred."
+  'This proxy type is charged by the number of SERPs returned\.': "You're charged per SERP returned."
+  'Indicates what kind of data is in the input (e.g. application/JSON)': 'Input data type (e.g. application/JSON)'
   'check out our': 'see our'
   'check out the': 'see the'
   'navigate to the': 'go to the'
@@ -81,7 +162,7 @@ swap:
   'will be started automatically': 'starts automatically'
   'Final values will be shown': 'Final values appear'
   'will be prefilled': 'is prefilled'
-  'The result will be shown here.': 'Results appear here.'
+  'The result will be shown here\.': 'Results appear here.'
   'as per': 'per'
   'as well as': 'and'
   'in the event of': 'if'
@@ -91,6 +172,8 @@ swap:
   'enables you to': 'lets you'
   'this will let you': 'lets you'
   'this will allow you to': 'this will let you'
+  'time within (\d+) hours within support hours': 'time of $1 hours during support hours'
+  'time within (\d+) hour within support hours': 'time of $1 hour during support hours'
   'within support hours': 'during support hours'
   'reach out to us': 'contact us'
   'reach out to the support': 'contact support'
@@ -108,6 +191,7 @@ swap:
   'We would like to inform you about ': "Here's what's changing with "
   'we would like to inform you about ': "here's what's changing with "
   'we would like to': ''
+  'We want to inform you about (\w)': '$1'
   'we want to inform you about ': ''
   'it is possible to': 'you can'
   "it's possible to": 'you can'
@@ -132,7 +216,7 @@ swap:
   'for more information, see': 'see'
   'for more info, refer to': 'see'
   'for more info, see': 'see'
-  'Sorry, we are not able to display the graph at the moment.': "Sorry, we can't display the graph right now."
+  'Sorry, we are not able to display the graph at the moment\.': "Sorry, we can't display the graph right now."
   'at the present time': 'now'
   'at the current time': 'now'
   'at the present moment': 'now'
@@ -159,20 +243,22 @@ swap:
   'make sure that': 'make sure'
   'make sure to ': ''
   'make sure they are': "confirm they're"
+  'You can either (\w)': '$1'
   'you can either ': ''
+  'You can then (\w)': '$1'
   'you can then ': ''
   'subsequent to': 'after'
   'the fact that': 'that'
   'in addition to': 'plus'
   'can be found at': 'is at'
   'can be viewed on': 'is on'
-  'Please wait...': 'Working on it'
-  'There are no items on this page.': 'No items on this page.'
+  'Please wait\.\.\.': 'Working on it'
+  'There are no items on this page\.': 'No items on this page.'
   'available for emailing': 'you can email'
   'appear in the list': 'appear here'
   'information available for': 'info for'
-  'Testing is only available for saved integrations. Please save the integration first.': 'Testing requires a saved integration. Save it first.'
-  'This option is only available if your profile is public.': 'This option requires a public profile.'
+  'Testing is only available for saved integrations\. Please save the integration first\.': 'Testing requires a saved integration. Save it first.'
+  'This option is only available if your profile is public\.': 'This option requires a public profile.'
   'completed successfully': 'completed'
   'finished successfully': 'finished'
   'done successfully': 'done'
@@ -188,12 +274,15 @@ swap:
   'returns a list of': 'returns'
   'returns the list of': 'returns'
   'the list of ': ''
-  'A list of events that will trigger a webhook.': 'Events that trigger a webhook.'
+  'A list of events that will trigger a webhook\.': 'Events that trigger a webhook.'
   'a list of ': ''
   'we always strive to': 'we work to'
   'maintained and of the best possible quality': 'well-maintained and high quality'
-  'Modifying under maintenance status of deprecated Actor is not possible.': "The maintenance status can't be changed on deprecated Actors."
-  'Unpublishing paid Actors is not possible. Please first cancel the monetization.': "Paid Actors can't be unpublished. Cancel monetization first."
+  'Beware that (\w)': '$1'
+  'beware that (\w)': '$1'
+  'Be careful, (\w)': '$1'
+  'Modifying under maintenance status of deprecated Actor is not possible\.': "The maintenance status can't be changed on deprecated Actors."
+  'Unpublishing paid Actors is not possible\. Please first cancel the monetization\.': "Paid Actors can't be unpublished. Cancel monetization first."
   'this change will become effective on': 'this takes effect on'
   'become effective': 'take effect'
   'will take effect immediately': 'takes effect immediately'
@@ -204,18 +293,27 @@ swap:
   'the above information': 'this information'
   'the above steps': 'these steps'
   'the above fields': 'these fields'
-  'Can be used to rename the dataset.': 'You can also rename it.'
-  'Can be used to rename the store.': 'You can also rename it.'
-  'Can be used to rename the queue.': 'You can also rename it.'
-  'You need to provide your Apify API token to complete this action.': 'Provide your Apify API token to complete this action.'
-  'You do not have access to organization tokens.': "You can't access organization tokens."
-  'You do not have access to this Actor on the Creator Plan.': "You can't access this Actor on the Creator Plan."
-  'You do not have access to Apify Proxy.': "You can't access Apify Proxy."
+  'Can be used to rename the dataset\.': 'You can also rename it.'
+  'Can be used to rename the store\.': 'You can also rename it.'
+  'Can be used to rename the queue\.': 'You can also rename it.'
+  'You need to provide your Apify API token to complete this action\.': 'Provide your Apify API token to complete this action.'
+  'You do not have access to any {proxyGroup} proxy groups\. To get access, please upgrade your plan\.': "You can't access any {proxyGroup} proxy groups. Upgrade your plan."
+  'You don''t have access to any {proxyGroup} proxy groups\. To get access, upgrade your plan\.': "You can't access any {proxyGroup} proxy groups. Upgrade your plan."
+  'You do not have access to organization tokens\.': "You can't access organization tokens."
+  'You do not have access to this Actor on the Creator Plan\.': "You can't access this Actor on the Creator Plan."
+  'You do not have access to Apify Proxy\.': "You can't access Apify Proxy."
+  'It is important to note that (\w)': '$1'
+  'All Actor builds have been successfully {verbPassive}\.': 'All Actor builds were {verbPassive}.'
+  'All Actor runs have been successfully {verbPassive}\.': 'All Actor runs were {verbPassive}.'
+  'All integrations have been successfully {enabledDisabled}\.': 'All integrations were {enabledDisabled}.'
+  'All schedules have been successfully {enabledDisabled}\.': 'All schedules were {enabledDisabled}.'
   'Deployment key successfully added': 'Deployment key added'
   'Successfully removed': 'Removed'
   'Successfully authenticated with the Identity Provider': 'Authenticated with the Identity Provider'
-  'Your access to Apify services has been restored.': 'Your Apify services are restored.'
-  "This allows users to read the run’s default storages.": "Lets you read the run’s default storages."
+  'The account with {email} email address has been successfully verified already\.': 'The account with {email} email address verified already.'
+  'Your access to Apify services has been restored\.': 'Your Apify services are restored.'
+  "This allows users to read the run’s default storages. (.+)": "Lets you read the run’s default storages. $1"
+  'This allows users to read the run’s default storages\.': "Lets you read the run’s default storages."
   'that will be scraped': 'to scrape'
   'that will be shown': 'to show'
   'that will be displayed': 'to display'
@@ -230,19 +328,19 @@ swap:
   ', which means that ': ', so '
   ', which means ': ', so '
   'could fail to ': 'may not '
-  'Help us maintain a respectful and trustworthy community by reporting any issues with reviews. Select the reason for your report and provide more details if necessary.': 'Help keep our community respectful. Report issues with reviews, select a reason, and add details.'
-  'Help us maintain a respectful and trustworthy community by reporting serious issues with Actors. Select the reason for your report and provide more details.': 'Help keep our community respectful. Report serious issues with Actors, select a reason, and add details.'
-  'Select the reason for your report and provide more details if necessary.': 'Select a reason and add details if needed.'
-  'Select the reason for your report and provide more details.': 'Select a reason and add details.'
+  'Help us maintain a respectful and trustworthy community by reporting any issues with reviews\. Select the reason for your report and provide more details if necessary\.': 'Help keep our community respectful. Report issues with reviews, select a reason, and add details.'
+  'Help us maintain a respectful and trustworthy community by reporting serious issues with Actors\. Select the reason for your report and provide more details\.': 'Help keep our community respectful. Report serious issues with Actors, select a reason, and add details.'
+  'Select the reason for your report and provide more details if necessary\.': 'Select a reason and add details if needed.'
+  'Select the reason for your report and provide more details\.': 'Select a reason and add details.'
   'such as': 'like'
   'due to': 'because of'
-  'Explain the reason for the price change. Transparency fosters trust and clear communication with users.': "Explain why you're changing the price. Users appreciate knowing why prices change."
-  'Review has been successfully reported.': 'Review reported.'
-  'Actor has been successfully reported.': 'Actor reported.'
+  'Explain the reason for the price change\. Transparency fosters trust and clear communication with users\.': "Explain why you're changing the price. Users appreciate knowing why prices change."
+  'Review has been successfully reported\.': 'Review reported.'
+  'Actor has been successfully reported\.': 'Actor reported.'
   'Your Apify subscription has been canceled for non-payment': 'Your Apify subscription was canceled for non-payment'
-  'All usage of Apify Proxy with this password will be charged towards your individual account.': 'All usage of Apify Proxy with this password will be charged to your individual account.'
-  'All usage of Apify Proxy with this password will be charged towards your organization account.': 'All usage of Apify Proxy with this password will be charged to your organization account.'
-  "You've replied and the user has been notified.": 'Replied. User notified.'
+  'All usage of Apify Proxy with this password will be charged towards your individual account\.': 'All usage of Apify Proxy with this password will be charged to your individual account.'
+  'All usage of Apify Proxy with this password will be charged towards your organization account\.': 'All usage of Apify Proxy with this password will be charged to your organization account.'
+  'You''ve replied and the user has been notified\.': 'Replied. User notified.'
   'we have not received information where': "we haven't received information where"
   'We have updated our': "We've updated our"
   'we have also added the': "we've also added the"
@@ -253,57 +351,61 @@ swap:
   'no more than': 'up to'
   'Just type ': 'Type '
   'were successfully logged in': 'were logged in'
-  'Something went wrong. ___PLEASE_PROTECTED___ try again.': 'Something went wrong. Try again.'
-  "Couldn't create account. ___PLEASE_PROTECTED___ contact support@apify.com.": "Couldn't create account. Contact support@apify.com."
+  'Something went wrong\. ___PLEASE_PROTECTED___ try again\.': 'Something went wrong. Try again.'
+  'Couldn''t create account\. ___PLEASE_PROTECTED___ contact support@apify\.com\.': "Couldn't create account. Contact support@apify.com."
   'To ensure full system functionality': 'For full system functionality'
   'the aforementioned ': 'these '
-  'All tasks have been successfully started.': 'All tasks started.'
+  'All tasks have been successfully started\.': 'All tasks started.'
   'Input was successfully restored': 'Input restored'
   'There was an error updating schedule notifications preferences': "Couldn't update schedule notification preferences"
   'There was an error updating Actor subscription preferences': "Couldn't update Actor subscription preferences"
   'Invoice was already paid!': 'Invoice already paid!'
   'Payment was successful!': 'Payment succeeded!'
-  'API token was flagged as leaked.': 'API token flagged as leaked.'
+  'API token was flagged as leaked\.': 'API token flagged as leaked.'
   'You were subscribed despite issues with your card': 'Subscribed despite card issues'
   'have been already reflected': 'are already reflected'
+  'Selected {numRuns} Actor runs will be aborted\.': 'Abort {numRuns} Actor runs?'
   'All in progress runs of those tasks will be aborted': 'All active runs will be aborted'
-  'This picture will be displayed on the public Actor page. Minimum size is 100px x 100px and maximum size is 512px x 512px.': 'This picture appears on the public Actor page. Minimum size is 100px x 100px, maximum size is 512px x 512px.'
-  'This picture will be displayed on the public profile page. It should be at least 100px x 100px, maximum size is 512px x 512px.': 'This picture appears on your public profile page. Minimum size is 100px x 100px, maximum size is 512px x 512px.'
-  'If enabled, your email will be displayed on your public profile page. This option requires a public profile.': 'If enabled, your email appears on your public profile page. This option requires a public profile.'
-  'Once we have enough data, analytics about your public Actors will be displayed here.': 'Once we have enough data, analytics about your public Actors appear here.'
-  'After you publish your Actors on Apify Store, all payout information will be displayed here.': 'After you publish your Actors on Apify Store, all payout information appears here.'
+  'This picture will be displayed on the public Actor page\. Minimum size is 100px x 100px and maximum size is 512px x 512px\.': 'This picture appears on the public Actor page. Minimum size is 100px x 100px, maximum size is 512px x 512px.'
+  'This picture will be displayed on the public profile page\. It should be at least 100px x 100px, maximum size is 512px x 512px\.': 'This picture appears on your public profile page. Minimum size is 100px x 100px, maximum size is 512px x 512px.'
+  'If enabled, your email will be displayed on your public profile page\. This option requires a public profile\.': 'If enabled, your email appears on your public profile page. This option requires a public profile.'
+  'Once we have enough data, analytics about your public Actors will be displayed here\.': 'Once we have enough data, analytics about your public Actors appear here.'
+  'After you publish your Actors on Apify Store, all payout information will be displayed here\.': 'After you publish your Actors on Apify Store, all payout information appears here.'
   'Empty field will be removed': 'Empty fields are removed'
+  'The application {appName} will be deleted and all integrations using it will stop working\.': 'Deleting {appName} removes all its integrations.'
 
-  'please contact us.': 'contact us.'
+  'please contact us\.': 'contact us.'
   'please contact us': 'contact us'
   'please specify': 'specify'
-  'to work accordingly.': 'to fix it.'
+  'to work accordingly\.': 'to fix it.'
   'do not have access to': "can't access"
   "don't have access to": "can't access"
   'you are required to meet': 'meet'
   'you are required to': ''
   'You must meet': 'You need'
   'you must meet': 'you need'
-  'To override the default settings, you need to create a saved task.': 'To override the default settings, create a saved task.'
-  'The Actor is currently being built. When the build is done the input will show here.': 'Your Actor is building. Input will appear when the build finishes.'
+  'To override the default settings, you need to create a saved task\.': 'To override the default settings, create a saved task.'
+  'The Actor is currently being built\. When the build is done the input will show here\.': 'Your Actor is building. Input will appear when the build finishes.'
   'This input is currently using default values': 'This input is using default values'
-  'Transfer the ownership to another user to proceed.': 'Transfer ownership to another user to continue.'
-  "You'll need to leave the other organizations to proceed.": "You'll need to leave the other organizations to continue."
-  "Upgrade to a different plan to proceed.": "upgrade to a different plan to continue."
+  'Transfer the ownership to another user to proceed\.': 'Transfer ownership to another user to continue.'
+  'You''ll need to leave the other organizations to proceed\.': "You'll need to leave the other organizations to continue."
+  'Upgrade to a different plan to proceed\.': "upgrade to a different plan to continue."
+  'You''ll be redirected in {seconds} seconds to complete your business verification\. To proceed now, click Continue\.': "Redirecting in {seconds} seconds for business verification. Click Continue to skip."
+  'You''ll be redirected in {seconds} seconds to complete your identity verification\. To proceed now, click Continue\.': "Redirecting in {seconds} seconds for identity verification. Click Continue to skip."
   'Provide a reason for excluding this Actor from the automatic check': "explain why you're excluding this Actor from the automatic check"
-  "The developer hasn't provided a reason for the price change.": "The developer hasn't explained why the price changed."
-  'set your permissions accordingly.': 'update your permissions as needed.'
-  "We're experiencing a system outage. We'll fix it as soon as possible.": "We're experiencing a system outage. We'll fix it soon."
-  'Attempting to collect invoice payment.': 'Collecting invoice payment.'
+  'The developer hasn''t provided a reason for the price change\.': "The developer hasn't explained why the price changed."
+  'set your permissions accordingly\.': 'update your permissions as needed.'
+  'We''re experiencing a system outage\. We''ll fix it as soon as possible\.': "We're experiencing a system outage. We'll fix it soon."
+  'Attempting to collect invoice payment\.': 'Collecting invoice payment.'
   'deleted as well': 'deleted too'
   'a number of': 'several'
   'various': 'multiple'
   'This is a test message from the Apify Slack integration': 'Test message from the Apify Slack integration'
   'or in case of issues,': 'or if you run into issues,'
-  'This information will be used to verify your ownership in case of account recovery.': 'This info helps verify your identity if you need account recovery.'
-  'This information will be kept safe and used only in case of account recovery.': 'This info is kept safe for account recovery only.'
-  'used only in case of account recovery.': 'used only if you need to recover your account.'
-  'in case of account recovery.': 'if you need to recover your account.'
+  'This information will be used to verify your ownership in case of account recovery\.': 'This info helps verify your identity if you need account recovery.'
+  'This information will be kept safe and used only in case of account recovery\.': 'This info is kept safe for account recovery only.'
+  'used only in case of account recovery\.': 'used only if you need to recover your account.'
+  'in case of account recovery\.': 'if you need to recover your account.'
   'Ensure this field is empty': 'Leave this field empty'
   'ensure that a build with a tag latest exists': 'make sure a build with the tag latest exists'
   'ensure better performance': 'improve performance'
@@ -311,18 +413,18 @@ swap:
   'ensure users have a positive experience': 'give users a positive experience'
   'ensuring a balance between affordability and profitability': 'balancing affordability and profitability'
   'To ensure this going forward, this': 'This'
-  "it might be that something changed in the meantime...": 'something may have changed...'
-  'On the other hand, if this option is disabled, the Actor can use the input for manual running and testing, independent of the Standby mode.': 'If disabled, the Actor can use the input for manual running and testing, independent of the Standby mode.'
-  'so you can no longer run this task.': "so you can't run this task anymore."
-  'You can use these settings to authenticate if you lose access to your device.': 'Use these settings to authenticate if you lose access to your device.'
-  'You can use recovery codes as a second factor to authenticate if you lose access to your device.': 'Use recovery codes if you lose access to your device.'
+  'it might be that something changed in the meantime\.\.\.': 'something may have changed...'
+  'On the other hand, if this option is disabled, the Actor can use the input for manual running and testing, independent of the Standby mode\.': 'If disabled, the Actor can use the input for manual running and testing, independent of the Standby mode.'
+  'so you can no longer run this task\.': "so you can't run this task anymore."
+  'You can use these settings to authenticate if you lose access to your device\.': 'Use these settings to authenticate if you lose access to your device.'
+  'You can use recovery codes as a second factor to authenticate if you lose access to your device\.': 'Use recovery codes if you lose access to your device.'
   'A comma-separated list of': 'Comma-separated'
   'a comma-separated list of': 'comma-separated'
   'Comma-separated list of': 'Comma-separated'
   'comma-separated list of': 'comma-separated'
-  'It might take a few seconds for the data to appear after the run finishes.': "Data can take a few seconds to appear after the run finishes."
+  'It might take a few seconds for the data to appear after the run finishes\.': "Data can take a few seconds to appear after the run finishes."
   'It might take a few seconds to load the results': "Results can take a few seconds to load"
-  'It might take a few seconds before the change is reflected in the table.': 'This may take a few seconds to appear in the table.'
+  'It might take a few seconds before the change is reflected in the table\.': 'This may take a few seconds to appear in the table.'
   'sorry for any inconvenience': "thank you for your patience"
   'if it is your intent to': 'to'
   'your search yielded': 'found'
@@ -330,14 +432,14 @@ swap:
   'your question is important to us': "We'll get back to you soon"
   'your request is important to us': "We'll get back to you soon"
 
-  'The Actor is marked as critical and cannot be unpublished.': "This Actor is critical and can't be unpublished."
-  'The Actor is marked as critical and cannot be deleted.': "This Actor is critical and can't be deleted."
-  'Consider also implementing these schemas.': 'Consider adding these schemas.'
-  'some builds were already deleted and they are not shown here.': "Some builds were deleted and aren't shown here."
-  'Sharable link is not available when access is restricted.': "Sharable link isn't available with restricted access."
-  'Invalid input. Source files field must be an array of objects.': 'Source files must be an array of objects.'
-  'Your Actors will appear here once you create them.': 'Create your first Actor to see it here.'
-  'Input data for the Actor. Maximum length is 1M characters.': "Input for this Actor. Max 1M characters."
+  'The Actor is marked as critical and cannot be unpublished\.': "This Actor is critical and can't be unpublished."
+  'The Actor is marked as critical and cannot be deleted\.': "This Actor is critical and can't be deleted."
+  'Consider also implementing these schemas\.': 'Consider adding these schemas.'
+  'some builds were already deleted and they are not shown here\.': "Some builds were deleted and aren't shown here."
+  'Sharable link is not available when access is restricted\.': "Sharable link isn't available with restricted access."
+  'Invalid input\. Source files field must be an array of objects\.': 'Source files must be an array of objects.'
+  'Your Actors will appear here once you create them\.': 'Create your first Actor to see it here.'
+  'Input data for the Actor\. Maximum length is 1M characters\.': "Input for this Actor. Max 1M characters."
   'will show up here': 'appear here'
 
   'recently removed account': 'deleted account'
@@ -347,3 +449,20 @@ swap:
   'that email address': 'that email'
   'this email address': 'this email'
   'the email address': 'the email'
+
+  'must not exceed (\d+) MB': 'can be up to $1 MB'
+  'must not exceed (\d+) GB': 'can be up to $1 GB'
+  'must not exceed (\d+) KB': 'can be up to $1 KB'
+  'must not exceed (\d+) bytes': 'can be up to $1 bytes'
+  'must not exceed (\d+) seconds': 'can be up to $1 seconds'
+  'must not exceed (\d+) minutes': 'can be up to $1 minutes'
+  'must not exceed (\d+) hours': 'can be up to $1 hours'
+  'must not exceed (\d+) ms': 'can be up to $1 ms'
+  'cannot exceed (\d+) MB': 'can be up to $1 MB'
+  'cannot exceed (\d+) GB': 'can be up to $1 GB'
+  'cannot exceed (\d+) KB': 'can be up to $1 KB'
+  'cannot exceed (\d+) bytes': 'can be up to $1 bytes'
+  'cannot exceed (\d+) seconds': 'can be up to $1 seconds'
+  'cannot exceed (\d+) minutes': 'can be up to $1 minutes'
+  'cannot exceed (\d+) hours': 'can be up to $1 hours'
+  'cannot exceed (\d+) ms': 'can be up to $1 ms'

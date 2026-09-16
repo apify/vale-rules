@@ -13,7 +13,13 @@ tokens:
   - '\bpurchase\b.{0,20}\b[Pp]roxy\b'
   - '\binstall\b.{0,20}\bActor\b'
   - '\binstalled\b.{0,20}\bActor\b'
+  - '\bsearch for\b.{0,20}\bActor\b'
+  - '\bsearch for\b.{0,20}\b[Ss]tore\b'
 
 exceptions:
+  # "buy add-ons" is valid
   - '\bbuy\b[^.!?]*\badd-?on\b'
+  # "purchase.*subscription" is valid
   - '\bpurchase\b[^.!?]*\bsubscription\b'
+  # "Search for Actors" in UI placeholders/labels - names the feature
+  - "^Search for"

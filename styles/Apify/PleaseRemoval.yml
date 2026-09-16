@@ -1,9 +1,11 @@
+
 extends: substitution
 level: suggestion
 message: "Remove 'please': '%s' instead of '%s'."
 ignorecase: true
 
 swap:
+  ',\s*please <': ', <'
   'and please <': 'and <'
   'or please <': 'or <'
   'to please <': 'to <'
@@ -69,17 +71,53 @@ swap:
   'please be advised that': ''
 
 exceptions:
+  # "Please wait" - loading state; "Wait..." sounds odd as a standalone label
   - "^Please wait"
+  # ── Trust-verb guard: "Please" in collaborative trust requests.
+  # "Please help us verify" is genuine courtesy - the "help us" signals partnership.
+  # Distinct from "Please confirm your changes" (routine action, strip it).
+  # The key signal is the collaborative framing, not just the verb.
   - '\b[Pp]lease\s+help us'
+  # "Please <tag>" - sentence-start form; can't auto-capitalize inside an HTML/JSX tag
   - '^Please\s+<'
+  # "Please <tag>" after sentence boundary (.!?) - same issue, can't capitalize inside tag.
+  # The 'please <' swap is meant for mid-clause only ("to continue, please <link>upgrade</link>")
+  # but also fires after periods where "Please" starts a new sentence before a tag.
   - '[.!?]\s+Please\s+<'
   - '[.!?]<\/strong>\s*[.)]*\s*Please\s+<'
+  # Error-word guard: preserve "Please/please" when the same sentence has an error word.
+  # "Please" softens error messages - removing it makes them feel blaming.
+  # Pattern: error word and "please" in the same sentence (no .!? between them).
+  # Narrow list: only words that unambiguously signal an error state.
+  # Excluded: "required" (adjective: "required fields"), "must"/"should" (modals),
+  # "valid" (adjective: "valid email"), "missing" (adjective: "missing permissions").
+  # Included: account-state words where "please" softens a negative notification.
+  # Also includes contracted forms (can't, won't, couldn't) since contractions
+  # rule fires before please-removal in the pipeline.
+  # NOTE: patterns with regex metacharacters get case-sensitive 'g' flag in the engine,
+  # so both Please/please must be handled explicitly.
   - '\b(?:invalid|error|incorrect|failed|wrong|cannot|can.t|couldn.t|won.t|isn.t|expir(?:ing|ed)|overdue|past due|suspend(?:ed|ing)?|disabled|limited|restricted|verification|verify|billing information|payment methods|invoice)\b[^.!?]*\b[Pp]lease\b'
+  # Cross-sentence guard: preserve "Please" when a PRECEDING sentence in the same
+  # string contains a billing/error-negative word. "Payment failed. Please try..."
+  # The "Please" is softening bad news delivered one sentence earlier.
+  # Pattern: error word → sentence boundary → "Please" within 150 chars.
+  # (150 covers multi-sentence strings like verification rejections with 3 sentences)
   - '\b(?:failed|error|incorrect|couldn.t|can.t|won.t|isn.t|doesn.t match|wasn.t|expir(?:ing|ed)|overdue|suspend(?:ed|ing)?|disabled|limited|restricted|not available|not valid|not approved)\b.{0,150}[.!?]\s+[Pp]lease\b'
+  # Same pattern for cost/removal language - user didn't cause this, system is deferential.
   - '\b(?:price.*increase|increase.*price|remove.*from your account|cost.*go up|charged.*extra|no longer valid)\b.{0,150}[.!?]\s+[Pp]lease\b'
+  # "Please help us / allow us / let us" - collaborative request where courtesy is genuine.
+  # The user is being asked to participate, not just click a button.
   - '\b[Pp]lease\s+(?:help|allow|let|grant|give|permit)\s+us\b'
+  # Effortful escalation guard: "please contact/reach out/let us know" - the user is
+  # being asked to do something that costs them effort (leaving the product, writing
+  # an email, waiting for a response). "Please" is genuine courtesy here.
   - '\b[Pp]lease\s+(?:contact|reach out to|let us know|get in touch)\b'
+  # Same pattern with HTML link tag between "please" and the verb - common in intl
+  # strings: "please <contactSupportLink>contact support</contactSupportLink>"
   - '\b[Pp]lease\s+<\w+(?:Link|link)\b[^>]*>(?:contact|reach out|get in touch)'
   - '\b[Pp]lease\b[^.!?]*\b(?:invalid|error|incorrect|failed|wrong|cannot|can.t|couldn.t|won.t|isn.t|expir(?:ing|ed)|overdue|past due|suspend(?:ed|ing)?|disabled|limited|restricted|verification|verify|billing information|payment methods|invoice)\b'
+  # Payment/billing email guard: "please" before payment actions in billing comms
+  # is genuine courtesy - the user owes money and is being asked to act.
+  # Removing "please" from "Please send payment" in an invoice email sounds demanding.
   - '\b[Pp]lease\s+(?:send|submit|make)\s+(?:payment|a payment)\b'
   - '\b[Pp]lease\s+(?:pay|settle|remit)\b'

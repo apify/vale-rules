@@ -1,12 +1,15 @@
 extends: existence
 level: suggestion
-message: "Spatial reference: '%s' - name the element instead of pointing to its position."
+message: "Spatial reference: '%s': name the element instead of pointing to its position."
 
 exceptions:
+  # "Below" in data contexts (threshold language): "below 100", "below the limit"
   - '(?:below|above) (?:the )?\d'
   - "(?:below|above) (?:the )?(?:limit|threshold|minimum|maximum|average|target)"
+  # "Right" as correctness, not direction: "the right approach", "that's right"
   - "the right (?:approach|way|thing|choice|decision|answer|format|value|option)"
   - "that.s right"
+  # "Left" as remainder: "time left", "space left", "credits left"
   - "(?:time|space|credits?|days?|hours?|minutes?|items?|attempts?) left"
 
 tokens:
@@ -30,4 +33,8 @@ tokens:
   - 'the field below'
   - 'the field above'
   - 'the table below'
+  - 'from below'
+  - 'from above'
+  - '\b(?:choose|select|pick|see|find|view|check)\b.{0,20}\bbelow\b'
+  - '\b(?:choose|select|pick|see|find|view|check)\b.{0,20}\babove\b'
   - 'the table above'

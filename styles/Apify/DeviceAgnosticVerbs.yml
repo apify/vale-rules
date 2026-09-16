@@ -1,13 +1,30 @@
 extends: substitution
 level: warning
-message: "Device-specific verb: '%s' instead of '%s'. Use input-neutral language (not everyone uses a mouse)."
+message: "Device-specific verb: '%s' instead of '%s'. Use input-neutral language for tabs, menus, and options."
 ignorecase: true
+matchcase: true
+action:
+  name: replace
 scope:
   - sentence
   - heading
 
 swap:
-  '(?<!double-|right-|left-|single-)click(?!-through)': select
-  '(?<!double-|right-|left-|single-)clicks(?!-through)': selects
-  '(?<!double-|right-|left-|single-)clicked(?!-through)': selected
-  '(?<!double-|right-|left-|single-)clicking(?!-through)': selecting
+  'click on(?!\s+(?:(?:the|a)\s+)?(?:(?:verification|confirmation)\s+)?links?\b)': 'select'
+  'click the tab': 'select the tab'
+  'click the menu': 'select the menu'
+  'click the dropdown': 'select the dropdown'
+  'click the option': 'select the option'
+  'click the section': 'select the section'
+  'click the item': 'select the item'
+  'by clicking(?!\s+(?:on\s+)?(?:(?:the|a)\s+)?(?:(?:verification|confirmation)\s+)?links?\b)': 'by selecting'
+
+exceptions:
+  # Analytics terminology
+  - "click-through"
+  - "click rate"
+  # Drag interactions
+  - "click and drag"
+  - "drag and drop"
+  # Email/hyperlink context
+  - 'click(?:ing)? (?:on )?(?:(?:the|a) )?(?:(?:verification|confirmation) )?links?'

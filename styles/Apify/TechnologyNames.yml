@@ -6,6 +6,7 @@ scope:
   - summary
   - heading
 vocab: false
+
 swap:
   'javascript|Javascript|javaScript': JavaScript
   '(?<!-)python(?!-)': Python

@@ -1,6 +1,7 @@
+
 extends: substitution
 level: suggestion
-message: "Vague quantifier: '%s' instead of '%s' - dropped; adds no information. (Strunk #19)"
+message: "Vague quantifier: '%s' instead of '%s': dropped; adds no information. (Strunk #19)"
 ignorecase: true
 
 swap:

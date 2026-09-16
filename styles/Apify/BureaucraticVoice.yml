@@ -1,6 +1,7 @@
+
 extends: existence
 level: suggestion
-message: "Bureaucratic voice: '%s' - sounds like a form letter, not a person."
+message: "Bureaucratic voice: '%s': sounds like a form letter, not a person."
 ignorecase: true
 
 tokens:

@@ -1,9 +1,16 @@
+
 extends: existence
 level: suggestion
 message: "Dead-end pattern: '%s' gives no actionable next step. Add a specific CTA."
 ignorecase: true
 
 exceptions:
+  # NOTE: guard regexes don't inherit the rule's ignorecase: true setting —
+  # they compile with the 'g' flag only when the pattern contains regex metacharacters.
+  # Patterns starting mid-sentence get lowercase (preceded by punctuation/word),
+  # patterns at sentence-start need [Tt] / [Ii] to match both cases.
+  #
+  # Already has a concrete CTA (contact/support) in either order
   - "[Ii]f this continues.*contact"
   - "contact.*[Ii]f this continues"
   - "[Ii]f this continues.*support"
@@ -11,6 +18,7 @@ exceptions:
   - "[Tt]ry again later.*if.*contact"
   - "[Tt]ry again later.*or.*contact"
   - "contact.*[Tt]ry again later"
+  # Conditional with specific timeframe is acceptable
   - '[Tt]ry again in \d'
   - '[Tt]ry again after \d'
 

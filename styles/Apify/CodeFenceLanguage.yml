@@ -1,8 +1,30 @@
-extends: existence
+extends: script
 level: suggestion
-message: "Code fence without language: '%s' - add a language tag (json, javascript, bash, python, etc.)."
+message: "Code fence without language: '%s': add a language tag (json, javascript, bash, python, etc.)."
 scope: raw
-ignorecase: false
-
-tokens:
-  - '^```\s*$'
+script: |
+  text := import("text")
+  matches := []
+  marker := ""
+  width := 0
+  // Track complete fences so blank lines never turn a closing marker into
+  // an opening marker. A longer fence may contain shorter literal fences.
+  fences := text.re_find("(?m)^ {0,3}(`{3,}|~{3,})([^\\r\\n]*)", scope, -1)
+  if !is_undefined(fences) {
+    for fence in fences {
+      run := fence[1].text
+      info := text.trim_space(fence[2].text)
+      if marker != "" {
+        if run[0:1] == marker && len(run) >= width && info == "" {
+          marker = ""
+          width = 0
+        }
+      } else if run[0:1] != "`" || !text.contains(info, "`") {
+        marker = run[0:1]
+        width = len(run)
+        if info == "" {
+          matches = append(matches, {begin: fence[1].begin, end: fence[1].end})
+        }
+      }
+    }
+  }

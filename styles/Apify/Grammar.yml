@@ -47,6 +47,9 @@ swap:
   'the Apify Console': 'Apify Console'
   'the Apify Store': 'Apify Store'
   'the Apify Proxy': 'Apify Proxy'
+  "Apify Store's": 'Apify Store'
+  "Apify Console's": 'Apify Console'
+  "Apify Proxy's": 'Apify Proxy'
 
   'card expired or been': 'card has expired or been'
   'card failed or been': 'card has failed or been'
@@ -54,5 +57,7 @@ swap:
   'session expired or been': 'session has expired or been'
 
 exceptions:
-  - 'the Apify (?:Console|Store|Proxy)[.\u2019]s'
+  # "the Apify [Product] [noun]" - when followed by a noun (trial, limit, quota, plan),
+  # "the" modifies the whole noun phrase, not just the product name.
+  # "the Apify Proxy trial" = correct; "Apify Proxy trial" sounds like a product name.
   - "the Apify (?:Console|Store|Proxy) (?:trial|limit|quota|plan|account|settings|page|section|tab|docs|documentation)"

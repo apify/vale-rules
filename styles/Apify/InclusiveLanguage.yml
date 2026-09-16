@@ -22,6 +22,12 @@ swap:
   'insanely fast': 'extremely fast'
   'insanely high': 'extremely high'
   'insanely low': 'extremely low'
+  'blind spot': 'gap'
+  'blind spots': 'gaps'
+  'tone deaf': 'out of touch'
+  'tone-deaf': 'out of touch'
+  'idiot-proof': 'error-resistant'
+  'idiot proof': 'error-resistant'
 
   'chairman': 'chair'
   'chairwoman': 'chair'

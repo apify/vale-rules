@@ -1,0 +1,15 @@
+
+extends: existence
+level: suggestion
+message: "Gerund relative clause: '%s': consider 'who [verb]' for clarity."
+ignorecase: true
+
+tokens:
+  - '\b[Uu]sers relying on\b'
+  - '\b[Uu]sers depending on\b'
+  - '\b[Uu]sers subscribing to\b'
+  - '\b[Uu]sers belonging to\b'
+  - '\b[Pp]eople relying on\b'
+  - '\b[Pp]eople depending on\b'
+  - '\b[Cc]ustomers relying on\b'
+  - '\b[Cc]ustomers depending on\b'

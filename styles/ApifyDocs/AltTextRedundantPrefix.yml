@@ -1,0 +1,7 @@
+extends: existence
+message: "Redundant alt text prefix: screen readers already announce 'image'. Start with the description."
+level: suggestion
+ignorecase: true
+scope: raw
+raw:
+  - '!\[(?:Image|Photo|Screenshot|Picture|Photograph|Graphic|Illustration|Icon|Figure|Diagram|Chart|Graph) of '

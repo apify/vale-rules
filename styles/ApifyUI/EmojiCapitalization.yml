@@ -1,7 +1,8 @@
-# Detection only: flags 2 patterns without suggesting replacements.
 extends: existence
 level: suggestion
 message: "Emoji capitalization: '%s'. Capitalize after leading emoji."
+ignorecase: false
+nonword: true
 
 tokens:
   - '(?:⏩|🚀|🆕|⚡|⚡️|⚠️|🔍|💡|🎯|🧠|🤖|📋|📝|📌|🔔|💰|📊|🛠️|✅|❌|🎉|✨|🔒|🔑|📦|🌐|💬|⭐|🏷️) [a-z]'

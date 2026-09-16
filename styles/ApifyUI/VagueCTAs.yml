@@ -1,14 +1,20 @@
 extends: existence
 level: suggestion
-message: "Vague CTA: '%s' - link/button text should describe the destination or outcome, not just prompt action."
+message: "Vague CTA: '%s': link/button text should describe the destination or outcome, not prompt action."
 
 exceptions:
-  - "^Cancel$"
+  # "Go to X" is a navigation directive - destination is named, not vague
+  - 'Go to \w'
+  # "go" in prose (lowercase, embedded in sentence)
+  - '\w go \w'
+  - '\w go,'
+  - 'to go\b'
   - "^Close$"
   - "^Back$"
   - "^OK$"
   - "^Done$"
   - "^Dismiss$"
+  # "Learn more" with a preceding sentence giving context is acceptable
   - ".{20,}Learn more"
 
 tokens:
@@ -24,3 +30,5 @@ tokens:
   - 'Check it out'
   - 'See more'
   - 'Learn more'
+  - '>here</a>'
+  - '>here</'

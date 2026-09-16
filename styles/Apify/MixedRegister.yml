@@ -1,0 +1,7 @@
+extends: existence
+level: suggestion
+message: "Mixed register: '%s' mixes formal and casual tone in one string. Pick one."
+
+tokens:
+  - '\b(?:shall|hereby|pursuant|hereafter)\b.{1,80}\b(?:don.t|won.t|can.t|isn.t|aren.t|shouldn.t|wouldn.t)\b'
+  - '\b(?:don.t|won.t|can.t|isn.t|aren.t|shouldn.t|wouldn.t)\b.{1,80}\b(?:shall|hereby|pursuant|hereafter)\b'

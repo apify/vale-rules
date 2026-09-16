@@ -5,39 +5,93 @@ message: "Use active confirmation form: '%s' instead of '%s'."
 ignorecase: false
 
 exceptions:
+  # Negated passive - "was not removed", "were not updated"
   - '\b(?:was|were|has been|have been)\s+not\s+\w+'
+  # Negated state descriptions - "not enabled.", "not verified." - period is correct
   - '\bnot\s+\w+ed\.$'
+  # Already has "successfully" - prevent double-append
   - '\b(?:was|were|has been|have been)\s+\w+\s+successfully\b'
+  # Passive with subordinate/prepositional continuation after the verb
+  # "was created within", "was changed to {date}", "was removed from", "was created because"
+  # "was added to the organization" - "to the" signals a destination, not a toast
   - '\b(?:was|were|has been|have been)\s+\w+\s+(?:because|from|due|since|when|while|after|before|until|unless|although|though|if|so|and|but|or|that|within|into|at\s+\w)'
+  # "was/has been [verb]ed to the/a/an [noun]" - destination prepositional phrase
   - '\b(?:was|were|has been|have been)\s+\w+\s+to\s+(?:the|a|an)\s+\w'
+  # "was/has been [verb]ed to {variable}" - template variable destination
   - '\b(?:was|were|has been|have been)\s+\w+\s+to\s+[{<]'
+  # Comma-joined clause after the verb - "was accepted, it can no longer..."
   - '\b(?:was|were|has been|have been)\s+\w+,'
+  # Compound sentence - "was canceled, and..." (comma before conjunction)
   - '\b(?:was|were|has been|have been)\s+\w+[,;]\s+(?:and|but|or|so)'
+  # Relative clause modifying the subject - "from which the build was created"
+  # Guard must cover the passive verb position, so match the full relative clause
   - 'from which\s+\w+(?:\s+\w+)?\s+(?:was|were|has been)'
+  # Template variable immediately after the verb - "was changed to {date}"
   - '\b(?:was|were|has been|have been)\s+\w+\s+(?:to|at|from|into)\s+[<{]'
+  # Template variable in the passive phrase itself
   - '\b(?:was|were|has been|have been)\s+\{[^}]+\}'
+  # Complex noun phrase subject - "The [noun] of [noun]" - not a simple toast subject
   - '^The\s+\w+\s+of\s+'
+  # Mid-sentence passive - subject is not at string start ("You've replied and the user has been")
   - '\band\s+the\s+\w+\s+(?:was|were|has been|have been)'
+  # Comma-preceded mid-sentence passive - ", the limit has been set to"
   - ',\s+the\s+\w+\s+(?:was|were|has been|have been)\s+\w+\s+to\b'
+  # "or the [noun] has been [verb]ed" - disjunctive clause, not a toast
+  # e.g. "does not exist or the corresponding account has been deleted"
   - '\bor\s+the\s+\w+(?:\s+\w+)?\s+(?:was|were|has been|have been)'
+  # ── Possessive subject - comprehensive guard
+  # "Your X was/has been/have been Y" produces fragments when the generic regex
+  # patterns fire ("Your token removed" - possessive needs an auxiliary verb).
+  # This guard blocks ALL possessive patterns from the generic regex pairs.
+  # Known possessive strings are handled by explicit `literal:` entries below,
+  # which fire before guards are evaluated and are NOT subject to guard zones.
+  # Any new "Your X has been Y" string without a literal entry will stay unchanged
+  # (safe default) until an explicit literal is added for it.
+  #
+  # The guard uses \w+(?:\s+\w+)* (unlimited words) to cover long noun phrases
+  # like "Your access to the emailing feature has been revoked". Without this,
+  # the unanchored generic patterns could match mid-string ("feature has been
+  # revoked") and produce fragments.
   - '\b[Yy]our\s+\w+(?:\s+\w+)*\s+(?:was|were|has been|have been)\b'
   - '\b[Mm]y\s+\w+(?:\s+\w+)*\s+(?:was|were|has been|have been)\b'
+  # "has been deprecated" - deprecation notices are long-form, not toasts
   - "has been deprecated"
+  # "has been flagged" - maintenance/flag notices are long-form
   - "has been flagged"
+  # "has been inactive" - account notices are long-form
   - "has been inactive"
+  # "has been approved/restored" - status notifications, not toasts
   - "has been approved"
   - "has been restored"
+  # "have been aborted" - bulk action notification, not a toast.
   - "have been aborted"
+  # Multi-sentence passive with explanatory follow-up - "was aborted. You can resurrect..."
+  # is not a toast. Toasts may have short instructions ("Please remove it") but not
+  # "You can [verb]" explanatory continuations.
   - '\b(?:was|were)\s+\w+\.\s+You can\b'
+  # "has been canceled for non-payment" - email subject line, not a toast
   - "has been canceled for non-payment"
+  # "your subscription has been canceled" - email body, not a toast
   - "your subscription has been canceled"
+  # "was improperly" - adverb form, not a clean past participle
   - "was improperly"
+  # "has been [verb]ed by [agent]" - state description with agent, not a toast
+  # "identity has been verified by Apify" → stripping "has been" loses the copula
   - '\b(?:has been|have been)\s+\w+\s+by\b'
+  # "This [noun] has been [verb]ed" - deictic state description, not a toast
   - '\bThis\s+\w+(?:.s\s+\w+)?\s+(?:has been|have been)'
+  # "was declined" / "was refused" - payment/finance strings with surrounding context
   - "was declined"
   - "was refused"
+  # ── Semantic role guards for billing verbs (item #4)
+  # charge/pay/waive/credit/refund have specific agent roles in billing contexts.
+  # "was charged" in "you were charged $5" is a notification (correct passive).
+  # "was waived" in "the fee was waived" is a system action (correct passive).
+  # Don't strip these to bare participle - "Fee waived" loses the agent.
   - '\b(?:was|were|has been|have been)\s+(?:charged|paid|waived|credited|refunded|deducted|billed)'
 
+  # ── Merged from toast-punctuation.yml
+  # Multi-sentence strings - period is structural, not cosmetic.
   - 'Build tagged successfully\.\s+\S'
   - 'Tag removed successfully\.\s+\S'
   - 'Automatic builds enabled\.\s+\S'
@@ -52,12 +106,12 @@ exceptions:
   - 'API token created\.\s+\S'
 swap:
 
-  'Build tagged successfully.': 'Build tagged'
-  'Tag removed successfully.': 'Tag removed'
-  'Automatic builds enabled.': 'Automatic builds enabled'
-  'Automatic builds disabled.': 'Automatic builds disabled'
-  'General resource access updated.': 'General resource access updated'
-  'Scheduled resubscription successfully canceled.': 'Scheduled resubscription canceled'
+  'Build tagged successfully\.': 'Build tagged'
+  'Tag removed successfully\.': 'Tag removed'
+  'Automatic builds enabled\.': 'Automatic builds enabled'
+  'Automatic builds disabled\.': 'Automatic builds disabled'
+  'General resource access updated\.': 'General resource access updated'
+  'Scheduled resubscription successfully canceled\.': 'Scheduled resubscription canceled'
 
   'Integration updated successfully': 'Integration updated'
   'File uploaded successfully': 'File uploaded'
@@ -68,15 +122,15 @@ swap:
   'Connector successfully saved': 'Connector saved'
   'Authorized successfully': 'Authorized'
   'FirstPromoter Referral ID updated successfully': 'Referral ID updated'
-  'Resubscription to the Custom plan scheduled successfully.': 'Resubscription to the Custom plan scheduled.'
-  'User resubscribed to the Custom plan successfully.': 'User resubscribed to the Custom plan.'
+  'Resubscription to the Custom plan scheduled successfully\.': 'Resubscription to the Custom plan scheduled.'
+  'User resubscribed to the Custom plan successfully\.': 'User resubscribed to the Custom plan.'
 
   'Changes applied!': 'Changes applied'
   'Email verified!': 'Email verified'
 
-  'Widget added.': 'Widget added'
-  'Payment method added.': 'Payment method added'
-  'Payment method removed.': 'Payment method removed'
-  'Primary payment method changed.': 'Primary payment method changed'
-  'API token removed.': 'API token removed'
-  'API token created.': 'API token created'
+  'Widget added\.': 'Widget added'
+  'Payment method added\.': 'Payment method added'
+  'Payment method removed\.': 'Payment method removed'
+  'Primary payment method changed\.': 'Primary payment method changed'
+  'API token removed\.': 'API token removed'
+  'API token created\.': 'API token created'

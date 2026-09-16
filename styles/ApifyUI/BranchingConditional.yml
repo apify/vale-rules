@@ -1,7 +1,8 @@
-# Detection only: flags 8 patterns without suggesting replacements.
 extends: existence
 level: suggestion
 message: "Branching conditional: '%s'. Lead with the default action."
+ignorecase: false
+nonword: true
 
 tokens:
   - 'If you need to [^,]+, [^.]+\. If you don.t, it will'

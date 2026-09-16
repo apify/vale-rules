@@ -1,6 +1,7 @@
+
 extends: existence
 level: suggestion
-message: "Subject-centering: '%s' - could the user be the subject instead of the system object?"
+message: "Subject-centering: '%s': could the user be the subject instead of the system object?"
 ignorecase: false
 
 tokens:

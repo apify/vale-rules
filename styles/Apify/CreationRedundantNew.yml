@@ -1,4 +1,3 @@
-# Detection only: flags 2 patterns without suggesting replacements.
 extends: existence
 level: suggestion
 message: "Redundant 'new': '%s'. Creation already implies newness."

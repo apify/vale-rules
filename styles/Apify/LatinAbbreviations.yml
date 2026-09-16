@@ -1,12 +1,10 @@
-# Detection only: flags 2 patterns without suggesting replacements.
 extends: existence
 level: suggestion
-message: "Latin abbreviation: '%s'. (i.e. = 'that is'; e.g. = 'for example')"
+message: "Latin abbreviation: '%s'. (i.e. = 'that's'; e.g. = 'for example')"
+ignorecase: false
+nonword: true
 
 exceptions:
-  - 'i\.e\.[\s,]+(?:it|its|the|this|that|they|their|you|your|we|a|an)\s+(?:\w+\s+){0,3}(?:is|are|was|were|has|have|had|will|would|can|could|should|means?|refers?|do|does)'
-  - 'i\.e\.[\s,]+not\b'
-  - 'i\.e\.[\s,]+(?:a\s+)?[a-z]+(?:\s+[a-z]+)?\)'
 
 tokens:
   - 'i\.e\.,? \w+, \w+'

@@ -4,11 +4,17 @@ message: "Dash as aside: '%s'. Restructure the sentence. Split into two sentence
 nonword: true
 
 exceptions:
+  # Numeric ranges with en dash: "10–20", "2024–2025"
   - '\d+–\d+'
+  # CLI flags: "--output", "--verbose"
   - '--\w'
+  # Markdown list items (line starts with "- ")
   - '^-\s'
+  # YAML/code context
   - '^\s*-\s'
-
+  # Time ranges: "8:00 AM - 5:00 PM"
+  - '\d+:\d+\s*[AP]M\s+-\s+\d+'
+  - '\d+\s*[AP]M\s+-\s+\d+'
 tokens:
   - '(?<=\w) - (?=\w)'
   - '(?<!\d)–(?!\d)'

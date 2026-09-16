@@ -1,0 +1,7 @@
+extends: existence
+message: "Alt text contains a photographer credit. Move credits to a caption; alt text should describe the image."
+level: suggestion
+ignorecase: true
+scope: raw
+raw:
+  - '!\[[^\]]*(?:Photo(?:graph)?(?:er)?|Image|Picture)(?: by|:) '

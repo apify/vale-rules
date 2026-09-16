@@ -2,21 +2,46 @@ extends: substitution
 level: suggestion
 message: "Remove redundant 'currently': '%s' instead of '%s'."
 exceptions:
+  # Progressive constructions - "currently" signals live/in-progress state, not filler.
+  # Guard only when "currently" follows a form of "to be" (is/are/was/were/'s/'re),
+  # making it a true progressive: "is currently being built", "is currently loading".
+  # Bare "currently running Actors" (adjective) and "you're currently using" (filler)
+  # are NOT guarded - present tense already implies current state there.
   - '(is|are|was|were|.s|.re) currently being \w+'
   - "(is|are|was|were) currently (using|loading|building|processing|fetching|syncing|downloading|uploading|waiting|connecting|deploying|installing|initializing|compiling|bundling|migrating|rendering|generating|executing|applying|scanning|indexing)"
+  # "currently don't/doesn't have" + upgrade/subscribe - signals temporary state
+  # with a clear path to change. "Currently" tells the user this can be resolved.
   - '[Cc]urrently don..t have[\s\S]*(?:upgrade|subscribe|contact)'
   - '[Cc]urrently doesn..t have[\s\S]*(?:upgrade|subscribe|contact)'
   - "[Cc]urrently don..t have access"
   - "[Cc]urrently doesn..t have access"
+  # Conjunction + pronoun shift - "and you are currently X" / "and you're currently X"
+  # signals the subject has changed mid-sentence (e.g. Publisher writing to their users:
+  # "...and you are currently working on a fix" where the correct fix is "we're", not "you're").
+  # The generic "you are currently" → "you're" swap would produce the wrong pronoun.
+  # Block the whole string; an explicit swap in robotic-phrases.yml handles it correctly.
   - "and you are currently"
   - "and you.re currently"
 swap:
+  'is currently not (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': "isn't $1"
+  'are currently not (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': "aren't $1"
+  'is not currently (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': "isn't $1"
+  'are not currently (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': "aren't $1"
+  'is currently (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': 'is $1'
+  'are currently (available|supported|enabled|disabled|active|open|closed|pending|configured|set|used|shown|displayed|selected|running|required|allowed|permitted|restricted|limited|blocked|paused|stopped|archived|deprecated|hidden|visible|locked|unlocked|connected|disconnected|installed|subscribed|verified|approved|rejected|suspended|expired|valid)': 'are $1'
+  'currently (selected|running|active|enabled|disabled|logged|signed|displayed|shown|used|set|configured|available|supported|open|closed|pending|processing)': '$1'
   'do not currently have': "don't have"
   'does not currently have': "doesn't have"
   'currently do not have': "don't have"
   'currently does not have': "doesn't have"
   "don't currently have": "don't have"
   "doesn't currently have": "doesn't have"
+  'there (is|are) currently no': 'there $1 no'
+  '(is|are) currently in beta': '$1 in beta'
   'is currently being': 'is being'
   'are currently being': 'are being'
+  'is currently (using|building|processing|loading|running|waiting|checking|updating|fetching|syncing|connecting|downloading|uploading|deploying|installing|initializing|compiling|bundling|migrating|rendering|generating|executing|applying|scanning|indexing)': 'is $1'
+  'are currently (using|building|processing|loading|running|waiting|checking|updating|fetching|syncing|connecting|downloading|uploading|deploying|installing|initializing|compiling|bundling|migrating|rendering|generating|executing|applying|scanning|indexing)': 'are $1'
+  "you're currently (using|running|on|in|at|viewing|editing|working)": "you're $1"
   'Currently, ': ''
+  'Currently (\w)': '$1'

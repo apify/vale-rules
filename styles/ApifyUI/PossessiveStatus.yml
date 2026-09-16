@@ -1,6 +1,6 @@
 extends: substitution
 level: suggestion
-message: "Possessive status: '%s' => '%s'. Use 'Your' - it's the user's resource."
+message: "Possessive status: '%s' => '%s'. Use 'Your': it's the user's resource."
 ignorecase: false
 
 swap:

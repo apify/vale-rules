@@ -1,5 +1,5 @@
 extends: existence
-message: "Do not use H1 headings (#). The main title is generated automatically. Use H2 (##) or lower."
+message: "Don't use H1 headings (#). The main title is generated automatically. Use H2 (##) or lower."
 level: error
 scope: heading.h1
 tokens:

@@ -1,0 +1,24 @@
+
+extends: substitution
+level: suggestion
+message: "Purpose gerund: '%s' instead of '%s'. Use the infinitive after 'Use this'."
+
+swap:
+  'Use this for letting (.+)': 'Use this to let $1'
+  'Use this for enabling (.+)': 'Use this to enable $1'
+  'Use this for disabling (.+)': 'Use this to disable $1'
+  'Use this for allowing (.+)': 'Use this to allow $1'
+  'Use this for running (.+)': 'Use this to run $1'
+  'Use this for starting (.+)': 'Use this to start $1'
+  'Use this for stopping (.+)': 'Use this to stop $1'
+  'Use this for setting (.+)': 'Use this to set $1'
+  'Use this for configuring (.+)': 'Use this to configure $1'
+  'Use this for testing (.+)': 'Use this to test $1'
+  'Use this for debugging (.+)': 'Use this to debug $1'
+  'Use this for managing (.+)': 'Use this to manage $1'
+  'Use this for controlling (.+)': 'Use this to control $1'
+  'Use this for tracking (.+)': 'Use this to track $1'
+  'Use this for defining (.+)': 'Use this to define $1'
+  'Use this for specifying (.+)': 'Use this to specify $1'
+  'Use this for overriding (.+)': 'Use this to override $1'
+  'Use this for filtering (.+)': 'Use this to filter $1'

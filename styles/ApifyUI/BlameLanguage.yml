@@ -3,10 +3,7 @@ level: suggestion
 message: "Blame language: '%s' instead of '%s'. Describe the state, not the user's mistake."
 
 swap:
-  'You entered the wrong': "That doesn't look right"
-  'You entered an incorrect': "That doesn't look right"
-  'You typed the wrong': "That doesn't look right"
-  'You forgot to': 'This field needs'
+  'You forgot to ': ''
   'You forgot the': 'Missing the'
   "You haven't entered": 'This field needs'
   "You haven't provided": 'Missing'
@@ -17,6 +14,8 @@ swap:
   "You didn't provide": 'Missing'
 
 exceptions:
+  # "You must" in legal/compliance/policy contexts is obligation, not blame
   - '(?:policy|terms|agreement|legal|compliance|contract)[\s\S]*[Yy]ou must'
   - '[Yy]ou must[\s\S]*(?:policy|terms|agreement|legal|compliance|contract)'
+  # "You must not" is a prohibition handled by contractions.yml
   - "[Yy]ou must not"

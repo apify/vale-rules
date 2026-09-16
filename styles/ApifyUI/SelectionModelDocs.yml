@@ -1,0 +1,23 @@
+extends: existence
+level: suggestion
+message: "Selection model: '%s': clarify whether this is single-select or multi-select (e.g. 'select all that apply' or 'choose one')."
+ignorecase: true
+
+exceptions:
+  # Already disambiguated
+  - "select (?:all that apply|one or more|exactly one|at most one)"
+  - "choose (?:one or more|exactly one|all that apply)"
+  # Code/API context
+  - "`"
+  - "multiSelect"
+  - "multi_select"
+
+tokens:
+  - 'select from the list'
+  - 'select from the options'
+  - 'select the items'
+  - 'select the options'
+  - 'choose from the list'
+  - 'choose from the options'
+  - 'check the boxes'
+  - 'check the items'

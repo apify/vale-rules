@@ -2,9 +2,13 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
   - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
   - '\w+\s+\w+\s+failed to'
@@ -12,33 +16,36 @@ exceptions:
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
 
 swap:
-  'The Actor is no longer available in Apify Store and might be removed.': 'This Actor is no longer in Apify Store and might be removed.'
-  'The Actor is no longer available in Apify Store and might be completely removed in the future.': 'This Actor is no longer in Apify Store and might be removed.'
+  'The Actor is no longer available in Apify Store and might be removed\.': 'This Actor is no longer in Apify Store and might be removed.'
+  'The Actor is no longer available in Apify Store and might be completely removed in the future\.': 'This Actor is no longer in Apify Store and might be removed.'
 
-  'You no longer have access to some proxy groups that you had when you started editing the input.': "You've lost access to some proxy groups that were available when you started editing."
+  'You no longer have access to some proxy groups that you had when you started editing the input\.': "You've lost access to some proxy groups that were available when you started editing."
   'Your Apify schedules will be disabled soon': 'Your Apify schedules are about to be disabled'
   'Your access to the emailing feature has been revoked': 'Your access to the emailing feature was revoked'
 
-  'Before you can start this Actor, you need to build it.': 'Build the Actor first to run it.'
-  'You need to build the Actor first to run it.': 'Build the Actor first to run it.'
-  'To apply your changes, you need to build the Actor.': 'Build the Actor to apply your changes.'
-  'To see the input you need to build the Actor first.': 'Build the Actor to see the input.'
-  'You need to build the Actor first.': 'Build the Actor first.'
-  "Apify will not build your Actor automatically. You have to trigger new build in UI, CLI or in API.": "Apify won't build your Actor automatically. Trigger a new build in the UI, CLI, or API."
-  "Apify won't build your Actor automatically. You have to trigger new build in UI, CLI or in API.": "Apify won't build your Actor automatically. Trigger a new build in the UI, CLI, or API."
-  'To use this Actor, you have to pay a monthly rental fee to the developer. The rent is subtracted from your prepaid usage every month after the free trial period.': "To use this Actor, you pay a monthly rental fee. It's subtracted from your prepaid usage every month after the free trial period."
-  'To use this Actor, you have to pay a monthly rental fee to the developer. The rent is subtracted from your prepaid usage every month.': "To use this Actor, you pay a monthly rental fee. It's subtracted from your prepaid usage every month."
-  'To rent this Actor you have to first subscribe to a paid Apify plan. Please upgrade your plan to continue.': 'Renting this Actor requires a paid Apify plan. Upgrade your plan to continue.'
-  'To rent this Actor you have to first subscribe to a paid Apify plan. Upgrade your plan to continue.': 'Renting this Actor requires a paid Apify plan. Upgrade your plan to continue.'
-  'To start this run you need to rent the Actor.': 'Rent the Actor to start this run.'
-  'Note that everything will be started at the same time.': 'All items start at the same time.'
-  'Note that some builds were already deleted and they are not shown here.': "Some older builds were deleted and aren't shown here."
+  'Before you can start this Actor, you need to build it\.': 'Build the Actor first to run it.'
+  'You need to build the Actor first to run it\.': 'Build the Actor first to run it.'
+  'To apply your changes, you need to build the Actor\.': 'Build the Actor to apply your changes.'
+  'To see the input you need to build the Actor first\.': 'Build the Actor to see the input.'
+  'You need to build the Actor first\.': 'Build the Actor first.'
+  'Apify will not build your Actor automatically\. You have to trigger new build in UI, CLI or in API\.': "Apify won't build your Actor automatically. Trigger a new build in the UI, CLI, or API."
+  'Apify won''t build your Actor automatically\. You have to trigger new build in UI, CLI or in API\.': "Apify won't build your Actor automatically. Trigger a new build in the UI, CLI, or API."
+  'To use this Actor, you have to pay a monthly rental fee to the developer\. The rent is subtracted from your prepaid usage every month after the free trial period\.': "To use this Actor, you pay a monthly rental fee. It's subtracted from your prepaid usage every month after the free trial period."
+  'To use this Actor, you have to pay a monthly rental fee to the developer\. The rent is subtracted from your prepaid usage every month\.': "To use this Actor, you pay a monthly rental fee. It's subtracted from your prepaid usage every month."
+  'To rent this Actor you have to first subscribe to a paid Apify plan\. Please upgrade your plan to continue\.': 'Renting this Actor requires a paid Apify plan. Upgrade your plan to continue.'
+  'To rent this Actor you have to first subscribe to a paid Apify plan\. Upgrade your plan to continue\.': 'Renting this Actor requires a paid Apify plan. Upgrade your plan to continue.'
+  'To start this run you need to rent the Actor\.': 'Rent the Actor to start this run.'
+  'Note that everything will be started at the same time\.': 'All items start at the same time.'
+  'Note that some builds were already deleted and they are not shown here\.': "Some older builds were deleted and aren't shown here."
 
   'Actor run was resurrected': "Actor run resurrected."
   'Actor run was restarted': "Actor run restarted."
-  'Actor was started without input.': "Actor started without input."
+  'Actor was started without input\.': "Actor started without input."
 
   'This Actor has been deprecated': 'this Actor is deprecated'
+
+  'Your Actor {actorTitle} has been deprecated': 'Your Actor {actorTitle} was deprecated'
+  'Your Actor {actorTitle} has been flagged as under maintenance': 'Your Actor {actorTitle} is under maintenance'
 
   'Your Actor has been deprecated': 'Your Actor is deprecated'
 

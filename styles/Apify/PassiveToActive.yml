@@ -2,35 +2,156 @@ extends: substitution
 level: suggestion
 message: "Prefer active voice: '%s' instead of '%s'."
 exceptions:
+  # Passive with explicit agent ("by X") - active rewrite would need to restructure
+  # the sentence around the agent. "can be started by agentic users" → "agentic users
+  # can start [it]" requires knowing the object, which the rule can't infer.
+  # Keep passive when "by [agent]" is present.
   - 'that will be \w+ by\b'
   - '[Cc]an be \w+ by\b'
+  # ── Semantic role guards for billing verbs (item #4)
+  # charge/pay/waive/credit/refund have specific agent roles in billing contexts.
+  # "you will no longer charge users" (developer is agent) ≠ "users won't be charged"
+  # (system is agent). Flipping active↔passive changes who does what.
+  # Guard: any billing verb in a "that will be" or "can be" construction near billing context.
   - '\b(?:charge|charged|pay|paid|waive|waived|credit|credited|refund|refunded|deduct|deducted|bill|billed)\b[\s\S]{0,40}?\b(?:billing|invoice|payout|payment|subscription|account|user|customer)\b'
   - '\b(?:billing|invoice|payout|payment|subscription|account|user|customer)\b[\s\S]{0,40}?\b(?:charge|charged|pay|paid|waive|waived|credit|credited|refund|refunded|deduct|deducted|bill|billed)\b'
+  # Subject-position: "The X that will be Y-ed will..." → "The X to Y will..." is ambiguous.
+  # Guard: when "that will be" is preceded by a noun phrase subject (The \w+ that will be).
   - 'The \w+ that will be'
+  # Plural nouns where "that will be [verb]ed" → "to [verb]" is grammatically wrong.
+  # "costs that will be incurred" → "costs to incur" reads as a purpose clause, not a relative clause.
   - '(costs|results|fees|charges|items|records|files|events|runs|builds|requests|changes|updates|errors)\s+that will be'
+  # "can be [verb]ed" with a noun subject before it needs full restructuring.
+  # These guards prevent the generic "can be X" swaps from firing mid-sentence
+  # after a noun subject, which would produce "Data you can download" (wrong).
+  # Pronoun subjects (This, It) are handled by explicit swaps above.
   - '\w+s can be \w+ed'
   - '(the|a|an|each|every|The|A|An) \w+ can be'
   - "(Data|Actor|Actors|Token|Build|Run|File|Storage|Schedule|Task) can be"
   - '(costs|results|fees|charges|items|records|files|events|runs|builds|requests|changes|updates|errors)\s+that will be'
+  # Pronoun subjects - "they/it can be X" → "they/it you can X" is ungrammatical.
+  # The pronoun is already the subject; inserting "you can" creates a double subject.
+  # Use character classes for first-letter case-insensitivity (guards compile with 'g' flag
+  # when they contain regex metacharacters, so 'gi' is not available).
   - '\b[Tt]hey can be \w+'
   - '\b[Ii]t can be \w+'
   - '\b[Hh]e can be \w+'
   - '\b[Ss]he can be \w+'
   - '\b[Ww]e can be \w+'
+  # Relative clause: "how it can be X" - "it" is the subject of the relative clause.
   - "[Hh]ow it can be"
+  # Prepositional/temporal clause: "before it can be X" - "it" is the subject.
   - "[Bb]efore it can be"
+  # Noun-phrase subjects not covered by the article guard above.
+  # "this API endpoint can be called" → "this API endpoint you can call" is ungrammatical.
   - '\b[Tt]his \w+ (endpoint|method|field|option|feature|setting|value|parameter|property|attribute) can be'
+  # Bare "This/That/These/Those can be" - demonstrative pronoun as subject.
+  # "This can be configured" → "This you can configure" is ungrammatical.
+  # Only guard when the demonstrative is immediately followed by "can be" (no noun between).
+  # NOTE: "That" only guarded in uppercase - lowercase "that can be" is a relative clause
+  # ("the option that can be changed" → "the option that you can change" is correct).
   - '\b[Tt]his can be'
   - '\bThat can be'
   - '\b[Tt]hese can be'
   - '\b[Tt]hose can be'
 swap:
+  'that will be (configured)': 'to configure'
+  'that will be (displayed)': 'to display'
+  'that will be (shown)': 'to show'
+  'that will be (used)': 'to use'
+  'that will be (saved)': 'to save'
+  'that will be (created)': 'to create'
+  'that will be (deleted)': 'to delete'
+  'that will be (updated)': 'to update'
+  'that will be (added)': 'to add'
+  'that will be (removed)': 'to remove'
+  'that will be (applied)': 'to apply'
+  'that will be (processed)': 'to process'
+  'that will be (generated)': 'to generate'
+  'that will be (returned)': 'to return'
+  'that will be (stored)': 'to store'
+  'that will be (loaded)': 'to load'
+  'that will be (executed)': 'to execute'
+  'that will be (triggered)': 'to trigger'
+  'that will be (sent)': 'to send'
+  'that will be (received)': 'to receive'
+  'that will be (downloaded)': 'to download'
+  'that will be (uploaded)': 'to upload'
+  'that will be (exported)': 'to export'
+  'that will be (imported)': 'to import'
+  'that will be (published)': 'to publish'
+  'that will be (deployed)': 'to deploy'
+  'that will be (installed)': 'to install'
+  'that will be (enabled)': 'to enable'
+  'that will be (disabled)': 'to disable'
+  'that will be (started)': 'to start'
+  'that will be (stopped)': 'to stop'
+  'that will be (run)': 'to run'
+  'that will be (built)': 'to build'
+  'that will be (written)': 'to write'
+  'that will be (read)': 'to read'
+  'that will be (copied)': 'to copy'
+  'that will be (moved)': 'to move'
+  'that will be (renamed)': 'to rename'
+  'that will be (merged)': 'to merge'
+  'that will be (split)': 'to split'
+  'that will be (linked)': 'to link'
+  'that will be (shared)': 'to share'
+  'that will be (subscribed)': 'to subscribe'
+  'that will be (printed)': 'to print'
+  'that will be (scraped)': 'to scrape'
+  'that will be (incurred)': 'to incur'
+  'that will be (charged)': 'to charge'
+  'that will be (scheduled)': 'to schedule'
+  'that will be (cancelled)': 'to cancel'
+  'that will be (canceled)': 'to cancel'
+  'that will be (archived)': 'to archive'
+  'that will be (restored)': 'to restore'
+  'that will be (converted)': 'to convert'
+  'that will be (formatted)': 'to format'
+  'that will be (validated)': 'to validate'
+  'that will be (parsed)': 'to parse'
+  'that will be (tracked)': 'to track'
+  'that will be (logged)': 'to log'
+  'that will be (notified)': 'to notify'
+  'that will be (assigned)': 'to assign'
+  'that will be (revoked)': 'to revoke'
+  'that will be (granted)': 'to grant'
+  'that will be (blocked)': 'to block'
+  'that will be (approved)': 'to approve'
+  'that will be (rejected)': 'to reject'
+  'that will be (verified)': 'to verify'
+  'that will be (submitted)': 'to submit'
+  'needs to be (configured)': 'needs to configure'
+  'needs to be (updated)': 'needs to update'
+  'needs to be (installed)': 'needs to install'
+  'needs to be (enabled)': 'needs to enable'
+  'needs to be (disabled)': 'needs to disable'
+  'needs to be (started)': 'needs to start'
+  'needs to be (stopped)': 'needs to stop'
+  'needs to be (created)': 'needs to create'
+  'needs to be (deleted)': 'needs to delete'
+  'needs to be (saved)': 'needs to save'
+  'needs to be (added)': 'needs to add'
+  'needs to be (removed)': 'needs to remove'
+  'needs to be (set)': 'needs to set'
+  'needs to be (done)': 'needs to be done'
+  'has to be (configured)': 'has to configure'
+  'has to be (updated)': 'has to update'
+  'has to be (installed)': 'has to install'
+  'has to be (enabled)': 'has to enable'
+  'has to be (started)': 'has to start'
+  'has to be (created)': 'has to create'
+  'has to be (deleted)': 'has to delete'
+  'has to be (saved)': 'has to save'
+  'has to be (added)': 'has to add'
+  'has to be (removed)': 'has to remove'
 
   'will be displayed on': 'appears on'
   'will be displayed here': 'appears here'
   'will be shown in': 'appears in'
   'will be shown on': 'appears on'
-  'will be shown.': 'appears.'
+  'will be shown\.': 'appears.'
   "won't be shown": "won't appear"
   "aren't shown": "don't appear"
 

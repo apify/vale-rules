@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Compound noun check: '%s' - verify this term wasn't broken by another transform."
+message: "Compound noun: '%s': this multi-word term has specific meaning. Don't break it across edits."
 nonword: true
 
 tokens:
@@ -16,10 +16,7 @@ tokens:
   - 'run status'
   - 'build status'
   - 'health status'
-  - 'source code'
   - 'version control'
   - 'default branch'
-  - 'input schema'
-  - 'key-value store'
   - 'request queue'
   - 'proxy configuration'

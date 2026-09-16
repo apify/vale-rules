@@ -1,4 +1,3 @@
-# Detection only: flags 16 patterns without suggesting replacements.
 extends: existence
 level: suggestion
 message: "Help-text preamble: '%s'. State what it does directly."

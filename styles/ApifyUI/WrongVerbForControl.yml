@@ -1,6 +1,7 @@
+
 extends: existence
 level: suggestion
-message: "Verb-element mismatch: '%s' - the verb describes a mouse action, not the user's intent."
+message: "Verb-element mismatch: '%s': the verb describes a mouse action, not the user's intent."
 ignorecase: true
 
 exceptions:

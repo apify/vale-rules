@@ -1,6 +1,7 @@
 extends: existence
-message: "Heading level 4+ ('%s'). Limit to H1–H3. Deeper nesting confuses readers."
+message: "Heading level 4+ ('%s'). Limit to H1-H3. Deeper nesting confuses readers."
 level: suggestion
 scope: raw
+nonword: true
 tokens:
-  - '^#{4,}\s+\w'
+  - '(?m)^#{4,} \w'

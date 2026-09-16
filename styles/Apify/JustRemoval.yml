@@ -1,3 +1,4 @@
+
 extends: substitution
 level: suggestion
 message: "Remove filler 'just': '%s' instead of '%s'."

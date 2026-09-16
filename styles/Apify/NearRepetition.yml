@@ -14,13 +14,28 @@ tokens:
   - '\byou\b[^.!?]{1,20}\byour\b'
 
 exceptions:
+  # "your [noun], which you" - relative clause needs the pronoun
   - '\byour\b[^.!?]*(?:,\s*which|,\s*that|,\s*who)\s+you\b'
+  # "you [verb] [prep/det] your [noun]" - standard second-person address, not echo
+  - '\byou\b[^.!?]{1,15}\byour\b'
+  - '\byour\b[^.!?]{1,15}\byou\b'
+  # "use...to use" - intentional parallel
   - '\buse\b[^.!?]*\bto use\b'
+  # "run...the run" - noun vs verb
   - '\brun\b[^.!?]*\bthe run\b'
   - '\bthe run\b[^.!?]*\brun\b'
+  # "change...the change" - noun vs verb
   - '\bthe change\b[^.!?]*\bchange\b'
   - '\bchange\b[^.!?]*\bthe change\b'
+  # "change [X], [Y] changes too" - causation (verb₁ causes verb₂)
+  - '\bchange\b[^.!?]*\bchanges too\b'
+  # "select which fields you need" - select + need aren't the same root
+  - '\bselect\b[^.!?]*\bneed\b'
+  # "set...the set value" - adjective vs verb
   - '\bset\b[^.!?]*\bthe set\b'
+  # "start...the start" - noun vs verb
   - '\bthe start\b[^.!?]*\bstart\b'
+  # ICU plural - same verb appears in both branches by design
   - '\{[^}]*plural[^}]*\}'
+  # "you...your" across conditional boundary
   - '\byou\b[^.!?]*\b(?:if|when|once|after|before)\b[^.!?]*\byour\b'

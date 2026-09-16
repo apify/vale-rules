@@ -17,7 +17,10 @@ swap:
   'for customers on': 'for users on'
 
 exceptions:
+  # "your Apify account" - disambiguates from org/third-party accounts
   - "your Apify account"
+  # "customer support/service" - compound noun, not audience term
   - 'customer\s+(?:support|service|success|care)'
+  # Upsell/conversion copy - brand name is trust signal in commitment context
   - "(?:subscribe|keep using|start using).{0,40}paid Apify plan"
   - "get an Apify subscription"

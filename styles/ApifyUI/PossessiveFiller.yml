@@ -1,3 +1,4 @@
+
 extends: substitution
 level: suggestion
 message: "Possessive filler: '%s' instead of '%s'."

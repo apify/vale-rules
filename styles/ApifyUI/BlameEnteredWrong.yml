@@ -1,0 +1,8 @@
+extends: existence
+level: suggestion
+message: "Blame language: '%s'. Rewrite: 'That [noun] doesn't look right' or 'Wrong [noun]'."
+
+tokens:
+  - 'You entered the wrong'
+  - 'You entered an incorrect'
+  - 'You typed the wrong'

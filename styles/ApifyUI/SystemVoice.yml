@@ -1,9 +1,12 @@
+
 extends: substitution
 level: suggestion
-message: "System voice: '%s' => '%s' - sounds like a system, not a person."
+message: "System voice: '%s' => '%s': sounds like a system, not a person."
 ignorecase: true
 
 swap:
+  'the following (\w+)': 'these $1'
+  'The following (\w+)': 'These $1'
 
   'it is necessary to': 'you need to'
   'it is required to': 'you need to'
@@ -68,20 +71,33 @@ swap:
 
   'Enhance Actor description': 'Improve Actor description'
 
-  'This represents the estimated costs that will be incurred when running this Actor.': 'Estimated cost for running this Actor.'
+  'This is an automatic notification that the previously issued invoice #{invoiceNumber} has been canceled\.': 'Invoice #{invoiceNumber} was canceled.'
+  'This is a reminder that invoice #{invoiceNumber} for {formattedPrice} has been past due': 'Invoice #{invoiceNumber} for {formattedPrice} is past due'
+  'This is a gentle reminder that invoice #{invoiceNumber} for {formattedPrice} is past due': 'Invoice #{invoiceNumber} for {formattedPrice} is past due'
+
+  'This represents the estimated costs that will be incurred when running this Actor\.': 'Estimated cost for running this Actor.'
   'This is your total platform usage to be billed in the current billing period': 'Your total platform usage for this billing period'
 
-  'This is useful if you want to start instances of the Actor in Standby mode with different configurations.': 'Use this to start Actor instances in Standby mode with different configurations.'
-  'This is useful if you want to enforce the same standby parameters for all users of your Actor.': 'Use this to enforce the same standby parameters for all users of your Actor.'
+  'This is useful if you want to start instances of the Actor in Standby mode with different configurations\.': 'Use this to start Actor instances in Standby mode with different configurations.'
+  'This is useful if you want to enforce the same standby parameters for all users of your Actor\.': 'Use this to enforce the same standby parameters for all users of your Actor.'
 
-  'Tag automatically set to the latest successful build of the current version.': 'Latest successful build tag for the current version.'
-  'Default branch is used when none is provided.': 'Uses the default branch when none is provided.'
+  'Tag automatically set to the latest successful build of the current version\.': 'Latest successful build tag for the current version.'
+  'Default branch is used when none is provided\.': 'Uses the default branch when none is provided.'
+
+  'Showing last {limit} results from dataset\.': 'Last {limit} dataset results.'
 
   'We automatically ': 'We '
 
   'available once verified': 'available after verification'
   'we automatically ': 'we '
   'Apify automatically ': 'Apify '
+
+  '\. This is to enable ([^.]+\.?)': '.'
+  '\. This is to allow ([^.]+\.?)': '.'
+  '\. This is to support ([^.]+\.?)': '.'
+
+  'automatically on a schedule': 'on a schedule'
+  'validate user input automatically': 'validate user input'
 
   "The code isn't": "This code isn't"
   "The code has expired": 'This code expired'

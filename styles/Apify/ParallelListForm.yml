@@ -1,6 +1,7 @@
+
 extends: existence
 level: suggestion
-message: "Mixed list form: '%s' - list items should use the same grammatical structure (all gerunds, all nouns, or all imperatives)."
+message: "Mixed list form: '%s': list items should use the same grammatical structure (all gerunds, all nouns, or all imperatives)."
 ignorecase: true
 
 tokens:

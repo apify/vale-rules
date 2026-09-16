@@ -2,13 +2,25 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "no longer available" - "no" here is negation, not an empty state quantifier.
+  # "This Actor is no longer available." must not become "This Actor is no longer yet."
   - "no longer available"
+  # Personal form guard - "You haven't run any X" is warmer than "No X yet" (scores 4.114 vs 3.932).
+  # The personal form uses second-person + contraction; protect it from any swap.
+  # Determined 2026-06-07 via persona scoring of all variants.
   - "You haven.t run any"
+  # Idempotency guard - prevent "No X yet" from re-matching "No X" patterns.
+  # Uses [Nn] for case-insensitive matching (regex exceptions compile case-sensitive).
   - '[Nn]o \w+ yet'
+  # "No events [verb]" - mid-sentence, not a standalone empty state.
   - '[Nn]o events \w'
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
   - '(?:\[)?(?:Warning|Caution|Alert|Danger|DANGER|Important|Error)[!]*(?:\])?[!]*\s*:[\s\S]*'
   - '\w+\s+\w+\s+failed to'
@@ -16,18 +28,20 @@ exceptions:
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
 
 swap:
-  'There are no Actors.': "No Actors yet."
-  'There are no invoices.': 'No invoices.'
-  'There are no items in the dataset.': 'This dataset is empty.'
-  'There are no columns in the dataset.': 'No columns in this dataset.'
-  'There are no invoices to display.': 'No invoices.'
-  'There are no payments to display.': 'No payments.'
-  'There are no payouts to display.': 'No payouts.'
-  'There are no transactions to display.': 'No transactions.'
-  'No examples are available for this Actor yet.': 'No examples for this Actor yet.'
+  'There are no Actors\.': "No Actors yet."
+  'There are no invoices\.': 'No invoices.'
+  'There are no items in the dataset\.': 'This dataset is empty.'
+  'There are no columns in the dataset\.': 'No columns in this dataset.'
+  'There are no invoices to display\.': 'No invoices.'
+  'There are no payments to display\.': 'No payments.'
+  'There are no payouts to display\.': 'No payouts.'
+  'There are no transactions to display\.': 'No transactions.'
+  'Nothing to display here\.': 'Nothing here yet.'
+  'Nothing to display\.': 'Nothing here yet.'
+  'No examples are available for this Actor yet\.': 'No examples for this Actor yet.'
   "Actor README isn't available": 'No Actor README yet'
   'No data available for this date': 'No data for this date'
   'No data available': 'No data yet'
-  'No events.': 'No events yet.'
+  'No events\.': 'No events yet.'
   'No events': 'No events yet.'
-  'The Actor finished with no results. Check the log for more information.': "The Actor finished with no results. Check the log for more info."
+  'The Actor finished with no results\. Check the log for more information\.': "The Actor finished with no results. Check the log for more info."

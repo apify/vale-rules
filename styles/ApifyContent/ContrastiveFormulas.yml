@@ -1,0 +1,16 @@
+extends: existence
+message: "Contrastive formula: '%s'. State what it does directly instead of the 'not X, it's Y' pattern."
+level: suggestion
+scope: sentence
+
+tokens:
+  - "not just (?:a |an )?\\w+[;,] it's"
+  - "isn't just (?:a |an )?\\w+"
+  - "more than just (?:a |an )?\\w+"
+  - "goes beyond (?:a |an |just )?\\w+"
+  - "It's not (?:just|merely|simply) "
+
+exceptions:
+  # Legitimate technical distinctions
+  - "not just (?:the|a) (?:first|last|default|primary)"
+  - "isn.t just (?:for|limited to|restricted to)"

@@ -1,9 +1,12 @@
 extends: existence
 level: suggestion
-message: "Feature definition pattern: '%s' - tell the user what to do, not what the feature is."
+message: "Feature definition pattern: '%s': tell the user what to do, not what the feature is."
 
 exceptions:
+  # Tooltip/setting descriptions that intentionally explain what a toggle does
+  # "If enabled, this allows you to..." - these are legitimate explanations
   - '(?:If|When) (?:enabled|checked|active|on|true)[\s\S]{0,30}(?:lets you|allows you to|enables you to)'
+  # Marketing/store descriptions (not actionable UI)
   - "(?:This Actor|This scraper|This tool) (?:lets you|allows you to|enables you to)"
 
 tokens:
@@ -16,6 +19,7 @@ tokens:
   - 'is a feature that'
   - 'is a tool that'
   - 'is designed to'
+  - 'is designed for'
   - 'are designed to'
   - 'will appear here'
   - 'will show up here'

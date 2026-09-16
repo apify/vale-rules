@@ -1,0 +1,19 @@
+extends: existence
+message: "Cataphoric forecasting: '%s'. start the list. Readers can count."
+level: suggestion
+scope: sentence
+
+tokens:
+  - '^Three (?:key|main|core|primary|critical|essential|important) '
+  - '^Four (?:key|main|core|primary|critical|essential|important) '
+  - '^Five (?:key|main|core|primary|critical|essential|important) '
+  - '^Six (?:key|main|core|primary|critical|essential|important) '
+  - '^Seven (?:key|main|core|primary|critical|essential|important) '
+  - '^Here are the \d+ '
+  - '^There are \d+ (?:key|main|core|primary|critical|essential|important) '
+  - '^The following \d+ '
+
+exceptions:
+  # Genuine technical constraints where the count matters
+  - '^\d+ (?:required|mandatory|minimum|maximum)'
+  - "^Three (?:attempts|retries|seconds|minutes)"

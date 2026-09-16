@@ -1,13 +1,17 @@
 extends: existence
 level: suggestion
-message: "Terminology check: '%s' - verify this means a Publisher's paying users, not people on the Apify platform (use 'users' for platform context)."
+message: "Terminology check: '%s': verify this means a Publisher's paying users, not people on the Apify platform (use 'users' for platform context)."
 ignorecase: true
 
 exceptions:
+  # "customer support/service/success" - compound noun, not the ambiguous term
   - 'customer\s+(?:support|service|success|care|experience|satisfaction)'
+  # "customer segment" - admin taxonomy
   - 'customer\s+segment'
+  # Code comments and examples
   - '^\/\/'
   - "^#"
+  # Quoting/referencing the term itself (literal quote marks around the word)
   - '[\".]customers[\".]'
   - '[\".]customer[\".]'
 

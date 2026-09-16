@@ -3,7 +3,9 @@ level: suggestion
 message: "Sub-component possessive: '%s' instead of '%s'. The sub-component belongs to the entity, not the user."
 
 exceptions:
+  # Don't fire when "your" precedes a user-owned noun
   - "your (?:email|account|plan|subscription|password|profile|workspace|team|organization|billing|payment|card|invoice|credits)"
+  # Don't fire on ICU blocks
   - '\{[^}]+,\s*(?:plural|select)'
 
 swap:

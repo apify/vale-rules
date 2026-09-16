@@ -9,9 +9,15 @@ tokens:
   - '\b(?:us|our|we)\b.{1,80}\bmy\b'
 
 exceptions:
+  # "I agree/accept/confirm" - checkbox labels where "I" is the user, not the app
   - '\bI (?:agree|accept|have tested|have read|understand|confirm|acknowledge)\b'
+  # "Let me know" - idiomatic, not a singular pronoun choice
   - '\b[Ll]et me know\b'
+  # ICU select/plural
   - '\{[^}]*(?:select|plural)[^}]*\}'
+  # Quoted placeholder text
   - '^[".].*[".]$'
+  # "my @Apify Actor" - social sharing where "my" is user voice
   - '\bmy @'
+  # "I" inside HTML-rendered user content (reviews, replies)
   - "placeholder"

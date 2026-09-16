@@ -1,10 +1,13 @@
+
 extends: existence
 level: suggestion
-message: "Conditional preamble: '%s'. The toggle already communicates the condition - state the effect directly."
+message: "Conditional preamble: '%s': toggle already communicates the condition. State the on-behavior directly: what happens when this is enabled? (NN/G toggle research)"
 
 exceptions:
+  # Two-state descriptions - both conditions need naming (keep as-is)
   - 'If (?:enabled|checked|set|turned on|activated|selected)[\s\S]*If (?:disabled|unchecked|not set|turned off|deactivated)'
   - 'If (?:disabled|unchecked|not set|turned off|deactivated)[\s\S]*If (?:enabled|checked|set|turned on|activated|selected)'
+  # Schema key paths (API/developer context, not UI)
   - "schema"
   - "inputSchema"
   - '\.input\.'
@@ -28,3 +31,16 @@ tokens:
   - 'If this is enabled,'
   - 'If this is checked,'
   - 'If this is set,'
+  - 'If disabled,'
+  - 'If unchecked,'
+  - 'If not set,'
+  - 'If not enabled,'
+  - 'If not checked,'
+  - 'If turned off,'
+  - 'If deactivated,'
+  - 'If unset,'
+  - 'When disabled,'
+  - 'When unchecked,'
+  - 'When not set,'
+  - 'When turned off,'
+  - 'When deactivated,'

@@ -3,55 +3,138 @@ level: suggestion
 message: "Remove filler word or phrase: '%s' instead of '%s'."
 nonword: true
 exceptions:
+  # "Be aware that" - sentence-start capitalization handled by JS pipeline.
   - "^Be aware that"
   - '\.\s+Be aware that'
+  # "You can [verb]. You can also [verb]" - paired pattern handled by double-you-can.yml
+  - 'You can [^.]+\.\s*You can also'
+  # "there are/is no" in subordinate clauses - "there are" is the subject, not filler.
+  # "Since there are no paying users" → removing "there are" produces a fragment.
+  # Guard: subordinating conjunction immediately before "there is/are no".
   - '\b(?:[Ss]ince|[Bb]ecause|[Ii]f|[Ww]hen|[Ww]hile|[Aa]lthough|[Uu]nless|[Uu]ntil|[Aa]fter|[Bb]efore|[Aa]s) there (?:are|is) no\b'
+  # "the beginning/ending/opening/closing of" - these are nouns, not gerund wrappers
   - "the beginning of"
   - "the ending of"
   - "the opening of"
   - "the closing of"
+  # "You are receiving this email because" - subscription/deliverability context.
+  # The "because" clause serves anti-spam purposes in email footers. Don't strip
+  # when the remaining content is subscription framing ("you're subscribed to").
   - '(?:subscribed|unsubscribe|subscription|opted in|signed up for)[\s\S]*[Rr]eceiving this email'
   - '[Rr]eceiving this email[\s\S]*(?:subscribed|unsubscribe|subscription|opted in|signed up for)'
+  # "a user can/will/should" person shift - moved to rules/third-person-shift.yml
+  # with scope: surface: ui. Guards and swap removed from this file.
+  # "once → after" guards - DISABLED along with the swap (2026-07-16).
+  # Microsoft Style Guide supports the swap in principle, but scope is narrower
+  # than a blanket regex can handle. See swap comment below for full rationale.
+  # - (?:notify|notified|alert|email|send|contact|let you know)[\s\S]{0,40}\bonce\b
+  # - \bonce\b[\s\S]{0,40}(?:notify|notified|alert|email|send|contact|let you know)
+  # - \bonce it (?:exceeds|reaches|hits|crosses|passes)\b
+  # "the pricing of" - "pricing" is a noun (price structure), not a gerund (act of pricing)
   - "the pricing of"
+  # "the billing of" - same pattern, "billing" is a noun (billing system/process)
   - "the billing of"
+  # After HTML line breaks - JS pipeline handles capitalization
   - '<br[^>]*>\s*Be aware that'
   - '<br[^>]*><br[^>]*>\s*Be aware that'
+  # "if you'll need to" - conditional form, not obligation framing
   - "if you.ll need to"
+  # "you'll need to" in bank/payment failure context - obligation is appropriate
+  # when the user's bank blocked the payment (not their fault, but action required).
   - '(?:bank|Central Bank|payment failed)[\s\S]*you.ll need to'
   - 'you.ll need to[\s\S]*(?:bank|Central Bank|payment failed)'
+  # "you'll need to" as prerequisite instruction - obligation framing is correct
+  # when the user MUST do something before they can proceed. Stripping to bare
+  # imperative loses the "you" user-centering signal. Guard: "to continue/proceed/complete".
   - '[Yy]ou.ll need to[\s\S]{0,60}(?:to continue|to proceed|to complete|before converting)'
   - '(?:to continue|to proceed|to complete|before converting)[\s\S]{0,60}[Yy]ou.ll need to'
+  # "you'll need to approve/verify/confirm/set up" - prerequisite action, not filler.
+  # The obligation framing tells the user this is required, not optional.
+  # "set up an account first" - setup is a mandatory prerequisite step, not optional.
   - "[Yy]ou.ll need to (?:approve|verify|confirm|authorize|authenticate|set up)"
+  # "you'll need to log in" after session disconnect - consequence of the action.
+  # The user needs to know they'll be logged out. Bare "Log in again" loses the causal link.
   - 'disconnect[\s\S]{0,80}[Yy]ou.ll need to log in'
+  # "Just [verb]" after a negative consequence - NO LONGER GUARDED (2026-05-22).
+  # Previously: "Just log in to keep them active" was guarded as a softener after bad news.
+  # Decision: "just" is always either filler or condescending. It implies the action is
+  # trivial, which patronizes users who find it hard or minimizes real effort.
+  # "Just log in to Apify Console" → "Log in to Apify Console" - same action, no patronizing.
+  # If the intent is to signal ease, use context: "It only takes a minute" or
+  # "No code changes required" - not "just," which signals ease by implying the user
+  # is overthinking it. Guard removed; blanket strip rule below handles all cases.
+  # "naturally" as adverb of manner meaning "organically/without intervention" —
+  # NOT filler. "Users naturally contribute" = they do it without being asked.
+  # Guard: "naturally" before verbs of organic process (contribute, grow, develop, emerge, evolve).
   - "naturally (?:contribut|grow|develop|emerg|evolv|occur|aris)"
+  # "would like to" in billing/support/contact contexts - polite register, not filler.
+  # "If you would like to see this data" is appropriate deference in billing UI.
+  # "If you'd like to change your plan" is polite in subscription management.
   - '(?:billing|support|contact|subscription|invoice|payment|payout)[\s\S]{0,80}would like to'
   - 'would like to[\s\S]{0,80}(?:billing|support|contact|subscription|invoice|payment|payout)'
+  # "you can always" in reversibility contexts - "always" signals permanent availability.
+  # "You can always set the limit" = the option is always there (reassurance).
+  # "You can always change it later" = filler (of course you can).
+  # Guard: "set the|adjust|in the .{0,20}section|in your .{0,20}settings" within 60 chars after.
   - '[Yy]ou can always[\s\S]{0,60}(?:set the|adjust|in the .{0,20}section|in your .{0,20}settings)'
+  # "this means that" / "which means that" - only guard when followed by financial
+  # consequences (amounts, charges, prices, access loss). Prose connectors around
+  # billing facts are fair game - the guard protects numbers and consequences, not filler.
   - '(?:[Ss]ecurity|[Pp]ermission|[Cc]aution|[Uu]se with caution)[\s\S]*(?:[Tt]his means that|[Ww]hich means that)'
   - '(?:[Tt]his means that|[Ww]hich means that)[\s\S]*(?:[Ss]ecurity|[Pp]ermission|[Cc]aution|[Uu]se with caution)'
   - '(?:[Tt]his means that|[Ww]hich means that)[\s\S]*(?:\$\{|\$\d|charged|deducted|refund|waive|fee|price|payment)'
+  # "cooking up some data magic" - loading message with personality.
+  # Stripping these leaves "The Actor is some ..." which is broken.
+  # Flagged for review (cliché) but not safe to auto-transform.
   - "cooking up some data magic"
+  # "Cooking up the best suggestion" - loading message with personality + emoji.
+  # Stripping leaves "The best suggestion 👨‍🍳" which loses the joke.
   - "cooking up the best suggestion"
+  # "very" inside compound words - not filler, it's part of the word.
+  # nonword:true means the engine matches substrings, so "very " matches inside "every ".
+  # Guard uses lookbehind-style: [a-z]very (a letter immediately before "very").
   - "[a-z]very "
   - '[a-z]very\b'
   - "[A-Z]very "
   - '[A-Z]very\b'
+  # "come into effect" guard - voice-tone.yml handles "Your changes might/may take..."
+  # as full explicit swaps. Guard the bare "Your changes" form here so the rule
+  # doesn't partially fire and conflict with the voice-tone.yml rewrite.
   - 'Your changes (might|may) take[\s\S]*come into effect'
   - 'Token was rotated successfully[\s\S]*come into effect'
+  # Mid-sentence "X note that Y" - "note" is a verb, not a filler phrase
+  # e.g. "should note that", "to note that", "we note that"
+  # Uses specific modal/verb words to avoid blocking "note that" at sentence start.
   - '(?:should|must|to|can|may|worth|important to|need to|want to|we|they|you|I)\s+note that'
+  # WCAG/accessibility terminology - "sufficient contrast" etc. are standard terms
   - "sufficient contrast"
   - "sufficient colour contrast"
   - "sufficient color contrast"
   - "sufficient techniques"
+  # "a/an sufficient" - article+sufficient where "enough" would be ungrammatical
+  # "set a sufficient limit" → "set a enough limit" is broken English.
+  # Guard: any article (a/an/the) directly preceding "sufficient".
   - '\ba sufficient\b'
   - '\ban sufficient\b'
+  # "insufficient" - "sufficient" is a substring, "inenough" is wrong
   - "insufficient"
   - "insufficiently"
+  # "will no longer" in destructive confirmation dialogs - keep formal register.
+  # Microcopy skill: "Keep formal (no contractions) for irreversible actions."
+  # Guard fires when the same string contains destructive-action language.
+  # NOTE: buildGuardZones uses case-sensitive 'g' flag for patterns with regex
+  # metacharacters, so both cases (Delete/delete, Remove/remove) must be listed.
+  #
+  # Two guard families:
+  # 1. Cross-sentence: destructive word elsewhere in string + "will no longer" match
   - '(?:[Dd]elete|[Rr]emove|[Dd]isable|stop working|will be lost|will be removed)\b[\s\S]*\bwill no longer'
   - '\bwill no longer[\s\S]*\b(?:[Dd]elete|[Rr]emove|[Dd]isable|stop working|will be lost|will be removed)'
+  # 2. Self-contained: "will no longer" IS the destructive phrase
   - "will no longer work"
   - "will no longer be accessible"
   - "will no longer run"
+  # Post-contraction form: contractions fires before filler-words, turning
+  # "you will no longer" → "you'll no longer". Guard that form too.
   - '(?:[Dd]elete|[Rr]emove|[Dd]isable|stop working|will be lost|will be removed)\b[\s\S]*\byou.ll no longer'
   - '\byou.ll no longer[\s\S]*\b(?:[Dd]elete|[Rr]emove|[Dd]isable|stop working|will be lost|will be removed)'
   - "you.ll no longer work"
@@ -62,6 +145,7 @@ swap:
   'it should be noted that': ''
   'as a matter of fact,': ''
   'as a matter of fact': ''
+  'note that (\w+)': '$1'
   'keep in mind that': ''
   'be aware that': ''
   'it is worth mentioning that': ''
@@ -89,8 +173,13 @@ swap:
   'in spite of the fact that': 'although'
   'in order to be able to': 'to'
   'you can always': 'you can'
+  'You can also ': ''
+  'you can also ': ''
+  'can also ': 'can '
+  'could also ': 'could '
+  'may also ': 'may '
   'you will need to': 'you need to'
-  'you need to keep at least one valid payment method on your account.': 'keep at least one valid payment method on your account.'
+  'you need to keep at least one valid payment method on your account\.': 'you need at least one valid payment method on your account.'
   'we will need to': 'we need to'
   'you expect to need': 'you need'
   'will no longer': "won't"
@@ -118,6 +207,9 @@ swap:
   'to act accordingly': ''
   'at your earliest convenience': 'soon'
   'a large number of': 'many'
+  ',\s*probably due to (?!missing permissions)([^.]+)': ''
+  ',\s*probably because of (?!missing permissions)([^.]+)': ''
+  '(\d+) out of': '$1 of'
   'therefore,': 'so'
   'therefore': 'so'
   'in addition': 'also'
@@ -131,14 +223,17 @@ swap:
   'and then try': 'and try'
   'and then refresh': 'and refresh'
   'and then reload': 'and reload'
+  'and then run': 'and run'
+  'and then start': 'and start'
+  'and then open': 'and open'
   'There is no ': 'No '
   'There are no ': 'No '
   ', and there is no ': ', and no '
   ', and there are no ': ', and no '
-  'README.md file': 'README.md'
-  'CHANGELOG.md file': 'CHANGELOG.md'
-  'package.json file': 'package.json'
-  'actor.json file': 'actor.json'
+  'README\.md file': 'README.md'
+  'CHANGELOG\.md file': 'CHANGELOG.md'
+  'package\.json file': 'package.json'
+  'actor\.json file': 'actor.json'
   'Dockerfile file': 'Dockerfile'
   'is missing a ': 'has no '
   'is missing an ': 'has no '
@@ -167,14 +262,15 @@ swap:
   'override them by using': 'override them with'
   'give general feedback': 'provide feedback'
   'give general ': 'give '
-  'before they can be ': 'before they are '
-  'before it can be ': 'before it is '
+  'Choose a user-friendly name for the (.+)': 'Name the $1'
+  'Choose a user-friendly name for your (.+)': 'Name your $1'
   'in the process of ': ''
+  'The (\w+ing) of': '$1'
   ' going forward,': ','
   ' going forward': ''
   'basically ': ''
   'kindly ': ''
-  'very ': ''
+  ' very ': ' '
   'really ': ''
   'quite ': ''
   'naturally ': ''
@@ -229,12 +325,14 @@ swap:
   "We've got your back": ''
   "we've got your back": ''
 
-  'You can try again.': 'Try again.'
-  'you can try again.': 'try again.'
+  'You can try again\.': 'Try again.'
+  'you can try again\.': 'try again.'
 
   'If you have any questions, please contact': 'Need help? Contact'
   'If you have any questions, contact': 'Need help? Contact'
 
+  'As this is your (\w+), ': ''
+  'As this is a (\w+), ': ''
   'Click here to ': 'To '
   'click here to ': 'to '
   'come into effect': 'apply'

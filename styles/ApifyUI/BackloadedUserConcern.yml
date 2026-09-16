@@ -1,4 +1,3 @@
-# Detection only: flags 1 pattern without suggesting replacements.
 extends: existence
 level: suggestion
 message: "Backloaded user concern: '%s' => '%s'. Communicate state, not requirement."

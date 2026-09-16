@@ -1,0 +1,9 @@
+extends: existence
+level: suggestion
+message: "Short chunk before/after break: '%s': a period may work better than a paragraph break here."
+ignorecase: true
+scope: raw
+nonword: true
+tokens:
+  - '(?m)^(?:\S+\s+){1,9}\S+\s*<br\s*\/?><br\s*\/?>'
+  - '<br\s*\/?><br\s*\/?>(?:\s*\S+){1,9}\s*\.?\s*$'

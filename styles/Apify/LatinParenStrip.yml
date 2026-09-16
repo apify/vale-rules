@@ -1,15 +1,12 @@
-# Detection only: flags 2 patterns without suggesting replacements.
 extends: existence
 level: suggestion
 message: "Redundant Latin abbreviation in parentheses: '%s'."
-
+ignorecase: false
+nonword: true
 exceptions:
-  - '\(e\.g\.[^)]*$'
-
 tokens:
   - '\(i\.e\.,? '
   - '\(e\.g\.,? '
-
 action:
   name: edit
   params:

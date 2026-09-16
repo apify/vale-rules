@@ -1,10 +1,12 @@
 extends: existence
 level: suggestion
-message: "Ambiguous reference: '%s' - if both an admin and a managed user are in context, clarify which one ('this user' vs 'you')."
+message: "Ambiguous reference: '%s': if both an admin and a managed user are in context, clarify which one ('this user' vs 'you')."
 ignorecase: true
 
 exceptions:
+  # "the user's [possession]" - possessive form is usually clear
   - 'the user.s \w+'
+  # Only one actor in the sentence (no admin/manage context)
   - "^(?!.*(?:admin|manage|organization|org member|billing|settings))"
 
 tokens:

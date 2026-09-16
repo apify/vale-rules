@@ -1,0 +1,27 @@
+extends: existence
+message: "Symbol in prose ('%s'). Use 'and' or rewrite instead of '+' or '&'."
+level: suggestion
+tokens:
+  - '\w+ \+ \w+'
+  - '\w+ & \w+'
+scope: sentence
+exceptions:
+  # Brand names
+  - "AT&T"
+  - "R&D"
+  - "Q&A"
+  # UI labels and section titles where & is the established convention
+  - "Terms & Conditions"
+  - "Billing & Payments"
+  - "API & Integrations"
+  - "Actors & tasks"
+  - "Import & Export"
+  - "Publication & [Mm]onetization"
+  - "Trial & Error"
+  - "Settings & [Pp]references"
+  - "Privacy & [Ss]ecurity"
+  - "Plans & [Pp]ricing"
+  - "Features & [Bb]enefits"
+  - "Pros & [Cc]ons"
+  # Heading context — & in headings is a label convention, not prose
+  - "^#+.*&"

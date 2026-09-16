@@ -5,23 +5,35 @@ ignorecase: false
 scope: sentence
 exceptions:
   - 'https?://\S+'
+  # HTML comments - don't turn <!-- into <! - 
   - '<!--[\s\S]*?-->'
+  # Markdown horizontal rules - don't turn --- into - - -
   - "^---$"
   - '\n---\n'
+  # Already has comma before conjunction - don't double-comma
   - ',\s+and (?:it|you|they|we|he|she)[.\u2019]'
   - ',\s+or (?:it|you|they|we|he|she)[.\u2019]'
   - ',\s+or the \w+'
+  # Character enumeration lists - hyphen is a literal character being listed
+  # "a-z, A-Z, 0-9, _, - and" - the hyphen is content, not a separator
   - ', - and\s'
+  # CLI flags - don't turn --flag or --safe-only into - flag
   - '--\w[\w-]*'
   - "^---$"
   - '\n---\n'
+  # CLI flags - don't turn --flag or --safe-only into - flag
   - '--\w[\w-]*'
+  # Paired dashes as parentheticals - don't strip one without the other.
+  # "lower than $100 - or lower than $20 ... details -" brackets a nested conditional.
+  # The editorial rewrite (voice-tone.yml) restructures the whole clause instead.
   - '\S\s+-\s+\S[\s\S]*\S\s+-\s+\S'
 swap:
   '!!': '!'
 
   '1-on-1': '1on1'
   1t1: '1on1'
+
+  'etc(?!\.)': 'etc.'
 
   'top left': 'top-left'
   'top right': 'top-right'
@@ -39,33 +51,48 @@ swap:
   ' - but ': ' but '
   ' - so ':  ' so '
 
-  'e.g.,': 'e.g.'
-  'i.e.,': 'i.e.'
+  'e\.g\.,': 'e.g.'
+  'i\.e\.,': 'i.e.'
 
   'saved inputs and API calls': 'saved inputs, and API calls'
 
   ' / ': '/'
+  '(?<!\.)\.\.(?!\.)': '.'
 
   'Login to': 'Log in to'
 
   'monetization but it': 'monetization, but it'
 
   " and it'll": ", and it'll"
+  " and it\u2019ll": ", and it\u2019ll"
   " and it's": ", and it's"
+  " and it\u2019s": ", and it\u2019s"
   " and you'll": ", and you'll"
+  " and you\u2019ll": ", and you\u2019ll"
   " and you're": ", and you're"
+  " and you\u2019re": ", and you\u2019re"
   " and they'll": ", and they'll"
+  " and they\u2019ll": ", and they\u2019ll"
   " and they're": ", and they're"
+  " and they\u2019re": ", and they\u2019re"
   " and we'll": ", and we'll"
+  " and we\u2019ll": ", and we\u2019ll"
   " and we're": ", and we're"
+  " and we\u2019re": ", and we\u2019re"
   " and he'll": ", and he'll"
   " and she'll": ", and she'll"
 
   " or it'll": ", or it'll"
+  " or it\u2019ll": ", or it\u2019ll"
   " or it's": ", or it's"
+  " or it\u2019s": ", or it\u2019s"
   " or you'll": ", or you'll"
+  " or you\u2019ll": ", or you\u2019ll"
   " or you're": ", or you're"
+  " or you\u2019re": ", or you\u2019re"
   " or they'll": ", or they'll"
+  " or they\u2019ll": ", or they\u2019ll"
   " or we'll": ", or we'll"
+  " or we\u2019ll": ", or we\u2019ll"
 
   "exist or the corresponding": "exist, or the corresponding"

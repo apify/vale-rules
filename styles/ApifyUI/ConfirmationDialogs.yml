@@ -2,48 +2,116 @@ extends: substitution
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
+  # "an additional" - article would need to change to "a" which we can't do automatically
   - "an additional"
+  # "any additional" - "any more" reads oddly; double-transform with info→info makes it worse
   - "any additional"
+  # "additional costs" - financial category label; "more costs" sounds wrong
   - "additional costs"
+  # "Warning:" prefix - the friction is intentional for high-stakes warnings.
+  # The explicit swap handles "Warning: ... Be certain." but other suffixes should stay.
+  # Position-based guard: matches at the swap position when "Warning:" precedes it.
   - "Warning:.*This action is not reversible"
+  # "in the event of [pronoun+gerund]" - "if you losing" is grammatically wrong
   - '[Ii]n the event of (?:you|they|we|he|she|it|them|us)\s+\w+ing'
+  # NOTE: The following guards were previously handled by explicit exception patterns
+  #   for IMPORTANT/WARNING/CAUTION/DANGER markers and DELETE/REMOVE/DESTROY emphasis.
+  #   Those are now covered by skip-if (ALL-CAPS detection, ≥4 letters).
+  #   Mixed-case markers like "Warning:" are handled by the explicit exception above
+  #   (Warning:.*This action is not reversible). Other mixed-case markers (Important:,
+  #   Caution:) don't appear in the corpus - add exceptions here if they do.
   - '\w+\s+\w+\s+failed to'
   - '(?:if|you.re|you are|they.re|they are|we.re|we are|it.s|it is|he.s|he is|she.s|she is|are|is|be|been|being|to be|remain|remains|remained|feel|feels|felt|seem|seems|seemed)\s+unable to'
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
+  # Mid-sentence "delete/remove the X" in permission descriptions - not a dialog label.
+  # "...add, update, or remove its records, and delete the key-value store."
+  # The "and" before "delete" signals a list item, not a standalone label.
   - "and [Dd]elete the"
   - "and [Rr]emove the"
+  # "Do you really want to" in high-consequence actions - "really" serves as friction/severity signal.
+  # Preserve "really" when the action involves: flagging, issuing invoices, revoking, banning,
+  # permanently removing, or other irreversible admin actions.
   - '[Dd]o you really want to[\s\S]*(?:flag|issue|revoke|ban|block|suspend|terminate|permanently)'
+  # "Are you sure" in permanent subscription/billing removal - criterion #6.
+  # The full dialog context mentions permanent removal, no refunds, lost access.
+  # "Are you sure" is doing real friction work here, not just anxiety.
+  # Both directions: consequence may appear before OR after the question.
   - '[Aa]re you sure[\s\S]*(?:permanently|no refund|won.t be entitled|lose access|can.t be undone|irreversible)'
   - '(?:permanently|no refund|won.t be entitled|lose access|can.t be undone|irreversible)[\s\S]*[Aa]re you sure'
+  # "Are you sure" in org operations - leaving/removing is irreversible (lose access).
+  # Criterion #8: only acceptable for low-stakes actions. Org changes are high-stakes.
   - '[Aa]re you sure[\s\S]*(?:leave[\s\S]*organi[sz]ation|remove.*(?:member|role)|change.*role)'
+  # "Are you sure" in security operations - 2FA, SSO, authenticator, connector deletion.
+  # These affect account security or org-wide auth. Friction is intentional.
   - '[Aa]re you sure[\s\S]*(?:authenticator|two-factor|2FA|SSO|single sign|connector)'
   - '(?:authenticator|two-factor|2FA|SSO|single sign|connector)[\s\S]*[Aa]re you sure'
+  # "Are you sure" with <strong>DELETE/delete</strong> - generic {resourceName} deletion.
+  # The safe-literal normalizes the known string to "Do you want to <strong>delete</strong>..."
+  # This guard protects any other variants with <strong>+{resourceName} that aren't
+  # covered by a literal - stakes are unknown, keep friction.
   - '[Aa]re you sure[\s\S]*<strong>[Dd][Ee][Ll][Ee][Tt][Ee]</strong>'
+  # "Are you sure" + "cannot be undone" / "can't be undone" - explicitly irreversible.
+  # If the source string says it can't be undone, keep the friction.
   - '[Aa]re you sure[\s\S]*(?:cannot be undone|can.t be undone|can\u2019t be undone)'
   - '(?:cannot be undone|can.t be undone|can\u2019t be undone)[\s\S]*[Aa]re you sure'
+  # "Are you sure" on billing/pricing actions - price overrides, monetization changes.
   - '[Aa]re you sure[\s\S]*(?:price|pricing|monetiz|invoice|billing|payout)'
   - '(?:price|pricing|monetiz|invoice|billing|payout)[\s\S]*[Aa]re you sure'
+  # "Are you sure" + destructive verbs on user-generated content - friction is functional.
+  # Reviews, replies, posts, and comments can't be recreated once deleted.
+  # System objects (Actors, proxy groups, schedules) are recreatable - "Do you want to" is fine.
+  # Note: connectors are already covered by the security-operations exception above.
   - '[Aa]re you sure[\s\S]*(?:delete|remove)[\s\S]*(?:your review|your reply|your post|your comment)'
+  # "If you want to force/override/bypass/skip" - conditional framing on admin overrides.
+  # The "if you want to" signals intentionality on consequential actions.
   - "[Ii]f you want to (?:force|override|bypass|skip)"
+  # "useful/helpful if you want to" - purpose explanation, not a dialog preamble.
+  # Per microcopy.skill.md: "if" expresses a condition (something that may or may
+  # not happen). "This is useful if you want to start instances" - the conditional
+  # framing explains WHEN the feature is relevant. Stripping "if you want to" → "to"
+  # converts a conditional into a bare statement of purpose, losing the optionality.
   - "(?:[Uu]seful|[Hh]elpful|[Hh]andy|[Nn]ecessary|[Rr]equired|[Nn]eeded) if you want to"
+  # "if you would like to keep" in re-engagement/notification context - the conditional
+  # gives the user agency at a moment where they've been acted upon (schedules disabled,
+  # account limited). Stripping it makes the copy sound like a command, not an invitation.
   - '(?:disabled|inactive|expired|canceled|removed)[\s\S]*[Ii]f you would like to'
   - '[Ii]f you would like to[\s\S]*(?:disabled|inactive|expired|canceled|removed)'
+  # "if you would like to" in billing/subscription contexts - polite register is appropriate.
+  # "If you would like to change your subscription" is deference, not filler.
   - '(?:billing|subscription|invoice|payment|payout)[\s\S]{0,80}[Ii]f you would like to'
   - '[Ii]f you would like to[\s\S]{0,80}(?:billing|subscription|invoice|payment|payout)'
   - "and [Dd]isable the"
   - "or [Dd]elete the"
   - "or [Rr]emove the"
+  # Mid-sentence "do you want to" - question word + noun precedes it.
+  # "Which account do you want to subscribe with?" - not a dialog preamble.
+  # "What do you want to do?" - same pattern.
+  # Note: patterns with metacharacters compile case-sensitive (g flag), so
+  # use character classes for first-letter case-insensitivity.
   - '(?:[Ww]hich|[Ww]hat|[Ww]ho|[Ww]here|[Ww]hen|[Hh]ow)\s+\w+\s+do you want to'
   - '(?:[Ww]hich|[Ww]hat|[Ww]ho|[Ww]here|[Ww]hen|[Hh]ow)\s+do you want to'
+  # "Do you want to continue?" - confirmation prompt in destructive dialogs.
+  # This is interaction semantics, not filler. Preserve it.
   - "Do you want to continue"
+  # "Do you want to [verb]" in strings with irreversible/destructive signals.
+  # The preamble is doing friction work when the action can't be undone.
   - '[Dd]o you want to[\s\S]*(?:can.t be undone|cannot be undone|irreversible|permanently|won.t be able)'
   - '(?:can.t be undone|cannot be undone|irreversible|permanently|won.t be able)[\s\S]*[Dd]o you want to'
+  # "Do you want to [verb]" with "flag/issue/revoke/ban" - high-consequence admin actions.
   - "[Dd]o you want to (?:flag|issue|revoke|ban|block|suspend|terminate)"
+  # "Are you sure you want to leave this page" - unsaved work risk.
   - '[Aa]re you sure[\s\S]*leave this page'
+  # "Are you sure you want to send this email" - mass email to Actor users is irreversible.
   - '[Aa]re you sure[\s\S]*send this email'
+  # "Do you want to send this email" - same guard for the normalized form.
+  # The "send this email" action is irreversible (mass communication); preserve friction.
   - "[Dd]o you want to send this email"
+  # "Do you want to [verb]" in billing/payment/financial contexts - keep friction.
+  # Setting a primary payment method, disconnecting PayPal, removing a card - these
+  # affect all future charges. The question framing gives the user a decision checkpoint.
   - '[Dd]o you want to[\s\S]*(?:payment method|PayPal|credit card|billing|payout|invoice)'
   - '(?:payment method|PayPal|credit card|billing|payout|invoice)[\s\S]*[Dd]o you want to'
+  # "Please send/reply" in billing/email - formal courtesy, not a dialog preamble
   - "Please send payment"
   - "Please reply to this email"
 
@@ -51,6 +119,10 @@ swap:
   'do you really want to': 'Do you want to'
   'are you sure you want to': 'Do you want to'
   'are you sure that you want to': 'Do you want to'
+  'Do you want to delete this price override\? This can''t be undone\.': "You're about to delete this price override. This can't be undone."
+  'Do you wish to proceed with this action\?': 'Do you want to proceed?'
+
+  'Do you want to (\w+)': '$1'
 
   'Cancel the invitation': 'cancel this invitation'
   'Delete the integration': 'delete this integration'
@@ -72,11 +144,11 @@ swap:
   'cannot be reversed': "can't be undone"
   "can't be reversed": "can't be undone"
 
-  "This action cannot be undone.": "This can't be undone."
+  'This action cannot be undone\.': "This can't be undone."
   "This action cannot be undone!": "This can't be undone."
-  "This action can't be undone.": "This can't be undone."
-  "This operation cannot be undone.": "This can't be undone."
-  "This change cannot be undone.": "This can't be undone."
+  'This action can''t be undone\.': "This can't be undone."
+  'This operation cannot be undone\.': "This can't be undone."
+  'This change cannot be undone\.': "This can't be undone."
   'This operation can <strong>not</strong> be undone': "This can't be undone"
 
   'if you want to': 'to'

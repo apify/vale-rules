@@ -1,12 +1,16 @@
 extends: existence
 level: suggestion
-message: "Color-only meaning: '%s' - pair with a text label or icon so meaning isn't lost without color."
+message: "Color-only meaning: '%s': pair with a text label or icon so meaning isn't lost without color."
 
 exceptions:
+  # Color as a literal setting value: "Set background color to red"
   - "(?:set|change|pick|choose|select) (?:the |a )?(?:background |text |border |fill )?colou?r"
+  # Color in brand/design contexts: "Brand colors", "color palette"
   - "colou?r (?:palette|scheme|system|token|variable|theme)"
   - "brand colou?rs?"
+  # Color picker UI: "Choose a color", "Pick your color"
   - "(?:colou?r picker|pick a colou?r|choose a colou?r)"
+  # CSS/code: "color: red", "background-color"
   - 'colou?r:\s*\w+'
   - "background-colou?r"
 

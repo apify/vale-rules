@@ -1,0 +1,6 @@
+extends: existence
+message: "Alt text is over 125 characters. Summarize in alt text and provide detail in a visible linked description or nearby prose."
+level: suggestion
+scope: raw
+raw:
+  - '!\[[^\]]{126,}\]'

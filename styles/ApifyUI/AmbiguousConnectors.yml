@@ -1,0 +1,38 @@
+extends: existence
+level: suggestion
+message: "Ambiguous connector: '%s': if this means 'because' or 'although', use that word for clarity."
+
+exceptions:
+  # ── "while" temporal patterns ──
+  # Gerund: "while running", "while loading"
+  - 'while \w+ing\b'
+  # State clauses: "while you're", "while it's"
+  - "while (?:you.?re?|it.?s?|they.?re?|he.?s?|she.?s?)"
+  # Temporal activity: "while the run/Actor"
+  - "while the (?:run|Actor|process|task|build|request|upload|download)"
+  # Duration idioms
+  - "(?:for|takes?|take) a while"
+  - "a while (?:and|to|for|back|ago|later|longer)"
+  # State: "while under", "while in", "while on"
+  - 'while (?:under|in|on|at)\b'
+  # ── "since" temporal patterns ──
+  # Temporal markers after "since": date/time references
+  - 'since (?:last|yesterday|then|the|that|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday|\d)'
+  - 'since (?:you|they|he|she|it|we)\s+(?:\w+ed|signed|logged|subscribed|left|started|joined)'
+  # ── "as" non-causal patterns ──
+  # Fixed phrases
+  - "as a result"
+  - "as well as"
+  - "as follows"
+  - "as shown"
+  - "as expected"
+  - "as needed"
+  - "as usual"
+  - "such as"
+  # Role framing: "As the/an/a [noun]" (not followed by "is/are")
+  - '[Aa]s (?:the|an?)\s+\w+(?:\s+\w+)?(?:,|$)'
+
+tokens:
+  - ',\s+while\s+(?!(?:you.?re?|it.?s?|they.?re?|the\s+(?:run|Actor)|\w+ing\b))'
+  - '^While\s+(?!you.?re?|waiting|loading|running|saving|it.?s?)[^,]+,'
+  - '^As\s+(?:this|it)\s+(?:is|was|has|will|can|may|might|does)'

@@ -3,23 +3,92 @@ level: suggestion
 message: "Use the contraction: '%s' instead of '%s'."
 ignorecase: false
 exceptions:
+  # [DANGER!!] prefix - admin-only strings that use ALL-CAPS severity markers.
+  # These are internal tooling strings where formal register is intentional.
   - '\[DANGER[!]*\][\s\S]*'
+  # "are unable to" - don't contract "are" before "unable" (produces "you're couldn't"
+  # when error-messages rule later converts "unable to" → "couldn't").
   - "are unable to"
+  # "cannot be undone/reversed" guards removed - Shopify Polaris uses "can't be undone"
+  # in destructive dialogs; gravity comes from context (red UI), not formal register.
+  # A/B test (2026-06-06): Citizen Integrator preferred "cannot" but the Apify brand
+  # voice skill explicitly prescribes "can't be undone" for destructive actions.
+  # Voice principle: "confident, not corporate" + "human, not mechanical".
+  # Gravity is delivered by dialog context (red UI, consequence copy, confirmation gate),
+  # not by word-level formality. Keeping contracted form.
+  # The [DANGER!]: prefix guard above already handles the admin-only string.
   - 'irreversible[\s\S]*'
   - 'permanently delete[\s\S]*'
   - 'permanently remove[\s\S]*'
   - 'will be lost forever[\s\S]*'
+  # "untrusted" - REMOVED (2026-05-16). The broad "untrusted[\s\S]*" guard blocked
+  # ALL contractions in any string mentioning "untrusted", including the proxy URL
+  # string where "Don't share the URL" is appropriate (best-practice tip, not a
+  # breach warning about sharing secrets). The specific guard above
+  # ([Dd]o not share (?:the |your |this )?(?:passwords?|tokens?|...)\b) already
+  # protects the real security prohibition cases.
+  #
+  # Intentionally contracted strings after this change:
+  #   "Do not share the URL with untrusted parties" → "Don't share..." (proxy URL tip)
+  #   "Do not share them with untrusted parties!" → "Don't share..." (token page, <span bold>)
+  # Both are best-practice tips where visual emphasis (<p>, <span bold>) carries gravity.
+  # The "do not share [password/token/credential]" guard still blocks direct secret references.
+  # "[gerund] it will" - "it" is the object of the preceding participle,
+  # not the subject of "will". "referencing it'll" is ungrammatical.
+  # Covers: using it will, referencing it will, accessing it will, etc.
   - '\w+ing it will'
+  # "with you will" - "you" is the object of a preposition here, not the subject.
+  # Contracting produces "with you'll" which is a grammar error.
   - "with you will"
-  - "It will (?:appear|show|be shown|be displayed|be visible)"
+  # "It will appear/show/be shown/be displayed" - "It'll appear" is awkward at sentence
+  # start. Present tense ("It appears") is better for descriptions of UI behavior.
+  # Guard prevents "It'll" in descriptive/help text contexts.
+  # Broadened: "It'll" at sentence start is awkward in docs across all verbs.
+  # "It'll take", "It'll be", "It'll run" - all sound unnatural in technical writing.
+  # Also block mid-sentence ". It will" - same awkwardness applies after a period.
+  - '^It will\b'
+  - '\. It will\b'
+  # "It is '80s" / "It is '90s" - decade references; "It's '80s" is wrong
   - 'It is .\d'
+  # Comparative/subordinate structures - "more relevant it is", "how important it is",
+  # "whether it is", "what it is". Contracting to "it's" here sounds wrong because
+  # the pronoun carries stress in these constructions.
+  - '\w+er it is\b'
+  - 'more \w+ it is\b'
+  - 'how \w+ it is\b'
+  - 'whether it is\b'
+  - 'what it is\b'
+  # "here is going to" - "here's going to be" is wrong; "here is going to be" → "will be" via filler-words
   - "here is going to"
+  # "here is [past participle]" - locative "here" + copula + adjective.
+  # "The input provided here is prefilled" - "here's prefilled" is unidiomatic.
+  # Guard fires when "here is" is followed by a word ending in -ed/-en (past participle as adjective).
   - 'here is (?:prefill|fill|display|show|render|configur|provid|generat|stor|creat|load|sav|enabl|disabl)\w*ed'
+  # ── Obligation/prohibition language - formal register preserved
+  # "must not" and "will not" in policy, legal, and financial contexts carry
+  # prescriptive weight that "can't" / "won't" don't. "Can't" implies technical
+  # impossibility; "must not" implies a rule. "Will not be able to" is a future
+  # consequence; "can't" is a current state.
+  # Principle: don't contract obligation language in formal/high-stakes contexts.
   - "must not be"
   - "must not exceed"
+  # NOTE: "will not be able to...payout/payment/billing" guard REMOVED.
+  # The surrounding copy in verification emails is already contracted ("can't", "won't").
+  # Keeping "will not" in isolation creates inconsistency within the same message.
+  # "do not share" - security prohibition in password/token/credential contexts.
+  # "Do not" carries more authority than "don't" for serious security instructions
+  # (Concur HIG: "Use 'do not' for serious consequences").
+  # Narrowed: only guards when followed by password/token/credential/key/secret.
+  # Proxy URL sharing ("Don't share the URL") is a best-practice tip, not a breach warning.
   - '[Dd]o not share (?:the |your |this )?(?:passwords?|tokens?|credentials?|keys?|secrets?)\b'
+  # "as they are" - fixed phrase / sentence-end; "as they're" is unnatural
   - "as they are"
+  # "ensuring they are" - gerund context; LT flags "ensuring they're" as wrong
   - "ensuring they are"
+  # Locative "are" - "wherever you are in", "where they are right now", "however far you are from"
+  # The verb carries location/state meaning and resists contraction.
+  - '\b(?:where|wherever|however) (?:you|they|we) are\b'
+  # "you would [gerund]" - "you'd using" is ungrammatical; source bug, don't expose
   - 'you would \w+ing'
 swap:
   'Cannot': "Can't"

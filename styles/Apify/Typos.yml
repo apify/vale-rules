@@ -7,9 +7,14 @@ scope:
   - heading
 exceptions:
   - 'https?://\S+'
+  # "previously selected view" - the article belongs to "previously", not "selected".
+  # Without this guard, 'Selected view' → 'the selected view' fires mid-phrase.
   - "previously selected view"
 swap:
+  '\?\?': '?'
   'mostly likely': 'most likely'
+  "there is (higher|greater|lower|bigger|smaller|better|worse) chance": "there is a $1 chance"
+  "there's (higher|greater|lower|bigger|smaller|better|worse) chance": "there's a $1 chance"
   'Selected view': 'the selected view'
   tothe: 'to the'
   ofthe: 'of the'

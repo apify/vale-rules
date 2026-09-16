@@ -1,0 +1,16 @@
+
+extends: existence
+level: suggestion
+message: "Performative emotion: '%s': state the consequence factually instead of editorializing."
+ignorecase: true
+
+tokens:
+  - '\bSad[.!]\s*$'
+  - '\bYay[.!]'
+  - '\bHooray[.!]'
+  - '\bOh no[.!]'
+  - '\bUh oh[.!]'
+  - '\bWhoops[.!]'
+  - '\bAwesome[.!]\s*$'
+  - '\bpoor users\b'
+  - '\bpoor customers\b'

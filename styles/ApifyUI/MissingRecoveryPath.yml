@@ -1,9 +1,11 @@
+
 extends: existence
 level: suggestion
-message: "Missing recovery path: '%s' - the user doesn't know what to do next. See docs/recovery-decision-tree.md."
+message: "Missing recovery path: '%s': the user doesn't know what to do next. See docs/recovery-decision-tree.md."
 ignorecase: true
 
 exceptions:
+  # Already has a recovery path (second sentence or action verb)
   - '\.\s+\S'
   - "(?:[Tt]ry|[Rr]efresh|[Cc]heck|[Cc]ontact|[Ss]ign in|[Ll]og in|[Rr]estart|[Rr]eload|[Gg]o back|[Uu]pdate|[Uu]pgrade|[Dd]owngrade|[Rr]emove|[Dd]elete|[Rr]ename|[Cc]reate|[Aa]dd|[Cc]hange|[Ww]ait|again|support)"
   - "[Yy]ou can"
@@ -11,10 +13,15 @@ exceptions:
   - 'in \d+ (?:second|minute|hour|day)'
   - "in a (?:few|couple)"
   - "(?:contact|email|reach) (?:us|support|help)"
+  # Success states - not errors
   - "(?:completed|succeeded|finished|done|saved|created|deleted|updated|enabled|disabled)"
+  # Non-retryable constraints - retry won't help (for Couldn't/Can't tokens)
   - '\b(?:critical|isn.t supported|isn.t valid|isn.t available|isn.t defined|permission|exceeded|limit|required|must be|forbidden|deprecated|too many)\b'
+  # User-caused errors - the user needs to fix something, not retry
   - '\b(?:parse|invalid|configuration|schema|wasn.t valid)\b'
+  # Notification subjects (not toasts)
   - "subject$"
+  # Long strings likely have context elsewhere
   - "^.{80,}$"
 
 tokens:

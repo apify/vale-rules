@@ -1,6 +1,7 @@
+
 extends: existence
 level: suggestion
-message: "Placeholder shipped: '%s' - draft copy that was never finalized."
+message: "Placeholder shipped: '%s': draft copy that was never finalized."
 ignorecase: false
 
 exceptions:
@@ -16,8 +17,8 @@ tokens:
   - 'HACK'
   - '\[placeholder\]'
   - '\[label\]'
-  - '[TBD]'
-  - '[tbd]'
+  - '\[TBD\]'
+  - '\[tbd\]'
   - '\[copy needed\]'
   - '\[copy TK\]'
   - '\[insert'

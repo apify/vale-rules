@@ -1,6 +1,6 @@
 extends: existence
 level: suggestion
-message: "Emoji capitalization: '%s' - capitalize the first word after a leading emoji."
+message: "Emoji capitalization: '%s': capitalize the first word after a leading emoji."
 scope: raw
 ignorecase: false
 

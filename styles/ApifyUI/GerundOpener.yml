@@ -1,0 +1,8 @@
+
+extends: existence
+level: suggestion
+message: "Gerund opener: '%s': consider rewriting with 'If you...', an imperative, or the object as subject."
+ignorecase: false
+
+tokens:
+  - '^[A-Z]\w+ing\b[^.!?]{0,40}\b(?:requires?|helps?|allows?|lets?|means?|can|will|may|might|should)\b'

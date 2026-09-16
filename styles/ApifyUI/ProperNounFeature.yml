@@ -3,6 +3,7 @@ level: suggestion
 message: "Branded feature name: '%s'. Prefer the common noun unless this is an established product name."
 
 exceptions:
+  # Established Apify navigation label
   - "My Actors"
 
 tokens:

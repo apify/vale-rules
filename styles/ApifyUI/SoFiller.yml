@@ -1,0 +1,31 @@
+
+extends: substitution
+level: suggestion
+message: "Causal filler: '%s': try '%s' or split into a new sentence."
+
+exceptions:
+  # "so you can" - warm user framing, intentionally preserved in robotic-phrases.yml
+  - '\b[Ss]o you can\b'
+  # "so we can" - same pattern
+  - '\b[Ss]o we can\b'
+  # "if so" / "even so" / "do so" / "and so on" - anaphoric, not filler
+  - '\b[Ii]f so\b'
+  - '\b[Ee]ven so\b'
+  - '\bdo so\b'
+  - '\band so on\b'
+  # "so far" - temporal, not causal
+  - '\bso far\b'
+  # "so much" / "so many" - degree adverb, not causal
+  - '\bso (?:much|many|few|little|long|often)\b'
+  # "or so" - approximation ("10 or so")
+  - '\bor so\b'
+  # "so-called" - adjective
+  - '\bso-called\b'
+  # Notification-specific: scorer-tested warm "so" in billing consequences
+  - '(?:exceed|limit|threshold|over|charged)[\s\S]{0,40}\bso\b'
+
+swap:
+  'So, ': ''
+  'So let': 'Let'
+
+  ', so your changes are applied': ''

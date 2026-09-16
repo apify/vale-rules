@@ -1,11 +1,13 @@
 extends: existence
 level: suggestion
-message: "Redundant 'new' in heading: '%s' - creation verbs already imply newness."
+message: "Redundant 'new' in heading: '%s': creation verbs already imply newness."
 scope: heading
 ignorecase: true
 
 exceptions:
+  # "brand new" - intensifier, not redundant
   - "brand new"
+  # "new version of" - "new" distinguishes from current version
   - "new version"
 
 tokens:

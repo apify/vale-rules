@@ -1,0 +1,9 @@
+extends: existence
+message: "Self-congratulatory copy: '%s'. Center what the user gets, not what the company is doing or feeling."
+level: suggestion
+
+tokens:
+  - '[Ww]e(?:.re| are) proud (?:to|that)'
+  - '[Ww]e believe (?:that |in )'
+  - '[Ww]e(?:.ve| have) (?:worked hard|built|crafted|designed|created) (?:this|a |an |the )'
+  - '[Hh]appy (?:scraping|coding|building|automating|crawling|deploying|hacking|testing)[!.]?'

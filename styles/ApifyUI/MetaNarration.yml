@@ -27,8 +27,14 @@ tokens:
   - '^Use this field to\b'
 
 exceptions:
+  # "Enter your X in the format Y" - adds format context, not pure echo
   - 'Enter your.{0,40}(?:format|like|e\.g\.|example)'
+  # "Select a date range" - common date picker label, acceptable
   - "Select a date"
+  # "Use this field to test/debug" - legitimate instruction for testing contexts
+  - "Use this (?:field )?to (?:test|debug|verify|preview)"
   - "Select a time"
+  # "This setting is available" - factual state statement, not meta-narration
   - "This setting is available"
+  # "This field is read-only" - constraint statement
   - "This (?:field|setting) is (?:read-only|required|optional|disabled)"

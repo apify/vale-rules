@@ -1,12 +1,17 @@
+
 extends: existence
 level: suggestion
 message: "Bare participle opener: '%s' has no subject. Consider 'This [noun] was %s...' or restructure."
 ignorecase: false
 
 exceptions:
+  # Short status badges/chips - one or two words are fine without a subject
   - '^\w+ed\.?$'
+  # Passive with "by" - subject is implied by the agent
   - '^\w+ed by\b'
+  # Inside confirmation dialogs - these have their own pattern
   - "^(?:Are you sure|Do you want|Delete|Remove|Cancel)"
+  # Followed by a colon - it's a label, not a sentence
   - '^\w+ed:'
 
 tokens:

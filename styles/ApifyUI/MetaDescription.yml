@@ -1,11 +1,14 @@
 extends: existence
 level: suggestion
-message: "Meta-description: '%s' - describe what it does or why it matters, not what it is."
+message: "Meta-description: '%s': describe what it does or why it matters, not what it's."
 ignorecase: true
 
 exceptions:
+  # "This is the [proper noun]" - naming something specific
   - "This is the (?:Apify|Console|API|SDK|CLI|Actor|Platform)"
+  # "Use this to [verb] when [condition]" - conditional guidance adds value
   - 'Use this to \w+[\s\S]{0,30}(?:when|if|unless|for)'
+  # "This is where" followed by a condition or exception
   - 'This is where[\s\S]{0,30}(?:unless|except|only|but)'
 
 tokens:

@@ -1,0 +1,12 @@
+
+extends: existence
+level: suggestion
+message: "Verbose confirmation: '%s': lead with the action directly. Drop 'Do you want to.'"
+ignorecase: true
+
+tokens:
+  - '^Do you (?:want|wish|really want) to\b'
+
+exceptions:
+  # Multi-step confirmations where intent is genuinely unclear
+  - '\b(?:instead|alternatively|or would you)\b'

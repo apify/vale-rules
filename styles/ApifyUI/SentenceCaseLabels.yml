@@ -1,9 +1,19 @@
+
 extends: substitution
 level: suggestion
 message: "Sentence case: '%s' instead of '%s'. Only capitalize proper nouns."
 ignorecase: false
+nonword: true
 
 swap:
+  'Full Name': 'Full name'
+  'Display Information': 'Display information'
+  'Billing Details': 'Billing details'
+  'Personal Information': 'Personal information'
+  'Payment Method': 'Payment method'
+  'Payment Methods': 'Payment methods'
+  'Security Settings': 'Security settings'
+  'Session Settings': 'Session settings'
   'Save Changes': 'Save changes'
   'Save Settings': 'Save settings'
   'Delete Selected': 'Delete selected'
@@ -15,11 +25,6 @@ swap:
   'Show Details': 'Show details'
   'Hide Details': 'Hide details'
   'Load More': 'Load more'
-  'Learn More': 'Learn more'
-  'Read More': 'Read more'
-  'See More': 'See more'
-  'See All': 'See all'
-  'Add New': 'Add new'
   'Edit Settings': 'Edit settings'
   'Edit Details': 'Edit details'
   'Import Repository': 'Import repository'

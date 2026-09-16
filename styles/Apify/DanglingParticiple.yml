@@ -1,6 +1,7 @@
+
 extends: existence
 level: suggestion
-message: "Possible dangling participle: '%s' - does the subject after the comma match who is doing the action?"
+message: "Possible dangling participle: '%s': does the subject after the comma match who is doing the action?"
 ignorecase: true
 
 tokens:

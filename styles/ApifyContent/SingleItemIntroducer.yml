@@ -1,6 +1,7 @@
+
 extends: existence
 level: suggestion
-message: "Single-item introducer: '%s' - not a list, so remove 'like'/'such as' and use parentheses instead. Example: costs, like compute units => costs (compute units)."
+message: "Single-item introducer: '%s': not a list, so remove 'like'/'such as' and use parentheses instead. Example: costs, like compute units => costs (compute units)."
 ignorecase: true
 
 tokens:

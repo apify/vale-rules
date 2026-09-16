@@ -6,6 +6,7 @@ scope:
   - summary
   - heading
 vocab: false
+
 swap:
   'apify dashboard': Apify Console
   'apify console': Apify Console

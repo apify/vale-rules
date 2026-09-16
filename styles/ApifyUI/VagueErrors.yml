@@ -3,6 +3,7 @@ level: suggestion
 message: "Vague error: consider adding specificity to '%s'."
 ignorecase: true
 exceptions:
+  # Strings that already have a specific action or context after the vague opener
   - "something went wrong.*try again"
   - "something went wrong.*contact"
 

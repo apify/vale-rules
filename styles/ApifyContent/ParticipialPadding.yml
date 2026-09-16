@@ -1,0 +1,32 @@
+extends: existence
+message: "Participial padding: '%s'. This trailing -ing phrase reads as AI filler. Cut it or make it a separate sentence."
+level: suggestion
+scope: sentence
+
+tokens:
+  - ', highlighting'
+  - ', underscoring'
+  - ', showcasing'
+  - ', demonstrating'
+  - ', emphasizing'
+  - ', illustrating'
+  - ', reflecting'
+  - ', reinforcing'
+  - ', solidifying'
+  - ', streamlining'
+  - ', ensuring'
+  - ', enabling'
+  - ', empowering'
+  - ', fostering'
+  - ', facilitating'
+  - ', leveraging'
+  - ', harnessing'
+  - ', eliminating'
+  - ', transforming'
+  - ', revolutionizing'
+  - ', paving the way'
+
+exceptions:
+  # Technical process descriptions where the participle IS the action
+  - ", ensuring (?:that |backward |forward )?compatib"
+  - ", enabling (?:you to|users to|the)"

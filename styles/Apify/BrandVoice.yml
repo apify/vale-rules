@@ -3,12 +3,17 @@ level: suggestion
 message: "Use Apify voice: '%s' instead of '%s'."
 
 exceptions:
+  # Technical/docs context - "extract" and "scraper" are correct terms
   - "<code>"
   - "API.*(?:extract|generate)"
   - "(?:extract|generate).*API"
+  # Actor names that include "Scraper" (product names, not positioning)
   - '(?:Web|Google|Amazon|Facebook|Instagram|Twitter|TikTok|LinkedIn|YouTube)\s+Scraper'
+  # Crawlee SDK context
   - "Crawlee"
+  # Code blocks and technical content
   - "`"
+  # "out-of-the-box" in compound form (already a modifier on another noun)
   - "out-of-the-box (?:experience|support|solution)"
 
 swap:
@@ -35,7 +40,7 @@ swap:
   'AI-native platform': 'platform built for AI'
   'AI-first platform': 'platform built for AI'
   'cutting-edge technology': 'technology'
-  'state-of-the-art': ''
+  'state-of-the-art': 'modern'
   'Out-of-the-box tools': 'Ready-to-run tools'
   'out-of-the-box tools': 'ready-to-run tools'
   'Out-of-the-box solution': 'Ready-to-run solution'

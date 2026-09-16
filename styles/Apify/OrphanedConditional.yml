@@ -1,0 +1,13 @@
+extends: existence
+level: suggestion
+message: "Orphaned conditional: '%s' references a condition not stated in this string. Verify the trigger is visible elsewhere in the UI."
+
+tokens:
+  - '^Otherwise[,:]?\s'
+  - '^In that case'
+  - '^If not[,:]?\s'
+
+exceptions:
+  # "Otherwise" is fine after an "if" clause in the same string
+  - "if .+ Otherwise"
+  - "If .+ otherwise"

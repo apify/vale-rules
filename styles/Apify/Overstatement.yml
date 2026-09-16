@@ -1,6 +1,7 @@
+
 extends: existence
 level: suggestion
-message: "Overstatement: '%s' - state it plainly. Hyperbole erodes trust. (Strunk, Ch. V)"
+message: "Overstatement: '%s': state it plainly. Hyperbole erodes trust. (Strunk, Ch. V)"
 ignorecase: true
 
 tokens:

@@ -1,0 +1,16 @@
+extends: existence
+level: suggestion
+message: "Subjectless consequence: '%s'. Name what's affected and what triggers it."
+nonword: true
+scope: sentence
+
+tokens:
+  - 'Will be \w+ed\b'
+  - 'May be \w+ed\b'
+  - 'Gets \w+ed\b'
+
+exceptions:
+  # When preceded by a subject, it's fine
+  - '\w+ will be \w+ed'
+  - '\w+ may be \w+ed'
+  - 'that gets \w+ed'
