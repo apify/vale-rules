@@ -1,0 +1,16 @@
+extends: existence
+message: "Write 'the' before the product name in '%s'. This product takes the definite article."
+level: warning
+scope:
+  - summary
+nonword: true
+vocab: false
+tokens:
+  # A preceding lowercase word marks running prose. Without one the name is
+  # a heading, a list entry, or link text, where the article is not expected.
+  # The excluded words are those that already follow an article, since the
+  # engine cannot look behind a variable number of them reliably. The trailing
+  # guard skips the compound-noun use, where the name modifies a following
+  # noun: "Apify API token", "Apify platform usage".
+  - '\b(?!(?:the|latest|full|new|official|current|authorized|authenticated|underlying|same|entire|whole|public|free|old|deprecated)\b)[a-z][\w-]* Apify (?:SDK|CLI|API)\b(?! (?:[A-Z]|token|tokens|key|keys|command|commands|call|calls|client|clients|reference|docs|documentation|endpoint|endpoints|request|requests|response|responses|method|methods|version|versions|user|users|integration|integrations|credentials|scopes|permissions|install|installation|schema|schemas))'
+  - '\b(?!(?:the|latest|full|new|official|current|authorized|authenticated|underlying|same|entire|whole|public|free|old|deprecated)\b)[a-z][\w-]* Apify platform\b(?! (?:[A-Z]|usage|account|accounts|credits|costs|limits|pricing|billing|plan|plans|docs|documentation|features|services|team|developer|developers))'

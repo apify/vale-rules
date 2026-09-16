@@ -1,0 +1,13 @@
+extends: existence
+message: "Drop 'the' before an Actor name: '%s'. Treat Actor names as proper nouns."
+level: suggestion
+scope:
+  - summary
+nonword: true
+vocab: false
+tokens:
+  # The title-cased words before "Crawler" or "Scraper" identify an Actor name.
+  # The trailing guard keeps the documented exception, where the name modifies
+  # a following noun and the article is correct: "the Website Content Crawler
+  # Actor", "the Cheerio Scraper tutorial".
+  - '\b[Tt]he (?:[A-Z][\w-]* ){1,3}(?:Crawler|Scraper)\b(?! (?:Actors?|actors?|node|module|tutorial|tutorials|integration|integrations|template|templates|docs|documentation|page|pages|task|tasks|run|runs|API|solution|tool|tools))'

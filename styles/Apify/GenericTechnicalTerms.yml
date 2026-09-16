@@ -1,0 +1,14 @@
+extends: existence
+message: "Lowercase the generic term in '%s'. Capitalize it only inside a product name or an interface label."
+level: suggestion
+scope:
+  - summary
+  - heading
+nonword: true
+vocab: false
+tokens:
+  # The preceding lowercase word rules out a sentence start and a title-cased
+  # product name such as "Playwright MCP Server". The trailing guard rules out
+  # interface labels. Both are matched rather than looked behind or ahead of
+  # where possible: a variable-length lookbehind drops matches in this engine.
+  - '\b[a-z][\w-]* (?:AI Agents?|MCP Servers?|MCP Connectors?|API Endpoints?)\b(?! (?:[A-Z]|tab|button|page|section|dialog|node|menu|screen|field|option|docs|documentation|URL))'
