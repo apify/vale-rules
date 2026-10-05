@@ -1,0 +1,13 @@
+extends: substitution
+message: "Write '%s' instead of '%s'. Abbreviations belong in tags and code."
+ignorecase: false
+level: warning
+scope:
+  - summary
+  - heading
+vocab: false
+swap:
+  # One or two components only. A three-component version such as v3.0.0 is a
+  # tag, which the style guide allows.
+  '(?<![\w/:.-])v(\d+(?:\.\d+)?)(?!\w|\.\w)': 'version $1'
+  '(?<![\w/:.-])ver\.? ?(\d+(?:\.\d+)?)(?!\w|\.\w)': 'version $1'
