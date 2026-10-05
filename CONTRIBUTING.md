@@ -44,13 +44,15 @@ audience profile by changing its severity.
 ## Versioning
 
 - Patch: message, metadata, or regex corrections that do not expand matches.
-- Minor: new rules at `suggestion` or `warning`, or backward-compatible package
-  improvements.
-- Major: new `error` rules, severity promotions, removed or renamed rules, and
-  rules moved between styles.
+- Minor: new rules at `suggestion` or `warning`, promotions below `error`,
+  removed rules, or backward-compatible package improvements.
+- Major: new `error` rules, promotions to `error`, renamed rules, and rules moved
+  between styles.
 
-Moving a rule changes its fully qualified name (for example,
-`ApifyUI.VagueErrors`), so consumers may need to update overrides.
+Vale silently ignores overrides for rules that do not exist. Removing a rule only
+drops its alerts, but renaming or moving one changes its fully qualified name
+(for example, `ApifyUI.VagueErrors`). Existing overrides then stop applying, and
+a rule a consumer turned off runs again at its default severity.
 
 ## Commits and pull request titles
 
@@ -67,8 +69,8 @@ Commit subjects follow [Conventional Commits](https://www.conventionalcommits.or
 | `docs:`, `chore:`, `ci:`, `refactor:` | No release until the next `fix` or `feat`. |
 
 These prefixes let maintainers derive the next version from the commit log. Mark
-every major change from the versioning policy as breaking. This includes severity
-promotions and renamed or moved rules.
+every major change from the versioning policy as breaking. This includes
+promotions to `error` and renamed or moved rules.
 
 Use the same format for pull request titles. When a branch has several commits,
 the squash merge uses the title as the commit subject on `main`. Release notes
