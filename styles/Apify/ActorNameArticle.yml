@@ -10,4 +10,4 @@ tokens:
   # The trailing guard keeps the documented exception, where the name modifies
   # a following noun and the article is correct: "the Website Content Crawler
   # Actor", "the Cheerio Scraper tutorial".
-  - '\b[Tt]he (?:[A-Z][\w-]* ){1,3}(?:Crawler|Scraper)\b(?! (?:Actors?|actors?|node|module|tutorial|tutorials|integration|integrations|template|templates|docs|documentation|page|pages|task|tasks|run|runs|API|solution|tool|tools))'
+  - '\b[Tt]he (?:[A-Z][\w-]* ){1,3}(?:Crawler|Scraper)\b(?! (?:Actors?|actors?|node|module|tutorial|tutorials|integration|integrations|template|templates|docs|documentation|page|pages|task|tasks|run|runs|API|solution|tool|tools|input|inputs|output|outputs|dataset|datasets|results|settings|configuration|README|pricing))'
