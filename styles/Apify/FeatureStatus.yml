@@ -1,0 +1,14 @@
+extends: substitution
+level: suggestion
+ignorecase: false
+scope: text & ~heading & ~link & ~alt
+message: "Use '%s' instead of '%s': official Apify API documentation marks this endpoint deprecated."
+action:
+  name: replace
+swap:
+  'legacy Actor-scoped resurrect-run endpoint': 'deprecated Actor-scoped resurrect-run endpoint'
+  'alternative Actor-scoped resurrect-run endpoint': 'deprecated Actor-scoped resurrect-run endpoint'
+  'Actor-scoped resurrect-run endpoint is legacy': 'Actor-scoped resurrect-run endpoint is deprecated'
+  'Actor-scoped resurrect-run endpoint is alternative': 'Actor-scoped resurrect-run endpoint is deprecated'
+
+link: https://docs.apify.com/api/v2/actor-run-resurrect-post

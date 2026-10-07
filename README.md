@@ -8,10 +8,10 @@ guide. All rules ship in one package. Each team selects the styles it needs in
 
 | Style | Rules | Intended scope |
 |---|---:|---|
-| `Apify` | 68 | Shared brand, terminology, US English, accessibility, grammar, punctuation, and voice |
-| `ApifyDocs` | 4 | Documentation conventions: generated H1s, titled admonitions, heading form, and factual language |
-| `ApifyUI` | 66 | Console and product microcopy: controls, errors, dialogs, empty states, notifications, and recovery paths |
-| `ApifyContent` | 46 | Blog, marketing, Store, and Actor editorial copy: positioning, claims, feature language, and content structure |
+| `Apify` | 82 | Shared brand, terminology, US English, accessibility, grammar, punctuation, and voice |
+| `ApifyDocs` | 12 | Documentation conventions: generated H1s, titled admonitions, heading form, and factual language |
+| `ApifyUI` | 81 | Console and product microcopy: controls, errors, dialogs, empty states, notifications, and recovery paths |
+| `ApifyContent` | 56 | Blog, marketing, Store, and Actor editorial copy: positioning, claims, feature language, and content structure |
 
 Each rule exists in exactly one style. Team configurations compose the shared
 `Apify` style with an audience style, so common rules remain single-sourced.

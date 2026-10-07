@@ -8,6 +8,11 @@ import { after, test } from 'node:test';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const fixtures = JSON.parse(readFileSync(new URL('./rules.json', import.meta.url), 'utf8'));
+const terminology = JSON.parse(readFileSync(new URL('./terminology.json', import.meta.url), 'utf8'));
+assert.equal(terminology.length, 38, 'retain every requirement from issue #3');
+fixtures.push(...terminology.map(({name, checks, text, message, replacement}) => ({
+  name: `Issue 3: ${name}`, rule: checks[0], text, message, replacement, count: 1,
+})));
 const temporary = mkdtempSync(path.join(tmpdir(), 'vale-rules-test-'));
 const config = path.join(temporary, '.vale.ini');
 writeFileSync(config, [

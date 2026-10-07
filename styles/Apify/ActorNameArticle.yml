@@ -1,13 +1,10 @@
 extends: existence
-message: "Drop 'the' before an Actor name: '%s'. Treat Actor names as proper nouns."
 level: suggestion
-scope:
-  - summary
+ignorecase: false
+message: "Drop 'the' before an Actor name: '%s'. Treat Actor names as proper nouns."
 nonword: true
 vocab: false
+scope: text & ~heading
+
 tokens:
-  # The title-cased words before "Crawler" or "Scraper" identify an Actor name.
-  # The trailing guard keeps the documented exception, where the name modifies
-  # a following noun and the article is correct: "the Website Content Crawler
-  # Actor", "the Cheerio Scraper tutorial".
-  - '\b[Tt]he (?:[A-Z][\w-]* ){1,3}(?:Crawler|Scraper)\b(?! (?:Actors?|actors?|node|module|tutorial|tutorials|integration|integrations|template|templates|docs|documentation|page|pages|task|tasks|run|runs|API|solution|tool|tools|input|inputs|output|outputs|dataset|datasets|results|settings|configuration|README|pricing))'
+  - '\b[Tt]he (?:RAG Web Browser|(?:[A-Z][\w-]*[ \t]+){1,3}(?:Crawler|Scraper))\b(?![ \t]+(?:with|for)[ \t]+[A-Z])(?=$|[.,;:!?)]|[ \t]+(?:to|for|with|without|from|on|in|at|and|or|is|are|was|were|has|have|had|can|could|will|would|should|must|may|might|does|did|performs?|extracts?|crawls?|scrapes?|collects?|returns?|provides?|supports?|helps?|lets|allows?|works?|uses?|requires?)\b)'

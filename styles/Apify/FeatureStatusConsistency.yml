@@ -1,0 +1,8 @@
+extends: existence
+level: suggestion
+ignorecase: false
+nonword: true
+scope: text & ~heading & ~link & ~alt
+message: "Use 'deprecated' for a feature officially scheduled for removal. Verify the removal claim against official product or SDK documentation."
+tokens:
+  - '\b(?:legacy|alternative)[ \t]+(?:endpoint|feature|API|implementation|approach)s?[ \t]+(?:(?:is|are|was|were)[ \t]+(?:officially deprecated|scheduled for removal)|will be removed)\b'
