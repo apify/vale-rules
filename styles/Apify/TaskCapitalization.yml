@@ -1,0 +1,39 @@
+extends: substitution
+message: "Lowercase '%s' instead of '%s'. Unlike 'Actor', task/schedule aren't branded product names."
+level: suggestion
+scope: text & ~heading & ~link & ~alt & ~strong
+ignorecase: false
+
+exceptions:
+  # Sentence start - capitalization is correct
+  - "^Task"
+  - "^Schedule"
+  # After period/colon - new sentence
+  - '[.!?:]\s+Task'
+  - '[.!?:]\s+Schedule'
+  # Inside code/backticks
+  - "`[^`]*Task[^`]*`"
+  - "`[^`]*Schedule[^`]*`"
+  # Heading context - sentence-case allows first word capitalized
+  # (Vale heading scope handles this separately)
+  - '^#{1,6}\s+Task'
+  - '^#{1,6}\s+Schedule'
+  # UI label references (bold/quoted) - showing the label as it appears in the UI
+  - '\*\*[^*]*Task[^*]*\*\*'
+  - '\*\*[^*]*Schedule[^*]*\*\*'
+
+swap:
+  'a Task': 'a task'
+  'the Task': 'the task'
+  'this Task': 'this task'
+  'each Task': 'each task'
+  'your Task': 'your task'
+  'new Task': 'new task'
+  '(?<=[a-z] )Tasks': 'tasks'
+  'a Schedule': 'a schedule'
+  'the Schedule': 'the schedule'
+  'this Schedule': 'this schedule'
+  'each Schedule': 'each schedule'
+  'your Schedule': 'your schedule'
+  'new Schedule': 'new schedule'
+  '(?<=[a-z] )Schedules': 'schedules'
