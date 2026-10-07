@@ -12,6 +12,19 @@ Every rule has one canonical YAML file in one style:
 If a rule applies to more than one audience, put it in `Apify` instead of
 copying it. Consumers compose styles through `BasedOnStyles`.
 
+When adding or changing a rule, use YAML comments to explain where it applies
+and why. A pattern found in a changelog may apply to docs, Actor READMEs, blog
+posts, or Store copy too. Choose the style based on where the rule applies,
+not where you found the pattern.
+
+`ApifyContent` isn't limited to READMEs or changelogs. The consumer's config
+selects styles for each file pattern. Comments and file suffixes don't select
+styles.
+
+Keep format-specific advice in publishing guides unless the config enforces
+its assumptions. For example, a changelog may already show a “New” label.
+That doesn't justify banning “New” from headings in other content.
+
 ## Rule files
 
 A rule's filename is its public name. Vale addresses it as the style directory
