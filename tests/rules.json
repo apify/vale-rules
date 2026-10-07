@@ -123,5 +123,10 @@
   {"name":"flag a sentence-initial product without an article", "rule":"Apify.ProductArticles", "text":"Install Apify CLI today.", "count":1},
   {"name":"allow the article when a verb reintroduces the product", "rule":"Apify.ProductArticles", "text":"Read the guide using the Apify API today.", "count":0},
   {"name":"allow a possessive with the article before the product", "rule":"Apify.ProductArticles", "text":"Use your guide with the Apify SDK today.", "count":0},
-  {"name":"allow a sentence-initial product with an article", "rule":"Apify.ProductArticles", "text":"Install the Apify CLI today.", "count":0}
+  {"name":"allow a sentence-initial product with an article", "rule":"Apify.ProductArticles", "text":"Install the Apify CLI today.", "count":0},
+  {"name":"PleaseRemoval: preserve please softening an error (same sentence)", "rule":"Apify.PleaseRemoval", "text":"The upload failed, so please try again.", "count":0},
+  {"name":"PleaseRemoval: preserve please after an error sentence (cross-sentence)", "rule":"Apify.PleaseRemoval", "text":"Your payment failed. Please try again.", "count":0},
+  {"name":"PleaseRemoval: preserve please in an effortful support request", "rule":"Apify.PleaseRemoval", "text":"Please contact support if this persists.", "count":0},
+  {"name":"PleaseRemoval: flag please in a routine instruction", "rule":"Apify.PleaseRemoval", "text":"Please select a format.", "count":1},
+  {"name":"PleaseRemoval: flag is detection-only (no autofix or suggestion)", "rule":"Apify.PleaseRemoval", "text":"Please enter your email.", "count":1, "noReplacement":true}
 ]

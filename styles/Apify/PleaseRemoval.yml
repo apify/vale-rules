@@ -68,6 +68,7 @@ swap:
   'please email': 'email'
   'please keep': 'keep'
   'please explain': 'explain'
+  'please open': 'open'
   'please be advised that': ''
 
 exceptions:
@@ -105,6 +106,16 @@ exceptions:
   - '\b(?:failed|error|incorrect|couldn.t|can.t|won.t|isn.t|doesn.t match|wasn.t|expir(?:ing|ed)|overdue|suspend(?:ed|ing)?|disabled|limited|restricted|not available|not valid|not approved)\b.{0,150}[.!?]\s+[Pp]lease\b'
   # Same pattern for cost/removal language - user didn't cause this, system is deferential.
   - '\b(?:price.*increase|increase.*price|remove.*from your account|cost.*go up|charged.*extra|no longer valid)\b.{0,150}[.!?]\s+[Pp]lease\b'
+  # ── Vale-exportable mirror of the two error-word guards above.
+  # The guards above end at \bPlease\b; copy-lint honors them, but the exported
+  # Vale rule does not (it still flags "...failed. Please try again."). Observed
+  # under Vale 3.24.0: ending the exception on the swapped verb ([Pp]lease\s+\w+)
+  # makes Vale honor it; the exact scoping reason is unconfirmed. Both are bounded
+  # to 100 chars (one sentence, or one sentence break before "Please <verb>").
+  # Known limit: past ~100 chars Vale flags where copy-lint still preserves; a
+  # wider bound would suppress unrelated requests, so it is left as-is.
+  - '\b(?:invalid|error|incorrect|failed|wrong|cannot|can.t|couldn.t|won.t|isn.t|expir(?:ing|ed)|overdue|past due|suspend(?:ed|ing)?|disabled|limited|restricted|not available|not valid|not approved|verification|verify)\b[^.!?]{0,100}[Pp]lease\s+\w+'
+  - '\b(?:failed|error|incorrect|couldn.t|can.t|won.t|isn.t|doesn.t match|wasn.t|expir(?:ing|ed)|overdue|suspend(?:ed|ing)?|disabled|limited|restricted|not available|not valid|not approved)\b[^.!?]{0,100}[.!?]\s+[Pp]lease\s+\w+'
   # "Please help us / allow us / let us" - collaborative request where courtesy is genuine.
   # The user is being asked to participate, not just click a button.
   - '\b[Pp]lease\s+(?:help|allow|let|grant|give|permit)\s+us\b'
