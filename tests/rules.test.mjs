@@ -35,6 +35,10 @@ for (const [index, fixture] of fixtures.entries()) {
     assert.ok(Object.values(output).every(Array.isArray), result.stdout);
     const alerts = Object.values(output).flat().filter((alert) => alert.Check === fixture.rule);
     assert.equal(alerts.length, fixture.count, JSON.stringify(alerts, null, 2));
+    if (fixture.message) assert.ok(alerts.some(alert => alert.Message.includes(fixture.message)), JSON.stringify(alerts));
+    if (fixture.noReplacement) {
+      assert.ok(alerts.every(alert => !alert.Action?.Name && !alert.Suggestions?.length), JSON.stringify(alerts));
+    }
     if (fixture.lines) assert.deepEqual(alerts.map((alert) => alert.Line), fixture.lines);
     if (fixture.replacement) {
       assert.equal(alerts[0].Action.Name, 'replace');
