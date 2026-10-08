@@ -22,5 +22,15 @@
     "format": "md",
     "input": "You can configure the Actor.",
     "contains": "ApifyContent.WeakOpener"
+  },
+  {
+    "name": "Complete restatements retain meaning while comma style is checked",
+    "format": "md",
+    "input": "The only allowed colors are the two primary options, i.e., red, blue.",
+    "absent": [
+      "Apify.LatinAbbreviations",
+      "Apify.IeEgConfusion"
+    ],
+    "contains": "Apify.NoCommaAfterEg"
   }
 ]

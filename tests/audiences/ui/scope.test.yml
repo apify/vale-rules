@@ -40,5 +40,17 @@
     "format": "txt",
     "input": "Request failed. Try again.",
     "absent": "ApifyUI.MissingRecoveryPath"
+  },
+  {
+    "name": "UI recognizes an indirect retry instruction",
+    "format": "txt",
+    "input": "Request failed. You can retry the upload.",
+    "absent": "ApifyUI.MissingRecoveryPath"
+  },
+  {
+    "name": "UI recognizes a plan upgrade instruction",
+    "format": "txt",
+    "input": "Request failed. Upgrade your plan.",
+    "absent": "ApifyUI.MissingRecoveryPath"
   }
 ]

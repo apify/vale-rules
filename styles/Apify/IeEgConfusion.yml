@@ -1,14 +1,11 @@
 extends: existence
 level: suggestion
-message: "Possible i.e./e.g. confusion: '%s': if listing examples, use 'e.g.' (for example). 'i.e.' means 'that's' (restating the same thing)."
+message: "Check the intended meaning of '%s': 'i.e.' means 'that is'; 'e.g.' means 'for example'. Rewrite the repeated introducer as needed."
 ignorecase: false
+nonword: true
+scope: paragraph
 
-exceptions:
-  # "i.e., the [noun]" - genuine restatement/clarification
-  - 'i\.e\.,? the \w+'
-  # "i.e., [proper noun]" - naming the specific thing (restatement)
-  - 'i\.e\.,? [A-Z][a-z]+'
-
+# Do not infer confusion from comma-separated lists: they can be complete restatements.
+# Detection only; choosing an abbreviation requires the author's intended meaning.
 tokens:
-  - 'i\.e\.,? \w+, \w+'
-  - 'i\.e\.,? (?:such as|like)'
+  - '\bi\.e\.,?[ \t]+(?:such as|like|for example)\b'

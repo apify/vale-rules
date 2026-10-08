@@ -118,12 +118,20 @@ The smaller Node suite checks replacement actions and the absence of unsafe fixe
 which native output assertions do not expose. Selected safe replacements are applied and linted again to verify the
 resulting text and confirm the original warning is gone.
 
-The native test runner needs Vale 3.24.0+. The package supports Vale 3.22.0+;
-3.0.0 rejects the existing `vocab` rule key. The compatibility suite batches the
+Use Vale 3.24.0+ to pass the complete native suite. Vale 3.22.0 runs `vale test`
+but misses two HTML bold-fragment cases (see below). The package supports Vale
+3.22.0+; 3.0.0 rejects the existing `vocab` rule key. The compatibility suite batches the
 same fixture inputs through normal linting on both 3.22.0 and 3.24.0. To test
 another installed binary, set `VALE_BIN` to its absolute path when running the
 Node suites. This verifies our chosen baseline, not the earliest Vale version
 that could support every rule.
+
+Vale 3.22.0 misses bare inline HTML fragments at EOF. The two version-specific
+outcomes in `tests/compatibility-exceptions.json` record that upstream limitation;
+they do not claim the missed diagnostics are correct. Full HTML paragraph checks
+must pass on both versions, and native 3.24.0 tests require fragment detection.
+Use Vale 3.24.0 for HTML fragment linting. Exceptions must name an exact version,
+include a reason, and retain the normal expected output in the native fixture.
 
 `tests/rules.test.yml` uses JSON syntax, which is valid YAML and can also be read
 by Node.js without an additional dependency. Add behavior regressions there and
@@ -155,9 +163,9 @@ metadata files with their sources, and lints with the installed package. It does
 not contact GitHub or publish anything. A sandbox that prohibits local listening
 sockets needs permission to run this test.
 
-Dedicated positive and valid-text cases currently cover 26 of 231 rules. The
+Dedicated positive and valid-text cases currently cover 30 of 231 rules. The
 coverage report requires both kinds for every tested rule and reports the
-remaining 205. It is not a complete rule-coverage claim. Consumer Views, JSON or
+remaining 201. It is not a complete rule-coverage claim. Consumer Views, JSON or
 TypeScript extraction, and real consumer repository corpora still need their
 own integration tests.
 

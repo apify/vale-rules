@@ -356,5 +356,17 @@
     "count": 1,
     "replacement": "Select the tab",
     "fixed": "Continue.\n\nSelect the tab to continue."
+  },
+  {
+    "name": "Latin redundancy is review-only",
+    "rule": "Apify.LatinAbbreviations",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "Latin confusion is review-only",
+    "rule": "Apify.IeEgConfusion",
+    "count": 1,
+    "noReplacement": true
   }
 ]

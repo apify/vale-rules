@@ -40,5 +40,17 @@
     "format": "html",
     "input": "<code>Use Apify SDK today.</code>",
     "absent": "Apify.ProductArticles"
+  },
+  {
+    "name": "Docs preserve abbreviation code examples",
+    "format": "mdx",
+    "input": "```text\ne.g., Node.js\n```",
+    "absent": "Apify.NoCommaAfterEg"
+  },
+  {
+    "name": "Docs detect long bold passages",
+    "format": "md",
+    "input": "**This entire passage is bold and contains considerably more than eighty characters to demonstrate excessive emphasis.**",
+    "contains": "Apify.OverBolding"
   }
 ]
