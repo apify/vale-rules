@@ -14,7 +14,11 @@ permissions:
   contents: write
 
 jobs:
+  validation:
+    uses: ./.github/workflows/tests.yaml
+
   release:
+    needs: validation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -59,12 +63,7 @@ jobs:
           fi
 
       - name: Build combined package
-        run: |
-          mkdir -p dist/ApifyStyleGuide/styles
-          cp -R styles/Apify styles/ApifyDocs styles/ApifyUI styles/ApifyContent dist/ApifyStyleGuide/styles/
-          cp LICENSE dist/ApifyStyleGuide/
-          cd dist
-          zip -r ../ApifyStyleGuide.zip ApifyStyleGuide -x '*.DS_Store'
+        run: bash tools/build-package.sh .
 
       # Last mutation before publishing. Pushing this tag does not re-trigger the
       # workflow: GITHUB_TOKEN pushes do not fire events.

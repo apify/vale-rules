@@ -2629,5 +2629,12 @@
     "format": "md",
     "input": "No data availableish",
     "want": ""
+  },
+  {
+    "name": "apply tab replacement on a later line",
+    "format": "md",
+    "input": "Continue.\n\nClick the tab to continue.",
+    "want": "3:1:Apify.DeviceAgnosticVerbs:Device-specific verb: 'Select the tab' instead of 'Click the tab'. Use input-neutral language for tabs, menus, and options.\n",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
   }
 ]

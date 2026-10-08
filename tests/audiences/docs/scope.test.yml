@@ -1,0 +1,44 @@
+[
+  {
+    "name": "docs enables shared terminology",
+    "format": "md",
+    "input": "Use Apify SDK today.",
+    "contains": "Apify.ProductArticles"
+  },
+  {
+    "name": "docs heading scope",
+    "format": "md",
+    "input": "## Running the Actor",
+    "contains": "ApifyDocs.GerundHeading"
+  },
+  {
+    "name": "docs UI label scope",
+    "format": "md",
+    "input": "Save Changes",
+    "absent": "ApifyUI.SentenceCaseLabels"
+  },
+  {
+    "name": "docs editorial scope",
+    "format": "md",
+    "input": "You can configure the Actor.",
+    "absent": "ApifyContent.WeakOpener"
+  },
+  {
+    "name": "MDX mapping preserves heading checks",
+    "format": "mdx",
+    "input": "## Running the Actor",
+    "contains": "ApifyDocs.GerundHeading"
+  },
+  {
+    "name": "HTML headings are checked",
+    "format": "html",
+    "input": "<h2>Running the Actor</h2>",
+    "contains": "ApifyDocs.GerundHeading"
+  },
+  {
+    "name": "HTML code stays exempt",
+    "format": "html",
+    "input": "<code>Use Apify SDK today.</code>",
+    "absent": "Apify.ProductArticles"
+  }
+]

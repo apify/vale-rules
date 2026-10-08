@@ -3,19 +3,22 @@
     "name": "retain tab replacement action",
     "rule": "Apify.DeviceAgnosticVerbs",
     "count": 1,
-    "replacement": "Select the tab"
+    "replacement": "Select the tab",
+    "fixed": "Select the tab to continue."
   },
   {
     "name": "retain click-on replacement action",
     "rule": "Apify.DeviceAgnosticVerbs",
     "count": 1,
-    "replacement": "Select"
+    "replacement": "Select",
+    "fixed": "Select the tab to continue."
   },
   {
     "name": "retain clicking replacement action",
     "rule": "Apify.DeviceAgnosticVerbs",
     "count": 1,
-    "replacement": "by selecting"
+    "replacement": "by selecting",
+    "fixed": "Continue by selecting the tab."
   },
   {
     "name": "keep a nearby tab warning beside a link exception",
@@ -346,5 +349,12 @@
     "rule": "Apify.FeatureStatus",
     "replacement": "deprecated Actor-scoped resurrect-run endpoint",
     "count": 1
+  },
+  {
+    "name": "apply tab replacement on a later line",
+    "rule": "Apify.DeviceAgnosticVerbs",
+    "count": 1,
+    "replacement": "Select the tab",
+    "fixed": "Continue.\n\nSelect the tab to continue."
   }
 ]

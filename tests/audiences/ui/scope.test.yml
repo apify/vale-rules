@@ -1,0 +1,44 @@
+[
+  {
+    "name": "ui enables shared terminology",
+    "format": "md",
+    "input": "Use Apify SDK today.",
+    "contains": "Apify.ProductArticles"
+  },
+  {
+    "name": "ui heading scope",
+    "format": "md",
+    "input": "## Running the Actor",
+    "absent": "ApifyDocs.GerundHeading"
+  },
+  {
+    "name": "ui UI label scope",
+    "format": "md",
+    "input": "Save Changes",
+    "contains": "ApifyUI.SentenceCaseLabels"
+  },
+  {
+    "name": "ui editorial scope",
+    "format": "md",
+    "input": "You can configure the Actor.",
+    "absent": "ApifyContent.WeakOpener"
+  },
+  {
+    "name": "Plain-text UI labels are checked",
+    "format": "txt",
+    "input": "Save Changes",
+    "contains": "ApifyUI.SentenceCaseLabels"
+  },
+  {
+    "name": "HTML button labels are checked",
+    "format": "html",
+    "input": "<button>Save Changes</button>",
+    "contains": "ApifyUI.SentenceCaseLabels"
+  },
+  {
+    "name": "UI recovery instruction is preserved",
+    "format": "txt",
+    "input": "Request failed. Try again.",
+    "absent": "ApifyUI.MissingRecoveryPath"
+  }
+]

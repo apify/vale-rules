@@ -18,7 +18,7 @@ Each rule exists in exactly one style. Team configurations compose the shared
 
 ## Requirements
 
-Use Vale 3.0.0 or later, as declared in each style's `meta.json`. Earlier
+Use Vale 3.22.0 or later, as declared in each style's `meta.json`. Earlier
 versions are not supported.
 
 ## Install
@@ -74,6 +74,9 @@ Install the Vale CLI and the [Vale Linter extension for VS
 Code](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode)
 (`ChrisChinchilla.vale-vscode`). After `vale sync`, the extension reads the workspace's
 `.vale.ini` without additional configuration.
+
+The extension requires Vale 3.10.0 or later. Running this repository's tests
+requires Vale 3.24.0 or later.
 
 Use these settings when you want all suggestions while writing or Vale is not on
 the extension's `PATH`:
@@ -219,13 +222,17 @@ Node.js 18 or later:
 
 ```bash
 vale --no-global --config=tests/.vale.ini test tests/rules.test.yml
-node --test tests/actions.test.mjs
+for audience in docs ui content; do
+  vale --no-global --config="tests/audiences/$audience/.vale.ini" test "tests/audiences/$audience/scope.test.yml"
+done
+node --test tests/compatibility.test.mjs tests/actions.test.mjs tests/package.test.mjs
 ```
 
-The native Vale suite checks diagnostics and false positives. The Node suite
-checks replacement actions using the same fixture inputs. See
-[Validation](./CONTRIBUTING.md#validation) for fixture maintenance and consumer
-validation.
+The native Vale suites check diagnostics, false positives, and audience scopes.
+The Node suites check compatibility, replacement actions, and package installation
+using the same rule sources. Package tests also require `bash`, `zip`, and `unzip`.
+See [Validation](./CONTRIBUTING.md#validation) for how to add tests and validate
+changes in consumer repositories.
 
 ## License
 

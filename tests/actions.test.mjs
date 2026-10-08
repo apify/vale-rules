@@ -6,6 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { after, test } from 'node:test';
 
+const executable = process.env.VALE_BIN || 'vale';
 const root = fileURLToPath(new URL('../', import.meta.url));
 // Native `vale test` owns diagnostic behavior; these cases inspect action metadata.
 const fixtures = JSON.parse(readFileSync(new URL('./actions.json', import.meta.url), 'utf8'));
@@ -23,7 +24,7 @@ for (const [index, fixture] of fixtures.entries()) {
     const file = path.join(temporary, `${index}.${casesByName.get(fixture.name)?.format || 'md'}`);
     assert.ok(casesByName.has(fixture.name), `missing native case: ${fixture.name}`);
     writeFileSync(file, casesByName.get(fixture.name).input);
-    const result = spawnSync('vale', ['--no-global', '--config', config, '--output=JSON', file], {
+    const result = spawnSync(executable, ['--no-global', '--config', config, '--output=JSON', file], {
       encoding: 'utf8',
       timeout: 30000,
     });
@@ -39,7 +40,28 @@ for (const [index, fixture] of fixtures.entries()) {
     if (fixture.replacement) {
       assert.equal(alerts[0].Action.Name, 'replace');
       assert.ok(alerts[0].Action.Params.includes(fixture.replacement), JSON.stringify(alerts[0]));
-
+      if (fixture.fixed) {
+        // Vale columns count characters; apply from the end to preserve offsets.
+        const lines = casesByName.get(fixture.name).input.split('\n');
+        for (const alert of [...alerts].sort((a, b) => b.Line - a.Line || b.Span[0] - a.Span[0])) {
+          assert.ok(alert.Action.Params.includes(fixture.replacement));
+          const characters = Array.from(lines[alert.Line - 1]);
+          characters.splice(alert.Span[0] - 1, alert.Span[1] - alert.Span[0] + 1,
+            ...Array.from(fixture.replacement));
+          lines[alert.Line - 1] = characters.join('');
+        }
+        assert.equal(lines.join('\n'), fixture.fixed);
+        writeFileSync(file, fixture.fixed);
+        const corrected = spawnSync(executable, ['--no-global', '--config', config, '--output=JSON', file], {
+          encoding: 'utf8', timeout: 30000,
+        });
+        assert.ifError(corrected.error);
+        assert.ok([0, 1].includes(corrected.status), corrected.stderr || corrected.stdout);
+        const correctedOutput = JSON.parse(corrected.stdout);
+        assert.ok(Object.values(correctedOutput).every(Array.isArray));
+        assert.ok(Object.values(correctedOutput).flat().every(a => a.Check !== fixture.rule),
+          corrected.stdout);
+      }
     }
   });
 }

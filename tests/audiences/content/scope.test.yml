@@ -1,0 +1,26 @@
+[
+  {
+    "name": "content enables shared terminology",
+    "format": "md",
+    "input": "Use Apify SDK today.",
+    "contains": "Apify.ProductArticles"
+  },
+  {
+    "name": "content heading scope",
+    "format": "md",
+    "input": "## Running the Actor",
+    "absent": "ApifyDocs.GerundHeading"
+  },
+  {
+    "name": "content UI label scope",
+    "format": "md",
+    "input": "Save Changes",
+    "absent": "ApifyUI.SentenceCaseLabels"
+  },
+  {
+    "name": "content editorial scope",
+    "format": "md",
+    "input": "You can configure the Actor.",
+    "contains": "ApifyContent.WeakOpener"
+  }
+]
