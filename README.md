@@ -70,9 +70,9 @@ To update, change the version and run `vale sync` again.
 
 ### Editors
 
-Install the Vale CLI and the [Vale VS Code
-extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server)
-(`errata-ai.vale-server`). After `vale sync`, the extension reads the workspace's
+Install the Vale CLI and the [Vale Linter extension for VS
+Code](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode)
+(`ChrisChinchilla.vale-vscode`). After `vale sync`, the extension reads the workspace's
 `.vale.ini` without additional configuration.
 
 Use these settings when you want all suggestions while writing or Vale is not on
@@ -90,9 +90,6 @@ setting if the extension can already find Vale.
 `minAlertLevel` defaults to `inherited` and follows `.vale.ini`. Set it to
 `suggestion` to show every rule in the editor without changing the level
 configured for CI.
-
-The extension's repository is archived and its last release was in 2022, but it
-remains the standard Vale integration for VS Code.
 
 ### Continuous integration
 
