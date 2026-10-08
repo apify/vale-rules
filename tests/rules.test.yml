@@ -2391,5 +2391,243 @@
     "format": "md",
     "input": "Human actors perform on stage.",
     "want": ""
+  },
+  {
+    "name": "UI vague error needs specificity",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong.",
+    "want": "1:1:ApifyUI.VagueErrors:Vague error: consider adding specificity to 'Something went wrong'.\n"
+  },
+  {
+    "name": "UI specific error is allowed",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "The API token has expired.",
+    "want": ""
+  },
+  {
+    "name": "UI vague error ignores code",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "`Something went wrong.`",
+    "want": ""
+  },
+  {
+    "name": "UI failed request needs recovery",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed.",
+    "want": "1:1:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "UI successful request is allowed",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request completed.",
+    "want": ""
+  },
+  {
+    "name": "UI recovery rule ignores code",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "`Request failed.`",
+    "want": ""
+  },
+  {
+    "name": "UI blame language is flagged",
+    "rule": "../styles/ApifyUI/BlameLanguage.yml",
+    "format": "md",
+    "input": "You forgot the API token.",
+    "want": "1:1:ApifyUI.BlameLanguage:Blame language: 'Missing the' instead of 'You forgot the'. Describe the state, not the user's mistake.\n"
+  },
+  {
+    "name": "UI neutral missing-field text is allowed",
+    "rule": "../styles/ApifyUI/BlameLanguage.yml",
+    "format": "md",
+    "input": "Missing the API token.",
+    "want": ""
+  },
+  {
+    "name": "UI legal obligation is allowed",
+    "rule": "../styles/ApifyUI/BlameLanguage.yml",
+    "format": "md",
+    "input": "You must follow the policy.",
+    "want": ""
+  },
+  {
+    "name": "UI blame rule ignores code",
+    "rule": "../styles/ApifyUI/BlameLanguage.yml",
+    "format": "md",
+    "input": "`You forgot the API token.`",
+    "want": ""
+  },
+  {
+    "name": "UI title-case label is flagged",
+    "rule": "../styles/ApifyUI/SentenceCaseLabels.yml",
+    "format": "md",
+    "input": "Save Changes",
+    "want": "1:1:ApifyUI.SentenceCaseLabels:Sentence case: 'Save changes' instead of 'Save Changes'. Only capitalize proper nouns.\n"
+  },
+  {
+    "name": "UI sentence-case label is allowed",
+    "rule": "../styles/ApifyUI/SentenceCaseLabels.yml",
+    "format": "md",
+    "input": "Save changes",
+    "want": ""
+  },
+  {
+    "name": "UI label rule ignores code",
+    "rule": "../styles/ApifyUI/SentenceCaseLabels.yml",
+    "format": "md",
+    "input": "`Save Changes`",
+    "want": ""
+  },
+  {
+    "name": "UI label rule reads HTML text",
+    "rule": "../styles/ApifyUI/SentenceCaseLabels.yml",
+    "format": "html",
+    "input": "<button>Save Changes</button>",
+    "want": "1:9:ApifyUI.SentenceCaseLabels:Sentence case: 'Save changes' instead of 'Save Changes'. Only capitalize proper nouns.\n"
+  },
+  {
+    "name": "UI revised empty state is allowed",
+    "rule": "../styles/ApifyUI/EmptyStates.yml",
+    "format": "md",
+    "input": "No Actors yet.",
+    "want": ""
+  },
+  {
+    "name": "UI empty-state rule preserves negation",
+    "rule": "../styles/ApifyUI/EmptyStates.yml",
+    "format": "md",
+    "input": "This Actor is no longer available.",
+    "want": ""
+  },
+  {
+    "name": "UI empty-state rule ignores code",
+    "rule": "../styles/ApifyUI/EmptyStates.yml",
+    "format": "md",
+    "input": "`There are no Actors.`",
+    "want": ""
+  },
+  {
+    "name": "UI vague error with recovery is allowed",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong. Try again.",
+    "want": ""
+  },
+  {
+    "name": "UI recovered request is allowed",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed. Try again.",
+    "want": ""
+  },
+  {
+    "name": "UI empty state is flagged",
+    "rule": "../styles/ApifyUI/EmptyStates.yml",
+    "format": "md",
+    "input": "There are no Actors.",
+    "want": "1:1:ApifyUI.EmptyStates:Replace robotic phrase: 'No Actors yet.' instead of 'There are no Actors.'.\n"
+  },
+  {
+    "name": "UI vague soft-line recovery",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong.\nTry again.",
+    "want": ""
+  },
+  {
+    "name": "UI vague separate-paragraph recovery",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong.\n\nTry again.",
+    "want": "1:1:ApifyUI.VagueErrors:Vague error: consider adding specificity to 'Something went wrong'.\n"
+  },
+  {
+    "name": "UI vague courteous recovery",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong. Please try again.",
+    "want": ""
+  },
+  {
+    "name": "UI vague unrelated second sentence",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong. The dataset is empty.",
+    "want": "1:1:ApifyUI.VagueErrors:Vague error: consider adding specificity to 'Something went wrong'.\n"
+  },
+  {
+    "name": "UI failed request soft-line recovery",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed.\nTry again.",
+    "want": ""
+  },
+  {
+    "name": "UI failed request separate-paragraph recovery",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed.\n\nTry again.",
+    "want": "1:1:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "UI failed request courteous recovery",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed. Please try again.",
+    "want": ""
+  },
+  {
+    "name": "UI failed request unrelated second sentence",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed. The dataset is empty.",
+    "want": "1:1:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "UI revised events empty state is stable",
+    "rule": "../styles/ApifyUI/EmptyStates.yml",
+    "format": "md",
+    "input": "No events yet.",
+    "want": ""
+  },
+  {
+    "name": "UI events prose is preserved",
+    "rule": "../styles/ApifyUI/EmptyStates.yml",
+    "format": "md",
+    "input": "No events occurred yesterday.",
+    "want": ""
+  },
+  {
+    "name": "UI standalone events empty state is flagged",
+    "rule": "../styles/ApifyUI/EmptyStates.yml",
+    "format": "md",
+    "input": "No events.",
+    "want": "1:1:ApifyUI.EmptyStates:Replace robotic phrase: 'No events yet.' instead of 'No events.'.\n"
+  },
+  {
+    "name": "UI vague error does not match a longer word",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrongly.",
+    "want": ""
+  },
+  {
+    "name": "UI recovery check does not match a longer word",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failedness.",
+    "want": ""
+  },
+  {
+    "name": "UI empty-state rule avoids word-prefix matches",
+    "rule": "../styles/ApifyUI/EmptyStates.yml",
+    "format": "md",
+    "input": "No data availableish",
+    "want": ""
   }
 ]

@@ -24,19 +24,12 @@ exceptions:
   # Long strings likely have context elsewhere
   - "^.{80,}$"
 
-tokens:
-  - 'Something went wrong'
-  - 'An error occurred'
-  - 'An unexpected error occurred'
-  - 'Operation failed'
-  - 'Request failed'
-  - 'Action failed'
-  - 'Could not complete'
-  - 'Unable to complete'
-  - 'Cannot be completed'
-  - 'This action cannot be performed'
+# Read the following recovery sentence in the same paragraph. Exceptions
+# only see the matched text, so the pattern guards the immediate recovery instruction.
+scope: paragraph
+nonword: true
 
-  - '^Couldn.t \w+[^.]*\.?$'
-  - '^Can.t \w+[^.]*\.?$'
-  - '^We couldn.t \w+[^.]*\.?$'
-  - '^We can.t \w+[^.]*\.?$'
+# raw fragments concatenate: apply one recovery guard to all error phrases.
+raw:
+  - '(?:\b(?:Something went wrong|An error occurred|An unexpected error occurred|Operation failed|Request failed|Action failed|Could not complete|Unable to complete|Cannot be completed|This action cannot be performed)\b|^Couldn.t \w+[^.]*\.?$|^Can.t \w+[^.]*\.?$|^We couldn.t \w+[^.]*\.?$|^We can.t \w+[^.]*\.?$)'
+  - '(?![.!?]?\s+(?:please\s+)?(?:try|refresh|check|contact|sign in|log in|restart|reload|go back|update|wait)\b)'
