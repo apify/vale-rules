@@ -1,6 +1,21 @@
 # Terminology coverage
 
-The 38 probes in [tests/terminology.json](../tests/terminology.json) track the requirements reported in [issue #3](https://github.com/apify/vale-rules/issues/3). Each must produce the named rule and the intended correction, not merely an unrelated alert. Run `node --test tests/rules.test.mjs` to execute these probes and the valid-text regressions.
+The 38 cases prefixed `Issue 3:` in [tests/rules.test.yml](../tests/rules.test.yml)
+track the requirements reported in [issue #3](https://github.com/apify/vale-rules/issues/3).
+Each must produce the named rule and the intended correction, not merely an
+unrelated alert.
+
+Run both commands from the repository root with Vale 3.24.0 or later and Node.js
+18 or later:
+
+```bash
+vale --no-global --config=tests/.vale.ini test tests/rules.test.yml
+node --test tests/actions.test.mjs
+```
+
+The first checks diagnostics and valid-text regressions; the second verifies
+replacement actions. See [Validation](../CONTRIBUTING.md#validation) for fixture
+maintenance and consumer testing.
 
 ## Coverage and review boundaries
 

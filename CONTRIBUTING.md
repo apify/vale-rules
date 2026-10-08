@@ -95,9 +95,38 @@ cannot bypass these repository rules.
 
 ## Validation
 
-This repository has no Vale configuration or synthetic fixture suite. Pull
-request checks validate process, not rule content. The release workflow packages
-the tagged files without inspecting the rules.
+Run the repository tests from its root with **Vale 3.24.0 or later** and
+Node.js 18 or later. No npm dependencies are required:
+
+```bash
+vale --no-global --config=tests/.vale.ini test tests/rules.test.yml
+node --test tests/actions.test.mjs
+```
+
+The native Vale suite checks exact diagnostic output, including false positives,
+alert counts, messages, and locations. Rule cases run in isolation; project cases
+run through `tests/.vale.ini` with all four styles enabled. The smaller Node
+suite checks replacement actions and the absence of unsafe fixes, which native
+output assertions do not expose.
+
+`tests/rules.test.yml` uses JSON syntax, which is valid YAML and can also be read
+by Node.js without an additional dependency. Add behavior regressions there and
+add case-name references to `tests/actions.json` when replacement metadata needs
+verification. Both runners use the input from the native fixture file. An action
+case's `name` must match its native case's unique name.
+
+For an isolated case, set `rule` to the rule file's path relative to the test
+file. Omit `rule` for a project case that should use `tests/.vale.ini`. Use
+`want: ""` to require no diagnostics; otherwise, `want` records the exact
+`line:column:Check:message` output.
+
+The 38 cases prefixed `Issue 3:` retain the terminology requirements inventory.
+Review expected diagnostics before changing them; do not regenerate expectations
+merely to make a failing test pass. The suite covers selected rules and
+regressions, not every rule in the package.
+
+Pull request checks validate process, not rule content. The release workflow
+packages the tagged files without inspecting the rules.
 
 Validate changes in each affected consumer repository, starting with
 `apify-docs`:

@@ -1,0 +1,350 @@
+[
+  {
+    "name": "retain tab replacement action",
+    "rule": "Apify.DeviceAgnosticVerbs",
+    "count": 1,
+    "replacement": "Select the tab"
+  },
+  {
+    "name": "retain click-on replacement action",
+    "rule": "Apify.DeviceAgnosticVerbs",
+    "count": 1,
+    "replacement": "Select"
+  },
+  {
+    "name": "retain clicking replacement action",
+    "rule": "Apify.DeviceAgnosticVerbs",
+    "count": 1,
+    "replacement": "by selecting"
+  },
+  {
+    "name": "keep a nearby tab warning beside a link exception",
+    "rule": "Apify.DeviceAgnosticVerbs",
+    "count": 1,
+    "replacement": "select the tab"
+  },
+  {
+    "name": "EmDashAvoidance: review a trailing fragment",
+    "rule": "Apify.EmDashAvoidance",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "EmDashAvoidance: review independent clauses",
+    "rule": "Apify.EmDashAvoidance",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "EmDashAvoidance: review a participial aside",
+    "rule": "Apify.EmDashAvoidance",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "PleaseRemoval: flag is detection-only (no autofix or suggestion)",
+    "rule": "Apify.PleaseRemoval",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 199",
+    "rule": "Apify.PleaseRemoval",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 200",
+    "rule": "Apify.PleaseRemoval",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 201",
+    "rule": "Apify.PleaseRemoval",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 250",
+    "rule": "Apify.PleaseRemoval",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "PleaseRemoval: unrelated error description does not protect a later instruction",
+    "rule": "Apify.PleaseRemoval",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "GenericTechnicalTerms: You can build an AI Agent today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "AI agent"
+  },
+  {
+    "name": "GenericTechnicalTerms: You can connect to an MCP Server today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "MCP server"
+  },
+  {
+    "name": "GenericTechnicalTerms: AI Agent can help.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "AI agent"
+  },
+  {
+    "name": "GenericTechnicalTerms: MCP Server can connect.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "MCP server"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use an API Endpoint for this.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "API endpoint"
+  },
+  {
+    "name": "GenericTechnicalTerms: Configure your MCP Connectors today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "MCP connectors"
+  },
+  {
+    "name": "GenericTechnicalTerms: Create a Run for this Actor.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "run"
+  },
+  {
+    "name": "GenericTechnicalTerms: Inspect the Build before deployment.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "build"
+  },
+  {
+    "name": "GenericTechnicalTerms: Store it in a Dataset.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "dataset"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use a Key-Value Store for this.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "key-value store"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use a Request Queue for this.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "request queue"
+  },
+  {
+    "name": "GenericTechnicalTerms: Learn about Web Scraping today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "web scraping"
+  },
+  {
+    "name": "GenericTechnicalTerms: Build a Web Scraper with Crawlee.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "web scraper"
+  },
+  {
+    "name": "GenericTechnicalTerms: Configure a Proxy Server for this.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "proxy server"
+  },
+  {
+    "name": "GenericTechnicalTerms: Build a custom Crawler with Crawlee.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "crawler"
+  },
+  {
+    "name": "GenericTechnicalTerms: Build a custom Scraper with Crawlee.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "scraper"
+  },
+  {
+    "name": "GenericTechnicalTerms: Install two generic AI Agents today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "AI agents"
+  },
+  {
+    "name": "generic correction: Use generic AI Agents today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "AI agents"
+  },
+  {
+    "name": "generic correction: Connect to MCP Servers today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "MCP servers"
+  },
+  {
+    "name": "generic correction: Use MCP Connectors today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "MCP connectors"
+  },
+  {
+    "name": "generic correction: Use API Endpoints today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "API endpoints"
+  },
+  {
+    "name": "generic correction: Inspect these Runs today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "runs"
+  },
+  {
+    "name": "generic correction: Inspect these Builds today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "builds"
+  },
+  {
+    "name": "generic correction: Inspect these Datasets today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "datasets"
+  },
+  {
+    "name": "generic correction: Inspect these Key-Value Stores today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "key-value stores"
+  },
+  {
+    "name": "generic correction: Inspect these Request Queues today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "request queues"
+  },
+  {
+    "name": "generic correction: Use custom Web Scrapers today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "web scrapers"
+  },
+  {
+    "name": "generic correction: Use custom Proxy Servers today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "proxy servers"
+  },
+  {
+    "name": "generic correction: Use custom Crawlers today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "crawlers"
+  },
+  {
+    "name": "generic correction: Use custom Scrapers today.",
+    "rule": "Apify.GenericTechnicalTerms",
+    "count": 1,
+    "replacement": "scrapers"
+  },
+  {
+    "name": "Issue 3: feature casing Run",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "run",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: feature casing Build",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "build",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: feature casing Dataset",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "dataset",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: feature casing Key-Value Store",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "key-value store",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: feature casing Request Queue",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "request queue",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: feature casing Web Scraping",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "web scraping",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: generic casing AI Agent",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "AI agent",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: generic casing MCP Server",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "MCP server",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: generic casing API Endpoint",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "API endpoint",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: generic casing Web Scraper",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "web scraper",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: generic casing Proxy Server",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "proxy server",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: MCP connectors",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "MCP connectors",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: generic casing Crawler",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "crawler",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: generic casing Scraper",
+    "rule": "Apify.GenericTechnicalTerms",
+    "replacement": "scraper",
+    "count": 1
+  },
+  {
+    "name": "Issue 3: legacy vs alternative vs deprecated",
+    "rule": "Apify.FeatureStatus",
+    "replacement": "deprecated Actor-scoped resurrect-run endpoint",
+    "count": 1
+  }
+]

@@ -1,0 +1,2395 @@
+[
+  {
+    "name": "flag a short alt sentence",
+    "format": "md",
+    "input": "![The request failed](request.png)",
+    "want": "1:3:ApifyDocs.AltTextMissingPeriod:Complete sentences in alt text should end with a period.\n",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "allow a long alt fragment",
+    "format": "md",
+    "input": "![The proxy configuration settings panel](proxy.png)",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "allow a participial alt fragment",
+    "format": "md",
+    "input": "![Actor run detail showing the failed request](request.png)",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "allow a short alt label",
+    "format": "md",
+    "input": "![Proxy settings](proxy.png)",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "flag a present-tense alt sentence",
+    "format": "md",
+    "input": "![The panel shows the proxy settings](proxy.png)",
+    "want": "1:3:ApifyDocs.AltTextMissingPeriod:Complete sentences in alt text should end with a period.\n",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "flag a passive alt sentence",
+    "format": "md",
+    "input": "![The settings are displayed](proxy.png)",
+    "want": "1:3:ApifyDocs.AltTextMissingPeriod:Complete sentences in alt text should end with a period.\n",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "allow a relative clause in an alt fragment",
+    "format": "md",
+    "input": "![A screenshot of the panel that shows proxy settings](proxy.png)",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "allow an alt sentence ending in a period",
+    "format": "md",
+    "input": "![The request failed.](request.png)",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "allow an alt sentence ending in an exclamation mark",
+    "format": "md",
+    "input": "![The request failed!](request.png)",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "allow a quoted final sentence",
+    "format": "md",
+    "input": "![The panel shows \"Request failed.\"](request.png)",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "allow a decorative image",
+    "format": "md",
+    "input": "![](decoration.png)",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "ignore alt markup inside a code fence",
+    "format": "md",
+    "input": "```md\n![The request failed](request.png)\n```",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "ignore alt markup inside inline code",
+    "format": "md",
+    "input": "Use `![The request failed](request.png)` as a syntax example.",
+    "want": "",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "flag reference-style image alt sentences",
+    "format": "md",
+    "input": "![The request failed][image]\n\n[image]: request.png",
+    "want": "1:3:ApifyDocs.AltTextMissingPeriod:Complete sentences in alt text should end with a period.\n",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "flag HTML image alt sentences",
+    "format": "md",
+    "input": "<img src=\"request.png\" alt=\"The request failed\" />",
+    "want": "1:29:ApifyDocs.AltTextMissingPeriod:Complete sentences in alt text should end with a period.\n",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "flag only the unpunctuated alt sentence",
+    "format": "md",
+    "input": "![The request failed.](request.png)\n\n![The request failed](request.png)",
+    "want": "3:3:ApifyDocs.AltTextMissingPeriod:Complete sentences in alt text should end with a period.\n",
+    "rule": "../styles/ApifyDocs/AltTextMissingPeriod.yml"
+  },
+  {
+    "name": "flag an opening fence at file start",
+    "format": "md",
+    "input": "```\nconst x = 1;\n```",
+    "want": "1:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "flag a fence directly after a paragraph",
+    "format": "md",
+    "input": "Example:\n```\nconst x = 1;\n```",
+    "want": "2:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "allow a tagged fence with a blank final line",
+    "format": "md",
+    "input": "```javascript\nconst x = 1;\n\n```",
+    "want": "",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "allow a tagged empty fence",
+    "format": "md",
+    "input": "```json\n```",
+    "want": "",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "flag only the opening marker of an empty fence",
+    "format": "md",
+    "input": "```\n```",
+    "want": "1:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "flag multiple bare blocks",
+    "format": "md",
+    "input": "```\na\n```\n```json\n{}\n\n```\n```\nb\n```",
+    "want": "1:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n8:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "allow shorter fence literals in a longer fence",
+    "format": "md",
+    "input": "````markdown\n```\nexample\n```\n````",
+    "want": "",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "require a matching closing marker type",
+    "format": "md",
+    "input": "```markdown\n~~~\n```\n~~~\nexample\n~~~",
+    "want": "4:1:Apify.CodeFenceLanguage:Code fence without language: '~~~': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "flag tilde fences without a language",
+    "format": "md",
+    "input": "~~~\nexample\n~~~",
+    "want": "1:1:Apify.CodeFenceLanguage:Code fence without language: '~~~': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "allow tagged tilde fences",
+    "format": "md",
+    "input": "~~~text\nexample\n\n~~~",
+    "want": "",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "flag three-space-indented fences",
+    "format": "md",
+    "input": "   ```\n   example\n   ```",
+    "want": "1:4:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "ignore fence examples in indented code",
+    "format": "md",
+    "input": "    ```\n    example\n    ```",
+    "want": "",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "flag an unclosed bare fence",
+    "format": "md",
+    "input": "Intro\n\n```",
+    "want": "3:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "handle CRLF fences",
+    "format": "md",
+    "input": "Intro\r\n```\r\nexample\r\n\r\n```\r\n",
+    "want": "2:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "preserve fence location after Unicode text",
+    "format": "md",
+    "input": "R\u00e9sum\u00e9\n\n```\nx\n```",
+    "want": "3:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n",
+    "rule": "../styles/Apify/CodeFenceLanguage.yml"
+  },
+  {
+    "name": "allow click the link",
+    "format": "md",
+    "input": "Click the link to continue.",
+    "want": "",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "allow click on the link",
+    "format": "md",
+    "input": "Click on the link to continue.",
+    "want": "",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "allow click on a link",
+    "format": "md",
+    "input": "Click on a link to continue.",
+    "want": "",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "allow clicking a verification link",
+    "format": "md",
+    "input": "Continue by clicking on the verification link.",
+    "want": "",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "allow clicking a confirmation link",
+    "format": "md",
+    "input": "Continue by clicking the confirmation link.",
+    "want": "",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "allow link plurals",
+    "format": "md",
+    "input": "Continue by clicking on links.",
+    "want": "",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "allow analytics terminology",
+    "format": "md",
+    "input": "Check the click-through and click rate.",
+    "want": "",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "retain tab replacement action",
+    "format": "md",
+    "input": "Click the tab to continue.",
+    "want": "1:1:Apify.DeviceAgnosticVerbs:Device-specific verb: 'Select the tab' instead of 'Click the tab'. Use input-neutral language for tabs, menus, and options.\n",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "retain click-on replacement action",
+    "format": "md",
+    "input": "Click on the tab to continue.",
+    "want": "1:1:Apify.DeviceAgnosticVerbs:Device-specific verb: 'Select' instead of 'Click on'. Use input-neutral language for tabs, menus, and options.\n",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "retain clicking replacement action",
+    "format": "md",
+    "input": "Continue by clicking the tab.",
+    "want": "1:10:Apify.DeviceAgnosticVerbs:Device-specific verb: 'by selecting' instead of 'by clicking'. Use input-neutral language for tabs, menus, and options.\n",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "keep a nearby tab warning beside a link exception",
+    "format": "md",
+    "input": "Click on the link, then click the tab.",
+    "want": "1:25:Apify.DeviceAgnosticVerbs:Device-specific verb: 'select the tab' instead of 'click the tab'. Use input-neutral language for tabs, menus, and options.\n",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
+  },
+  {
+    "name": "retain repeated-word detection",
+    "format": "md",
+    "input": "The the Actor runs daily.",
+    "want": "1:1:Apify.Repetition:Repeated word: 'The the'.\n",
+    "rule": "../styles/Apify/Repetition.yml"
+  },
+  {
+    "name": "allow compound-tail repetition",
+    "format": "md",
+    "input": "Use add-on on this page.",
+    "want": "",
+    "rule": "../styles/Apify/Repetition.yml"
+  },
+  {
+    "name": "allow paired em dashes",
+    "format": "md",
+    "input": "Use this \u2014 parenthetical aside \u2014 and continue.",
+    "want": "",
+    "rule": "../styles/Apify/EmDashAvoidance.yml"
+  },
+  {
+    "name": "flag a hyphen in a title",
+    "format": "md",
+    "input": "## UX Pod kickoff - Aug 31, 2026",
+    "want": "1:18:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "flag hyphens in a legend",
+    "format": "md",
+    "input": "M - monthly, Q - quarterly",
+    "want": "1:2:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n1:15:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "allow en dash numeric ranges",
+    "format": "md",
+    "input": "Use values 10\u201320.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "allow neutral negation",
+    "format": "md",
+    "input": "It's not available on the free plan.",
+    "want": "",
+    "rule": "../styles/ApifyContent/ContrastiveFormulas.yml"
+  },
+  {
+    "name": "flag contrast qualifiers",
+    "format": "md",
+    "input": "It's not just a scraper, it's a pipeline.",
+    "want": "1:1:ApifyContent.ContrastiveFormulas:Contrastive formula: 'It's not just '. State what it does directly instead of the 'not X, it's Y' pattern.\n",
+    "rule": "../styles/ApifyContent/ContrastiveFormulas.yml"
+  },
+  {
+    "name": "allow established UI labels",
+    "format": "md",
+    "input": "Import & Export\n\nPublication & monetization",
+    "want": "",
+    "rule": "../styles/Apify/SpellOutAnd.yml"
+  },
+  {
+    "name": "flag your gerund heading",
+    "format": "md",
+    "input": "## Configuring your proxy",
+    "want": "1:4:ApifyDocs.GerundHeading:Gerund heading: 'Configuring your': consider imperative ('Run the Actor') or declarative ('How to run') form.\n",
+    "rule": "../styles/ApifyDocs/GerundHeading.yml"
+  },
+  {
+    "name": "flag the gerund heading",
+    "format": "md",
+    "input": "## Configuring the proxy",
+    "want": "1:4:ApifyDocs.GerundHeading:Gerund heading: 'Configuring the': consider imperative ('Run the Actor') or declarative ('How to run') form.\n",
+    "rule": "../styles/ApifyDocs/GerundHeading.yml"
+  },
+  {
+    "name": "flag lowercase Apify SDK",
+    "format": "md",
+    "input": "Install the Apify sdk today.",
+    "want": "1:13:Apify.ApifyProductNames:Use the Apify product name 'Apify SDK' instead of 'Apify sdk'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "flag lowercase Apify CLI",
+    "format": "md",
+    "input": "Install the Apify cli today.",
+    "want": "1:13:Apify.ApifyProductNames:Use the Apify product name 'Apify CLI' instead of 'Apify cli'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "flag capitalized Apify Team",
+    "format": "md",
+    "input": "Contact the Apify Team today.",
+    "want": "1:13:Apify.ApifyProductNames:Use the Apify product name 'Apify team' instead of 'Apify Team'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "allow correct Apify SDK casing",
+    "format": "md",
+    "input": "Install the Apify SDK today.",
+    "want": "",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "flag Apify SDK without an article",
+    "format": "md",
+    "input": "Build with Apify SDK today.",
+    "want": "1:7:Apify.ProductArticles:Write 'the' before the product name in 'with Apify SDK'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "flag Apify platform without an article",
+    "format": "md",
+    "input": "Deploy on Apify platform today.",
+    "want": "1:8:Apify.ProductArticles:Write 'the' before the product name in 'on Apify platform'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow Apify SDK with an article",
+    "format": "md",
+    "input": "Build with the Apify SDK today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow an adjective between the article and the product",
+    "format": "md",
+    "input": "Migrate to the latest Apify SDK today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow an unlisted adjective between the article and the product",
+    "format": "md",
+    "input": "Use the updated Apify SDK today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow two modifiers between the article and the product",
+    "format": "md",
+    "input": "Use the recently updated Apify SDK today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow a possessive determiner before the product",
+    "format": "md",
+    "input": "Use your updated Apify SDK today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow a hyphenated product modifier",
+    "format": "md",
+    "input": "Use Apify SDK-based tools today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "flag a missing article after an earlier the",
+    "format": "md",
+    "input": "Read the guide and use Apify API today.",
+    "want": "1:20:Apify.ProductArticles:Write 'the' before the product name in 'use Apify API'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow the compound noun use of a product name",
+    "format": "md",
+    "input": "Provide your Apify API token now.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow Apify platform modifying a following noun",
+    "format": "md",
+    "input": "Each run consumes Apify platform usage.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow a product name opening a list entry",
+    "format": "md",
+    "input": "- Apify API provides programmatic access.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "flag an article before an Actor name",
+    "format": "md",
+    "input": "The Website Content Crawler performs deep crawls.",
+    "want": "1:1:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'The Website Content Crawler'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "allow an Actor name with no article",
+    "format": "md",
+    "input": "Website Content Crawler performs deep crawls.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "allow an Actor name modifying Actor",
+    "format": "md",
+    "input": "Use the Website Content Crawler Actor for this.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "allow an Actor name modifying a following noun",
+    "format": "md",
+    "input": "Visit the Cheerio Scraper tutorial to get started.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "allow an Actor name modifying output",
+    "format": "md",
+    "input": "Use the Website Content Crawler output.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "flag a capitalized AI agent",
+    "format": "md",
+    "input": "You can build an AI Agent today.",
+    "want": "1:18:Apify.GenericTechnicalTerms:Use 'AI agent' instead of 'AI Agent' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "flag a capitalized MCP server",
+    "format": "md",
+    "input": "You can connect to an MCP Server today.",
+    "want": "1:23:Apify.GenericTechnicalTerms:Use 'MCP server' instead of 'MCP Server' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "allow a lowercase generic term",
+    "format": "md",
+    "input": "You can build an AI agent today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "allow a title-cased product name",
+    "format": "md",
+    "input": "Install the Playwright MCP Server today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "allow a generic term in an interface label",
+    "format": "md",
+    "input": "Open the MCP Servers tab to continue.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "flag an abbreviated version",
+    "format": "md",
+    "input": "Install Node.js v22 today.",
+    "want": "1:17:Apify.VersionAbbreviation:Write 'version 22' instead of 'v22'. Abbreviations belong in tags and code.\n",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "flag the ver abbreviation",
+    "format": "md",
+    "input": "Install Crawlee ver 3.0 today.",
+    "want": "1:17:Apify.VersionAbbreviation:Write 'version 3.0' instead of 'ver 3.0'. Abbreviations belong in tags and code.\n",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "flag an abbreviated version before a period",
+    "format": "md",
+    "input": "Install Node.js v22.",
+    "want": "1:17:Apify.VersionAbbreviation:Write 'version 22' instead of 'v22'. Abbreviations belong in tags and code.\n",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "flag the ver abbreviation before a period",
+    "format": "md",
+    "input": "Install Crawlee ver 3.0.",
+    "want": "1:17:Apify.VersionAbbreviation:Write 'version 3.0' instead of 'ver 3.0'. Abbreviations belong in tags and code.\n",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "allow a three-part tag before a period",
+    "format": "md",
+    "input": "Download v3.0.0.",
+    "want": "",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "allow a spelled-out version",
+    "format": "md",
+    "input": "Install Node.js version 22 today.",
+    "want": "",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "allow a three-part tag",
+    "format": "md",
+    "input": "Download v3.0.0 from the releases page.",
+    "want": "",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "allow a version inside an API route",
+    "format": "md",
+    "input": "Send the request to the /v2/acts route.",
+    "want": "",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "DashAsAside: Premium feature - available on paid plans only.",
+    "format": "md",
+    "input": "Premium feature - available on paid plans only.",
+    "want": "1:16:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: A powerful tool - designed for developers.",
+    "format": "md",
+    "input": "A powerful tool - designed for developers.",
+    "want": "1:16:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: Returns 10\u201320 results per page.",
+    "format": "md",
+    "input": "Returns 10\u201320 results per page.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: A well-known framework.",
+    "format": "md",
+    "input": "A well-known framework.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: Use --output to specify the file.",
+    "format": "md",
+    "input": "Use --output to specify the file.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: - _Apify API token_ - Get your token from **API & Integrations**.",
+    "format": "md",
+    "input": "- _Apify API token_ - Get your token from **API & Integrations**.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: - **Apify API token** - Get your token.",
+    "format": "md",
+    "input": "- **Apify API token** - Get your token.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: - Apify API token - Get your token.",
+    "format": "md",
+    "input": "- Apify API token - Get your token.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: 1. _Apify API token_ - Get your token.",
+    "format": "md",
+    "input": "1. _Apify API token_ - Get your token.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: - _Apify API token_ \u2013 Get your token.",
+    "format": "md",
+    "input": "- _Apify API token_ \u2013 Get your token.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: - _Apify API token_ - Get your token - keep it secure.",
+    "format": "md",
+    "input": "- _Apify API token_ - Get your token - keep it secure.",
+    "want": "1:37:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: - This tool is useful - it saves time.",
+    "format": "md",
+    "input": "- This tool is useful - it saves time.",
+    "want": "1:22:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: Run `some-tool - flag` now.",
+    "format": "md",
+    "input": "Run `some-tool - flag` now.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "DashAsAside: Available 8:00 AM - 5:00 PM.",
+    "format": "md",
+    "input": "Available 8:00 AM - 5:00 PM.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "FillerWords: Shared across every project linked to it.",
+    "format": "md",
+    "input": "Shared across every project linked to it.",
+    "want": "",
+    "rule": "../styles/Apify/FillerWords.yml"
+  },
+  {
+    "name": "FillerWords: Delivery details are available.",
+    "format": "md",
+    "input": "Delivery details are available.",
+    "want": "",
+    "rule": "../styles/Apify/FillerWords.yml"
+  },
+  {
+    "name": "FillerWords: This is a very long sentence.",
+    "format": "md",
+    "input": "This is a very long sentence.",
+    "want": "1:11:Apify.FillerWords:Remove filler word or phrase: '' instead of 'very '.\n",
+    "rule": "../styles/Apify/FillerWords.yml"
+  },
+  {
+    "name": "consumer regression: DashAsAside: ```text\nA powerful tool - designed for developers.\n```",
+    "format": "md",
+    "input": "```text\nA powerful tool - designed for developers.\n```",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "consumer regression: DashAsAside: - _Token_ - Get a token.\n\nThis is useful - it saves time.",
+    "format": "md",
+    "input": "- _Token_ - Get a token.\n\nThis is useful - it saves time.",
+    "want": "3:15:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "consumer regression: DashAsAside: - _An Apify account_ - If you do not have one, sign up.",
+    "format": "md",
+    "input": "- _An Apify account_ - If you do not have one, sign up.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "consumer regression: DashAsAside: - _Node.js 22+_ - Required to run the plugin.",
+    "format": "md",
+    "input": "- _Node.js 22+_ - Required to run the plugin.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "EmDashAvoidance: review a trailing fragment",
+    "format": "md",
+    "input": "This is fine \u2014 mostly.",
+    "want": "1:1:Apify.EmDashAvoidance:Replace the em dash in 'This is fine \u2014 mostly.' with punctuation appropriate to the sentence, or rewrite the sentence.\n",
+    "rule": "../styles/Apify/EmDashAvoidance.yml"
+  },
+  {
+    "name": "EmDashAvoidance: review independent clauses",
+    "format": "md",
+    "input": "The run finished \u2014 the dataset is ready.",
+    "want": "1:1:Apify.EmDashAvoidance:Replace the em dash in 'The run finished \u2014 the dataset is ready.' with punctuation appropriate to the sentence, or rewrite the sentence.\n",
+    "rule": "../styles/Apify/EmDashAvoidance.yml"
+  },
+  {
+    "name": "EmDashAvoidance: review a participial aside",
+    "format": "md",
+    "input": "The tool is useful \u2014 designed for developers.",
+    "want": "1:1:Apify.EmDashAvoidance:Replace the em dash in 'The tool is useful \u2014 designed for developers.' with punctuation appropriate to the sentence, or rewrite the sentence.\n",
+    "rule": "../styles/Apify/EmDashAvoidance.yml"
+  },
+  {
+    "name": "EmDashAvoidance: preserve paired asides",
+    "format": "md",
+    "input": "Use this \u2014 parenthetical aside \u2014 and continue.",
+    "want": "",
+    "rule": "../styles/Apify/EmDashAvoidance.yml"
+  },
+  {
+    "name": "EmDashAvoidance: allow prose without a dash",
+    "format": "md",
+    "input": "This is fine, mostly.",
+    "want": "",
+    "rule": "../styles/Apify/EmDashAvoidance.yml"
+  },
+  {
+    "name": "EmDashAvoidance: skip inline code",
+    "format": "md",
+    "input": "Use `word \u2014 fragment` as a syntax example.",
+    "want": "",
+    "rule": "../styles/Apify/EmDashAvoidance.yml"
+  },
+  {
+    "name": "consumer regression: TaskCapitalization: Open the **Tasks** tab.",
+    "format": "md",
+    "input": "Open the **Tasks** tab.",
+    "want": "",
+    "rule": "../styles/Apify/TaskCapitalization.yml"
+  },
+  {
+    "name": "consumer regression: TaskCapitalization: Tasks are pre-configured Actor runs.",
+    "format": "md",
+    "input": "Tasks are pre-configured Actor runs.",
+    "want": "",
+    "rule": "../styles/Apify/TaskCapitalization.yml"
+  },
+  {
+    "name": "consumer regression: TaskCapitalization: Schedules allow timezone settings.",
+    "format": "md",
+    "input": "Schedules allow timezone settings.",
+    "want": "",
+    "rule": "../styles/Apify/TaskCapitalization.yml"
+  },
+  {
+    "name": "consumer regression: TaskCapitalization: Done. Tasks can run again.",
+    "format": "md",
+    "input": "Done. Tasks can run again.",
+    "want": "",
+    "rule": "../styles/Apify/TaskCapitalization.yml"
+  },
+  {
+    "name": "flag a missing article after an earlier the and a verb",
+    "format": "md",
+    "input": "Read the guide using Apify API today.",
+    "want": "1:16:Apify.ProductArticles:Write 'the' before the product name in 'using Apify API'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "flag a missing article after a possessive and a verb",
+    "format": "md",
+    "input": "Use your guide with Apify SDK today.",
+    "want": "1:16:Apify.ProductArticles:Write 'the' before the product name in 'with Apify SDK'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "flag a sentence-initial product without an article",
+    "format": "md",
+    "input": "Install Apify CLI today.",
+    "want": "1:1:Apify.ProductArticles:Write 'the' before the product name in 'Install Apify CLI'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow the article when a verb reintroduces the product",
+    "format": "md",
+    "input": "Read the guide using the Apify API today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow a possessive with the article before the product",
+    "format": "md",
+    "input": "Use your guide with the Apify SDK today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "allow a sentence-initial product with an article",
+    "format": "md",
+    "input": "Install the Apify CLI today.",
+    "want": "",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "PleaseRemoval: preserve please softening an error (same sentence)",
+    "format": "md",
+    "input": "The upload failed, so please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: preserve please after an error sentence (cross-sentence)",
+    "format": "md",
+    "input": "Your payment failed. Please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: preserve please in an effortful support request",
+    "format": "md",
+    "input": "Please contact support if this persists.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: flag please in a routine instruction",
+    "format": "md",
+    "input": "Please select a format.",
+    "want": "1:1:Apify.PleaseRemoval:Remove 'please': 'select' instead of 'Please select'.\n",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: flag is detection-only (no autofix or suggestion)",
+    "format": "md",
+    "input": "Please enter your email.",
+    "want": "1:1:Apify.PleaseRemoval:Remove 'please': 'enter' instead of 'Please enter'.\n",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 99",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 99",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 100",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 100",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 101",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 101",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 149",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 149",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 150",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 150",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 151",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 151",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 199",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 199",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "1:219:Apify.PleaseRemoval:Remove 'please': 'try' instead of 'Please try'.\n",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 200",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 200",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "1:220:Apify.PleaseRemoval:Remove 'please': 'try' instead of 'Please try'.\n",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 201",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 201",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "1:221:Apify.PleaseRemoval:Remove 'please': 'try' instead of 'Please try'.\n",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: same-sentence gap 250",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx and please try again.",
+    "want": "",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: cross-sentence gap 250",
+    "format": "md",
+    "input": "The upload failed xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx. Please try again.",
+    "want": "1:270:Apify.PleaseRemoval:Remove 'please': 'try' instead of 'Please try'.\n",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "PleaseRemoval: unrelated error description does not protect a later instruction",
+    "format": "md",
+    "input": "The error page describes examples. To format output, please use the template.",
+    "want": "1:54:Apify.PleaseRemoval:Remove 'please': 'use' instead of 'please use'.\n",
+    "rule": "../styles/Apify/PleaseRemoval.yml"
+  },
+  {
+    "name": "ActorNameArticle: The Website Content Crawler performs deep crawls.",
+    "format": "md",
+    "input": "The Website Content Crawler performs deep crawls.",
+    "want": "1:1:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'The Website Content Crawler'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Website Content Crawler performs deep crawls.",
+    "format": "md",
+    "input": "Website Content Crawler performs deep crawls.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Use the Website Content Crawler Actor for this.",
+    "format": "md",
+    "input": "Use the Website Content Crawler Actor for this.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Visit the Cheerio Scraper tutorial to get started.",
+    "format": "md",
+    "input": "Visit the Cheerio Scraper tutorial to get started.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Use the Website Content Crawler output.",
+    "format": "md",
+    "input": "Use the Website Content Crawler output.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Review the Website Content Crawler configuration.",
+    "format": "md",
+    "input": "Review the Website Content Crawler configuration.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Check the Cheerio Scraper metrics.",
+    "format": "md",
+    "input": "Check the Cheerio Scraper metrics.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Use the Website Content Crawler.",
+    "format": "md",
+    "input": "Use the Website Content Crawler.",
+    "want": "1:5:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'the Website Content Crawler'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: The Website Content Crawler can extract text.",
+    "format": "md",
+    "input": "The Website Content Crawler can extract text.",
+    "want": "1:1:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'The Website Content Crawler'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Run the Cheerio Scraper to get started.",
+    "format": "md",
+    "input": "Run the Cheerio Scraper to get started.",
+    "want": "1:5:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'the Cheerio Scraper'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Check the Cheerio Scraper output, then run the Cheerio Scraper.",
+    "format": "md",
+    "input": "Check the Cheerio Scraper output, then run the Cheerio Scraper.",
+    "want": "1:44:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'the Cheerio Scraper'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: You can build an AI Agent today.",
+    "format": "md",
+    "input": "You can build an AI Agent today.",
+    "want": "1:18:Apify.GenericTechnicalTerms:Use 'AI agent' instead of 'AI Agent' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: You can connect to an MCP Server today.",
+    "format": "md",
+    "input": "You can connect to an MCP Server today.",
+    "want": "1:23:Apify.GenericTechnicalTerms:Use 'MCP server' instead of 'MCP Server' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: You can build an AI agent today.",
+    "format": "md",
+    "input": "You can build an AI agent today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Install the Playwright MCP Server today.",
+    "format": "md",
+    "input": "Install the Playwright MCP Server today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Open the MCP Servers tab to continue.",
+    "format": "md",
+    "input": "Open the MCP Servers tab to continue.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: AI Agent Builder can help.",
+    "format": "md",
+    "input": "AI Agent Builder can help.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: AI Agent can help.",
+    "format": "md",
+    "input": "AI Agent can help.",
+    "want": "1:1:Apify.GenericTechnicalTerms:Use 'AI agent' instead of 'AI Agent' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: MCP Server can connect.",
+    "format": "md",
+    "input": "MCP Server can connect.",
+    "want": "1:1:Apify.GenericTechnicalTerms:Use 'MCP server' instead of 'MCP Server' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use an API Endpoint for this.",
+    "format": "md",
+    "input": "Use an API Endpoint for this.",
+    "want": "1:8:Apify.GenericTechnicalTerms:Use 'API endpoint' instead of 'API Endpoint' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Configure your MCP Connectors today.",
+    "format": "md",
+    "input": "Configure your MCP Connectors today.",
+    "want": "1:16:Apify.GenericTechnicalTerms:Use 'MCP connectors' instead of 'MCP Connectors' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Create a Run for this Actor.",
+    "format": "md",
+    "input": "Create a Run for this Actor.",
+    "want": "1:10:Apify.GenericTechnicalTerms:Use 'run' instead of 'Run' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Inspect the Build before deployment.",
+    "format": "md",
+    "input": "Inspect the Build before deployment.",
+    "want": "1:13:Apify.GenericTechnicalTerms:Use 'build' instead of 'Build' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Store it in a Dataset.",
+    "format": "md",
+    "input": "Store it in a Dataset.",
+    "want": "1:15:Apify.GenericTechnicalTerms:Use 'dataset' instead of 'Dataset' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use a Key-Value Store for this.",
+    "format": "md",
+    "input": "Use a Key-Value Store for this.",
+    "want": "1:7:Apify.GenericTechnicalTerms:Use 'key-value store' instead of 'Key-Value Store' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use a Request Queue for this.",
+    "format": "md",
+    "input": "Use a Request Queue for this.",
+    "want": "1:7:Apify.GenericTechnicalTerms:Use 'request queue' instead of 'Request Queue' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Learn about Web Scraping today.",
+    "format": "md",
+    "input": "Learn about Web Scraping today.",
+    "want": "1:13:Apify.GenericTechnicalTerms:Use 'web scraping' instead of 'Web Scraping' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Build a Web Scraper with Crawlee.",
+    "format": "md",
+    "input": "Build a Web Scraper with Crawlee.",
+    "want": "1:9:Apify.GenericTechnicalTerms:Use 'web scraper' instead of 'Web Scraper' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Configure a Proxy Server for this.",
+    "format": "md",
+    "input": "Configure a Proxy Server for this.",
+    "want": "1:13:Apify.GenericTechnicalTerms:Use 'proxy server' instead of 'Proxy Server' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Build a custom Crawler with Crawlee.",
+    "format": "md",
+    "input": "Build a custom Crawler with Crawlee.",
+    "want": "1:16:Apify.GenericTechnicalTerms:Use 'crawler' instead of 'Crawler' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Build a custom Scraper with Crawlee.",
+    "format": "md",
+    "input": "Build a custom Scraper with Crawlee.",
+    "want": "1:16:Apify.GenericTechnicalTerms:Use 'scraper' instead of 'Scraper' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Run configuration is ready.",
+    "format": "md",
+    "input": "Run configuration is ready.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Build the Actor now.",
+    "format": "md",
+    "input": "Build the Actor now.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Dataset configuration is ready.",
+    "format": "md",
+    "input": "Dataset configuration is ready.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Key-value store configuration is ready.",
+    "format": "md",
+    "input": "Key-value store configuration is ready.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Request queue configuration is ready.",
+    "format": "md",
+    "input": "Request queue configuration is ready.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Web scraping can help.",
+    "format": "md",
+    "input": "Web scraping can help.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Open the Dataset tab.",
+    "format": "md",
+    "input": "Open the Dataset tab.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Check the Runs page.",
+    "format": "md",
+    "input": "Check the Runs page.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Website Content Crawler performs deep crawls.",
+    "format": "md",
+    "input": "Website Content Crawler performs deep crawls.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Google Search Scraper returns results.",
+    "format": "md",
+    "input": "Google Search Scraper returns results.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use Web Scraper to extract data.",
+    "format": "md",
+    "input": "Use Web Scraper to extract data.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use the Cheerio Scraper output.",
+    "format": "md",
+    "input": "Use the Cheerio Scraper output.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Use a web scraper with Crawlee.",
+    "format": "md",
+    "input": "Use a web scraper with Crawlee.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Configure a proxy server for this.",
+    "format": "md",
+    "input": "Configure a proxy server for this.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: Check your **Build settings**.",
+    "format": "md",
+    "input": "Check your **Build settings**.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: Click **Build and run** at the bottom.",
+    "format": "md",
+    "input": "Click **Build and run** at the bottom.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: Read the [Web scraping basics for JavaScript devs](course.md) course.",
+    "format": "md",
+    "input": "Read the [Web scraping basics for JavaScript devs](course.md) course.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: The Actor needs the **Run** permission.",
+    "format": "md",
+    "input": "The Actor needs the **Run** permission.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: ## How to Run an Apify Actor",
+    "format": "md",
+    "input": "## How to Run an Apify Actor",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: ActorNameArticle: Choose the **One-Page HTML Scraper with Cheerio** template.",
+    "format": "md",
+    "input": "Choose the **One-Page HTML Scraper with Cheerio** template.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "consumer regression: ActorNameArticle: Use the Apify Scraper for AI Crawling module.",
+    "format": "md",
+    "input": "Use the Apify Scraper for AI Crawling module.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: Read the Web scraping basics for JavaScript devs course.",
+    "format": "md",
+    "input": "Read the Web scraping basics for JavaScript devs course.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: The Build, Timeout and Memory options are available.",
+    "format": "md",
+    "input": "The Build, Timeout and Memory options are available.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: :::note Build with AI\nChoose a tool.\n:::",
+    "format": "md",
+    "input": ":::note Build with AI\nChoose a tool.\n:::",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "consumer regression: GenericTechnicalTerms: Configure the AI Agent:",
+    "format": "md",
+    "input": "Configure the AI Agent:",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Configure your AI Agent dynamically.",
+    "format": "md",
+    "input": "Configure your AI Agent dynamically.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "GenericTechnicalTerms: Install two generic AI Agents today.",
+    "format": "md",
+    "input": "Install two generic AI Agents today.",
+    "want": "1:21:Apify.GenericTechnicalTerms:Use 'AI agents' instead of 'AI Agents' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "ActorNameArticle: Use the RAG Web Browser to retrieve results.",
+    "format": "md",
+    "input": "Use the RAG Web Browser to retrieve results.",
+    "want": "1:5:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'the RAG Web Browser'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "ActorNameArticle: Use the RAG Web Browser output.",
+    "format": "md",
+    "input": "Use the RAG Web Browser output.",
+    "want": "",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "generic correction: Use generic AI Agents today.",
+    "format": "md",
+    "input": "Use generic AI Agents today.",
+    "want": "1:13:Apify.GenericTechnicalTerms:Use 'AI agents' instead of 'AI Agents' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Use generic AI agents today.",
+    "format": "md",
+    "input": "Use generic AI agents today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Connect to MCP Servers today.",
+    "format": "md",
+    "input": "Connect to MCP Servers today.",
+    "want": "1:12:Apify.GenericTechnicalTerms:Use 'MCP servers' instead of 'MCP Servers' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Connect to MCP servers today.",
+    "format": "md",
+    "input": "Connect to MCP servers today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Use MCP Connectors today.",
+    "format": "md",
+    "input": "Use MCP Connectors today.",
+    "want": "1:5:Apify.GenericTechnicalTerms:Use 'MCP connectors' instead of 'MCP Connectors' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Use MCP connectors today.",
+    "format": "md",
+    "input": "Use MCP connectors today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Use API Endpoints today.",
+    "format": "md",
+    "input": "Use API Endpoints today.",
+    "want": "1:5:Apify.GenericTechnicalTerms:Use 'API endpoints' instead of 'API Endpoints' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Use API endpoints today.",
+    "format": "md",
+    "input": "Use API endpoints today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Inspect these Runs today.",
+    "format": "md",
+    "input": "Inspect these Runs today.",
+    "want": "1:15:Apify.GenericTechnicalTerms:Use 'runs' instead of 'Runs' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Inspect these runs today.",
+    "format": "md",
+    "input": "Inspect these runs today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Inspect these Builds today.",
+    "format": "md",
+    "input": "Inspect these Builds today.",
+    "want": "1:15:Apify.GenericTechnicalTerms:Use 'builds' instead of 'Builds' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Inspect these builds today.",
+    "format": "md",
+    "input": "Inspect these builds today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Inspect these Datasets today.",
+    "format": "md",
+    "input": "Inspect these Datasets today.",
+    "want": "1:15:Apify.GenericTechnicalTerms:Use 'datasets' instead of 'Datasets' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Inspect these datasets today.",
+    "format": "md",
+    "input": "Inspect these datasets today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Inspect these Key-Value Stores today.",
+    "format": "md",
+    "input": "Inspect these Key-Value Stores today.",
+    "want": "1:15:Apify.GenericTechnicalTerms:Use 'key-value stores' instead of 'Key-Value Stores' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Inspect these key-value stores today.",
+    "format": "md",
+    "input": "Inspect these key-value stores today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Inspect these Request Queues today.",
+    "format": "md",
+    "input": "Inspect these Request Queues today.",
+    "want": "1:15:Apify.GenericTechnicalTerms:Use 'request queues' instead of 'Request Queues' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Inspect these request queues today.",
+    "format": "md",
+    "input": "Inspect these request queues today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Learn about web scraping today.",
+    "format": "md",
+    "input": "Learn about web scraping today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Use custom Web Scrapers today.",
+    "format": "md",
+    "input": "Use custom Web Scrapers today.",
+    "want": "1:12:Apify.GenericTechnicalTerms:Use 'web scrapers' instead of 'Web Scrapers' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Use custom web scrapers today.",
+    "format": "md",
+    "input": "Use custom web scrapers today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Use custom Proxy Servers today.",
+    "format": "md",
+    "input": "Use custom Proxy Servers today.",
+    "want": "1:12:Apify.GenericTechnicalTerms:Use 'proxy servers' instead of 'Proxy Servers' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Use custom proxy servers today.",
+    "format": "md",
+    "input": "Use custom proxy servers today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Use custom Crawlers today.",
+    "format": "md",
+    "input": "Use custom Crawlers today.",
+    "want": "1:12:Apify.GenericTechnicalTerms:Use 'crawlers' instead of 'Crawlers' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Use custom crawlers today.",
+    "format": "md",
+    "input": "Use custom crawlers today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "generic correction: Use custom Scrapers today.",
+    "format": "md",
+    "input": "Use custom Scrapers today.",
+    "want": "1:12:Apify.GenericTechnicalTerms:Use 'scrapers' instead of 'Scrapers' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "correct generic term: Use custom scrapers today.",
+    "format": "md",
+    "input": "Use custom scrapers today.",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "AcronymFirstUse: RQ stores requests.",
+    "format": "md",
+    "input": "RQ stores requests.",
+    "want": "1:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: Request queue (RQ) stores requests. Use RQ again.",
+    "format": "md",
+    "input": "Request queue (RQ) stores requests. Use RQ again.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: Use RQ first. Request queue (RQ) stores requests.",
+    "format": "md",
+    "input": "Use RQ first. Request queue (RQ) stores requests.",
+    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: Model Context Protocol (MCP) connects tools. Use MCP again.",
+    "format": "md",
+    "input": "Model Context Protocol (MCP) connects tools. Use MCP again.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: Use the API, SDK, CLI and JSON.",
+    "format": "md",
+    "input": "Use the API, SDK, CLI and JSON.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: Use `RQ` as an identifier.",
+    "format": "md",
+    "input": "Use `RQ` as an identifier.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: Use RQ before Request queue (RQ) is explained.",
+    "format": "md",
+    "input": "Use RQ before Request queue (RQ) is explained.",
+    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: RQ is useful. RQ is useful again.",
+    "format": "md",
+    "input": "RQ is useful. RQ is useful again.",
+    "want": "1:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "FeatureStatus: Use the legacy Actor-scoped run endpoints.",
+    "format": "md",
+    "input": "Use the legacy Actor-scoped run endpoints.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "FeatureStatus: Actor-scoped run endpoints are alternative.",
+    "format": "md",
+    "input": "Actor-scoped run endpoints are alternative.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "FeatureStatus: Actor-scoped run endpoints are deprecated.",
+    "format": "md",
+    "input": "Actor-scoped run endpoints are deprecated.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "FeatureStatus: Use an alternative data source.",
+    "format": "md",
+    "input": "Use an alternative data source.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "FeatureStatus: The legacy Docker Compose approach is still supported.",
+    "format": "md",
+    "input": "The legacy Docker Compose approach is still supported.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "document acronym regression: Request queue (RQ) stores requests.\n\nUse RQ later.",
+    "format": "md",
+    "input": "Request queue (RQ) stores requests.\n\nUse RQ later.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression: Use RQ first.\n\nRequest queue (RQ) stores requests.",
+    "format": "md",
+    "input": "Use RQ first.\n\nRequest queue (RQ) stores requests.",
+    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression: ```text\nRQ is a code identifier.\n```",
+    "format": "md",
+    "input": "```text\nRQ is a code identifier.\n```",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression: ## RQ guide\n\nRequest queue (RQ) stores requests.",
+    "format": "md",
+    "input": "## RQ guide\n\nRequest queue (RQ) stores requests.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression: R\u00e9sum\u00e9 RQ is undefined.",
+    "format": "md",
+    "input": "R\u00e9sum\u00e9 RQ is undefined.",
+    "want": "1:8:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression: ```text\nRequest queue (RQ) stores requests.\n```\n\nUse RQ here.",
+    "format": "md",
+    "input": "```text\nRequest queue (RQ) stores requests.\n```\n\nUse RQ here.",
+    "want": "5:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression: ````markdown\n```\nRQ is code.\n```\n````",
+    "format": "md",
+    "input": "````markdown\n```\nRQ is code.\n```\n````",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression: ```text\nRQ is code without a closing fence.",
+    "format": "md",
+    "input": "```text\nRQ is code without a closing fence.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression: ---\ntitle: MCP\n---\n\nUse API and JSON.",
+    "format": "md",
+    "input": "---\ntitle: MCP\n---\n\nUse API and JSON.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "FeatureStatusConsistency: This legacy endpoint is scheduled for removal.",
+    "format": "md",
+    "input": "This legacy endpoint is scheduled for removal.",
+    "want": "1:6:Apify.FeatureStatusConsistency:Use 'deprecated' for a feature officially scheduled for removal. Verify the removal claim against official product or SDK documentation.\n",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "FeatureStatusConsistency: The alternative endpoint will be removed next year.",
+    "format": "md",
+    "input": "The alternative endpoint will be removed next year.",
+    "want": "1:5:Apify.FeatureStatusConsistency:Use 'deprecated' for a feature officially scheduled for removal. Verify the removal claim against official product or SDK documentation.\n",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "FeatureStatusConsistency: This deprecated endpoint is scheduled for removal.",
+    "format": "md",
+    "input": "This deprecated endpoint is scheduled for removal.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "FeatureStatusConsistency: The legacy approach is still supported.",
+    "format": "md",
+    "input": "The legacy approach is still supported.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "FeatureStatusConsistency: The legacy approach may be removed someday.",
+    "format": "md",
+    "input": "The legacy approach may be removed someday.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "FeatureStatusConsistency: Use an alternative endpoint for this integration.",
+    "format": "md",
+    "input": "Use an alternative endpoint for this integration.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "document acronym regression: <!-- RQ is a comment. -->",
+    "format": "md",
+    "input": "<!-- RQ is a comment. -->",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "document acronym regression:     RQ is indented code.",
+    "format": "md",
+    "input": "    RQ is indented code.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "allow HTTP methods",
+    "format": "md",
+    "input": "Send a POST request and a GET request.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "allow units and VS Code",
+    "format": "md",
+    "input": "Use VS Code with 4 GB of memory.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "allow uppercase status labels",
+    "format": "md",
+    "input": "Show READY or FAILED at 9 AM.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "allow uppercase brand names",
+    "format": "md",
+    "input": "Use LEGO and IKEA examples.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "allow uppercase labels and instruction filenames",
+    "format": "md",
+    "input": "Show TIMING OUT and KEY VALUE STORE labels. Read AGENTS.md.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: allow acronym inside an HTML attribute",
+    "format": "md",
+    "input": "See the <a href=\"https://example.com/RQ\">queue</a> for details.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: allow acronym inside a reference-link destination",
+    "format": "md",
+    "input": "[queue definition]: https://example.com/XYZ",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: still flag acronym in link text",
+    "format": "md",
+    "input": "The <a href=\"/docs\">PDQ workflow</a> is new.",
+    "want": "1:21:Apify.AcronymFirstUse:Spell out 'PDQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: allow acronym inside a multiline HTML tag",
+    "format": "md",
+    "input": "Click <a\n  href=\"https://example.com/RQ\">here</a>.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: allow acronym in a reference-link destination on the next line",
+    "format": "md",
+    "input": "[queue]:\n  https://example.com/XYZ",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "AcronymFirstUse: allow acronym in reference-style image alt",
+    "format": "md",
+    "input": "![The PDQ diagram][img1]",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: FeatureStatus: Use the legacy Actor-scoped resurrect-run endpoint.",
+    "format": "md",
+    "input": "Use the legacy Actor-scoped resurrect-run endpoint.",
+    "want": "1:9:Apify.FeatureStatus:Use 'deprecated Actor-scoped resurrect-run endpoint' instead of 'legacy Actor-scoped resurrect-run endpoint': official Apify API documentation marks this endpoint deprecated.\n",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "review regression: FeatureStatus: The Actor-scoped resurrect-run endpoint is alternative.",
+    "format": "md",
+    "input": "The Actor-scoped resurrect-run endpoint is alternative.",
+    "want": "1:5:Apify.FeatureStatus:Use 'Actor-scoped resurrect-run endpoint is deprecated' instead of 'Actor-scoped resurrect-run endpoint is alternative': official Apify API documentation marks this endpoint deprecated.\n",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "review regression: FeatureStatus: Use the alternative Actor-scoped run endpoints to start Actors.",
+    "format": "md",
+    "input": "Use the alternative Actor-scoped run endpoints to start Actors.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "review regression: FeatureStatus: Use the deprecated Actor-scoped resurrect-run endpoint.",
+    "format": "md",
+    "input": "Use the deprecated Actor-scoped resurrect-run endpoint.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "review regression: FeatureStatusConsistency: The legacy endpoint is not scheduled for removal.",
+    "format": "md",
+    "input": "The legacy endpoint is not scheduled for removal.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "review regression: FeatureStatusConsistency: The legacy endpoint is supported, but the sample will be removed.",
+    "format": "md",
+    "input": "The legacy endpoint is supported, but the sample will be removed.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "review regression: FeatureStatusConsistency: The alternative endpoint is not officially deprecated.",
+    "format": "md",
+    "input": "The alternative endpoint is not officially deprecated.",
+    "want": "",
+    "rule": "../styles/Apify/FeatureStatusConsistency.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: Request queue\n(RQ) stores requests. Use RQ again.",
+    "format": "md",
+    "input": "Request queue\n(RQ) stores requests. Use RQ again.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: A **request queue (RQ)** stores requests. Use RQ again.",
+    "format": "md",
+    "input": "A **request queue (RQ)** stores requests. Use RQ again.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: ## Request queue (RQ)\n\nUse RQ later.",
+    "format": "md",
+    "input": "## Request queue (RQ)\n\nUse RQ later.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: Use [RQ](https://example.com) to enqueue requests.",
+    "format": "md",
+    "input": "Use [RQ](https://example.com) to enqueue requests.",
+    "want": "1:6:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: Use <a href=\"https://example.com\">RQ</a> to enqueue requests.",
+    "format": "md",
+    "input": "Use <a href=\"https://example.com\">RQ</a> to enqueue requests.",
+    "want": "1:35:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: Use [RQ][queue] to enqueue requests.\n\n[queue]: https://example.com",
+    "format": "md",
+    "input": "Use [RQ][queue] to enqueue requests.\n\n[queue]: https://example.com",
+    "want": "1:6:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: Read [request queue (RQ)](https://example.com). Use RQ later.",
+    "format": "md",
+    "input": "Read [request queue (RQ)](https://example.com). Use RQ later.",
+    "want": "",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: Use RQ first.\n\n## Request queue (RQ)",
+    "format": "md",
+    "input": "Use RQ first.\n\n## Request queue (RQ)",
+    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "review regression: AcronymFirstUse: Use RQ first. A **request queue (RQ)** stores requests.",
+    "format": "md",
+    "input": "Use RQ first. A **request queue (RQ)** stores requests.",
+    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "Issue 3: product casing proxy",
+    "format": "md",
+    "input": "Use the Apify proxy today.",
+    "want": "1:5:Apify.ApifyProductNames:Use the Apify product name 'Apify Proxy' instead of 'the Apify proxy'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: product casing console",
+    "format": "md",
+    "input": "Use the Apify console today.",
+    "want": "1:5:Apify.ApifyProductNames:Use the Apify product name 'Apify Console' instead of 'the Apify console'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: product casing store",
+    "format": "md",
+    "input": "Use the Apify store today.",
+    "want": "1:5:Apify.ApifyProductNames:Use the Apify product name 'Apify Store' instead of 'the Apify store'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: product casing sdk",
+    "format": "md",
+    "input": "Use the Apify sdk today.",
+    "want": "1:9:Apify.ApifyProductNames:Use the Apify product name 'Apify SDK' instead of 'Apify sdk'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: product casing cli",
+    "format": "md",
+    "input": "Use the Apify cli today.",
+    "want": "1:9:Apify.ApifyProductNames:Use the Apify product name 'Apify CLI' instead of 'Apify cli'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: product casing api",
+    "format": "md",
+    "input": "Use the Apify api today.",
+    "want": "1:9:Apify.ApifyProductNames:Use the Apify product name 'Apify API' instead of 'Apify api'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: Actor casing",
+    "format": "md",
+    "input": "Use an Apify actor today.",
+    "want": "1:14:Apify.ActorCapitalization:Use 'Actor' instead of 'actor' for the Apify product concept.\n",
+    "rule": "../styles/Apify/ActorCapitalization.yml"
+  },
+  {
+    "name": "Issue 3: drop article Console",
+    "format": "md",
+    "input": "Use the Apify Console today.",
+    "want": "1:5:Apify.ApifyProductNames:Use the Apify product name 'Apify Console' instead of 'the Apify Console'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: drop article Store",
+    "format": "md",
+    "input": "Use the Apify Store today.",
+    "want": "1:5:Apify.ApifyProductNames:Use the Apify product name 'Apify Store' instead of 'the Apify Store'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: drop article Proxy",
+    "format": "md",
+    "input": "Use the Apify Proxy today.",
+    "want": "1:5:Apify.ApifyProductNames:Use the Apify product name 'Apify Proxy' instead of 'the Apify Proxy'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: add article SDK",
+    "format": "md",
+    "input": "Build with Apify SDK today.",
+    "want": "1:7:Apify.ProductArticles:Write 'the' before the product name in 'with Apify SDK'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "Issue 3: add article CLI",
+    "format": "md",
+    "input": "Build with Apify CLI today.",
+    "want": "1:7:Apify.ProductArticles:Write 'the' before the product name in 'with Apify CLI'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "Issue 3: add article API",
+    "format": "md",
+    "input": "Build with Apify API today.",
+    "want": "1:7:Apify.ProductArticles:Write 'the' before the product name in 'with Apify API'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "Issue 3: add article platform",
+    "format": "md",
+    "input": "Build with Apify platform today.",
+    "want": "1:7:Apify.ProductArticles:Write 'the' before the product name in 'with Apify platform'. This product takes the definite article.\n",
+    "rule": "../styles/Apify/ProductArticles.yml"
+  },
+  {
+    "name": "Issue 3: descriptor casing Platform",
+    "format": "md",
+    "input": "Contact the Apify Platform today.",
+    "want": "1:13:Apify.ApifyProductNames:Use the Apify product name 'Apify platform' instead of 'Apify Platform'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: descriptor casing Team",
+    "format": "md",
+    "input": "Contact the Apify Team today.",
+    "want": "1:13:Apify.ApifyProductNames:Use the Apify product name 'Apify team' instead of 'Apify Team'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: descriptor casing Ecosystem",
+    "format": "md",
+    "input": "Contact the Apify Ecosystem today.",
+    "want": "1:13:Apify.ApifyProductNames:Use the Apify product name 'Apify ecosystem' instead of 'Apify Ecosystem'.\n",
+    "rule": "../styles/Apify/ApifyProductNames.yml"
+  },
+  {
+    "name": "Issue 3: feature casing Task",
+    "format": "md",
+    "input": "Create a Task today.",
+    "want": "1:8:Apify.TaskCapitalization:Lowercase 'a task' instead of 'a Task'. Unlike 'Actor', task/schedule aren't branded product names.\n",
+    "rule": "../styles/Apify/TaskCapitalization.yml"
+  },
+  {
+    "name": "Issue 3: feature casing Schedule",
+    "format": "md",
+    "input": "Create a Schedule today.",
+    "want": "1:8:Apify.TaskCapitalization:Lowercase 'a schedule' instead of 'a Schedule'. Unlike 'Actor', task/schedule aren't branded product names.\n",
+    "rule": "../styles/Apify/TaskCapitalization.yml"
+  },
+  {
+    "name": "Issue 3: feature casing Run",
+    "format": "md",
+    "input": "Learn about the Run today.",
+    "want": "1:17:Apify.GenericTechnicalTerms:Use 'run' instead of 'Run' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: feature casing Build",
+    "format": "md",
+    "input": "Learn about the Build today.",
+    "want": "1:17:Apify.GenericTechnicalTerms:Use 'build' instead of 'Build' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: feature casing Dataset",
+    "format": "md",
+    "input": "Learn about the Dataset today.",
+    "want": "1:17:Apify.GenericTechnicalTerms:Use 'dataset' instead of 'Dataset' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: feature casing Key-Value Store",
+    "format": "md",
+    "input": "Learn about the Key-Value Store today.",
+    "want": "1:17:Apify.GenericTechnicalTerms:Use 'key-value store' instead of 'Key-Value Store' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: feature casing Request Queue",
+    "format": "md",
+    "input": "Learn about the Request Queue today.",
+    "want": "1:17:Apify.GenericTechnicalTerms:Use 'request queue' instead of 'Request Queue' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: feature casing Web Scraping",
+    "format": "md",
+    "input": "Learn about the Web Scraping today.",
+    "want": "1:17:Apify.GenericTechnicalTerms:Use 'web scraping' instead of 'Web Scraping' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: generic casing AI Agent",
+    "format": "md",
+    "input": "Configure an AI Agent today.",
+    "want": "1:14:Apify.GenericTechnicalTerms:Use 'AI agent' instead of 'AI Agent' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: generic casing MCP Server",
+    "format": "md",
+    "input": "Configure an MCP Server today.",
+    "want": "1:14:Apify.GenericTechnicalTerms:Use 'MCP server' instead of 'MCP Server' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: generic casing API Endpoint",
+    "format": "md",
+    "input": "Configure an API Endpoint today.",
+    "want": "1:14:Apify.GenericTechnicalTerms:Use 'API endpoint' instead of 'API Endpoint' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: generic casing Web Scraper",
+    "format": "md",
+    "input": "Build a Web Scraper today.",
+    "want": "1:9:Apify.GenericTechnicalTerms:Use 'web scraper' instead of 'Web Scraper' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: generic casing Proxy Server",
+    "format": "md",
+    "input": "Build a Proxy Server today.",
+    "want": "1:9:Apify.GenericTechnicalTerms:Use 'proxy server' instead of 'Proxy Server' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: MCP connectors",
+    "format": "md",
+    "input": "Configure your MCP Connectors today.",
+    "want": "1:16:Apify.GenericTechnicalTerms:Use 'MCP connectors' instead of 'MCP Connectors' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: Actor name article",
+    "format": "md",
+    "input": "The Website Content Crawler performs deep crawls.",
+    "want": "1:1:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'The Website Content Crawler'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "Issue 3: version version 22",
+    "format": "md",
+    "input": "Install Node.js v22.",
+    "want": "1:17:Apify.VersionAbbreviation:Write 'version 22' instead of 'v22'. Abbreviations belong in tags and code.\n",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "Issue 3: version version 3.0",
+    "format": "md",
+    "input": "Install Crawlee ver 3.0.",
+    "want": "1:17:Apify.VersionAbbreviation:Write 'version 3.0' instead of 'ver 3.0'. Abbreviations belong in tags and code.\n",
+    "rule": "../styles/Apify/VersionAbbreviation.yml"
+  },
+  {
+    "name": "Issue 3: generic casing Crawler",
+    "format": "md",
+    "input": "Build a custom Crawler today.",
+    "want": "1:16:Apify.GenericTechnicalTerms:Use 'crawler' instead of 'Crawler' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: generic casing Scraper",
+    "format": "md",
+    "input": "Build a custom Scraper today.",
+    "want": "1:16:Apify.GenericTechnicalTerms:Use 'scraper' instead of 'Scraper' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Issue 3: legacy vs alternative vs deprecated",
+    "format": "md",
+    "input": "The legacy Actor-scoped resurrect-run endpoint are documented here.",
+    "want": "1:5:Apify.FeatureStatus:Use 'deprecated Actor-scoped resurrect-run endpoint' instead of 'legacy Actor-scoped resurrect-run endpoint': official Apify API documentation marks this endpoint deprecated.\n",
+    "rule": "../styles/Apify/FeatureStatus.yml"
+  },
+  {
+    "name": "Issue 3: acronym first use",
+    "format": "md",
+    "input": "Use RQ before defining it.",
+    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
+    "rule": "../styles/Apify/AcronymFirstUse.yml"
+  },
+  {
+    "name": "Project config: flag Apify SDK without an article",
+    "format": "md",
+    "input": "Build with Apify SDK today.",
+    "want": "1:7:Apify.ProductArticles:Write 'the' before the product name in 'with Apify SDK'. This product takes the definite article.\n"
+  },
+  {
+    "name": "Project config: allow Apify SDK with an article",
+    "format": "md",
+    "input": "Build with the Apify SDK today.",
+    "want": ""
+  },
+  {
+    "name": "Project config: flag an opening fence at file start",
+    "format": "md",
+    "input": "```\nconst x = 1;\n```",
+    "want": "1:1:Apify.CodeFenceLanguage:Code fence without language: '```': add a language tag (json, javascript, bash, python, etc.).\n"
+  },
+  {
+    "name": "Project config: allow a tagged fence with a blank final line",
+    "format": "md",
+    "input": "```javascript\nconst x = 1;\n\n```",
+    "want": ""
+  },
+  {
+    "name": "Project config: flag a present-tense alt sentence",
+    "format": "md",
+    "input": "![The panel shows the proxy settings](proxy.png)",
+    "want": "1:3:ApifyDocs.AltTextMissingPeriod:Complete sentences in alt text should end with a period.\n"
+  },
+  {
+    "name": "Project config: allow a short alt label",
+    "format": "md",
+    "input": "![Proxy settings](proxy.png)",
+    "want": ""
+  },
+  {
+    "name": "Project config: EmDashAvoidance: review a trailing fragment",
+    "format": "md",
+    "input": "This is fine \u2014 mostly.",
+    "want": "1:1:Apify.EmDashAvoidance:Replace the em dash in 'This is fine \u2014 mostly.' with punctuation appropriate to the sentence, or rewrite the sentence.\n"
+  },
+  {
+    "name": "Project config: EmDashAvoidance: allow prose without a dash",
+    "format": "md",
+    "input": "This is fine, mostly.",
+    "want": ""
+  },
+  {
+    "name": "SpellOutAnd flags prose symbols",
+    "rule": "../styles/Apify/SpellOutAnd.yml",
+    "format": "md",
+    "input": "Combine input & output.",
+    "want": "1:9:Apify.SpellOutAnd:Symbol in prose ('input & output'). Use 'and' or rewrite instead of '+' or '&'.\n"
+  },
+  {
+    "name": "GerundHeading allows imperative headings",
+    "rule": "../styles/ApifyDocs/GerundHeading.yml",
+    "format": "md",
+    "input": "## Run the Actor",
+    "want": ""
+  },
+  {
+    "name": "ActorCapitalization allows human actors",
+    "rule": "../styles/Apify/ActorCapitalization.yml",
+    "format": "md",
+    "input": "Human actors perform on stage.",
+    "want": ""
+  }
+]

@@ -7,29 +7,22 @@ import { fileURLToPath } from 'node:url';
 import { after, test } from 'node:test';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const fixtures = JSON.parse(readFileSync(new URL('./rules.json', import.meta.url), 'utf8'));
-const terminology = JSON.parse(readFileSync(new URL('./terminology.json', import.meta.url), 'utf8'));
-assert.equal(terminology.length, 38, 'retain every requirement from issue #3');
-fixtures.push(...terminology.map(({name, checks, text, message, replacement}) => ({
-  name: `Issue 3: ${name}`, rule: checks[0], text, message, replacement, count: 1,
-})));
+// Native `vale test` owns diagnostic behavior; these cases inspect action metadata.
+const fixtures = JSON.parse(readFileSync(new URL('./actions.json', import.meta.url), 'utf8'));
 const temporary = mkdtempSync(path.join(tmpdir(), 'vale-rules-test-'));
-const config = path.join(temporary, '.vale.ini');
-writeFileSync(config, [
-  `StylesPath = ${path.join(root, 'styles')}`,
-  'MinAlertLevel = suggestion',
-  'IgnoredScopes = code, tt, table, tr, td, frontmatter, link, alt, heading',
-  '',
-  '[*.md]',
-  'BasedOnStyles = Apify, ApifyDocs, ApifyUI, ApifyContent',
-  '',
-].join('\n'));
+const nativeCases = JSON.parse(readFileSync(new URL('./rules.test.yml', import.meta.url), 'utf8'));
+assert.equal(nativeCases.filter(({name}) => name.startsWith('Issue 3:')).length, 38,
+  'retain every requirement from issue #3');
+const casesByName = new Map(nativeCases.map(fixture => [fixture.name, fixture]));
+assert.equal(casesByName.size, nativeCases.length, 'native case names must be unique');
+const config = path.join(root, 'tests', '.vale.ini');
 after(() => rmSync(temporary, { recursive: true, force: true }));
 
 for (const [index, fixture] of fixtures.entries()) {
   test(fixture.name, () => {
-    const file = path.join(temporary, `${index}.md`);
-    writeFileSync(file, fixture.text);
+    const file = path.join(temporary, `${index}.${casesByName.get(fixture.name)?.format || 'md'}`);
+    assert.ok(casesByName.has(fixture.name), `missing native case: ${fixture.name}`);
+    writeFileSync(file, casesByName.get(fixture.name).input);
     const result = spawnSync('vale', ['--no-global', '--config', config, '--output=JSON', file], {
       encoding: 'utf8',
       timeout: 30000,
@@ -40,14 +33,13 @@ for (const [index, fixture] of fixtures.entries()) {
     assert.ok(Object.values(output).every(Array.isArray), result.stdout);
     const alerts = Object.values(output).flat().filter((alert) => alert.Check === fixture.rule);
     assert.equal(alerts.length, fixture.count, JSON.stringify(alerts, null, 2));
-    if (fixture.message) assert.ok(alerts.some(alert => alert.Message.includes(fixture.message)), JSON.stringify(alerts));
     if (fixture.noReplacement) {
       assert.ok(alerts.every(alert => !alert.Action?.Name && !alert.Suggestions?.length), JSON.stringify(alerts));
     }
-    if (fixture.lines) assert.deepEqual(alerts.map((alert) => alert.Line), fixture.lines);
     if (fixture.replacement) {
       assert.equal(alerts[0].Action.Name, 'replace');
       assert.ok(alerts[0].Action.Params.includes(fixture.replacement), JSON.stringify(alerts[0]));
+
     }
   });
 }

@@ -214,6 +214,19 @@ and [release process](./CONTRIBUTING.md#release-process).
 Before adding or changing a rule, read [CONTRIBUTING.md](./CONTRIBUTING.md). It
 covers rule ownership, severity, versioning, validation, and releases.
 
+Run the test suites from the repository root with Vale 3.24.0 or later and
+Node.js 18 or later:
+
+```bash
+vale --no-global --config=tests/.vale.ini test tests/rules.test.yml
+node --test tests/actions.test.mjs
+```
+
+The native Vale suite checks diagnostics and false positives. The Node suite
+checks replacement actions using the same fixture inputs. See
+[Validation](./CONTRIBUTING.md#validation) for fixture maintenance and consumer
+validation.
+
 ## License
 
 Licensed under the [Apache License 2.0](./LICENSE). The released archive
