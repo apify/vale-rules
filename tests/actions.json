@@ -368,5 +368,12 @@
     "rule": "Apify.IeEgConfusion",
     "count": 1,
     "noReplacement": true
+  },
+  {
+    "name": "Edge review: apply replacement in documentation excerpt",
+    "rule": "Apify.DeviceAgnosticVerbs",
+    "count": 1,
+    "replacement": "Select the tab",
+    "fixed": "Connect your integration.\n\nSelect the tab to configure the request settings."
   }
 ]

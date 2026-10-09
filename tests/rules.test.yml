@@ -3140,5 +3140,166 @@
     "format": "md",
     "input": "``some ` RQ value``\n\nRQ needs expansion.",
     "want": "3:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
+  },
+  {
+    "name": "Edge review: escaped ticks preserve prose",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "\\`RQ\\` needs expansion.",
+    "want": "1:3:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
+  },
+  {
+    "name": "Edge review: unmatched span before fence",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "A literal ` marker.\n\n```js\nRQ\n```\n\nRQ needs expansion.",
+    "want": "7:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
+  },
+  {
+    "name": "Edge review: inline span mixed fence",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "`code`\n\n```js\nRQ\n```\n\nRQ needs expansion.",
+    "want": "7:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
+  },
+  {
+    "name": "Edge review: HTML nested code",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "<p><code class=\"x\"><span>RQ</span></code></p>\n<p>RQ needs expansion.</p>",
+    "want": "2:4:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
+  },
+  {
+    "name": "Edge review: uppercase HTML code",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "<p><CODE class=\"x\">RQ</CODE></p>",
+    "want": ""
+  },
+  {
+    "name": "Edge review: tilde fence",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "~~~~\nRQ\n~~~\nRQ\n~~~~",
+    "want": ""
+  },
+  {
+    "name": "Edge review: product newline missing article",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Install\nApify CLI today.",
+    "want": "1:1:Apify.ProductArticles:Write 'the' before the product name in 'Install Apify CLI'. This product takes the definite article.\n"
+  },
+  {
+    "name": "Edge review: product newline valid article",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Use the recently\nfully updated Apify SDK today.",
+    "want": ""
+  },
+  {
+    "name": "Edge review: product three adjectives",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Use the stable supported updated Apify SDK today.",
+    "want": ""
+  },
+  {
+    "name": "Edge review: product unrelated article",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Read the newly updated guide using Apify API today.",
+    "want": "1:30:Apify.ProductArticles:Write 'the' before the product name in 'using Apify API'. This product takes the definite article.\n"
+  },
+  {
+    "name": "Edge review: recovery quoted command",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed. \"Retry\" is unavailable.",
+    "want": "1:1:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "Edge review: recovery negated action",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed. Retry is not available.",
+    "want": "1:1:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "Edge review: recovery negated verb",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed. Try again is not an option.",
+    "want": "1:1:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "Edge review: recovery separate paragraph",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed.\n\nRetry the upload.",
+    "want": "1:1:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "Edge review: recovery linebreak",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed:\nretry the upload.",
+    "want": ""
+  },
+  {
+    "name": "Edge review: recovery comma",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed, retry the upload.",
+    "want": ""
+  },
+  {
+    "name": "Edge review: replacement product real prose",
+    "rule": "../styles/Apify/ApifyProductNames.yml",
+    "format": "md",
+    "input": "Create an integration with the Apify Console.",
+    "want": "1:28:Apify.ApifyProductNames:Use the Apify product name 'Apify Console' instead of 'the Apify Console'.\n"
+  },
+  {
+    "name": "Edge review: vague recovery negated retry",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong. Retry is not available.",
+    "want": "1:1:ApifyUI.VagueErrors:Vague error: consider adding specificity to 'Something went wrong'.\n"
+  },
+  {
+    "name": "Edge review: vague recovery comma",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong, retry the upload.",
+    "want": ""
+  },
+  {
+    "name": "Edge review: product paragraph boundary",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Install\n\nApify CLI today.",
+    "want": ""
+  },
+  {
+    "name": "Edge review: corrected product documentation excerpt",
+    "rule": "../styles/Apify/ApifyProductNames.yml",
+    "format": "md",
+    "input": "Create an integration with Apify Console.",
+    "want": ""
+  },
+  {
+    "name": "Edge review: apply replacement in documentation excerpt",
+    "rule": "../styles/Apify/DeviceAgnosticVerbs.yml",
+    "format": "md",
+    "input": "Connect your integration.\n\nClick the tab to configure the request settings.",
+    "want": "3:1:Apify.DeviceAgnosticVerbs:Device-specific verb: 'Select the tab' instead of 'Click the tab'. Use input-neutral language for tabs, menus, and options.\n"
+  },
+  {
+    "name": "Edge review: backslash inside code does not escape closing delimiter",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "`code \\` RQ needs expansion.",
+    "want": "1:10:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
   }
 ]

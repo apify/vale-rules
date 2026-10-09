@@ -32,4 +32,4 @@ nonword: true
 # raw fragments concatenate: apply one recovery guard to all error phrases.
 raw:
   - '(?:\b(?:Something went wrong|An error occurred|An unexpected error occurred|Operation failed|Request failed|Action failed|Could not complete|Unable to complete|Cannot be completed|This action cannot be performed)\b|^Couldn.t \w+[^.]*\.?$|^Can.t \w+[^.]*\.?$|^We couldn.t \w+[^.]*\.?$|^We can.t \w+[^.]*\.?$)'
-  - '(?![.!?:;]?\s+(?:(?:you can|to (?:fix|resolve|continue|proceed|recover),?)\s+)?(?:please,?\s+)?(?:try|retry|refresh|check|contact|sign in|log in|restart|reload|go back|update|upgrade|downgrade|remove|delete|rename|create|add|change|reset|wait)\b)'
+  - '(?![.!?:;,]?\s+(?:(?:you can|to (?:fix|resolve|continue|proceed|recover),?)\s+)?(?:please,?\s+)?(?:try|retry|refresh|check|contact|sign in|log in|restart|reload|go back|update|upgrade|downgrade|remove|delete|rename|create|add|change|reset|wait)\b(?![ \t]+(?:again[ \t]+)?(?:is|are|was|were)[ \t]+(?:not\b|unavailable\b|disabled\b)))'

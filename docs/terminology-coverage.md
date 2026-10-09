@@ -20,6 +20,7 @@ maintenance and consumer testing.
 ## Coverage and review boundaries
 
 - Generic casing is checked in prose contexts. Sentence starts, headings, interface labels, code, and official product names need different treatment; the regression suite preserves those exceptions.
+- Product-article checks detect missing articles directly after selected verbs and prepositions. They preserve valid modifier phrases, but missing articles after other words or with intervening modifiers still need review.
 - Actor-name article checks recognize selected name patterns and RAG Web Browser. They do not provide a complete directory of every Actor name.
 - Acronym first use tracks a recognizable expansion in parentheses before the first prose use, including across paragraphs. It cannot verify that an expansion is factually correct. Definitions in headings, bold text, and Markdown links count; a soft line break may separate the expansion from its acronym. Readable Markdown and HTML link text follow the same first-use policy. Common technical abbreviations, code, heading uses, and bold-label uses are exempt.
 - Feature lifecycle is an evidence-based review requirement. `FeatureStatus` corrects documented Actor-scoped resurrect-run endpoint terminology; `FeatureStatusConsistency` flags conflicting removal language. Neither assigns a lifecycle status to an unknown feature. Consult official product, API, or SDK documentation before making that decision.
