@@ -1,14 +1,39 @@
-extends: existence
-message: "Lowercase the generic term in '%s'. Capitalize it only inside a product name or an interface label."
+extends: substitution
 level: suggestion
-scope:
-  - summary
-  - heading
+ignorecase: false
+capitalize: false
+action:
+  name: replace
+message: "Use '%s' instead of '%s' for a generic term. Preserve official product and interface names."
 nonword: true
 vocab: false
-tokens:
-  # The preceding lowercase word rules out a sentence start and a title-cased
-  # product name such as "Playwright MCP Server". The trailing guard rules out
-  # interface labels. Both are matched rather than looked behind or ahead of
-  # where possible: a variable-length lookbehind drops matches in this engine.
-  - '\b[a-z][\w-]* (?:AI Agents?|MCP Servers?|MCP Connectors?|API Endpoints?)\b(?! (?:[A-Z]|tab|button|page|section|dialog|node|menu|screen|field|option|docs|documentation|URL))'
+scope: text & ~heading & ~link & ~alt & ~strong & ~emphasis
+
+swap:
+  '(?:^|(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Nn]ew|[Aa]ny|[Ee]ach)[ \t]+))AI Agent\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'AI agent'
+  '(?:^|(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Nn]ew|[Aa]ny|[Ee]ach)[ \t]+))AI Agents\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'AI agents'
+  '(?:^|(?<=\b(?:[a-z][\w-]*|[Uu]se|[Cc]onfigure|[Ii]nstall)[ \t]+))MCP Server\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'MCP server'
+  '(?:^|(?<=\b(?:[a-z][\w-]*|[Uu]se|[Cc]onfigure|[Ii]nstall)[ \t]+))MCP Servers\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'MCP servers'
+  '(?:^|(?<=\b(?:[a-z][\w-]*|[Uu]se|[Cc]onfigure|[Ii]nstall)[ \t]+))MCP Connector\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'MCP connector'
+  '(?:^|(?<=\b(?:[a-z][\w-]*|[Uu]se|[Cc]onfigure|[Ii]nstall)[ \t]+))MCP Connectors\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'MCP connectors'
+  '(?:^|(?<=\b(?:[a-z][\w-]*|[Uu]se|[Cc]onfigure|[Ii]nstall)[ \t]+))API Endpoint\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'API endpoint'
+  '(?:^|(?<=\b(?:[a-z][\w-]*|[Uu]se|[Cc]onfigure|[Ii]nstall)[ \t]+))API Endpoints\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'API endpoints'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Run\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'run'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Runs\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'runs'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Build\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'build'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Builds\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'builds'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Dataset\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'dataset'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Datasets\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'datasets'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Key-[Vv]alue [Ss]tore\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'key-value store'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Key-[Vv]alue [Ss]tores\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'key-value stores'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Request [Qq]ueue\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'request queue'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Request [Qq]ueues\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'request queues'
+  '(?<=\b(?<!:::)(?:[a-z][\w-]*|[Tt]he|[Aa]n?|[Ee]ach|[Yy]our|[Oo]ur|[Tt]his|[Tt]hat)[ \t]+)Web [Ss]craping\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'web scraping'
+  '(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Bb]asic|[Yy]our|[Oo]ur|[Ee]ach|[Tt]his)[ \t]+)Web [Ss]craper\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'web scraper'
+  '(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Bb]asic|[Yy]our|[Oo]ur|[Ee]ach|[Tt]his)[ \t]+)Web [Ss]crapers\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'web scrapers'
+  '(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Bb]asic|[Yy]our|[Oo]ur|[Ee]ach|[Tt]his)[ \t]+)Proxy [Ss]erver\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'proxy server'
+  '(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Bb]asic|[Yy]our|[Oo]ur|[Ee]ach|[Tt]his)[ \t]+)Proxy [Ss]ervers\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'proxy servers'
+  '(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Bb]asic|[Yy]our|[Oo]ur|[Ee]ach|[Tt]his)[ \t]+)Crawler\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'crawler'
+  '(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Bb]asic|[Yy]our|[Oo]ur|[Ee]ach|[Tt]his)[ \t]+)Crawlers\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'crawlers'
+  '(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Bb]asic|[Yy]our|[Oo]ur|[Ee]ach|[Tt]his)[ \t]+)Scraper\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'scraper'
+  '(?<=\b(?:[Aa]n?|[Cc]ustom|[Gg]eneric|[Ss]imple|[Bb]asic|[Yy]our|[Oo]ur|[Ee]ach|[Tt]his)[ \t]+)Scrapers\b(?!:)(?!,[^.!?\n]*\boptions\b)(?![ \t]+(?:[A-Z]|(?:tab|tabs|button|buttons|page|pages|section|dialog|node|menu|screen|field|option|docs|documentation|URL|basics)\b))': 'scrapers'

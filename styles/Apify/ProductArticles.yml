@@ -1,17 +1,23 @@
 extends: existence
-message: "Write 'the' before the product name in '%s'. This product takes the definite article."
 level: warning
-scope:
-  - summary
+ignorecase: false
+message: "Write 'the' before the product name in '%s'. This product takes the definite article."
 nonword: true
 vocab: false
+scope:
+  - summary
+# Detect a missing article after selected verbs and prepositions. An article
+# earlier in the sentence may belong to another noun: "Read the guide using
+# Apify API" still needs "the" before the product.
+#
+# Match one soft line break, but never cross a blank paragraph. Skip headings,
+# list entries, search queries, callout titles, and product names used as
+# modifiers, such as "Apify API token" and "Apify SDK-based tools".
+#
+# This is a targeted check, not a grammar parser. Missing articles after words
+# outside this list, or between a verb and additional modifiers, require review.
+# Matching any preceding word would also flag valid phrases such as
+# "the stable supported updated Apify SDK".
 tokens:
-  # A preceding lowercase word marks running prose. Without one the name is
-  # a heading, a list entry, or link text, where the article is not expected.
-  # The lookbehind skips up to two modifiers after a determiner, as in "the
-  # recently updated Apify SDK" or "your updated Apify SDK". A wider window
-  # would also swallow real misses such as "the guide and use Apify API".
-  # The trailing guards skip the compound-noun use, where the name modifies a
-  # following noun: "Apify API token", "Apify SDK-based tools".
-  - '\b(?<!\b(?:the|your|our|their|its|my|this|that) (?:[\w-]+ )?)(?!(?:the|your|our|their|its|my|this|that|latest|full|new|official|current|authorized|authenticated|underlying|same|entire|whole|public|free|old|deprecated)\b)[a-z][\w-]* Apify (?:SDK|CLI|API)\b(?!-)(?! (?:[A-Z]|token|tokens|key|keys|command|commands|call|calls|client|clients|reference|docs|documentation|endpoint|endpoints|request|requests|response|responses|method|methods|version|versions|user|users|integration|integrations|credentials|scopes|permissions|install|installation|schema|schemas))'
-  - '\b(?<!\b(?:the|your|our|their|its|my|this|that) (?:[\w-]+ )?)(?!(?:the|your|our|their|its|my|this|that|latest|full|new|official|current|authorized|authenticated|underlying|same|entire|whole|public|free|old|deprecated)\b)[a-z][\w-]* Apify platform\b(?!-)(?! (?:[A-Z]|usage|account|accounts|credits|costs|limits|pricing|billing|plan|plans|docs|documentation|features|services|team|developer|developers))'
+  - '(?<!:::tip )(?<!:::note )(?<![Ss]earch )\b(?:[Ww]ith|[Uu]sing|[Uu]se|[Uu]ses|[Uu]sed|[Vv]ia|[Tt]hrough|[Oo]n|[Oo]nto|[Tt]o|[Ff]rom|[Ii]n|[Ii]nto|[Oo]f|[Ff]or|[Bb]y|[Aa]bout|[Aa]gainst|[Ww]ithout|[Ww]ithin|[Ii]nstall|[Cc]onfigure|[Aa]ccess|[Uu]pdate|[Uu]pgrade|[Dd]ownload|[Oo]pen|[Ll]aunch|[Tt]ry|[Tt]est|[Cc]all|[Qq]uery|[Ss]upport|[Ss]upports)(?:[ \t]+|[ \t]*\r?\n[ \t]*)Apify (?:SDK|CLI|API)(?!-)\b(?!(?:[ \t]+|[ \t]*\r?\n[ \t]*)(?:[A-Z]|token|tokens|key|keys|command|commands|call|calls|client|clients|reference|docs|documentation|endpoint|endpoints|request|requests|response|responses|method|methods|version|versions|user|users|integration|integrations|credentials|scopes|permissions|install|installation|schema|schemas|package|packages|settings|configuration|options|features|examples|output|data|logs))'
+  - '(?<!:::tip )(?<!:::note )(?<![Ss]earch )\b(?:[Ww]ith|[Uu]sing|[Uu]se|[Uu]ses|[Uu]sed|[Vv]ia|[Tt]hrough|[Oo]n|[Oo]nto|[Tt]o|[Ff]rom|[Ii]n|[Ii]nto|[Oo]f|[Ff]or|[Bb]y|[Aa]bout|[Aa]gainst|[Ww]ithout|[Ww]ithin|[Ii]nstall|[Cc]onfigure|[Aa]ccess|[Uu]pdate|[Uu]pgrade|[Dd]ownload|[Oo]pen|[Ll]aunch|[Tt]ry|[Tt]est|[Cc]all|[Qq]uery|[Ss]upport|[Ss]upports)(?:[ \t]+|[ \t]*\r?\n[ \t]*)Apify(?:[ \t]+|[ \t]*\r?\n[ \t]*)platform(?!-)\b(?!(?:[ \t]+|[ \t]*\r?\n[ \t]*)(?:[A-Z]|usage|account|accounts|credits|costs|limits|pricing|billing|plan|plans|docs|documentation|features|services|team|developer|developers|settings|configuration|options))'

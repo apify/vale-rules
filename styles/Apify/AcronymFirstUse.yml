@@ -1,0 +1,99 @@
+extends: script
+level: suggestion
+scope: raw
+message: "Spell out '%s' with the acronym in parentheses before its first use."
+script: |
+  text := import("text")
+  matches := []
+  ignored := []
+  fence := ""
+  fence_start := 0
+  offset := 0
+  for line in text.split(scope, "\n") {
+    trimmed := text.trim_space(line)
+    if fence == "" {
+      opening := text.re_find("^(`{3,}|~{3,})", trimmed, 1)
+      if opening != undefined { fence = opening[0][1].text; fence_start = offset }
+    } else {
+      marker := "~"
+      if text.has_prefix(fence, "`") { marker = "`" }
+      if text.has_prefix(trimmed, fence) && text.trim(trimmed, marker) == "" {
+        ignored = append(ignored, {begin: fence_start, end: offset + len(line)})
+        fence = ""
+      }
+    }
+    offset += len(line) + 1
+  }
+  if fence != "" { ignored = append(ignored, {begin: fence_start, end: len(scope)}) }
+  for pattern in ["(?s)^---[ \\t]*\\n.*?\\n---(?:\\n|$)", "(?is)<(?:code|pre|tt)\\b[^>]*>.*?</(?:code|pre|tt)[ \\t]*>", "(?s)<!--.*?-->", "(?m)^(?: {4}|\\t)[^\\n]+", "(?s)<[a-zA-Z/][^>]*>", "(?m)^[ \\t]*\\[[^]\\n]+\\]:[ \\t]*(?:\\S+|\\n[ \\t]+\\S+)", "!\\[[^\\]\\n]*\\]\\([^\\n)]*\\)", "!\\[[^\\]\\n]*\\]\\[[^\\]\\n]*\\]", "\\]\\([^\\n)]*\\)", "\\]\\[[^\\]\\n]*\\]"] {
+    found := text.re_find(pattern, scope, -1)
+    if found != undefined { for m in found { ignored = append(ignored, m[0]) } }
+  }
+  in_ignored := func(position) {
+    for zone in ignored { if position >= zone.begin && position < zone.end { return true } }
+    return false
+  }
+  // Markdown code spans close with the same number of backticks as they open.
+  // Different-length runs inside a span are literal code, not delimiters.
+  escaped := func(position) {
+    count := 0
+    for position > 0 && scope[position-1:position] == "\\" {
+      count++
+      position--
+    }
+    return count % 2 == 1
+  }
+  ticks := []
+  found_ticks := text.re_find("`+", scope, -1)
+  if found_ticks != undefined {
+    for tick in found_ticks {
+      if !in_ignored(tick[0].begin) { ticks = append(ticks, tick) }
+    }
+  }
+  consumed := -1
+  if ticks != undefined {
+    for i, opening in ticks {
+      if opening[0].begin >= consumed && !escaped(opening[0].begin) {
+        for j, closing in ticks {
+          if j > i && closing[0].text == opening[0].text {
+            ignored = append(ignored, {begin: opening[0].begin, end: closing[0].end})
+            consumed = closing[0].end
+            break
+          }
+        }
+      }
+    }
+  }
+  use_ignored := []
+  for pattern in ["(?m)^#{1,6}[ \\t]+[^\\n]*", "\\*\\*[^*\\n]+\\*\\*"] {
+    found := text.re_find(pattern, scope, -1)
+    if found != undefined { for m in found { use_ignored = append(use_ignored, m[0]) } }
+  }
+  is_ignored := func(begin, end) {
+    for zone in ignored { if begin < zone.end && end > zone.begin { return true } }
+    return false
+  }
+  is_use_ignored := func(begin, end) {
+    if is_ignored(begin, end) { return true }
+    for zone in use_ignored { if begin < zone.end && end > zone.begin { return true } }
+    return false
+  }
+  exceptions := {"API":true,"SDK":true,"CLI":true,"URL":true,"HTTP":true,"HTTPS":true,"JSON":true,"YAML":true,"HTML":true,"CSS":true,"JS":true,"AWS":true,"GCP":true,"README":true,"ID":true,"UI":true,"GET":true,"POST":true,"PUT":true,"PATCH":true,"DELETE":true,"HEAD":true,"VS":true,"CMD":true,"CTRL":true,"ESC":true,"TODO":true,"FIXME":true,"READY":true,"FAILED":true,"TIMED":true,"OUT":true,"MAX":true,"MIN":true,"TRUE":true,"FALSE":true,"OK":true,"YOUR":true,"ACTOR":true,"NAME":true,"USE":true,"CASE":true,"TIME":true,"DATE":true,"PORT":true,"MB":true,"GB":true,"KB":true,"TB":true,"AM":true,"PM":true,"TV":true,"JBL":true,"IKEA":true,"BRAVIA":true,"LEGO":true,"BBC":true,"CNN":true,"FIFA":true,"WTA":true,"TIMING":true,"KEY":true,"VALUE":true,"STORE":true,"START":true,"OFFERS":true,"MUST":true,"READ":true,"WRITE":true,"MINOR":true,"AGENTS":true,"PAY":true}
+  definitions := text.re_find("(?:[A-Z]?[a-z][A-Za-z-]*(?:[ \\t]+|\\r?\\n[ \\t]*)){1,8}\\(([A-Z]{2,6})\\)", scope, -1)
+  uses := text.re_find("\\b([A-Z]{2,6})\\b", scope, -1)
+  seen := {}
+  if uses != undefined {
+    for use in uses {
+      token := use[1].text
+      if exceptions[token] == undefined && seen[token] == undefined && !is_use_ignored(use[0].begin, use[0].end) {
+        seen[token] = true
+        defined := false
+        if definitions != undefined {
+          for definition in definitions {
+            if definition[1].text == token && definition[0].begin <= use[0].begin && !is_ignored(definition[0].begin, definition[0].end) { defined = true }
+          }
+        }
+        if !defined { matches = append(matches, {begin: use[0].begin, end: use[0].end}) }
+      }
+    }
+  }

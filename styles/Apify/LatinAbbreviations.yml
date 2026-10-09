@@ -1,18 +1,11 @@
 extends: existence
 level: suggestion
-message: "Latin abbreviation: '%s'. (i.e. = 'that's'; e.g. = 'for example')"
+message: "Repeated example introducer '%s'. Use either 'e.g.' or 'for example', after checking the intended meaning."
 ignorecase: false
 nonword: true
+scope: paragraph
 
-exceptions:
-
+# A list alone cannot distinguish examples from an exhaustive restatement.
+# Keep semantic i.e./e.g. review in IeEgConfusion and never change meaning automatically.
 tokens:
-  - 'i\.e\.,? \w+, \w+'
-  - 'i\.e\.,? (?:such as|like) '
-
-action:
-  name: edit
-  params:
-    - regex
-    - 'i\.e\., '
-    - 'e.g. '
+  - '\be\.g\.,?[ \t]+for example\b'

@@ -68,9 +68,20 @@ swap:
   'please email': 'email'
   'please keep': 'keep'
   'please explain': 'explain'
+  'please open': 'open'
   'please be advised that': ''
 
 exceptions:
+  # Preserve native whole-string courtesy checks within each Vale prose block.
+  - '^[\s\S]*(?:[Pp]lease\s+ensure[\s\S]*(?:ID\s+card|exactly\s+matches|rejected|re-verify|individual\s+representing|Full.{0,20}Name))[\s\S]*\b'
+  - '^[\s\S]*(?:(?:expired|failed|declined|overdue|past due|suspend|disabled|restricted|denied|rejected)[\s\S]{0,200}[Pp]lease\s+(?:add|update|renew|pay|contact|provide|try|use|generate|create))[\s\S]*\b'
+  - '^[\s\S]*(?:(?:expired|ended|missing|exceeded|invalid|rejected|blocked|required|no longer|can.t|couldn.t|isn.t|won.t)[\s\S]{0,200}[Pp]lease\s+(?:go to|upgrade|subscribe|rent|update|fill|verify|have one|check your|increase))[\s\S]*\b'
+  - '^[\s\S]*(?:[Pp]lease\s+(?:subscribe to a paid|rent the|upgrade your))[\s\S]*\b'
+  - '^[\s\S]*(?:[Pp]lease\s+go to[\s\S]{0,60}(?:payout|billing|subscription))[\s\S]*\b'
+  - '^[\s\S]*(?:(?:requires?|needed|required|must|blocked|pending)[\s\S]{0,100}[Pp]lease\s+have one of)[\s\S]*\b'
+  - '^[\s\S]*(?:(?:payout|invoice|billing)[\s\S]{0,200}[Pp]lease\s+(?:add|update|check|review|verify|confirm|note))[\s\S]*\b'
+  - '^[\s\S]*(?:[Pp]lease[\s\S]{0,60}(?:payout|invoice))[\s\S]*\b'
+  - '^[\s\S]*(?:[Pp]lease\s+accept[\s\S]*(?:Terms|Conditions|Agreement|Privacy Policy|EULA|License))[\s\S]*\b'
   # "Please wait" - loading state; "Wait..." sounds odd as a standalone label
   - "^Please wait"
   # ── Trust-verb guard: "Please" in collaborative trust requests.
@@ -96,15 +107,15 @@ exceptions:
   # rule fires before please-removal in the pipeline.
   # NOTE: patterns with regex metacharacters get case-sensitive 'g' flag in the engine,
   # so both Please/please must be handled explicitly.
-  - '\b(?:invalid|error|incorrect|failed|wrong|cannot|can.t|couldn.t|won.t|isn.t|expir(?:ing|ed)|overdue|past due|suspend(?:ed|ing)?|disabled|limited|restricted|verification|verify|billing information|payment methods|invoice)\b[^.!?]*\b[Pp]lease\b'
+  - '\b(?:invalid|error|incorrect|failed|wrong|cannot|can.t|couldn.t|won.t|isn.t|expir(?:ing|ed)|overdue|past due|suspend(?:ed|ing)?|disabled|limited|restricted|verification|verify|billing information|payment methods|invoice)\b[^.!?]*\b[Pp]lease\s+\w+'
   # Cross-sentence guard: preserve "Please" when a PRECEDING sentence in the same
   # string contains a billing/error-negative word. "Payment failed. Please try..."
   # The "Please" is softening bad news delivered one sentence earlier.
   # Pattern: error word → sentence boundary → "Please" within 150 chars.
   # (150 covers multi-sentence strings like verification rejections with 3 sentences)
-  - '\b(?:failed|error|incorrect|couldn.t|can.t|won.t|isn.t|doesn.t match|wasn.t|expir(?:ing|ed)|overdue|suspend(?:ed|ing)?|disabled|limited|restricted|not available|not valid|not approved)\b.{0,150}[.!?]\s+[Pp]lease\b'
+  - '\b(?:failed|error|incorrect|couldn.t|can.t|won.t|isn.t|doesn.t match|wasn.t|expir(?:ing|ed)|overdue|suspend(?:ed|ing)?|disabled|limited|restricted|not available|not valid|not approved)\b.{0,150}[.!?]\s+[Pp]lease\s+\w+'
   # Same pattern for cost/removal language - user didn't cause this, system is deferential.
-  - '\b(?:price.*increase|increase.*price|remove.*from your account|cost.*go up|charged.*extra|no longer valid)\b.{0,150}[.!?]\s+[Pp]lease\b'
+  - '\b(?:price.*increase|increase.*price|remove.*from your account|cost.*go up|charged.*extra|no longer valid)\b.{0,150}[.!?]\s+[Pp]lease\s+\w+'
   # "Please help us / allow us / let us" - collaborative request where courtesy is genuine.
   # The user is being asked to participate, not just click a button.
   - '\b[Pp]lease\s+(?:help|allow|let|grant|give|permit)\s+us\b'

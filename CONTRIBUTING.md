@@ -12,6 +12,19 @@ Every rule has one canonical YAML file in one style:
 If a rule applies to more than one audience, put it in `Apify` instead of
 copying it. Consumers compose styles through `BasedOnStyles`.
 
+When adding or changing a rule, use YAML comments to explain where it applies
+and why. A pattern found in a changelog may apply to docs, Actor READMEs, blog
+posts, or Store copy too. Choose the style based on where the rule applies,
+not where you found the pattern.
+
+`ApifyContent` isn't limited to READMEs or changelogs. The consumer's config
+selects styles for each file pattern. Comments and file suffixes don't select
+styles.
+
+Keep format-specific advice in publishing guides unless the config enforces
+its assumptions. For example, a changelog may already show a “New” label.
+That doesn't justify banning “New” from headings in other content.
+
 ## Rule files
 
 A rule's filename is its public name. Vale addresses it as the style directory
@@ -95,9 +108,79 @@ cannot bypass these repository rules.
 
 ## Validation
 
-This repository has no Vale configuration or synthetic fixture suite. Pull
-request checks validate process, not rule content. The release workflow packages
-the tagged files without inspecting the rules.
+Run these checks from the repository root with **Vale 3.24.0 or later** and
+Node.js 18 or later. The package integration test also needs `bash`, `zip`, and
+`unzip`. No npm dependencies are required:
+
+```bash
+vale --no-global --config=tests/.vale.ini test tests/rules.test.yml
+for audience in docs ui content; do
+  vale --no-global --config="tests/audiences/$audience/.vale.ini" test "tests/audiences/$audience/scope.test.yml"
+done
+node --test tests/compatibility.test.mjs tests/actions.test.mjs tests/package.test.mjs
+node tools/report-test-coverage.mjs
+```
+
+The native Vale suite checks exact diagnostic output, including false positives,
+alert counts, messages, and locations. Rule cases run in isolation; project cases
+run through `tests/.vale.ini` with all four styles enabled. Audience fixtures
+separately check the documented Docs, UI, and Content combinations, including
+Markdown, MDX mapping, HTML, and plain-text UI labels. This keeps unrelated rule
+findings out of individual rule expectations while retaining configuration checks.
+The smaller Node suite checks replacement actions and the absence of unsafe fixes,
+which native output assertions do not expose. Selected safe replacements are applied and linted again to verify the
+resulting text and confirm the original warning is gone.
+
+Use Vale 3.24.0+ to pass the complete native suite. Vale 3.22.0 runs `vale test`
+but misses two HTML bold-fragment cases (see below). The package supports Vale
+3.22.0+; 3.0.0 rejects the existing `vocab` rule key. The compatibility suite batches the
+same fixture inputs through normal linting on both 3.22.0 and 3.24.0. To test
+another installed binary, set `VALE_BIN` to its absolute path when running the
+Node suites. This verifies our chosen baseline, not the earliest Vale version
+that could support every rule.
+
+Vale 3.22.0 misses bare inline HTML fragments at EOF. The two version-specific
+outcomes in `tests/compatibility-exceptions.json` record that upstream limitation;
+they do not claim the missed diagnostics are correct. Full HTML paragraph checks
+must pass on both versions, and native 3.24.0 tests require fragment detection.
+Use Vale 3.24.0 for HTML fragment linting. Exceptions must name an exact version,
+include a reason, and retain the normal expected output in the native fixture.
+
+`tests/rules.test.yml` uses JSON syntax, which is valid YAML and can also be read
+by Node.js without an additional dependency. Add behavior regressions there and
+add case-name references to `tests/actions.json` when replacement metadata needs
+verification. Both runners use the input from the native fixture file.
+
+For an isolated case, set `rule` to the rule file's path relative to the test
+file. Omit `rule` for a project case that should use `tests/.vale.ini`. Use
+`want: ""` to require no diagnostics; otherwise, `want` records the exact
+`line:column:Check:message` output. An action case's `name` must match its native
+case's unique name.
+
+The 38 cases prefixed `Issue 3:` retain the terminology requirements inventory.
+Review expected diagnostics before changing them; do not regenerate expectations
+merely to make a failing test pass.
+
+The suite covers selected rules and regressions, not every rule in the package.
+`vale test --coverage` additionally requires every discovered rule to fire in a
+case; the current suite does not claim that coverage.
+
+The rule-test workflow runs on pull requests and pushes to `main`. It tests both
+pinned Vale versions; native tests run on 3.24.0, and compatibility, action, and
+package tests run on both. The release workflow requires this reusable workflow
+to pass before publishing.
+
+The package test builds the same archive as the release workflow, serves it on a
+temporary localhost port, runs `vale sync`, compares all installed YAML and
+metadata files with their sources, and lints with the installed package. It does
+not contact GitHub or publish anything. A sandbox that prohibits local listening
+sockets needs permission to run this test.
+
+Dedicated positive and valid-text cases currently cover 30 of 231 rules. The
+coverage report requires both kinds for every tested rule and reports the
+remaining 201. It is not a complete rule-coverage claim. Consumer Views, JSON or
+TypeScript extraction, and real consumer repository corpora still need their
+own integration tests.
 
 Validate changes in each affected consumer repository, starting with
 `apify-docs`:

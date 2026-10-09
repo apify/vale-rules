@@ -1,0 +1,47 @@
+name: Rule tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        vale: ['3.22.0', '3.24.0']
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - name: Install pinned Vale
+        env:
+          VALE_VERSION: ${{ matrix.vale }}
+        run: |
+          set -euo pipefail
+          install_dir="$RUNNER_TEMP/vale-$VALE_VERSION"
+          mkdir -p "$install_dir"
+          curl --fail --location --retry 3 \
+            "https://github.com/vale-cli/vale/releases/download/v$VALE_VERSION/vale_${VALE_VERSION}_Linux_64-bit.tar.gz" \
+            --output "$install_dir/vale.tar.gz"
+          tar -xzf "$install_dir/vale.tar.gz" -C "$install_dir"
+          echo "$install_dir" >> "$GITHUB_PATH"
+      - name: Report dedicated rule coverage
+        run: node tools/report-test-coverage.mjs
+      - name: Native rule and audience tests
+        if: matrix.vale == '3.24.0'
+        run: |
+          set -euo pipefail
+          vale --no-global --config=tests/.vale.ini test tests/rules.test.yml
+          for audience in docs ui content; do
+            vale --no-global --config="tests/audiences/$audience/.vale.ini" test "tests/audiences/$audience/scope.test.yml"
+          done
+      - name: Consumer compatibility, replacement actions, and release archive
+        run: node --test tests/compatibility.test.mjs tests/actions.test.mjs tests/package.test.mjs

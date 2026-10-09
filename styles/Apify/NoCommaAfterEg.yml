@@ -1,6 +1,8 @@
 extends: existence
-message: "Apify style: no comma after 'e.g.' or 'i.e.'. write 'e.g. Node.js' not 'e.g. Node.js'."
+message: "Apify style: omit the comma after 'e.g.' or 'i.e.'. Write 'e.g. Node.js' instead of 'e.g., Node.js'."
 level: suggestion
-scope: raw
-raw:
-  - '(?:e\.g\.|i\.e\.),\s'
+# Parsed paragraphs retain abbreviation punctuation while excluding code and attributes.
+scope: paragraph
+nonword: true
+tokens:
+  - '\b(?:e\.g\.|i\.e\.),\s'

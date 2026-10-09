@@ -1,31 +1,13 @@
-extends: substitution
+extends: existence
 level: warning
-message: "Replace em dash with appropriate punctuation: '%s' instead of '%s'."
+message: "Replace the em dash in '%s' with punctuation appropriate to the sentence, or rewrite the sentence."
 nonword: true
 scope:
   - sentence
   - heading
-exceptions:
-  # Paired em dashes (parenthetical asides) — two or more em dashes in the same string.
-  # "word — aside — word" is acceptable inline punctuation. Only single em dashes are replaced.
-  - '\u2014[^—]*\u2014'
-swap:
-  '^([^—]*badge) — awarded to the top 20 Actors\.([^—]*)$': '$1. It goes to the top 20 Actors on Apify.$2'
 
-  '^([^—]*) — awarded([^—]*)$': '$1, awarded$2'
-  '^([^—]*) — designed([^—]*)$': '$1, designed$2'
-  '^([^—]*) — built([^—]*)$': '$1, built$2'
-  '^([^—]*) — used([^—]*)$': '$1, used$2'
-  '^([^—]*) — given([^—]*)$': '$1, given$2'
-  '^([^—]*) — created([^—]*)$': '$1, created$2'
-  '^([^—]*) — intended([^—]*)$': '$1, intended$2'
-  '^([^—]*) — available([^—]*)$': '$1, available$2'
-  '^([^—]*) — required([^—]*)$': '$1, required$2'
-
-  '^([^—]*) — (\w+ing)([^—]*)$': '$1, $2$3'
-
-  '^([^—]*) — and then ([^—]*)$': '$1, then $2'
-  '^([^—]*) — and ([^—]*)$': '$1 and $2'
-  '^([^—]*) — (but|or|so) ([^—]*)$': '$1, $2 $3'
-
-  '^([^—]*) — ([^—]*)$': '$1. $2'
+# A punctuation choice depends on whether the following text is a clause or
+# a fragment. Do not propose a generic period split or comma replacement.
+# Exactly one em dash preserves the existing paired-aside exemption.
+tokens:
+  - '^([^—]*) — ([^—]*)$'
