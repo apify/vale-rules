@@ -25,9 +25,30 @@ script: |
     offset += len(line) + 1
   }
   if fence != "" { ignored = append(ignored, {begin: fence_start, end: len(scope)}) }
-  for pattern in ["(?s)^---[ \\t]*\\n.*?\\n---(?:\\n|$)", "`[^`\\n]+`", "(?s)<code>.*?</code>", "(?s)<!--.*?-->", "(?m)^(?: {4}|\\t)[^\\n]+", "(?s)<[a-zA-Z/][^>]*>", "(?m)^[ \\t]*\\[[^]\\n]+\\]:[ \\t]*(?:\\S+|\\n[ \\t]+\\S+)", "!\\[[^\\]\\n]*\\]\\([^\\n)]*\\)", "!\\[[^\\]\\n]*\\]\\[[^\\]\\n]*\\]", "\\]\\([^\\n)]*\\)", "\\]\\[[^\\]\\n]*\\]"] {
+  for pattern in ["(?s)^---[ \\t]*\\n.*?\\n---(?:\\n|$)", "(?is)<(?:code|pre|tt)\\b[^>]*>.*?</(?:code|pre|tt)[ \\t]*>", "(?s)<!--.*?-->", "(?m)^(?: {4}|\\t)[^\\n]+", "(?s)<[a-zA-Z/][^>]*>", "(?m)^[ \\t]*\\[[^]\\n]+\\]:[ \\t]*(?:\\S+|\\n[ \\t]+\\S+)", "!\\[[^\\]\\n]*\\]\\([^\\n)]*\\)", "!\\[[^\\]\\n]*\\]\\[[^\\]\\n]*\\]", "\\]\\([^\\n)]*\\)", "\\]\\[[^\\]\\n]*\\]"] {
     found := text.re_find(pattern, scope, -1)
     if found != undefined { for m in found { ignored = append(ignored, m[0]) } }
+  }
+  in_ignored := func(position) {
+    for zone in ignored { if position >= zone.begin && position < zone.end { return true } }
+    return false
+  }
+  // Markdown code spans close with the same number of backticks as they open.
+  // Different-length runs inside a span are literal code, not delimiters.
+  ticks := text.re_find("`+", scope, -1)
+  consumed := -1
+  if ticks != undefined {
+    for i, opening in ticks {
+      if opening[0].begin >= consumed && !in_ignored(opening[0].begin) {
+        for j, closing in ticks {
+          if j > i && closing[0].text == opening[0].text {
+            ignored = append(ignored, {begin: opening[0].begin, end: closing[0].end})
+            consumed = closing[0].end
+            break
+          }
+        }
+      }
+    }
   }
   use_ignored := []
   for pattern in ["(?m)^#{1,6}[ \\t]+[^\\n]*", "\\*\\*[^*\\n]+\\*\\*"] {

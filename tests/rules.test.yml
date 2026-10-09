@@ -3070,5 +3070,75 @@
     "format": "html",
     "input": "<p><b>This entire passage is bold and contains considerably more than eighty characters to demonstrate excessive emphasis.</b></p>",
     "want": "1:7:Apify.OverBolding:Long bold passage 'This entire passage is bold and contains considerably more than eighty characters to demonstrate excessive emphasis.'. Use bold for single words or short phrases.\n"
+  },
+  {
+    "name": "Acronym attributed HTML code",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "html",
+    "input": "<p><code class=\"language-text\">RQ</code></p>",
+    "want": ""
+  },
+  {
+    "name": "Acronym double-backtick code",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "``some ` RQ value``",
+    "want": ""
+  },
+  {
+    "name": "Acronym multiline code span",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "``RQ\nmore code``",
+    "want": ""
+  },
+  {
+    "name": "Product article multiple adverbs",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Use the recently fully updated Apify SDK today.",
+    "want": ""
+  },
+  {
+    "name": "Product article possessive multiple adverbs",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Use your recently fully updated Apify SDK today.",
+    "want": ""
+  },
+  {
+    "name": "Recovery colon instruction",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed: retry the upload.",
+    "want": ""
+  },
+  {
+    "name": "Recovery semicolon instruction",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "Request failed; retry the upload.",
+    "want": ""
+  },
+  {
+    "name": "Vague error colon instruction",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "Something went wrong: retry the upload.",
+    "want": ""
+  },
+  {
+    "name": "Acronym prose after attributed code",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "<p><code class=\"language-text\">RQ</code></p><p>RQ needs expansion.</p>",
+    "want": "1:48:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
+  },
+  {
+    "name": "Acronym prose after double-backtick code",
+    "rule": "../styles/Apify/AcronymFirstUse.yml",
+    "format": "md",
+    "input": "``some ` RQ value``\n\nRQ needs expansion.",
+    "want": "3:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
   }
 ]

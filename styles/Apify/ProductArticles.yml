@@ -9,13 +9,13 @@ scope:
 tokens:
   # A preceding lowercase word marks running prose. Without one the name is
   # a heading, a list entry, or link text, where the article is not expected.
-  # The lookbehind skips up to two modifiers after a determiner, as in "the
+  # The lookbehind skips adverbs ending in -ly and up to two modifiers, as in "the
   # recently updated Apify SDK" or "your updated Apify SDK". A wider window
   # would also swallow real misses such as "the guide and use Apify API".
   # The trailing guards skip the compound-noun use, where the name modifies a
   # following noun: "Apify API token", "Apify SDK-based tools".
-  - '\b(?<!\b(?:the|your|our|their|its|my|this|that) (?:[\w-]+ )?)(?!(?:the|your|our|their|its|my|this|that|latest|full|new|official|current|authorized|authenticated|underlying|same|entire|whole|public|free|old|deprecated)\b)[a-z][\w-]* Apify (?:SDK|CLI|API)\b(?!-)(?! (?:[A-Z]|token|tokens|key|keys|command|commands|call|calls|client|clients|reference|docs|documentation|endpoint|endpoints|request|requests|response|responses|method|methods|version|versions|user|users|integration|integrations|credentials|scopes|permissions|install|installation|schema|schemas))'
-  - '\b(?<!\b(?:the|your|our|their|its|my|this|that) (?:[\w-]+ )?)(?!(?:the|your|our|their|its|my|this|that|latest|full|new|official|current|authorized|authenticated|underlying|same|entire|whole|public|free|old|deprecated)\b)[a-z][\w-]* Apify platform\b(?!-)(?! (?:[A-Z]|usage|account|accounts|credits|costs|limits|pricing|billing|plan|plans|docs|documentation|features|services|team|developer|developers))'
+  - '\b(?<!\b(?:the|your|our|their|its|my|this|that) (?:(?:[\w-]+ly )*(?:[\w-]+ )?))(?!(?:the|your|our|their|its|my|this|that|latest|full|new|official|current|authorized|authenticated|underlying|same|entire|whole|public|free|old|deprecated)\b)[a-z][\w-]* Apify (?:SDK|CLI|API)\b(?!-)(?! (?:[A-Z]|token|tokens|key|keys|command|commands|call|calls|client|clients|reference|docs|documentation|endpoint|endpoints|request|requests|response|responses|method|methods|version|versions|user|users|integration|integrations|credentials|scopes|permissions|install|installation|schema|schemas))'
+  - '\b(?<!\b(?:the|your|our|their|its|my|this|that) (?:(?:[\w-]+ly )*(?:[\w-]+ )?))(?!(?:the|your|our|their|its|my|this|that|latest|full|new|official|current|authorized|authenticated|underlying|same|entire|whole|public|free|old|deprecated)\b)[a-z][\w-]* Apify platform\b(?!-)(?! (?:[A-Z]|usage|account|accounts|credits|costs|limits|pricing|billing|plan|plans|docs|documentation|features|services|team|developer|developers))'
   # Verb/preposition tokens: a product introduced directly by a verb or
   # preposition still needs "the", even when an unrelated determiner appears
   # earlier in the sentence. The determiner lookbehind above over-suppresses
