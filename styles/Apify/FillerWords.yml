@@ -90,13 +90,6 @@ exceptions:
   # "Cooking up the best suggestion" - loading message with personality + emoji.
   # Stripping leaves "The best suggestion 👨‍🍳" which loses the joke.
   - "cooking up the best suggestion"
-  # "very" inside compound words - not filler, it's part of the word.
-  # nonword:true means the engine matches substrings, so "very " matches inside "every ".
-  # Guard uses lookbehind-style: [a-z]very (a letter immediately before "very").
-  - "[a-z]very "
-  - '[a-z]very\b'
-  - "[A-Z]very "
-  - '[A-Z]very\b'
   # "come into effect" guard - voice-tone.yml handles "Your changes might/may take..."
   # as full explicit swaps. Guard the bare "Your changes" form here so the rule
   # doesn't partially fire and conflict with the voice-tone.yml rewrite.
