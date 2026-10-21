@@ -3468,5 +3468,40 @@
     "format": "md",
     "input": "Coming soonish",
     "want": ""
+  },
+  {
+    "name": "SentenceCount: e.g. does not count as extra sentences",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "Pick a tool, e.g. the scraper, to collect data.",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: i.e. does not count as extra sentences",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "Set the option, i.e. the timeout, before you run.",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: etc. does not count as an extra sentence",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "Collect data, images, etc. and export them later.",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: abbreviation plus two sentences stays within the limit",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "Use e.g. the scraper. Then run it.",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: three real sentences still flag",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "One here. Two now. Three total.",
+    "want": "1:9:ApifyUI.SentenceCount:String has more than 3 sentences: aim for 1-2 for UI copy.\n"
   }
 ]
