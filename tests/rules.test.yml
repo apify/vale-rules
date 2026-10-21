@@ -3279,5 +3279,194 @@
       "Apify.LatinAbbreviations",
       "Apify.RepeatedExampleIntroducer"
     ]
+  },
+  {
+    "name": "Placeholder marker: [placeholder]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[placeholder]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[placeholder]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [label]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[label]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[label]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [TBD]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[TBD]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[TBD]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [tbd]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[tbd]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[tbd]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [copy needed]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[copy needed]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[copy needed]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [copy TK]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[copy TK]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[copy TK]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [insert description here]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[insert description here]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[insert': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: TODO",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "TODO",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'TODO': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: TODO: add copy",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "TODO: add copy",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'TODO': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: FIXME",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "FIXME",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'FIXME': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: HACK",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "HACK",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'HACK': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: Lorem ipsum dolor sit amet",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Lorem ipsum dolor sit amet",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'Lorem ipsum': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: lorem ipsum dolor sit amet",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "lorem ipsum dolor sit amet",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'lorem ipsum': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: Coming soon",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Coming soon",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'Coming soon': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: coming soon",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "coming soon",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'coming soon': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: Run an Actor",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Run an Actor",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Describe your goal",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Describe your goal",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Find an Actor for the results you want.",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Find an Actor for the results you want.",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: TODOist integration",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "TODOist integration",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: HACKATHON registration",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "HACKATHON registration",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: FIXMEsuffix",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "FIXMEsuffix",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Choose a label for your Actor.",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Choose a label for your Actor.",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: `[placeholder]`",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "`[placeholder]`",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: ```text\n[placeholder]\n```",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "```text\n[placeholder]\n```",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Your {tokenKey} has expired.",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Your {tokenKey} has expired.",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: preLorem ipsum text",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "preLorem ipsum text",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Coming soonish",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Coming soonish",
+    "want": ""
   }
 ]

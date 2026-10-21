@@ -3,6 +3,8 @@ extends: existence
 level: suggestion
 message: "Placeholder shipped: '%s': draft copy that was never finalized."
 ignorecase: false
+# Bracket markers need nonword matching; prose markers keep explicit boundaries.
+nonword: true
 
 exceptions:
   - '\{[^}]*TK[^}]*\}'
@@ -12,9 +14,9 @@ exceptions:
   - '<[^>]+>|\{[^}]+\}'
 
 tokens:
-  - 'TODO'
-  - 'FIXME'
-  - 'HACK'
+  - '\bTODO\b'
+  - '\bFIXME\b'
+  - '\bHACK\b'
   - '\[placeholder\]'
   - '\[label\]'
   - '\[TBD\]'
@@ -22,7 +24,7 @@ tokens:
   - '\[copy needed\]'
   - '\[copy TK\]'
   - '\[insert'
-  - 'Lorem ipsum'
-  - 'lorem ipsum'
-  - 'Coming soon'
-  - 'coming soon'
+  - '\bLorem ipsum\b'
+  - '\blorem ipsum\b'
+  - '\bComing soon\b'
+  - '\bcoming soon\b'
