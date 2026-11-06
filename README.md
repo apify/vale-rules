@@ -8,17 +8,17 @@ guide. All rules ship in one package. Each team selects the styles it needs in
 
 | Style | Rules | Intended scope |
 |---|---:|---|
-| `Apify` | 68 | Shared brand, terminology, US English, accessibility, grammar, punctuation, and voice |
-| `ApifyDocs` | 4 | Documentation conventions: generated H1s, titled admonitions, heading form, and factual language |
-| `ApifyUI` | 66 | Console and product microcopy: controls, errors, dialogs, empty states, notifications, and recovery paths |
-| `ApifyContent` | 46 | Blog, marketing, Store, and Actor editorial copy: positioning, claims, feature language, and content structure |
+| `Apify` | 79 | Shared brand, terminology, US English, accessibility, grammar, punctuation, and voice |
+| `ApifyDocs` | 12 | Documentation conventions: generated H1s, titled admonitions, heading form, and factual language |
+| `ApifyUI` | 81 | Console and product microcopy: controls, errors, dialogs, empty states, notifications, and recovery paths |
+| `ApifyContent` | 56 | Blog, marketing, Store, and Actor editorial copy: positioning, claims, feature language, and content structure |
 
 Each rule exists in exactly one style. Team configurations compose the shared
 `Apify` style with an audience style, so common rules remain single-sourced.
 
 ## Requirements
 
-Use Vale 3.0.0 or later, as declared in each style's `meta.json`. Earlier
+Use Vale 3.22.0 or later, as declared in each style's `meta.json`. Earlier
 versions are not supported.
 
 ## Install
@@ -70,10 +70,13 @@ To update, change the version and run `vale sync` again.
 
 ### Editors
 
-Install the Vale CLI and the [Vale VS Code
-extension](https://marketplace.visualstudio.com/items?itemName=errata-ai.vale-server)
-(`errata-ai.vale-server`). After `vale sync`, the extension reads the workspace's
+Install the Vale CLI and the [Vale Linter extension for VS
+Code](https://marketplace.visualstudio.com/items?itemName=ChrisChinchilla.vale-vscode)
+(`ChrisChinchilla.vale-vscode`). After `vale sync`, the extension reads the workspace's
 `.vale.ini` without additional configuration.
+
+The extension requires Vale 3.10.0 or later. Running this repository's tests
+requires Vale 3.24.0 or later.
 
 Use these settings when you want all suggestions while writing or Vale is not on
 the extension's `PATH`:
@@ -90,9 +93,6 @@ setting if the extension can already find Vale.
 `minAlertLevel` defaults to `inherited` and follows `.vale.ini`. Set it to
 `suggestion` to show every rule in the editor without changing the level
 configured for CI.
-
-The extension's repository is archived and its last release was in 2022, but it
-remains the standard Vale integration for VS Code.
 
 ### Continuous integration
 
@@ -201,6 +201,22 @@ fully qualified rule name: the style directory plus the filename without `.yml`.
 For example, `ApifyDocs.GerundHeading` disables the rule, but
 `Apify.GerundHeading` does nothing. Vale does not report unknown override names.
 
+### Deliberate long bold text in Academy lessons
+
+Academy lesson introductions use long bold passages as part of their design.
+Keep the shared bolding check available elsewhere and add this override to the
+consumer repository's `.vale.ini` when using that convention:
+
+```ini
+[sources/academy/**/*.{md,mdx}]
+Apify.OverBolding = NO
+```
+
+This disables the length check throughout that section, including bold text
+outside the introductions. Review emphasis manually there. The package can't
+infer which bold passages are intentional from their wording. This example isn't
+an automatic exemption; the consumer must add the override.
+
 ## Releases
 
 Merging a pull request does not publish the package. Maintainers publish versioned
@@ -216,6 +232,23 @@ and [release process](./CONTRIBUTING.md#release-process).
 
 Before adding or changing a rule, read [CONTRIBUTING.md](./CONTRIBUTING.md). It
 covers rule ownership, severity, versioning, validation, and releases.
+
+Run the test suites from the repository root with Vale 3.24.0 or later and
+Node.js 18 or later:
+
+```bash
+vale --no-global --config=tests/.vale.ini test tests/rules.test.yml
+for audience in docs ui content; do
+  vale --no-global --config="tests/audiences/$audience/.vale.ini" test "tests/audiences/$audience/scope.test.yml"
+done
+node --test tests/compatibility.test.mjs tests/actions.test.mjs tests/package.test.mjs
+```
+
+The native Vale suites check diagnostics, false positives, and audience scopes.
+The Node suites check compatibility, replacement actions, and package installation
+using the same rule sources. Package tests also require `bash`, `zip`, and `unzip`.
+See [Validation](./CONTRIBUTING.md#validation) for how to add tests and validate
+changes in consumer repositories.
 
 ## License
 

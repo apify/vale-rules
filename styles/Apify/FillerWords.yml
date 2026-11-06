@@ -270,7 +270,7 @@ swap:
   ' going forward': ''
   'basically ': ''
   'kindly ': ''
-  ' very ': ' '
+  '\bvery\s+': ''
   'really ': ''
   'quite ': ''
   'naturally ': ''

@@ -1,4 +1,6 @@
 extends: substitution
+# Several swaps include final punctuation, which cannot end at a word boundary.
+nonword: true
 level: suggestion
 message: "Replace robotic phrase: '%s' instead of '%s'."
 exceptions:
@@ -28,20 +30,20 @@ exceptions:
   - "a number of (?:items|results|records|pages|requests|runs|files|entries)"
 
 swap:
-  'There are no Actors\.': "No Actors yet."
-  'There are no invoices\.': 'No invoices.'
-  'There are no items in the dataset\.': 'This dataset is empty.'
-  'There are no columns in the dataset\.': 'No columns in this dataset.'
-  'There are no invoices to display\.': 'No invoices.'
-  'There are no payments to display\.': 'No payments.'
-  'There are no payouts to display\.': 'No payouts.'
-  'There are no transactions to display\.': 'No transactions.'
-  'Nothing to display here\.': 'Nothing here yet.'
-  'Nothing to display\.': 'Nothing here yet.'
-  'No examples are available for this Actor yet\.': 'No examples for this Actor yet.'
-  "Actor README isn't available": 'No Actor README yet'
-  'No data available for this date': 'No data for this date'
-  'No data available': 'No data yet'
-  'No events\.': 'No events yet.'
-  'No events': 'No events yet.'
-  'The Actor finished with no results\. Check the log for more information\.': "The Actor finished with no results. Check the log for more info."
+  '\b(?:There are no Actors\.)(?!\w)': "No Actors yet."
+  '\b(?:There are no invoices\.)(?!\w)': 'No invoices.'
+  '\b(?:There are no items in the dataset\.)(?!\w)': 'This dataset is empty.'
+  '\b(?:There are no columns in the dataset\.)(?!\w)': 'No columns in this dataset.'
+  '\b(?:There are no invoices to display\.)(?!\w)': 'No invoices.'
+  '\b(?:There are no payments to display\.)(?!\w)': 'No payments.'
+  '\b(?:There are no payouts to display\.)(?!\w)': 'No payouts.'
+  '\b(?:There are no transactions to display\.)(?!\w)': 'No transactions.'
+  '\b(?:Nothing to display here\.)(?!\w)': 'Nothing here yet.'
+  '\b(?:Nothing to display\.)(?!\w)': 'Nothing here yet.'
+  '\b(?:No examples are available for this Actor yet\.)(?!\w)': 'No examples for this Actor yet.'
+  '\b(?:Actor README isn''t available)(?!\w)': 'No Actor README yet'
+  '\b(?:No data available for this date)(?!\w)': 'No data for this date'
+  '\b(?:No data available)(?!\w)': 'No data yet'
+  # Match the standalone empty state, not 'No events yet' or prose clauses.
+  '\b(?:^No events\.?$)(?!\w)': 'No events yet.'
+  '\b(?:The Actor finished with no results\. Check the log for more information\.)(?!\w)': "The Actor finished with no results. Check the log for more info."

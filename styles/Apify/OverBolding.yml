@@ -1,6 +1,9 @@
 extends: existence
-message: "Long bold passage '%s'. Bold single words or short phrases. bolding full sentences eliminates emphasis."
+message: "Long bold passage '%s'. Use bold for single words or short phrases."
 level: suggestion
-scope: sentence
+# Inspect the parser's visible bold text, not Markdown markers in sentence text.
+scope: strong
+nonword: true
 tokens:
-  - '\*\*[^*]{80,}\*\*'
+  # Vale masks ignored code with asterisks; count only the remaining prose.
+  - '(?s)^(?:\**[^*]){80,}\**$'
