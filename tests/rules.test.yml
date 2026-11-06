@@ -609,10 +609,10 @@
     "rule": "../styles/Apify/VersionAbbreviation.yml"
   },
   {
-    "name": "DashAsAside: Premium feature - available on paid plans only.",
+    "name": "allow short term-description form: Premium feature",
     "format": "md",
     "input": "Premium feature - available on paid plans only.",
-    "want": "1:16:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "want": "",
     "rule": "../styles/Apify/DashAsAside.yml"
   },
   {
@@ -759,21 +759,21 @@
     "name": "EmDashAvoidance: review a trailing fragment",
     "format": "md",
     "input": "This is fine \u2014 mostly.",
-    "want": "1:1:Apify.EmDashAvoidance:Replace the em dash in 'This is fine \u2014 mostly.' with punctuation appropriate to the sentence, or rewrite the sentence.\n",
+    "want": "1:14:Apify.EmDashAvoidance:Replace the em dash with punctuation appropriate to the sentence, or rewrite the sentence.\n",
     "rule": "../styles/Apify/EmDashAvoidance.yml"
   },
   {
     "name": "EmDashAvoidance: review independent clauses",
     "format": "md",
     "input": "The run finished \u2014 the dataset is ready.",
-    "want": "1:1:Apify.EmDashAvoidance:Replace the em dash in 'The run finished \u2014 the dataset is ready.' with punctuation appropriate to the sentence, or rewrite the sentence.\n",
+    "want": "1:18:Apify.EmDashAvoidance:Replace the em dash with punctuation appropriate to the sentence, or rewrite the sentence.\n",
     "rule": "../styles/Apify/EmDashAvoidance.yml"
   },
   {
     "name": "EmDashAvoidance: review a participial aside",
     "format": "md",
     "input": "The tool is useful \u2014 designed for developers.",
-    "want": "1:1:Apify.EmDashAvoidance:Replace the em dash in 'The tool is useful \u2014 designed for developers.' with punctuation appropriate to the sentence, or rewrite the sentence.\n",
+    "want": "1:20:Apify.EmDashAvoidance:Replace the em dash with punctuation appropriate to the sentence, or rewrite the sentence.\n",
     "rule": "../styles/Apify/EmDashAvoidance.yml"
   },
   {
@@ -2089,7 +2089,7 @@
     "name": "Project config: EmDashAvoidance: review a trailing fragment",
     "format": "md",
     "input": "This is fine \u2014 mostly.",
-    "want": "1:1:Apify.EmDashAvoidance:Replace the em dash in 'This is fine \u2014 mostly.' with punctuation appropriate to the sentence, or rewrite the sentence.\n"
+    "want": "1:14:Apify.EmDashAvoidance:Replace the em dash with punctuation appropriate to the sentence, or rewrite the sentence.\n"
   },
   {
     "name": "Project config: EmDashAvoidance: allow prose without a dash",
@@ -3191,5 +3191,145 @@
     "format": "md",
     "input": "You can configure Schedules here.",
     "want": "1:19:Apify.GenericTechnicalTerms:Use 'schedules' instead of 'Schedules' for a generic term. Preserve official product and interface names.\n"
+  },
+  {
+    "name": "Review dash definition: - [Apify API reference](https://example.com) - Full API documentation",
+    "rule": "../styles/Apify/DashAsAside.yml",
+    "format": "md",
+    "input": "- [Apify API reference](https://example.com) - Full API documentation",
+    "want": ""
+  },
+  {
+    "name": "Review dash definition: - [Limits](/account/limits) - what your plan allows.",
+    "rule": "../styles/Apify/DashAsAside.yml",
+    "format": "md",
+    "input": "- [Limits](/account/limits) - what your plan allows.",
+    "want": ""
+  },
+  {
+    "name": "Review dash definition: - **Node.js** - version 18 or later.",
+    "rule": "../styles/Apify/DashAsAside.yml",
+    "format": "md",
+    "input": "- **Node.js** - version 18 or later.",
+    "want": ""
+  },
+  {
+    "name": "Default bolding check before Academy override: Learn about the geol",
+    "rule": "../styles/Apify/OverBolding.yml",
+    "format": "md",
+    "input": "**Learn about the geolocation techniques to determine where requests are coming from, and a bit about how to avoid being blocked based on geolocation.**",
+    "want": "1:3:Apify.OverBolding:Long bold passage 'Learn about the geolocation techniques to determine where requests are coming from, and a bit about how to avoid being blocked based on geolocation.'. Use bold for single words or short phrases.\n"
+  },
+  {
+    "name": "Default bolding check before Academy override: In this lesson, you ",
+    "rule": "../styles/Apify/OverBolding.yml",
+    "format": "md",
+    "input": "**In this lesson, you will learn how to configure an Actor and run it to extract structured data from a website.**",
+    "want": "1:3:Apify.OverBolding:Long bold passage 'In this lesson, you will learn how to configure an Actor and run it to extract structured data from a website.'. Use bold for single words or short phrases.\n"
+  },
+  {
+    "name": "Review product article: Deploy Apify CLI today.",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Deploy Apify CLI today.",
+    "want": "1:1:Apify.ProductArticles:Write 'the' before the product name in 'Deploy Apify CLI'. This product takes the definite article.\n"
+  },
+  {
+    "name": "Review product article: This guide covers Apify SDK today.",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "This guide covers Apify SDK today.",
+    "want": "1:12:Apify.ProductArticles:Write 'the' before the product name in 'covers Apify SDK'. This product takes the definite article.\n"
+  },
+  {
+    "name": "Review product article: Compare Apify API with the other API.",
+    "rule": "../styles/Apify/ProductArticles.yml",
+    "format": "md",
+    "input": "Compare Apify API with the other API.",
+    "want": "1:1:Apify.ProductArticles:Write 'the' before the product name in 'Compare Apify API'. This product takes the definite article.\n"
+  },
+  {
+    "name": "Review Actor article: Start the Instagram Scraper now.",
+    "rule": "../styles/Apify/ActorNameArticle.yml",
+    "format": "md",
+    "input": "Start the Instagram Scraper now.",
+    "want": "1:7:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'the Instagram Scraper'. Treat Actor names as proper nouns.\n"
+  },
+  {
+    "name": "Review Actor article: Running the Contact Details Scraper consumes credits.",
+    "rule": "../styles/Apify/ActorNameArticle.yml",
+    "format": "md",
+    "input": "Running the Contact Details Scraper consumes credits.",
+    "want": "1:9:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'the Contact Details Scraper'. Treat Actor names as proper nouns.\n"
+  },
+  {
+    "name": "Review Actor article: The Website Content Crawler's output contains results.",
+    "rule": "../styles/Apify/ActorNameArticle.yml",
+    "format": "md",
+    "input": "The Website Content Crawler's output contains results.",
+    "want": "1:1:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'The Website Content Crawler'. Treat Actor names as proper nouns.\n"
+  },
+  {
+    "name": "Review generic casing excludes front matter",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "---\ntitle: Build a Web Scraper\n---\n\nUse the Actor.",
+    "want": ""
+  },
+  {
+    "name": "Feedback audit: lowercase linked term, uppercase description",
+    "format": "md",
+    "input": "- [limits](/account/limits) - What your plan allows.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "Feedback audit: lowercase linked term, lowercase description",
+    "format": "md",
+    "input": "- [limits](/account/limits) - what your plan allows.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "Feedback audit: lowercase bold term, uppercase description",
+    "format": "md",
+    "input": "- **node.js** - Version 18 or later.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "Feedback audit: ordinary sentence aside",
+    "format": "md",
+    "input": "This is a sentence - and it continues.",
+    "want": "1:19:Apify.DashAsAside:Dash as aside: ' - '. Restructure the sentence. Split into two sentences or use a comma/colon.\n",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "Feedback audit: real callout title",
+    "format": "md",
+    "input": ":::note Timezone & Daylight Savings Time\nSchedules allow timezone settings and support daylight saving time shifts (DST).\n:::",
+    "want": "",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
+  },
+  {
+    "name": "Feedback audit: possessive Actor name",
+    "format": "md",
+    "input": "The Website Content Crawler\u2019s output contains results.",
+    "want": "1:1:Apify.ActorNameArticle:Drop 'the' before an Actor name: 'The Website Content Crawler'. Treat Actor names as proper nouns.\n",
+    "rule": "../styles/Apify/ActorNameArticle.yml"
+  },
+  {
+    "name": "Feedback audit: one dash in each sentence",
+    "format": "md",
+    "input": "This is fine \u2014 mostly. This is useful \u2014 usually.",
+    "want": "1:14:Apify.EmDashAvoidance:Replace the em dash with punctuation appropriate to the sentence, or rewrite the sentence.\n1:39:Apify.EmDashAvoidance:Replace the em dash with punctuation appropriate to the sentence, or rewrite the sentence.\n",
+    "rule": "../styles/Apify/EmDashAvoidance.yml"
+  },
+  {
+    "name": "Feedback audit: code example with comma",
+    "format": "md",
+    "input": "> `Use e.g., Node.js.`",
+    "want": "",
+    "rule": "../styles/Apify/NoCommaAfterEg.yml"
   }
 ]

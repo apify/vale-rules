@@ -1,6 +1,6 @@
 extends: existence
 level: warning
-message: "Replace the em dash in '%s' with punctuation appropriate to the sentence, or rewrite the sentence."
+message: "Replace the em dash with punctuation appropriate to the sentence, or rewrite the sentence."
 nonword: true
 scope:
   - sentence
@@ -10,4 +10,4 @@ scope:
 # a fragment. Do not propose a generic period split or comma replacement.
 # Exactly one em dash preserves the existing paired-aside exemption.
 tokens:
-  - '^([^—]*) — ([^—]*)$'
+  - '(?<=^[^—]* )—(?= [^—]*$)'

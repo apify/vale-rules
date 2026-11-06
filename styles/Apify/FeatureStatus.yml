@@ -1,3 +1,6 @@
+# Shared editorial check for API, UI help, and content discussing this endpoint.
+# These four phrasings are backed by the linked official API reference.
+# Do not infer lifecycle status for other features or expand this list without evidence.
 extends: substitution
 level: suggestion
 ignorecase: false

@@ -7,4 +7,4 @@ vocab: false
 scope: text & ~heading
 
 tokens:
-  - '\b[Tt]he (?:RAG Web Browser|(?:[A-Z][\w-]*[ \t]+){1,3}(?:Crawler|Scraper))\b(?![ \t]+(?:with|for)[ \t]+[A-Z])(?=$|[.,;:!?)]|[ \t]+(?:to|for|with|without|from|on|in|at|and|or|is|are|was|were|has|have|had|can|could|will|would|should|must|may|might|does|did|performs?|extracts?|crawls?|scrapes?|collects?|returns?|provides?|supports?|helps?|lets|allows?|works?|uses?|requires?)\b)'
+  - '\b[Tt]he (?:RAG Web Browser|(?:[A-Z][\w-]*[ \t]+){1,3}(?:Crawler|Scraper))\b(?![ \t]+(?:with|for)[ \t]+[A-Z])(?=$|[.,;:!?)]|[\x27’]s\b|[ \t]+(?:now|consumes?|to|for|with|without|from|on|in|at|and|or|is|are|was|were|has|have|had|can|could|will|would|should|must|may|might|does|did|performs?|extracts?|crawls?|scrapes?|collects?|returns?|provides?|supports?|helps?|lets|allows?|works?|uses?|requires?)\b)'
