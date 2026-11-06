@@ -359,7 +359,7 @@
   },
   {
     "name": "Latin redundancy is review-only",
-    "rule": "Apify.LatinAbbreviations",
+    "rule": "Apify.RepeatedExampleIntroducer",
     "count": 1,
     "noReplacement": true
   },

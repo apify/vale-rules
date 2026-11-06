@@ -1659,62 +1659,6 @@
     "rule": "../styles/Apify/GenericTechnicalTerms.yml"
   },
   {
-    "name": "AcronymFirstUse: RQ stores requests.",
-    "format": "md",
-    "input": "RQ stores requests.",
-    "want": "1:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: Request queue (RQ) stores requests. Use RQ again.",
-    "format": "md",
-    "input": "Request queue (RQ) stores requests. Use RQ again.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: Use RQ first. Request queue (RQ) stores requests.",
-    "format": "md",
-    "input": "Use RQ first. Request queue (RQ) stores requests.",
-    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: Model Context Protocol (MCP) connects tools. Use MCP again.",
-    "format": "md",
-    "input": "Model Context Protocol (MCP) connects tools. Use MCP again.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: Use the API, SDK, CLI and JSON.",
-    "format": "md",
-    "input": "Use the API, SDK, CLI and JSON.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: Use `RQ` as an identifier.",
-    "format": "md",
-    "input": "Use `RQ` as an identifier.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: Use RQ before Request queue (RQ) is explained.",
-    "format": "md",
-    "input": "Use RQ before Request queue (RQ) is explained.",
-    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: RQ is useful. RQ is useful again.",
-    "format": "md",
-    "input": "RQ is useful. RQ is useful again.",
-    "want": "1:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
     "name": "FeatureStatus: Use the legacy Actor-scoped run endpoints.",
     "format": "md",
     "input": "Use the legacy Actor-scoped run endpoints.",
@@ -1748,69 +1692,6 @@
     "input": "The legacy Docker Compose approach is still supported.",
     "want": "",
     "rule": "../styles/Apify/FeatureStatus.yml"
-  },
-  {
-    "name": "document acronym regression: Request queue (RQ) stores requests.\n\nUse RQ later.",
-    "format": "md",
-    "input": "Request queue (RQ) stores requests.\n\nUse RQ later.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression: Use RQ first.\n\nRequest queue (RQ) stores requests.",
-    "format": "md",
-    "input": "Use RQ first.\n\nRequest queue (RQ) stores requests.",
-    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression: ```text\nRQ is a code identifier.\n```",
-    "format": "md",
-    "input": "```text\nRQ is a code identifier.\n```",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression: ## RQ guide\n\nRequest queue (RQ) stores requests.",
-    "format": "md",
-    "input": "## RQ guide\n\nRequest queue (RQ) stores requests.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression: R\u00e9sum\u00e9 RQ is undefined.",
-    "format": "md",
-    "input": "R\u00e9sum\u00e9 RQ is undefined.",
-    "want": "1:8:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression: ```text\nRequest queue (RQ) stores requests.\n```\n\nUse RQ here.",
-    "format": "md",
-    "input": "```text\nRequest queue (RQ) stores requests.\n```\n\nUse RQ here.",
-    "want": "5:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression: ````markdown\n```\nRQ is code.\n```\n````",
-    "format": "md",
-    "input": "````markdown\n```\nRQ is code.\n```\n````",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression: ```text\nRQ is code without a closing fence.",
-    "format": "md",
-    "input": "```text\nRQ is code without a closing fence.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression: ---\ntitle: MCP\n---\n\nUse API and JSON.",
-    "format": "md",
-    "input": "---\ntitle: MCP\n---\n\nUse API and JSON.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
   },
   {
     "name": "FeatureStatusConsistency: This legacy endpoint is scheduled for removal.",
@@ -1853,97 +1734,6 @@
     "input": "Use an alternative endpoint for this integration.",
     "want": "",
     "rule": "../styles/Apify/FeatureStatusConsistency.yml"
-  },
-  {
-    "name": "document acronym regression: <!-- RQ is a comment. -->",
-    "format": "md",
-    "input": "<!-- RQ is a comment. -->",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "document acronym regression:     RQ is indented code.",
-    "format": "md",
-    "input": "    RQ is indented code.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "allow HTTP methods",
-    "format": "md",
-    "input": "Send a POST request and a GET request.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "allow units and VS Code",
-    "format": "md",
-    "input": "Use VS Code with 4 GB of memory.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "allow uppercase status labels",
-    "format": "md",
-    "input": "Show READY or FAILED at 9 AM.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "allow uppercase brand names",
-    "format": "md",
-    "input": "Use LEGO and IKEA examples.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "allow uppercase labels and instruction filenames",
-    "format": "md",
-    "input": "Show TIMING OUT and KEY VALUE STORE labels. Read AGENTS.md.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: allow acronym inside an HTML attribute",
-    "format": "md",
-    "input": "See the <a href=\"https://example.com/RQ\">queue</a> for details.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: allow acronym inside a reference-link destination",
-    "format": "md",
-    "input": "[queue definition]: https://example.com/XYZ",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: still flag acronym in link text",
-    "format": "md",
-    "input": "The <a href=\"/docs\">PDQ workflow</a> is new.",
-    "want": "1:21:Apify.AcronymFirstUse:Spell out 'PDQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: allow acronym inside a multiline HTML tag",
-    "format": "md",
-    "input": "Click <a\n  href=\"https://example.com/RQ\">here</a>.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: allow acronym in a reference-link destination on the next line",
-    "format": "md",
-    "input": "[queue]:\n  https://example.com/XYZ",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "AcronymFirstUse: allow acronym in reference-style image alt",
-    "format": "md",
-    "input": "![The PDQ diagram][img1]",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
   },
   {
     "name": "review regression: FeatureStatus: Use the legacy Actor-scoped resurrect-run endpoint.",
@@ -1993,69 +1783,6 @@
     "input": "The alternative endpoint is not officially deprecated.",
     "want": "",
     "rule": "../styles/Apify/FeatureStatusConsistency.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: Request queue\n(RQ) stores requests. Use RQ again.",
-    "format": "md",
-    "input": "Request queue\n(RQ) stores requests. Use RQ again.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: A **request queue (RQ)** stores requests. Use RQ again.",
-    "format": "md",
-    "input": "A **request queue (RQ)** stores requests. Use RQ again.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: ## Request queue (RQ)\n\nUse RQ later.",
-    "format": "md",
-    "input": "## Request queue (RQ)\n\nUse RQ later.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: Use [RQ](https://example.com) to enqueue requests.",
-    "format": "md",
-    "input": "Use [RQ](https://example.com) to enqueue requests.",
-    "want": "1:6:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: Use <a href=\"https://example.com\">RQ</a> to enqueue requests.",
-    "format": "md",
-    "input": "Use <a href=\"https://example.com\">RQ</a> to enqueue requests.",
-    "want": "1:35:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: Use [RQ][queue] to enqueue requests.\n\n[queue]: https://example.com",
-    "format": "md",
-    "input": "Use [RQ][queue] to enqueue requests.\n\n[queue]: https://example.com",
-    "want": "1:6:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: Read [request queue (RQ)](https://example.com). Use RQ later.",
-    "format": "md",
-    "input": "Read [request queue (RQ)](https://example.com). Use RQ later.",
-    "want": "",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: Use RQ first.\n\n## Request queue (RQ)",
-    "format": "md",
-    "input": "Use RQ first.\n\n## Request queue (RQ)",
-    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
-  },
-  {
-    "name": "review regression: AcronymFirstUse: Use RQ first. A **request queue (RQ)** stores requests.",
-    "format": "md",
-    "input": "Use RQ first. A **request queue (RQ)** stores requests.",
-    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
   },
   {
     "name": "Issue 3: product casing proxy",
@@ -2320,8 +2047,7 @@
     "name": "Issue 3: acronym first use",
     "format": "md",
     "input": "Use RQ before defining it.",
-    "want": "1:5:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n",
-    "rule": "../styles/Apify/AcronymFirstUse.yml"
+    "want": ""
   },
   {
     "name": "Project config: flag Apify SDK without an article",
@@ -2638,29 +2364,29 @@
     "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
   },
   {
-    "name": "LatinAbbreviations preserves complete restatement",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "name": "RepeatedExampleIntroducer preserves complete restatement",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "The only allowed colors are the two primary options, i.e., red, blue.",
     "want": ""
   },
   {
-    "name": "LatinAbbreviations preserves examples",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "name": "RepeatedExampleIntroducer preserves examples",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "Supported formats include e.g. JSON and CSV.",
     "want": ""
   },
   {
-    "name": "LatinAbbreviations preserves ordinary clarification",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "name": "RepeatedExampleIntroducer preserves ordinary clarification",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "Use the default format, i.e. JSON.",
     "want": ""
   },
   {
-    "name": "LatinAbbreviations preserves code example",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "name": "RepeatedExampleIntroducer preserves code example",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "`i.e. such as JSON`",
     "want": ""
@@ -2695,21 +2421,21 @@
   },
   {
     "name": "Latin redundancy is review-only",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "Use e.g. for example JSON.",
-    "want": "1:5:Apify.LatinAbbreviations:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
+    "want": "1:5:Apify.RepeatedExampleIntroducer:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
   },
   {
     "name": "Latin redundancy allows an example list",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "Use e.g. JSON, CSV.",
     "want": ""
   },
   {
     "name": "Latin redundancy leaves confusion to its own rule",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "Use i.e. such as JSON.",
     "want": ""
@@ -3072,27 +2798,6 @@
     "want": "1:7:Apify.OverBolding:Long bold passage 'This entire passage is bold and contains considerably more than eighty characters to demonstrate excessive emphasis.'. Use bold for single words or short phrases.\n"
   },
   {
-    "name": "Acronym attributed HTML code",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "html",
-    "input": "<p><code class=\"language-text\">RQ</code></p>",
-    "want": ""
-  },
-  {
-    "name": "Acronym double-backtick code",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "``some ` RQ value``",
-    "want": ""
-  },
-  {
-    "name": "Acronym multiline code span",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "``RQ\nmore code``",
-    "want": ""
-  },
-  {
     "name": "Product article multiple adverbs",
     "rule": "../styles/Apify/ProductArticles.yml",
     "format": "md",
@@ -3125,62 +2830,6 @@
     "rule": "../styles/ApifyUI/VagueErrors.yml",
     "format": "md",
     "input": "Something went wrong: retry the upload.",
-    "want": ""
-  },
-  {
-    "name": "Acronym prose after attributed code",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "<p><code class=\"language-text\">RQ</code></p><p>RQ needs expansion.</p>",
-    "want": "1:48:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
-  },
-  {
-    "name": "Acronym prose after double-backtick code",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "``some ` RQ value``\n\nRQ needs expansion.",
-    "want": "3:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
-  },
-  {
-    "name": "Edge review: escaped ticks preserve prose",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "\\`RQ\\` needs expansion.",
-    "want": "1:3:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
-  },
-  {
-    "name": "Edge review: unmatched span before fence",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "A literal ` marker.\n\n```js\nRQ\n```\n\nRQ needs expansion.",
-    "want": "7:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
-  },
-  {
-    "name": "Edge review: inline span mixed fence",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "`code`\n\n```js\nRQ\n```\n\nRQ needs expansion.",
-    "want": "7:1:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
-  },
-  {
-    "name": "Edge review: HTML nested code",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "<p><code class=\"x\"><span>RQ</span></code></p>\n<p>RQ needs expansion.</p>",
-    "want": "2:4:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
-  },
-  {
-    "name": "Edge review: uppercase HTML code",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "<p><CODE class=\"x\">RQ</CODE></p>",
-    "want": ""
-  },
-  {
-    "name": "Edge review: tilde fence",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "~~~~\nRQ\n~~~\nRQ\n~~~~",
     "want": ""
   },
   {
@@ -3296,13 +2945,6 @@
     "want": "3:1:Apify.DeviceAgnosticVerbs:Device-specific verb: 'Select the tab' instead of 'Click the tab'. Use input-neutral language for tabs, menus, and options.\n"
   },
   {
-    "name": "Edge review: backslash inside code does not escape closing delimiter",
-    "rule": "../styles/Apify/AcronymFirstUse.yml",
-    "format": "md",
-    "input": "`code \\` RQ needs expansion.",
-    "want": "1:10:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
-  },
-  {
     "name": "Review prose scope: Apify.NoCommaAfterEg list",
     "rule": "../styles/Apify/NoCommaAfterEg.yml",
     "format": "md",
@@ -3345,22 +2987,22 @@
     "want": ""
   },
   {
-    "name": "Review prose scope: Apify.LatinAbbreviations list",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "name": "Review prose scope: Apify.RepeatedExampleIntroducer list",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "- Use e.g. for example Node.js.",
-    "want": "1:7:Apify.LatinAbbreviations:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
+    "want": "1:7:Apify.RepeatedExampleIntroducer:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
   },
   {
-    "name": "Review prose scope: Apify.LatinAbbreviations quote",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "name": "Review prose scope: Apify.RepeatedExampleIntroducer quote",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "> Use e.g. for example Node.js.",
-    "want": "1:7:Apify.LatinAbbreviations:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
+    "want": "1:7:Apify.RepeatedExampleIntroducer:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
   },
   {
-    "name": "Review prose scope: Apify.LatinAbbreviations code",
-    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "name": "Review prose scope: Apify.RepeatedExampleIntroducer code",
+    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
     "format": "md",
     "input": "`Use e.g. for example Node.js.`",
     "want": ""
@@ -3433,6 +3075,30 @@
     "rule": "../styles/ApifyUI/VagueErrors.yml",
     "format": "md",
     "input": "> Something went wrong. Try again.",
+    "want": ""
+  },
+  {
+    "name": "Review acronym removal: Connect to MCP server",
+    "format": "md",
+    "input": "Connect to MCP server",
+    "want": ""
+  },
+  {
+    "name": "Review acronym removal: Export as CSV",
+    "format": "md",
+    "input": "Export as CSV",
+    "want": ""
+  },
+  {
+    "name": "Review acronym removal: Ask AI",
+    "format": "md",
+    "input": "Ask AI",
+    "want": ""
+  },
+  {
+    "name": "Review acronym removal: Your IP address is blocked.",
+    "format": "md",
+    "input": "Your IP address is blocked.",
     "want": ""
   }
 ]

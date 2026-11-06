@@ -2,8 +2,8 @@
 
 The 38 cases prefixed `Issue 3:` in [tests/rules.test.yml](../tests/rules.test.yml)
 track the requirements reported in [issue #3](https://github.com/apify/vale-rules/issues/3).
-Each must produce the named rule and the intended correction, not merely an
-unrelated alert.
+Automated cases must produce the named rule and intended correction, not merely
+an unrelated alert. The acronym case records a manual-review requirement.
 
 Run both commands from the repository root with Vale 3.24.0 or later and Node.js
 18 or later:
@@ -22,7 +22,7 @@ maintenance and consumer testing.
 - Generic casing is checked in prose contexts. Sentence starts, headings, interface labels, code, and official product names need different treatment; the regression suite preserves those exceptions.
 - Product-article checks detect missing articles directly after selected verbs and prepositions. They preserve valid modifier phrases, but missing articles after other words or with intervening modifiers still need review.
 - Actor-name article checks recognize selected name patterns and RAG Web Browser. They do not provide a complete directory of every Actor name.
-- Acronym first use tracks a recognizable expansion in parentheses before the first prose use, including across paragraphs. It cannot verify that an expansion is factually correct. Definitions in headings, bold text, and Markdown links count; a soft line break may separate the expansion from its acronym. Readable Markdown and HTML link text follow the same first-use policy. Common technical abbreviations, code, heading uses, and bold-label uses are exempt.
+- Acronym first use requires editorial review. The shared style does not enforce expansions because common abbreviations and isolated UI strings make first-use checks unreliable.
 - Feature lifecycle is an evidence-based review requirement. `FeatureStatus` corrects documented Actor-scoped resurrect-run endpoint terminology; `FeatureStatusConsistency` flags conflicting removal language. Neither assigns a lifecycle status to an unknown feature. Consult official product, API, or SDK documentation before making that decision.
 
 The lifecycle probe below demonstrates the documented case only. Passing all 38 probes does not establish automatic classification of every feature or complete recognition of every product name.
@@ -72,4 +72,4 @@ The [Actor-scoped resurrect-run reference](https://docs.apify.com/api/v2/actor-r
 | generic casing Crawler | `Apify.GenericTechnicalTerms` | Automated probe |
 | generic casing Scraper | `Apify.GenericTechnicalTerms` | Automated probe |
 | legacy vs alternative vs deprecated | `Apify.FeatureStatus` | Documented cases; other statuses require review |
-| acronym first use | `Apify.AcronymFirstUse` | Automated probe |
+| acronym first use | Editorial review | Manual; no automatic first-use check |
