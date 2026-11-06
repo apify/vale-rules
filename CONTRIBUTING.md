@@ -178,7 +178,7 @@ metadata files with their sources, and lints with the installed package. It does
 not contact GitHub or publish anything. A sandbox that prohibits local listening
 sockets needs permission to run this test.
 
-Dedicated positive and valid-text cases currently cover 28 of 229 rules. The
+Dedicated positive and valid-text cases currently cover 27 of 228 rules. The
 coverage report requires both kinds for every tested rule and reports the
 remaining 201. It is not a complete rule-coverage claim. Consumer Views, JSON or
 TypeScript extraction, and real consumer repository corpora still need their
@@ -270,9 +270,9 @@ their local `.vale.ini`.
 ## Rule changes in this update
 
 `Apify.LatinAbbreviations` is removed because its automatic edits inferred
-meaning from comma-separated lists. The new `Apify.RepeatedExampleIntroducer`
-checks only redundant example introducers and offers no automatic edit. Update
-any rule overrides explicitly; the names don't represent the same check.
+meaning from comma-separated lists. No replacement rule ships under a new name.
+Removing the rule only drops its alerts; an existing override can't silently
+enable a renamed check. Rule removal is a minor change under the policy above.
 
 Acronym expansion is an editorial review task. No first-use rule ships in
 the shared style. These rule additions and removals require a minor release

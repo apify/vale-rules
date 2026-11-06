@@ -2364,34 +2364,6 @@
     "rule": "../styles/Apify/DeviceAgnosticVerbs.yml"
   },
   {
-    "name": "RepeatedExampleIntroducer preserves complete restatement",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "The only allowed colors are the two primary options, i.e., red, blue.",
-    "want": ""
-  },
-  {
-    "name": "RepeatedExampleIntroducer preserves examples",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "Supported formats include e.g. JSON and CSV.",
-    "want": ""
-  },
-  {
-    "name": "RepeatedExampleIntroducer preserves ordinary clarification",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "Use the default format, i.e. JSON.",
-    "want": ""
-  },
-  {
-    "name": "RepeatedExampleIntroducer preserves code example",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "`i.e. such as JSON`",
-    "want": ""
-  },
-  {
     "name": "IeEgConfusion preserves complete restatement",
     "rule": "../styles/Apify/IeEgConfusion.yml",
     "format": "md",
@@ -2417,27 +2389,6 @@
     "rule": "../styles/Apify/IeEgConfusion.yml",
     "format": "md",
     "input": "`i.e. such as JSON`",
-    "want": ""
-  },
-  {
-    "name": "Latin redundancy is review-only",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "Use e.g. for example JSON.",
-    "want": "1:5:Apify.RepeatedExampleIntroducer:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
-  },
-  {
-    "name": "Latin redundancy allows an example list",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "Use e.g. JSON, CSV.",
-    "want": ""
-  },
-  {
-    "name": "Latin redundancy leaves confusion to its own rule",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "Use i.e. such as JSON.",
     "want": ""
   },
   {
@@ -2987,27 +2938,6 @@
     "want": ""
   },
   {
-    "name": "Review prose scope: Apify.RepeatedExampleIntroducer list",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "- Use e.g. for example Node.js.",
-    "want": "1:7:Apify.RepeatedExampleIntroducer:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
-  },
-  {
-    "name": "Review prose scope: Apify.RepeatedExampleIntroducer quote",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "> Use e.g. for example Node.js.",
-    "want": "1:7:Apify.RepeatedExampleIntroducer:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
-  },
-  {
-    "name": "Review prose scope: Apify.RepeatedExampleIntroducer code",
-    "rule": "../styles/Apify/RepeatedExampleIntroducer.yml",
-    "format": "md",
-    "input": "`Use e.g. for example Node.js.`",
-    "want": ""
-  },
-  {
     "name": "Review prose scope: ApifyUI.MissingRecoveryPath list",
     "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
     "format": "md",
@@ -3331,5 +3261,23 @@
     "input": "> `Use e.g., Node.js.`",
     "want": "",
     "rule": "../styles/Apify/NoCommaAfterEg.yml"
+  },
+  {
+    "name": "Retired Latin rule: complete restatement",
+    "format": "md",
+    "input": "Use i.e. the complete set: red, green, blue.",
+    "absent": [
+      "Apify.LatinAbbreviations",
+      "Apify.RepeatedExampleIntroducer"
+    ]
+  },
+  {
+    "name": "Retired Latin rule: redundant example introducer",
+    "format": "md",
+    "input": "Use e.g. for example Node.js.",
+    "absent": [
+      "Apify.LatinAbbreviations",
+      "Apify.RepeatedExampleIntroducer"
+    ]
   }
 ]

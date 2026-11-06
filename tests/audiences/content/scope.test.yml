@@ -28,7 +28,6 @@
     "format": "md",
     "input": "The only allowed colors are the two primary options, i.e., red, blue.",
     "absent": [
-      "Apify.RepeatedExampleIntroducer",
       "Apify.IeEgConfusion"
     ],
     "contains": "Apify.NoCommaAfterEg"
