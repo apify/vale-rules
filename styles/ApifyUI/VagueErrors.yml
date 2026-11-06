@@ -2,9 +2,9 @@ extends: existence
 level: suggestion
 message: "Vague error: consider adding specificity to '%s'."
 ignorecase: true
-# Read the following recovery sentence in the same paragraph. Exceptions
+# Read the following recovery sentence in the same prose block. Exceptions
 # only see the matched text, so the pattern guards the immediate recovery instruction.
-scope: paragraph
+scope: text & ~frontmatter
 nonword: true
 
 # raw fragments concatenate: apply one recovery guard to all error phrases.

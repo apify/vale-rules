@@ -3301,5 +3301,138 @@
     "format": "md",
     "input": "`code \\` RQ needs expansion.",
     "want": "1:10:Apify.AcronymFirstUse:Spell out 'RQ' with the acronym in parentheses before its first use.\n"
+  },
+  {
+    "name": "Review prose scope: Apify.NoCommaAfterEg list",
+    "rule": "../styles/Apify/NoCommaAfterEg.yml",
+    "format": "md",
+    "input": "- Use a runtime, e.g., Node.js.",
+    "want": "1:18:Apify.NoCommaAfterEg:Apify style: omit the comma after 'e.g.' or 'i.e.'. Write 'e.g. Node.js' instead of 'e.g., Node.js'.\n"
+  },
+  {
+    "name": "Review prose scope: Apify.NoCommaAfterEg quote",
+    "rule": "../styles/Apify/NoCommaAfterEg.yml",
+    "format": "md",
+    "input": "> Use a runtime, e.g., Node.js.",
+    "want": "1:18:Apify.NoCommaAfterEg:Apify style: omit the comma after 'e.g.' or 'i.e.'. Write 'e.g. Node.js' instead of 'e.g., Node.js'.\n"
+  },
+  {
+    "name": "Review prose scope: Apify.NoCommaAfterEg code",
+    "rule": "../styles/Apify/NoCommaAfterEg.yml",
+    "format": "md",
+    "input": "`Use a runtime, e.g., Node.js.`",
+    "want": ""
+  },
+  {
+    "name": "Review prose scope: Apify.IeEgConfusion list",
+    "rule": "../styles/Apify/IeEgConfusion.yml",
+    "format": "md",
+    "input": "- Use i.e. for example Node.js.",
+    "want": "1:7:Apify.IeEgConfusion:Check the intended meaning of 'i.e. for example': 'i.e.' means 'that is'; 'e.g.' means 'for example'. Rewrite the repeated introducer as needed.\n"
+  },
+  {
+    "name": "Review prose scope: Apify.IeEgConfusion quote",
+    "rule": "../styles/Apify/IeEgConfusion.yml",
+    "format": "md",
+    "input": "> Use i.e. for example Node.js.",
+    "want": "1:7:Apify.IeEgConfusion:Check the intended meaning of 'i.e. for example': 'i.e.' means 'that is'; 'e.g.' means 'for example'. Rewrite the repeated introducer as needed.\n"
+  },
+  {
+    "name": "Review prose scope: Apify.IeEgConfusion code",
+    "rule": "../styles/Apify/IeEgConfusion.yml",
+    "format": "md",
+    "input": "`Use i.e. for example Node.js.`",
+    "want": ""
+  },
+  {
+    "name": "Review prose scope: Apify.LatinAbbreviations list",
+    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "format": "md",
+    "input": "- Use e.g. for example Node.js.",
+    "want": "1:7:Apify.LatinAbbreviations:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
+  },
+  {
+    "name": "Review prose scope: Apify.LatinAbbreviations quote",
+    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "format": "md",
+    "input": "> Use e.g. for example Node.js.",
+    "want": "1:7:Apify.LatinAbbreviations:Repeated example introducer 'e.g. for example'. Use either 'e.g.' or 'for example', after checking the intended meaning.\n"
+  },
+  {
+    "name": "Review prose scope: Apify.LatinAbbreviations code",
+    "rule": "../styles/Apify/LatinAbbreviations.yml",
+    "format": "md",
+    "input": "`Use e.g. for example Node.js.`",
+    "want": ""
+  },
+  {
+    "name": "Review prose scope: ApifyUI.MissingRecoveryPath list",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "- Request failed.",
+    "want": "1:3:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "Review prose scope: ApifyUI.MissingRecoveryPath quote",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "> Request failed.",
+    "want": "1:3:ApifyUI.MissingRecoveryPath:Missing recovery path: 'Request failed': the user doesn't know what to do next. See docs/recovery-decision-tree.md.\n"
+  },
+  {
+    "name": "Review prose scope: ApifyUI.MissingRecoveryPath code",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "`Request failed.`",
+    "want": ""
+  },
+  {
+    "name": "Review prose scope: ApifyUI.VagueErrors list",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "- Something went wrong.",
+    "want": "1:3:ApifyUI.VagueErrors:Vague error: consider adding specificity to 'Something went wrong'.\n"
+  },
+  {
+    "name": "Review prose scope: ApifyUI.VagueErrors quote",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "> Something went wrong.",
+    "want": "1:3:ApifyUI.VagueErrors:Vague error: consider adding specificity to 'Something went wrong'.\n"
+  },
+  {
+    "name": "Review prose scope: ApifyUI.VagueErrors code",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "`Something went wrong.`",
+    "want": ""
+  },
+  {
+    "name": "Review recovery: ApifyUI.MissingRecoveryPath -",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "- Request failed. Try again.",
+    "want": ""
+  },
+  {
+    "name": "Review recovery: ApifyUI.MissingRecoveryPath >",
+    "rule": "../styles/ApifyUI/MissingRecoveryPath.yml",
+    "format": "md",
+    "input": "> Request failed. Try again.",
+    "want": ""
+  },
+  {
+    "name": "Review recovery: ApifyUI.VagueErrors -",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "- Something went wrong. Try again.",
+    "want": ""
+  },
+  {
+    "name": "Review recovery: ApifyUI.VagueErrors >",
+    "rule": "../styles/ApifyUI/VagueErrors.yml",
+    "format": "md",
+    "input": "> Something went wrong. Try again.",
+    "want": ""
   }
 ]

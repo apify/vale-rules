@@ -1,8 +1,8 @@
 extends: existence
 message: "Apify style: omit the comma after 'e.g.' or 'i.e.'. Write 'e.g. Node.js' instead of 'e.g., Node.js'."
 level: suggestion
-# Parsed paragraphs retain abbreviation punctuation while excluding code and attributes.
-scope: paragraph
+# Parsed prose includes lists and blockquotes while excluding code and front matter.
+scope: text & ~frontmatter
 nonword: true
 tokens:
   - '\b(?:e\.g\.|i\.e\.),\s'

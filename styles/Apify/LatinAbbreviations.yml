@@ -3,7 +3,7 @@ level: suggestion
 message: "Repeated example introducer '%s'. Use either 'e.g.' or 'for example', after checking the intended meaning."
 ignorecase: false
 nonword: true
-scope: paragraph
+scope: text & ~frontmatter
 
 # A list alone cannot distinguish examples from an exhaustive restatement.
 # Keep semantic i.e./e.g. review in IeEgConfusion and never change meaning automatically.
