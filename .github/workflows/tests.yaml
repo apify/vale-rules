@@ -33,6 +33,8 @@ jobs:
             --output "$install_dir/vale.tar.gz"
           tar -xzf "$install_dir/vale.tar.gz" -C "$install_dir"
           echo "$install_dir" >> "$GITHUB_PATH"
+      - name: Check generated terminology rule
+        run: node tools/build-generic-terms.mjs --check
       - name: Report dedicated rule coverage
         run: node tools/report-test-coverage.mjs
       - name: Native rule and audience tests

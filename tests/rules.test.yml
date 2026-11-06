@@ -798,32 +798,32 @@
     "rule": "../styles/Apify/EmDashAvoidance.yml"
   },
   {
-    "name": "consumer regression: TaskCapitalization: Open the **Tasks** tab.",
+    "name": "consumer regression: GenericTechnicalTerms: Open the **Tasks** tab.",
     "format": "md",
     "input": "Open the **Tasks** tab.",
     "want": "",
-    "rule": "../styles/Apify/TaskCapitalization.yml"
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
   },
   {
-    "name": "consumer regression: TaskCapitalization: Tasks are pre-configured Actor runs.",
+    "name": "consumer regression: GenericTechnicalTerms: Tasks are pre-configured Actor runs.",
     "format": "md",
     "input": "Tasks are pre-configured Actor runs.",
     "want": "",
-    "rule": "../styles/Apify/TaskCapitalization.yml"
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
   },
   {
-    "name": "consumer regression: TaskCapitalization: Schedules allow timezone settings.",
+    "name": "consumer regression: GenericTechnicalTerms: Schedules allow timezone settings.",
     "format": "md",
     "input": "Schedules allow timezone settings.",
     "want": "",
-    "rule": "../styles/Apify/TaskCapitalization.yml"
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
   },
   {
-    "name": "consumer regression: TaskCapitalization: Done. Tasks can run again.",
+    "name": "consumer regression: GenericTechnicalTerms: Done. Tasks can run again.",
     "format": "md",
     "input": "Done. Tasks can run again.",
     "want": "",
-    "rule": "../styles/Apify/TaskCapitalization.yml"
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
   },
   {
     "name": "flag a missing article after an earlier the and a verb",
@@ -1445,7 +1445,7 @@
     "name": "GenericTechnicalTerms: Configure your AI Agent dynamically.",
     "format": "md",
     "input": "Configure your AI Agent dynamically.",
-    "want": "",
+    "want": "1:16:Apify.GenericTechnicalTerms:Use 'AI agent' instead of 'AI Agent' for a generic term. Preserve official product and interface names.\n",
     "rule": "../styles/Apify/GenericTechnicalTerms.yml"
   },
   {
@@ -1907,15 +1907,15 @@
     "name": "Issue 3: feature casing Task",
     "format": "md",
     "input": "Create a Task today.",
-    "want": "1:8:Apify.TaskCapitalization:Lowercase 'a task' instead of 'a Task'. Unlike 'Actor', task/schedule aren't branded product names.\n",
-    "rule": "../styles/Apify/TaskCapitalization.yml"
+    "want": "1:10:Apify.GenericTechnicalTerms:Use 'task' instead of 'Task' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
   },
   {
     "name": "Issue 3: feature casing Schedule",
     "format": "md",
     "input": "Create a Schedule today.",
-    "want": "1:8:Apify.TaskCapitalization:Lowercase 'a schedule' instead of 'a Schedule'. Unlike 'Actor', task/schedule aren't branded product names.\n",
-    "rule": "../styles/Apify/TaskCapitalization.yml"
+    "want": "1:10:Apify.GenericTechnicalTerms:Use 'schedule' instead of 'Schedule' for a generic term. Preserve official product and interface names.\n",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml"
   },
   {
     "name": "Issue 3: feature casing Run",
@@ -3100,5 +3100,96 @@
     "format": "md",
     "input": "Your IP address is blocked.",
     "want": ""
+  },
+  {
+    "name": "Review casing UI: the Tasks list in the sidebar",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "the Tasks list in the sidebar",
+    "want": ""
+  },
+  {
+    "name": "Review casing UI: :::note Time\nSchedules run daily.\n:::",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": ":::note Time\nSchedules run daily.\n:::",
+    "want": ""
+  },
+  {
+    "name": "Review casing UI: Go to the Tasks tab.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Go to the Tasks tab.",
+    "want": ""
+  },
+  {
+    "name": "Review casing UI: Open the Schedules page.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Open the Schedules page.",
+    "want": ""
+  },
+  {
+    "name": "Review casing UI: Go to Tasks to edit it.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Go to Tasks to edit it.",
+    "want": ""
+  },
+  {
+    "name": "Review casing UI: View the Dataset",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "View the Dataset",
+    "want": ""
+  },
+  {
+    "name": "Review casing UI: Abort the Run?",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Abort the Run?",
+    "want": ""
+  },
+  {
+    "name": "Review casing UI: Then click Run to start the Actor.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Then click Run to start the Actor.",
+    "want": ""
+  },
+  {
+    "name": "Review casing prose: Use your AI Agent today.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Use your AI Agent today.",
+    "want": "1:10:Apify.GenericTechnicalTerms:Use 'AI agent' instead of 'AI Agent' for a generic term. Preserve official product and interface names.\n"
+  },
+  {
+    "name": "Review casing prose: Use the AI Agent today.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Use the AI Agent today.",
+    "want": "1:9:Apify.GenericTechnicalTerms:Use 'AI agent' instead of 'AI Agent' for a generic term. Preserve official product and interface names.\n"
+  },
+  {
+    "name": "Review casing prose: Create a Task today.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Create a Task today.",
+    "want": "1:10:Apify.GenericTechnicalTerms:Use 'task' instead of 'Task' for a generic term. Preserve official product and interface names.\n"
+  },
+  {
+    "name": "Review casing prose: Create a Schedule today.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "Create a Schedule today.",
+    "want": "1:10:Apify.GenericTechnicalTerms:Use 'schedule' instead of 'Schedule' for a generic term. Preserve official product and interface names.\n"
+  },
+  {
+    "name": "Review casing prose: You can configure Schedules here.",
+    "rule": "../styles/Apify/GenericTechnicalTerms.yml",
+    "format": "md",
+    "input": "You can configure Schedules here.",
+    "want": "1:19:Apify.GenericTechnicalTerms:Use 'schedules' instead of 'Schedules' for a generic term. Preserve official product and interface names.\n"
   }
 ]
