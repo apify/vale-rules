@@ -8,7 +8,7 @@ guide. All rules ship in one package. Each team selects the styles it needs in
 
 | Style | Rules | Intended scope |
 |---|---:|---|
-| `Apify` | 82 | Shared brand, terminology, US English, accessibility, grammar, punctuation, and voice |
+| `Apify` | 80 | Shared brand, terminology, US English, accessibility, grammar, punctuation, and voice |
 | `ApifyDocs` | 12 | Documentation conventions: generated H1s, titled admonitions, heading form, and factual language |
 | `ApifyUI` | 81 | Console and product microcopy: controls, errors, dialogs, empty states, notifications, and recovery paths |
 | `ApifyContent` | 56 | Blog, marketing, Store, and Actor editorial copy: positioning, claims, feature language, and content structure |
@@ -200,6 +200,22 @@ Override individual rules when a repository needs different behavior. Use the
 fully qualified rule name: the style directory plus the filename without `.yml`.
 For example, `ApifyDocs.GerundHeading` disables the rule, but
 `Apify.GerundHeading` does nothing. Vale does not report unknown override names.
+
+### Deliberate long bold text in Academy lessons
+
+Academy lesson introductions use long bold passages as part of their design.
+Keep the shared bolding check available elsewhere and add this override to the
+consumer repository's `.vale.ini` when using that convention:
+
+```ini
+[sources/academy/**/*.{md,mdx}]
+Apify.OverBolding = NO
+```
+
+This disables the length check throughout that section, including bold text
+outside the introductions. Review emphasis manually there. The package can't
+infer which bold passages are intentional from their wording. This example isn't
+an automatic exemption; the consumer must add the override.
 
 ## Releases
 

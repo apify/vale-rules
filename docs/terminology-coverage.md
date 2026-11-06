@@ -22,10 +22,10 @@ maintenance and consumer testing.
 - Generic casing is checked in prose contexts. Plain interface references after navigation and control verbs are preserved, as are labels followed by words such as "tab", "page", or "list". Sentence starts, headings, interface labels, code, and official product names need different treatment; the regression suite preserves those exceptions.
 - Product-article checks detect missing articles directly after selected verbs and prepositions. They preserve valid modifier phrases, but missing articles after other words or with intervening modifiers still need review.
 - Actor-name article checks recognize selected name patterns and RAG Web Browser. They do not provide a complete directory of every Actor name.
-- Acronym first use requires editorial review. The shared style does not enforce expansions because common abbreviations and isolated UI strings make first-use checks unreliable.
+- Acronym first use requires editorial review. The shared style doesn't enforce expansions because common abbreviations and isolated UI strings make first-use checks unreliable.
 - Feature lifecycle is an evidence-based review requirement. `FeatureStatus` corrects documented Actor-scoped resurrect-run endpoint terminology; `FeatureStatusConsistency` flags conflicting removal language. Neither assigns a lifecycle status to an unknown feature. Consult official product, API, or SDK documentation before making that decision.
 
-The lifecycle probe below demonstrates the documented case only. Passing all 38 probes does not establish automatic classification of every feature or complete recognition of every product name.
+The lifecycle probe below demonstrates the documented case only. The requirement inventory includes manual checks. Passing its automated probes doesn't establish automatic classification of every feature or complete recognition of every product name.
 
 ## Official lifecycle evidence
 
@@ -52,8 +52,8 @@ The [Actor-scoped resurrect-run reference](https://docs.apify.com/api/v2/actor-r
 | descriptor casing Platform | `Apify.ApifyProductNames` | Automated probe |
 | descriptor casing Team | `Apify.ApifyProductNames` | Automated probe |
 | descriptor casing Ecosystem | `Apify.ApifyProductNames` | Automated probe |
-| feature casing Task | `Apify.GenericTechnicalTerms` | Automated probe |
-| feature casing Schedule | `Apify.GenericTechnicalTerms` | Automated probe |
+| feature casing `Task` | `Apify.GenericTechnicalTerms` | Automated probe |
+| feature casing `Schedule` | `Apify.GenericTechnicalTerms` | Automated probe |
 | feature casing Run | `Apify.GenericTechnicalTerms` | Automated probe |
 | feature casing Build | `Apify.GenericTechnicalTerms` | Automated probe |
 | feature casing Dataset | `Apify.GenericTechnicalTerms` | Automated probe |

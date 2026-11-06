@@ -46,4 +46,4 @@ jobs:
             vale --no-global --config="tests/audiences/$audience/.vale.ini" test "tests/audiences/$audience/scope.test.yml"
           done
       - name: Consumer compatibility, replacement actions, and release archive
-        run: node --test tests/compatibility.test.mjs tests/actions.test.mjs tests/package.test.mjs
+        run: node --test tests/compatibility.test.mjs tests/actions.test.mjs tests/package.test.mjs tests/consumer-overrides.test.mjs

@@ -113,11 +113,12 @@ Node.js 18 or later. The package integration test also needs `bash`, `zip`, and
 `unzip`. No npm dependencies are required:
 
 ```bash
+node tools/build-generic-terms.mjs --check
 vale --no-global --config=tests/.vale.ini test tests/rules.test.yml
 for audience in docs ui content; do
   vale --no-global --config="tests/audiences/$audience/.vale.ini" test "tests/audiences/$audience/scope.test.yml"
 done
-node --test tests/compatibility.test.mjs tests/actions.test.mjs tests/package.test.mjs
+node --test tests/compatibility.test.mjs tests/actions.test.mjs tests/package.test.mjs tests/consumer-overrides.test.mjs
 node tools/report-test-coverage.mjs
 ```
 
@@ -157,7 +158,8 @@ file. Omit `rule` for a project case that should use `tests/.vale.ini`. Use
 `line:column:Check:message` output. An action case's `name` must match its native
 case's unique name.
 
-The 38 cases prefixed `Issue 3:` retain the terminology requirements inventory.
+The 38 cases prefixed `Issue 3:` retain the terminology requirements inventory,
+including the manual acronym-expansion requirement.
 Review expected diagnostics before changing them; do not regenerate expectations
 merely to make a failing test pass.
 
@@ -270,14 +272,24 @@ their local `.vale.ini`.
 `Apify.LatinAbbreviations` is removed because its automatic edits inferred
 meaning from comma-separated lists. The new `Apify.RepeatedExampleIntroducer`
 checks only redundant example introducers and offers no automatic edit. Update
-any rule overrides explicitly; the names do not represent the same check.
+any rule overrides explicitly; the names don't represent the same check.
 
-Acronym expansion remains an editorial review task. No first-use rule ships in
+Acronym expansion is an editorial review task. No first-use rule ships in
 the shared style. These rule additions and removals require a minor release
 under the versioning policy.
 
 Task and schedule casing now share `Apify.GenericTechnicalTerms`. The separate
-`Apify.TaskCapitalization` rule introduced during development is not shipped.
+`Apify.TaskCapitalization` rule introduced during development isn't shipped.
+
+`DashAsAside` preserves short term-description forms regardless of description
+casing, including in plain prose. This favors avoiding false positives over
+detecting every possible aside. Ordinary sentence-like asides and comma-delimited
+legend pairs still produce warnings.
+
+Long bold passages stay review suggestions. Academy lessons that deliberately
+use long bold introductions should use the path override shown in the README;
+it disables that check throughout the chosen section. The rule itself doesn't
+guess whether a passage is an introduction from its opening words.
 
 ### Maintaining shared terminology guards
 
@@ -286,4 +298,4 @@ Edit the contexts, guards, or term table in that script, then run
 `node tools/build-generic-terms.mjs` and review the YAML diff. Both files are
 checked in; consumers use the YAML directly and need no build step.
 CI runs the script with `--check` to prevent source/output drift. Behavioral
-fixtures and replacement-action tests remain the authority for rule behavior.
+fixtures and replacement-action tests are the authority for rule behavior.
