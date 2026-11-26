@@ -3502,7 +3502,7 @@
     "rule": "../styles/ApifyUI/SentenceCount.yml",
     "format": "md",
     "input": "One here. Two now. Three total.",
-    "want": "1:9:ApifyUI.SentenceCount:String has more than 3 sentences: aim for 1-2 for UI copy.\n"
+    "want": "1:9:ApifyUI.SentenceCount:String has 3 sentences: aim for 1-2 for UI copy.\n"
   },
   {
     "name": "preserve partial preview 1",
@@ -3594,5 +3594,12 @@
     "input": "Use 1-on-1 meetings.",
     "want": "1:5:Apify.Punctuation:Fix punctuation: '1on1' instead of '1-on-1'.\n",
     "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "SentenceCount: message reports the actual four sentences",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "One here. Two now. Three here. Four total.",
+    "want": "1:9:ApifyUI.SentenceCount:String has 4 sentences: aim for 1-2 for UI copy.\n"
   }
 ]

@@ -1,6 +1,6 @@
 extends: occurrence
 level: suggestion
-message: "String has more than %d sentences: aim for 1-2 for UI copy."
+message: "String has %d sentences: aim for 1-2 for UI copy."
 ignorecase: false
 token: '(?<!\b(?:e\.g|i\.e|etc|vs|cf|al|Inc|Ltd|Co|No|Fig|Vol|Mr|Mrs|Ms|Dr|Prof|St|Jr|Sr))[.!?](?:\s|$)'
 max: 2
