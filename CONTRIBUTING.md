@@ -178,9 +178,9 @@ metadata files with their sources, and lints with the installed package. It does
 not contact GitHub or publish anything. A sandbox that prohibits local listening
 sockets needs permission to run this test.
 
-Dedicated positive and valid-text cases currently cover 27 of 228 rules. The
+Dedicated positive and valid-text cases currently cover 27 of 227 rules. The
 coverage report requires both kinds for every tested rule and reports the
-remaining 201. It is not a complete rule-coverage claim. Consumer Views, JSON or
+remaining 200. It is not a complete rule-coverage claim. Consumer Views, JSON or
 TypeScript extraction, and real consumer repository corpora still need their
 own integration tests.
 
@@ -268,6 +268,11 @@ Consumers download the archive once with `vale sync`, then select styles in
 their local `.vale.ini`.
 
 ## Rule changes in this update
+
+`ApifyUI.PronounSubjectDrop` is removed because its quick fix dropped the
+subject of complete sentences. "The cost depends on memory. It also depends on
+retries." became a fragment. No replacement rule ships under a new name. This
+removal requires a minor release under the versioning policy.
 
 `Apify.LatinAbbreviations` is removed because its automatic edits inferred
 meaning from comma-separated lists. No replacement rule ships under a new name.
