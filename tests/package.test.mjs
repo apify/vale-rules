@@ -22,6 +22,7 @@ test('release archive syncs and preserves every style rule', async () => {
     assert.ok(!listing.includes('/tests/'));
     assert.ok(!listing.includes('/LatinAbbreviations.yml'));
     assert.ok(!listing.includes('/RepeatedExampleIntroducer.yml'));
+    assert.ok(!listing.includes('/PronounSubjectDrop.yml'));
     server = createServer((request, response) => {
       if (request.url !== '/ApifyStyleGuide.zip') { response.writeHead(404).end(); return; }
       response.writeHead(200, {'Content-Type': 'application/zip'}).end(archive);

@@ -3279,5 +3279,21 @@
       "Apify.LatinAbbreviations",
       "Apify.RepeatedExampleIntroducer"
     ]
+  },
+  {
+    "name": "Retired pronoun rule: complete prose keeps its subject",
+    "format": "md",
+    "input": "When you pay for platform usage, the cost depends on proxies, data transfers, memory, and run duration. It also depends on the number of retries when a request fails.",
+    "absent": [
+      "ApifyUI.PronounSubjectDrop"
+    ]
+  },
+  {
+    "name": "Retired pronoun rule: API fragment is not rewritten",
+    "format": "md",
+    "input": "Returns dataset items as a JSON array. It also supports XML.",
+    "absent": [
+      "ApifyUI.PronounSubjectDrop"
+    ]
   }
 ]
