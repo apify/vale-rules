@@ -3790,5 +3790,103 @@
     "input": "Great to see you're getting so much value from Apify! You've used **80% of your free platform usage**. To keep going, you can subscribe to a paid plan and increase your limits.",
     "want": "1:1:ApifyUI.PraiseOpener:Usage praise: 'Great to see you're getting so much value'. Check whether this delays useful information, especially before a limit or billing notice.\n",
     "rule": "../styles/ApifyUI/PraiseOpener.yml"
+  },
+  {
+    "name": "ErrorFiller: skip front matter",
+    "format": "md",
+    "input": "---\ntitle: \"Oops, the build failed.\"\n---\nThe page body.",
+    "want": "",
+    "rule": "../styles/ApifyUI/ErrorFiller.yml"
+  },
+  {
+    "name": "ErrorFiller: flag list item",
+    "format": "md",
+    "input": "- Oops, the build failed.",
+    "want": "1:3:ApifyUI.ErrorFiller:'Oops' delays the fact or asks instead of telling. State what happened and the next step.\n",
+    "rule": "../styles/ApifyUI/ErrorFiller.yml"
+  },
+  {
+    "name": "ErrorFiller: flag blockquote",
+    "format": "md",
+    "input": "> Oops, the build failed.",
+    "want": "1:3:ApifyUI.ErrorFiller:'Oops' delays the fact or asks instead of telling. State what happened and the next step.\n",
+    "rule": "../styles/ApifyUI/ErrorFiller.yml"
+  },
+  {
+    "name": "ErrorFiller: flag HTML prose",
+    "format": "html",
+    "input": "<p>Oops, the build failed.</p>",
+    "want": "1:4:ApifyUI.ErrorFiller:'Oops' delays the fact or asks instead of telling. State what happened and the next step.\n",
+    "rule": "../styles/ApifyUI/ErrorFiller.yml"
+  },
+  {
+    "name": "ErrorFiller: skip HTML code",
+    "format": "html",
+    "input": "<p><code>Oops, the build failed.</code></p>",
+    "want": "",
+    "rule": "../styles/ApifyUI/ErrorFiller.yml"
+  },
+  {
+    "name": "ErrorFiller: skip inline code",
+    "format": "md",
+    "input": "Avoid `Oops, the build failed.` in error messages.",
+    "want": "",
+    "rule": "../styles/ApifyUI/ErrorFiller.yml"
+  },
+  {
+    "name": "ErrorFiller: skip fenced code",
+    "format": "md",
+    "input": "```text\nOops, the build failed.\n```",
+    "want": "",
+    "rule": "../styles/ApifyUI/ErrorFiller.yml"
+  },
+  {
+    "name": "PraiseOpener: skip front matter",
+    "format": "md",
+    "input": "---\ntitle: \"We're glad you're getting so much value from Apify.\"\n---\nThe page body.",
+    "want": "",
+    "rule": "../styles/ApifyUI/PraiseOpener.yml"
+  },
+  {
+    "name": "PraiseOpener: flag list item",
+    "format": "md",
+    "input": "- We're glad you're getting so much value from Apify.",
+    "want": "1:9:ApifyUI.PraiseOpener:Usage praise: 'glad you're getting so much value'. Check whether this delays useful information, especially before a limit or billing notice.\n",
+    "rule": "../styles/ApifyUI/PraiseOpener.yml"
+  },
+  {
+    "name": "PraiseOpener: flag blockquote",
+    "format": "md",
+    "input": "> We're glad you're getting so much value from Apify.",
+    "want": "1:9:ApifyUI.PraiseOpener:Usage praise: 'glad you're getting so much value'. Check whether this delays useful information, especially before a limit or billing notice.\n",
+    "rule": "../styles/ApifyUI/PraiseOpener.yml"
+  },
+  {
+    "name": "PraiseOpener: flag HTML prose",
+    "format": "html",
+    "input": "<p>We're glad you're getting so much value from Apify.</p>",
+    "want": "1:10:ApifyUI.PraiseOpener:Usage praise: 'glad you're getting so much value'. Check whether this delays useful information, especially before a limit or billing notice.\n",
+    "rule": "../styles/ApifyUI/PraiseOpener.yml"
+  },
+  {
+    "name": "PraiseOpener: skip HTML code",
+    "format": "html",
+    "input": "<p><code>We're glad you're getting so much value from Apify.</code></p>",
+    "want": "",
+    "rule": "../styles/ApifyUI/PraiseOpener.yml"
+  },
+  {
+    "name": "PraiseOpener: skip inline code",
+    "format": "md",
+    "input": "Avoid `We're glad you're getting so much value from Apify.` in error messages.",
+    "want": "",
+    "rule": "../styles/ApifyUI/PraiseOpener.yml"
+  },
+  {
+    "name": "PraiseOpener: skip fenced code",
+    "format": "md",
+    "input": "```text\nWe're glad you're getting so much value from Apify.\n```",
+    "want": "",
+    "rule": "../styles/ApifyUI/PraiseOpener.yml"
   }
 ]

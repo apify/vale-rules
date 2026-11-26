@@ -2,14 +2,16 @@
 # Why: Phrases such as "We have bad news" or "Did you specify it correctly?" delay the
 #   fact or ask instead of telling. State what happened and the next step. "Oops" is an
 #   editorial preference: it softens a message that already states the fact.
-# Scope: Consumer configuration controls where Vale runs this rule. These comments do
-#   not exclude README or documentation files.
+# Scope: Vale skips front matter, as the other UI error rules do. Consumer
+#   configuration controls which files Vale checks; these comments don't exclude
+#   README or documentation files.
 # Export: ApifyUI style, suggestion level.
 # Advisory only: a match needs editorial judgment, so the rule never rewrites text.
 #   Exact replacements for known error phrasings live in other rules.
 extends: existence
 message: "'%s' delays the fact or asks instead of telling. State what happened and the next step."
 level: suggestion
+scope: text & ~frontmatter
 ignorecase: true
 nonword: true
 tokens:
