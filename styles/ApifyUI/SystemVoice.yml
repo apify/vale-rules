@@ -1,7 +1,7 @@
 
 extends: substitution
 level: suggestion
-message: "System voice: '%s' => '%s': sounds like a system, not a person."
+message: "System voice: '%s' instead of '%s': sounds like a system, not a person."
 ignorecase: true
 
 swap:
@@ -47,7 +47,8 @@ swap:
   'Displaying top': 'Top'
   'Displaying ': ''
   'Showing your ': 'Your '
-  'Showing the ': 'The '
+  # Partial-preview notices need the verb to explain what is visible.
+  'Showing the (?!first\b)': 'The '
   'the functionality of ': ''
   'a typical Actor': 'most Actors'
   'limit the functionality': 'limit what'

@@ -3279,5 +3279,369 @@
       "Apify.LatinAbbreviations",
       "Apify.RepeatedExampleIntroducer"
     ]
+  },
+  {
+    "name": "Placeholder marker: [placeholder]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[placeholder]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[placeholder]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [label]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[label]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[label]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [TBD]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[TBD]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[TBD]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [tbd]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[tbd]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[tbd]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [copy needed]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[copy needed]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[copy needed]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [copy TK]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[copy TK]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[copy TK]': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: [insert description here]",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "[insert description here]",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: '[insert': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: TODO",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "TODO",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'TODO': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: TODO: add copy",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "TODO: add copy",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'TODO': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: FIXME",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "FIXME",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'FIXME': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: HACK",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "HACK",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'HACK': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: Lorem ipsum dolor sit amet",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Lorem ipsum dolor sit amet",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'Lorem ipsum': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: lorem ipsum dolor sit amet",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "lorem ipsum dolor sit amet",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'lorem ipsum': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: Coming soon",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Coming soon",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'Coming soon': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: coming soon",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "coming soon",
+    "want": "1:1:ApifyUI.PlaceholderShipped:Placeholder shipped: 'coming soon': draft copy that was never finalized.\n"
+  },
+  {
+    "name": "Placeholder marker: Run an Actor",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Run an Actor",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Describe your goal",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Describe your goal",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Find an Actor for the results you want.",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Find an Actor for the results you want.",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: TODOist integration",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "TODOist integration",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: HACKATHON registration",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "HACKATHON registration",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: FIXMEsuffix",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "FIXMEsuffix",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Choose a label for your Actor.",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Choose a label for your Actor.",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: `[placeholder]`",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "`[placeholder]`",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: ```text\n[placeholder]\n```",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "```text\n[placeholder]\n```",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Your {tokenKey} has expired.",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Your {tokenKey} has expired.",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: preLorem ipsum text",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "preLorem ipsum text",
+    "want": ""
+  },
+  {
+    "name": "Placeholder marker: Coming soonish",
+    "rule": "../styles/ApifyUI/PlaceholderShipped.yml",
+    "format": "md",
+    "input": "Coming soonish",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: e.g. does not count as extra sentences",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "Pick a tool, e.g. the scraper, to collect data.",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: i.e. does not count as extra sentences",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "Set the option, i.e. the timeout, before you run.",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: etc. does not count as an extra sentence",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "Collect data, images, etc. and export them later.",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: abbreviation plus two sentences stays within the limit",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "Use e.g. the scraper. Then run it.",
+    "want": ""
+  },
+  {
+    "name": "SentenceCount: three real sentences still flag",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "One here. Two now. Three total.",
+    "want": "1:9:ApifyUI.SentenceCount:String has 3 sentences: aim for 1-2 for UI copy.\n"
+  },
+  {
+    "name": "preserve partial preview 1",
+    "format": "md",
+    "input": "Showing the first {shown} of {size}",
+    "want": "",
+    "rule": "../styles/ApifyUI/SystemVoice.yml"
+  },
+  {
+    "name": "preserve partial preview 2",
+    "format": "md",
+    "input": "Showing the first {shown} of this file",
+    "want": "",
+    "rule": "../styles/ApifyUI/SystemVoice.yml"
+  },
+  {
+    "name": "preserve form instruction 1",
+    "format": "md",
+    "input": "Fill in the Actor input form",
+    "want": "",
+    "rule": "../styles/Apify/PlainLanguage.yml"
+  },
+  {
+    "name": "preserve form instruction 2",
+    "format": "md",
+    "input": "Fill out the form below.",
+    "want": "",
+    "rule": "../styles/Apify/PlainLanguage.yml"
+  },
+  {
+    "name": "preserve slash spacing 1",
+    "format": "md",
+    "input": "{used} / {total}",
+    "want": "",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "preserve slash spacing 2",
+    "format": "md",
+    "input": "512 MB / 4 GB",
+    "want": "",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "preserve slash spacing 3",
+    "format": "md",
+    "input": "New York / Los Angeles",
+    "want": "",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "preserve slash spacing 4",
+    "format": "md",
+    "input": "$0.12/h",
+    "want": "",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "Issue 5 valid every 1",
+    "format": "md",
+    "input": "Shared across every project linked to it.",
+    "want": "",
+    "rule": "../styles/Apify/FillerWords.yml"
+  },
+  {
+    "name": "Issue 5 term bullet 1",
+    "format": "md",
+    "input": "- _Apify API token_ - Get your token from **API & Integrations**.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "retain correction ApifyUI.SystemVoice",
+    "format": "md",
+    "input": "Showing the results",
+    "want": "1:1:ApifyUI.SystemVoice:System voice: 'The ' instead of 'Showing the ': sounds like a system, not a person.\n",
+    "rule": "../styles/ApifyUI/SystemVoice.yml"
+  },
+  {
+    "name": "retain correction Apify.PlainLanguage",
+    "format": "md",
+    "input": "approximately 20 items.",
+    "want": "1:1:Apify.PlainLanguage:Use plain language: 'about' instead of 'approximately'.\n",
+    "rule": "../styles/Apify/PlainLanguage.yml"
+  },
+  {
+    "name": "retain correction Apify.Punctuation",
+    "format": "md",
+    "input": "Use 1-on-1 meetings.",
+    "want": "1:5:Apify.Punctuation:Fix punctuation: '1on1' instead of '1-on-1'.\n",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "SentenceCount: message reports the actual four sentences",
+    "rule": "../styles/ApifyUI/SentenceCount.yml",
+    "format": "md",
+    "input": "One here. Two now. Three here. Four total.",
+    "want": "1:9:ApifyUI.SentenceCount:String has 4 sentences: aim for 1-2 for UI copy.\n"
+  },
+  {
+    "name": "SystemVoice: message names replacement before original",
+    "rule": "../styles/ApifyUI/SystemVoice.yml",
+    "format": "md",
+    "input": "Showing the results.",
+    "want": "1:1:ApifyUI.SystemVoice:System voice: 'The ' instead of 'Showing the ': sounds like a system, not a person.\n"
+  },
+  {
+    "name": "PossessiveStatus: message names replacement before original",
+    "rule": "../styles/ApifyUI/PossessiveStatus.yml",
+    "format": "md",
+    "input": "The run failed.",
+    "want": "1:1:ApifyUI.PossessiveStatus:Possessive status: 'Your run failed' instead of 'The run failed'. Use 'Your': it's the user's resource.\n"
+  },
+  {
+    "name": "BackloadedUserConcern: explain pending approval without an edit",
+    "rule": "../styles/ApifyUI/BackloadedUserConcern.yml",
+    "format": "md",
+    "input": "An admin needs to approve your request.",
+    "want": "1:1:ApifyUI.BackloadedUserConcern:Backloaded user concern: 'An admin needs to approve your'. State what the user is waiting for, such as 'Waiting for an admin to approve your request.'\n"
+  },
+  {
+    "name": "SystemVoice: preserve a direct result label",
+    "rule": "../styles/ApifyUI/SystemVoice.yml",
+    "format": "md",
+    "input": "Results are ready.",
+    "want": ""
+  },
+  {
+    "name": "PossessiveStatus: preserve a possessive status",
+    "rule": "../styles/ApifyUI/PossessiveStatus.yml",
+    "format": "md",
+    "input": "Your run failed.",
+    "want": ""
+  },
+  {
+    "name": "BackloadedUserConcern: preserve a pending approval status",
+    "rule": "../styles/ApifyUI/BackloadedUserConcern.yml",
+    "format": "md",
+    "input": "Waiting for an admin to approve your request.",
+    "want": ""
   }
 ]

@@ -369,5 +369,23 @@
     "count": 1,
     "replacement": "Select the tab",
     "fixed": "Connect your integration.\n\nSelect the tab to configure the request settings."
+  },
+  {
+    "name": "SystemVoice: message names replacement before original",
+    "rule": "ApifyUI.SystemVoice",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "PossessiveStatus: message names replacement before original",
+    "rule": "ApifyUI.PossessiveStatus",
+    "count": 1,
+    "noReplacement": true
+  },
+  {
+    "name": "BackloadedUserConcern: explain pending approval without an edit",
+    "rule": "ApifyUI.BackloadedUserConcern",
+    "count": 1,
+    "noReplacement": true
   }
 ]

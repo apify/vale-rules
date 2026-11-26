@@ -56,7 +56,7 @@ swap:
 
   'saved inputs and API calls': 'saved inputs, and API calls'
 
-  ' / ': '/'
+  # Slash spacing depends on whether it separates words, quantities, or units.
   '(?<!\.)\.\.(?!\.)': '.'
 
   'Login to': 'Log in to'
