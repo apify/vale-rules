@@ -3503,5 +3503,96 @@
     "format": "md",
     "input": "One here. Two now. Three total.",
     "want": "1:9:ApifyUI.SentenceCount:String has more than 3 sentences: aim for 1-2 for UI copy.\n"
+  },
+  {
+    "name": "preserve partial preview 1",
+    "format": "md",
+    "input": "Showing the first {shown} of {size}",
+    "want": "",
+    "rule": "../styles/ApifyUI/SystemVoice.yml"
+  },
+  {
+    "name": "preserve partial preview 2",
+    "format": "md",
+    "input": "Showing the first {shown} of this file",
+    "want": "",
+    "rule": "../styles/ApifyUI/SystemVoice.yml"
+  },
+  {
+    "name": "preserve form instruction 1",
+    "format": "md",
+    "input": "Fill in the Actor input form",
+    "want": "",
+    "rule": "../styles/Apify/PlainLanguage.yml"
+  },
+  {
+    "name": "preserve form instruction 2",
+    "format": "md",
+    "input": "Fill out the form below.",
+    "want": "",
+    "rule": "../styles/Apify/PlainLanguage.yml"
+  },
+  {
+    "name": "preserve slash spacing 1",
+    "format": "md",
+    "input": "{used} / {total}",
+    "want": "",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "preserve slash spacing 2",
+    "format": "md",
+    "input": "512 MB / 4 GB",
+    "want": "",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "preserve slash spacing 3",
+    "format": "md",
+    "input": "New York / Los Angeles",
+    "want": "",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "preserve slash spacing 4",
+    "format": "md",
+    "input": "$0.12/h",
+    "want": "",
+    "rule": "../styles/Apify/Punctuation.yml"
+  },
+  {
+    "name": "Issue 5 valid every 1",
+    "format": "md",
+    "input": "Shared across every project linked to it.",
+    "want": "",
+    "rule": "../styles/Apify/FillerWords.yml"
+  },
+  {
+    "name": "Issue 5 term bullet 1",
+    "format": "md",
+    "input": "- _Apify API token_ - Get your token from **API & Integrations**.",
+    "want": "",
+    "rule": "../styles/Apify/DashAsAside.yml"
+  },
+  {
+    "name": "retain correction ApifyUI.SystemVoice",
+    "format": "md",
+    "input": "Showing the results",
+    "want": "1:1:ApifyUI.SystemVoice:System voice: 'The ' => 'Showing the ': sounds like a system, not a person.\n",
+    "rule": "../styles/ApifyUI/SystemVoice.yml"
+  },
+  {
+    "name": "retain correction Apify.PlainLanguage",
+    "format": "md",
+    "input": "approximately 20 items.",
+    "want": "1:1:Apify.PlainLanguage:Use plain language: 'about' instead of 'approximately'.\n",
+    "rule": "../styles/Apify/PlainLanguage.yml"
+  },
+  {
+    "name": "retain correction Apify.Punctuation",
+    "format": "md",
+    "input": "Use 1-on-1 meetings.",
+    "want": "1:5:Apify.Punctuation:Fix punctuation: '1on1' instead of '1-on-1'.\n",
+    "rule": "../styles/Apify/Punctuation.yml"
   }
 ]
