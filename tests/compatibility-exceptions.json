@@ -1,0 +1,14 @@
+[
+  {
+    "name": "OverBolding HTML strong",
+    "version": "3.22.0",
+    "want": "",
+    "reason": "Vale 3.22.0 does not flush bare inline HTML at EOF. Full paragraph HTML is checked separately; Vale 3.24.0 must detect this fragment."
+  },
+  {
+    "name": "OverBolding HTML b",
+    "version": "3.22.0",
+    "want": "",
+    "reason": "Vale 3.22.0 does not flush bare inline HTML at EOF. Full paragraph HTML is checked separately; Vale 3.24.0 must detect this fragment."
+  }
+]

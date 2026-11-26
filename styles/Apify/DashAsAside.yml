@@ -2,19 +2,15 @@ extends: existence
 level: suggestion
 message: "Dash as aside: '%s'. Restructure the sentence. Split into two sentences or use a comma/colon."
 nonword: true
+ignorecase: false
 
-exceptions:
-  # Numeric ranges with en dash: "10–20", "2024–2025"
-  - '\d+–\d+'
-  # CLI flags: "--output", "--verbose"
-  - '--\w'
-  # Markdown list items (line starts with "- ")
-  - '^-\s'
-  # YAML/code context
-  - '^\s*-\s'
-  # Time ranges: "8:00 AM - 5:00 PM"
-  - '\d+:\d+\s*[AP]M\s+-\s+\d+'
-  - '\d+\s*[AP]M\s+-\s+\d+'
 tokens:
-  - '(?<=\w) - (?=\w)'
-  - '(?<!\d)–(?!\d)'
+  # Term-description lines are exempt regardless of description casing.
+  # Multiple term-description pairs in one sentence still need separators.
+  - '(?<=\w) - (?=[^.!?\n]*, [^.!?\n]* - )'
+  # A dated title is not a term-description definition.
+  - '(?<=\w) - (?=(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d)'
+  - '(?<!(?:^|\n)[ \t]*(?:(?:[-+*]|\d+[.)])[ \t]+)?(?:\*\*|_|\*|`)?(?!(?i:This|That|It|We|You|Our|Your)\b)[A-Za-z][\w/.+-]*(?:[ \t]+(?!(?:is|are|was|were|has|have|can|will|should|must)\b)[\w/.+-]+){0,5}(?:\*\*|_|\*|`)?)(?<=\w) - (?=[A-Z])'
+  - '(?<!(?:^|\n)[ \t]*(?:(?:[-+*]|\d+[.)])[ \t]+)?(?:\*\*|_|\*|`)?(?!(?i:A|An|This|That|It|We|You|Our|Your)\b)[A-Za-z][\w/.+-]*(?:[ \t]+(?!(?:is|are|was|were|has|have|can|will|should|must)\b)[\w/.+-]+){0,5}(?:\*\*|_|\*|`)?)(?<!\b\d+(?::\d+)?[ \t]*[AP]M)(?<=\w) - (?=[a-z0-9_])'
+  - '(?<!(?:^|\n)[ \t]*(?:(?:[-+*]|\d+[.)])[ \t]+)?(?:\*\*|_|\*|`)?(?!(?:This|That|It|We|You|Our|Your)\b)[A-Z][\w/.+-]*(?:[ \t]+(?!(?:is|are|was|were|has|have|can|will|should|must)\b)[\w/.+-]+){0,5}(?:\*\*|_|\*|`)?[ \t])(?<!\d)–(?=[ \t]+[A-Z])'
+  - '(?<!\d)–(?!\d|[ \t]+[A-Z])'
