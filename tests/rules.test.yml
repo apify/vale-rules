@@ -3578,7 +3578,7 @@
     "name": "retain correction ApifyUI.SystemVoice",
     "format": "md",
     "input": "Showing the results",
-    "want": "1:1:ApifyUI.SystemVoice:System voice: 'The ' => 'Showing the ': sounds like a system, not a person.\n",
+    "want": "1:1:ApifyUI.SystemVoice:System voice: 'The ' instead of 'Showing the ': sounds like a system, not a person.\n",
     "rule": "../styles/ApifyUI/SystemVoice.yml"
   },
   {
@@ -3601,5 +3601,47 @@
     "format": "md",
     "input": "One here. Two now. Three here. Four total.",
     "want": "1:9:ApifyUI.SentenceCount:String has 4 sentences: aim for 1-2 for UI copy.\n"
+  },
+  {
+    "name": "SystemVoice: message names replacement before original",
+    "rule": "../styles/ApifyUI/SystemVoice.yml",
+    "format": "md",
+    "input": "Showing the results.",
+    "want": "1:1:ApifyUI.SystemVoice:System voice: 'The ' instead of 'Showing the ': sounds like a system, not a person.\n"
+  },
+  {
+    "name": "PossessiveStatus: message names replacement before original",
+    "rule": "../styles/ApifyUI/PossessiveStatus.yml",
+    "format": "md",
+    "input": "The run failed.",
+    "want": "1:1:ApifyUI.PossessiveStatus:Possessive status: 'Your run failed' instead of 'The run failed'. Use 'Your': it's the user's resource.\n"
+  },
+  {
+    "name": "BackloadedUserConcern: explain pending approval without an edit",
+    "rule": "../styles/ApifyUI/BackloadedUserConcern.yml",
+    "format": "md",
+    "input": "An admin needs to approve your request.",
+    "want": "1:1:ApifyUI.BackloadedUserConcern:Backloaded user concern: 'An admin needs to approve your'. State what the user is waiting for, such as 'Waiting for an admin to approve your request.'\n"
+  },
+  {
+    "name": "SystemVoice: preserve a direct result label",
+    "rule": "../styles/ApifyUI/SystemVoice.yml",
+    "format": "md",
+    "input": "Results are ready.",
+    "want": ""
+  },
+  {
+    "name": "PossessiveStatus: preserve a possessive status",
+    "rule": "../styles/ApifyUI/PossessiveStatus.yml",
+    "format": "md",
+    "input": "Your run failed.",
+    "want": ""
+  },
+  {
+    "name": "BackloadedUserConcern: preserve a pending approval status",
+    "rule": "../styles/ApifyUI/BackloadedUserConcern.yml",
+    "format": "md",
+    "input": "Waiting for an admin to approve your request.",
+    "want": ""
   }
 ]
