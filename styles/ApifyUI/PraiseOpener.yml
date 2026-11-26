@@ -1,0 +1,16 @@
+# Applies to: UI notifications and emails about usage, limits, and billing.
+# Why: Usage praise before a limit, abort, or billing notice delays the information
+#   the user needs to act on. A match does not prove bad news follows, so review it
+#   in context.
+# Scope: Consumer configuration controls where Vale runs this rule. These comments do
+#   not exclude README or documentation files.
+# Export: ApifyUI style, suggestion level.
+# Advisory only: never rewrite automatically, because a replacement would invent a
+#   claim about the user's activity.
+extends: existence
+message: "Usage praise: '%s'. Check whether this delays useful information, especially before a limit or billing notice."
+level: suggestion
+ignorecase: true
+nonword: true
+tokens:
+  - '\b(?:glad|great to see|happy to see|love (?:that|seeing)) (?:that )?you(?:[\x27’]re| are) getting (?:so much|a lot of|strong|great) value\b'

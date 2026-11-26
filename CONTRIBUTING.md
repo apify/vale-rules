@@ -178,7 +178,7 @@ metadata files with their sources, and lints with the installed package. It does
 not contact GitHub or publish anything. A sandbox that prohibits local listening
 sockets needs permission to run this test.
 
-Dedicated positive and valid-text cases currently cover 34 of 228 rules. The
+Dedicated positive and valid-text cases currently cover 36 of 230 rules. The
 coverage report requires both kinds for every tested rule and reports the
 remaining 194. It is not a complete rule-coverage claim. Consumer Views, JSON or
 TypeScript extraction, and real consumer repository corpora still need their
